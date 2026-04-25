@@ -1,0 +1,11 @@
+menu:
+	Home: /
+	About: /about/
+	Original: /original/
+	Project: /project/
+	Music: /music/
+	Others: /others/
+	Blog: /blog/
+	Archives: /blog/archives/
+
+widgets: []

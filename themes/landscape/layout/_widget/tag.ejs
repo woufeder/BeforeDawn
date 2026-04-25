@@ -1,0 +1,46 @@
+<%
+var defaultLang = Array.isArray(config.language) ? config.language[0] : config.language;
+var currentLang = bd_current_lang();
+function isVisible(post){
+  var postUrl = url_for(post.path) || '';
+  if (currentLang === 'en') return postUrl.indexOf('/en/') !== -1;
+  if (currentLang === 'zh-tw') return postUrl.indexOf('/en/') === -1;
+  return true;
+}
+var visiblePosts = [];
+if (page.posts && page.posts.each) {
+  page.posts.each(function(post){ if (isVisible(post)) visiblePosts.push(post); });
+} else {
+  site.posts.each(function(post){
+    if (isVisible(post)) visiblePosts.push(post);
+  });
+}
+var tagMap = {};
+visiblePosts.forEach(function(post){
+  if (!post.tags || !post.tags.each) return;
+  post.tags.each(function(tag){
+    if (!tagMap[tag.name]) {
+      tagMap[tag.name] = { name: tag.name, path: tag.path, count: 0 };
+    }
+    tagMap[tag.name].count += 1;
+  });
+});
+var tagRows = Object.keys(tagMap).map(function(key){ return tagMap[key]; }).sort(function(a, b){ return a.name.localeCompare(b.name); });
+%>
+<% if (tagRows.length){ %>
+  <div class="widget-wrap">
+    <h3 class="widget-title"><%= __('tags') %></h3>
+    <div class="widget">
+      <ul class="tag-list">
+        <% tagRows.forEach(function(tag){ %>
+          <li class="tag-list-item">
+            <a class="tag-list-link" href="<%- url_for_lang(tag.path) %>"><%= tag.name %></a>
+            <% if (theme.show_count){ %>
+              <span class="tag-list-count"><%= tag.count %></span>
+            <% } %>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+<% } %>

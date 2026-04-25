@@ -1,0 +1,64 @@
+<%
+var defaultLang = Array.isArray(config.language) ? config.language[0] : config.language;
+var currentLang = bd_current_lang();
+var langBySource = {};
+site.posts.each(function(item){
+  if (item.source && (item.lang || item.language)) {
+    langBySource[item.source] = item.lang || item.language;
+  }
+});
+function detectLang(post){
+  return bd_post_lang(post) || defaultLang;
+}
+function isPostVisible(post){
+  var postUrl = url_for(post.path) || '';
+  if (currentLang === 'en') {
+    return postUrl.indexOf('/en/') !== -1;
+  }
+  if (currentLang === 'zh-tw') {
+    return postUrl.indexOf('/en/') === -1;
+  }
+  return detectLang(post) === currentLang;
+}
+var filteredPosts = [];
+page.posts.each(function(post){
+  if (isPostVisible(post)) {
+    filteredPosts.push(post);
+  }
+});
+%>
+<% if (expand){ %>
+  <% filteredPosts.forEach(function(post){ %>
+    <%- partial('article', {post: post, index: true}) %>
+  <% }) %>
+<% } else { %>
+  <% var last; %>
+  <% filteredPosts.forEach(function(post, i){ %>
+    <% var year = post.date.year(); %>
+    <% if (last != year){ %>
+      <% if (last != null){ %>
+        </div></section>
+      <% } %>
+      <% last = year; %>
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="<%- url_for(config.archive_dir + '/' + year) %>" class="archive-year"><%= year %></a>
+        </div>
+        <div class="archives">
+    <% } %>
+    <%- partial('archive-post', {post: post, even: i % 2 == 0}) %>
+  <% }) %>
+  <% if (filteredPosts.length){ %>
+    </div></section>
+  <% } %>
+<% } %>
+<% if (page.total > 1){ %>
+  <nav id="page-nav">
+    <% var prev_text = "&laquo; " + __('prev');var next_text = __('next') + " &raquo;"%>
+    <%- paginator({
+      prev_text: prev_text,
+      next_text: next_text,
+      escape: false
+    }) %>
+  </nav>
+<% } %>

@@ -17,9 +17,7 @@ timezone: 'Asia/Taipei'
 
 i18n:
   type: [post, page]
-  generator:
-    per_page: 10
-    order_by: -date
+  generator: [archive, category, tag, index]
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'

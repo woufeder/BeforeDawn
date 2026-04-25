@@ -1,0 +1,39 @@
+<%
+var defaultLang = Array.isArray(config.language) ? config.language[0] : config.language;
+var currentLang = bd_current_lang();
+function isVisible(post){
+  var postUrl = url_for(post.path) || '';
+  if (currentLang === 'en') return postUrl.indexOf('/en/') !== -1;
+  if (currentLang === 'zh-tw') return postUrl.indexOf('/en/') === -1;
+  return true;
+}
+var langPosts = [];
+if (page.posts && page.posts.each) {
+  page.posts.each(function(post){
+    if (isVisible(post)) langPosts.push(post);
+  });
+} else {
+  site.posts.each(function(post){
+    if (isVisible(post)) {
+      langPosts.push(post);
+    }
+  });
+}
+langPosts.sort(function(a, b){
+  return b.date - a.date;
+});
+%>
+<% if (langPosts.length){ %>
+  <div class="widget-wrap">
+    <h3 class="widget-title"><%= __('recent_posts') %></h3>
+    <div class="widget">
+      <ul>
+        <% langPosts.slice(0, theme.recent_posts_limits).forEach(function(post){ %>
+          <li>
+            <a href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+<% } %>
