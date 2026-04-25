@@ -1,10 +1,9 @@
 <% if (post.categories && post.categories.length){ %>
   <div class="article-category">
-    <%- list_categories(post.categories, {
-      show_count: false,
-      class: 'article-category',
-      style: 'none',
-      separator: '►'
-    }) %>
+    <% var categoryItems = []; %>
+    <% post.categories.each(function(category){ categoryItems.push(category); }); %>
+    <% categoryItems.forEach(function(category, index){ %>
+      <a class="article-category-link" href="<%- bd_url_for_lang(category.path, bd_post_lang(post)) %>"><%= category.name %></a><% if (index !== categoryItems.length - 1){ %>►<% } %>
+    <% }) %>
   </div>
 <% } %>

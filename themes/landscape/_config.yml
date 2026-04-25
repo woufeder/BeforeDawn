@@ -49,7 +49,11 @@ copyright:
 # Sidebar style. You can choose `left`, `right`, `bottom` or `false`.
 sidebar: right
 # Widgets displaying in sidebar
-widgets: []
+widgets:
+  - category
+  - tag
+  - archive
+  - recent_posts
 
 # ===============
 # Widget behavior

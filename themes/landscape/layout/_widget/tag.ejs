@@ -2,10 +2,7 @@
 var defaultLang = Array.isArray(config.language) ? config.language[0] : config.language;
 var currentLang = bd_current_lang();
 function isVisible(post){
-  var postUrl = url_for(post.path) || '';
-  if (currentLang === 'en') return postUrl.indexOf('/en/') !== -1;
-  if (currentLang === 'zh-tw') return postUrl.indexOf('/en/') === -1;
-  return true;
+  return bd_post_lang(post) === currentLang;
 }
 var visiblePosts = [];
 if (page.posts && page.posts.each) {
@@ -29,12 +26,12 @@ var tagRows = Object.keys(tagMap).map(function(key){ return tagMap[key]; }).sort
 %>
 <% if (tagRows.length){ %>
   <div class="widget-wrap">
-    <h3 class="widget-title"><%= __('tags') %></h3>
+    <h3 class="widget-title"><%= bd_label('tags') %></h3>
     <div class="widget">
       <ul class="tag-list">
         <% tagRows.forEach(function(tag){ %>
           <li class="tag-list-item">
-            <a class="tag-list-link" href="<%- url_for_lang(tag.path) %>"><%= tag.name %></a>
+            <a class="tag-list-link" href="<%- bd_url_for_lang(tag.path) %>"><%= tag.name %></a>
             <% if (theme.show_count){ %>
               <span class="tag-list-count"><%= tag.count %></span>
             <% } %>

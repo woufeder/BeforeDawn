@@ -1,11 +1,15 @@
 menu:
-	Home: /
-	About: /about/
-	Original: /original/
-	Project: /project/
-	Music: /music/
-	Others: /others/
-	Blog: /blog/
-	Archives: /blog/archives/
+	home: /
+	about: /about/
+	original: /original/
+	project: /project/
+	music: /music/
+	others: /others/
+	blog: /blog/
+	archives: /blog/archives/
 
-widgets: []
+widgets:
+	- category
+	- tag
+	- archive
+	- recent_posts
