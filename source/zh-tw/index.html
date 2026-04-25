@@ -163,10 +163,21 @@ layout: false
 
   <nav>
     <div class="logo">Before Dawn</div>
-    <div>
-      <a href="#works">Works</a>
-      <a href="#about">About</a>
-      <a href="/BeforeDawn/zh-tw/blog/">Blog</a>
+    <div style="display: flex; align-items: center; gap: 2rem;">
+      <div>
+        <a href="/BeforeDawn/zh-tw/">首頁</a>
+        <a href="/BeforeDawn/zh-tw/about/">關於</a>
+        <a href="/BeforeDawn/zh-tw/original/">創意</a>
+        <a href="/BeforeDawn/zh-tw/project/">作品</a>
+        <a href="/BeforeDawn/zh-tw/music/">音樂</a>
+        <a href="/BeforeDawn/zh-tw/others/">其他</a>
+        <a href="/BeforeDawn/zh-tw/blog/">文章</a>
+      </div>
+      <select onchange="if(this.value) location.href = this.value;" style="padding: 0.5rem; background: rgba(255,255,255,0.1); color: #aaa; border: 1px solid #444; border-radius: 3px; cursor: pointer;">
+        <option value="">語言</option>
+        <option value="/BeforeDawn/en/">English</option>
+        <option value="/BeforeDawn/zh-tw/">中文</option>
+      </select>
     </div>
   </nav>
 
@@ -212,7 +223,7 @@ layout: false
   </section>
 
   <footer>
-    <p>© 2026 woufeder · <a href="https://github.com/woufeder">GitHub</a> · <a href="/BeforeDawn/blog/">Blog</a></p>
+    <p>© 2026 woufeder · <a href="https://github.com/woufeder">GitHub</a> · <a href="/BeforeDawn/zh-tw/blog/">文章</a></p>
   </footer>
 
 </body>

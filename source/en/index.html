@@ -163,10 +163,21 @@ layout: false
 
   <nav>
     <div class="logo">Before Dawn</div>
-    <div>
-      <a href="#works">Works</a>
-      <a href="#about">About</a>
-      <a href="/BeforeDawn/en/blog/">Blog</a>
+    <div style="display: flex; align-items: center; gap: 2rem;">
+      <div>
+        <a href="/BeforeDawn/en/">Home</a>
+        <a href="/BeforeDawn/en/about/">About</a>
+        <a href="/BeforeDawn/en/original/">Original</a>
+        <a href="/BeforeDawn/en/project/">Project</a>
+        <a href="/BeforeDawn/en/music/">Music</a>
+        <a href="/BeforeDawn/en/others/">Others</a>
+        <a href="/BeforeDawn/en/blog/">Blog</a>
+      </div>
+      <select onchange="if(this.value) location.href = this.value;" style="padding: 0.5rem; background: rgba(255,255,255,0.1); color: #aaa; border: 1px solid #444; border-radius: 3px; cursor: pointer;">
+        <option value="">Language</option>
+        <option value="/BeforeDawn/en/">English</option>
+        <option value="/BeforeDawn/zh-tw/">中文</option>
+      </select>
     </div>
   </nav>
 
@@ -175,7 +186,7 @@ layout: false
     <p>Place a brief introduction or slogan here to let visitors know what you do.</p>
     <div>
       <a href="#works" class="btn primary">View Works</a>
-      <a href="/BeforeDawn/blog/" class="btn">Read Blog</a>
+      <a href="/BeforeDawn/en/blog/" class="btn">Read Blog</a>
     </div>
   </div>
 
@@ -212,7 +223,7 @@ layout: false
   </section>
 
   <footer>
-    <p>© 2026 woufeder · <a href="https://github.com/woufeder">GitHub</a> · <a href="/BeforeDawn/blog/">Blog</a></p>
+    <p>© 2026 woufeder · <a href="https://github.com/woufeder">GitHub</a> · <a href="/BeforeDawn/en/blog/">Blog</a></p>
   </footer>
 
 </body>
