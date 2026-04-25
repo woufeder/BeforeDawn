@@ -6,8 +6,8 @@ tags:
   - SHIP2
   - SHIP1
 categories:
-  - EN
-  - C1
+  - [EN]
+  - [C1]
 translation_key: post-hello
 ---
 english
