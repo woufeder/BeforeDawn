@@ -164,7 +164,9 @@ layout: false
   <nav>
     <div class="logo">Before Dawn</div>
     <div style="display: flex; align-items: center; gap: 2rem;">
-
+      <nav>
+        
+      </nav>
       <div>
         <a href="/BeforeDawn/zh-tw/">首頁</a>
         <a href="/BeforeDawn/zh-tw/about/">關於</a>
