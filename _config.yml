@@ -8,8 +8,11 @@ subtitle: ''
 description: ''
 keywords:
 author: woufeder
-language: zh-CN
-timezone: 'Asia/Shanghai'
+language: 
+  - zh-TW
+  - en
+  - it
+timezone: 'Asia/Taipei'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -66,7 +69,7 @@ index_generator:
   order_by: -date
 
 # Category & Tag
-default_category: uncategorized
+default_category: "未分類"
 category_map:
 tag_map:
 
