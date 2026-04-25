@@ -17,14 +17,30 @@ var labels = {
     rss_feed: 'RSS Feed',
     share: 'Share'
   },
+  it: {
+    home: 'Home456',
+    about: 'About',
+    original: 'Original',
+    project: 'Project',
+    music: 'Music',
+    others: 'Others',
+    blog: 'Blog',
+    archives: 'Archives',
+    categories: 'Categories',
+    tags: 'Tags',
+    recent_posts: 'Recent Posts',
+    search: 'Search',
+    rss_feed: 'RSS Feed',
+    share: 'Share'
+  },
   'zh-tw': {
-    home: '首頁',
+    home: '首頁123',
     about: '關於',
     original: '原創',
     project: '作品',
     music: '音樂',
     others: '其他',
-    blog: '部落格',
+    blog: '文章',
     archives: '文章存檔',
     categories: '分類',
     tags: '標籤',
@@ -39,10 +55,23 @@ function siteDefaultLang() {
   return Array.isArray(hexo.config.language) ? hexo.config.language[0] : hexo.config.language;
 }
 
+function getSiteLanguages() {
+  if (hexo && hexo.config && hexo.config.i18n && Array.isArray(hexo.config.i18n.languages) && hexo.config.i18n.languages.length) {
+    return hexo.config.i18n.languages;
+  }
+  var langs = hexo.config.language;
+  if (!Array.isArray(langs)) langs = [langs];
+  return langs.filter(function(l){ return !!l; });
+}
+
 function inferLangFromPath(path, fallback) {
   if (!path) return fallback;
-  if (path.indexOf('/en/') !== -1 || path.indexOf('en/') === 0) return 'en';
-  if (path.indexOf('/zh-tw/') !== -1 || path.indexOf('zh-tw/') === 0) return 'zh-tw';
+  var langs = getSiteLanguages();
+  for (var i = 0; i < langs.length; i++){
+    var l = langs[i];
+    if (!l) continue;
+    if (path.indexOf('/' + l + '/') !== -1 || path.indexOf(l + '/') === 0) return l;
+  }
   return fallback;
 }
 
@@ -64,11 +93,11 @@ function currentLangFromContext(context) {
   return inferLangFromPath(pagePath, defaultLang);
 }
 
-hexo.extend.helper.register('bd_current_lang', function() {
+hexo.extend.helper.register('bd_current_lang', function () {
   return currentLangFromContext(this);
 });
 
-hexo.extend.helper.register('bd_post_lang', function(post) {
+hexo.extend.helper.register('bd_post_lang', function (post) {
   var defaultLang = siteDefaultLang();
 
   if (!post) return defaultLang;
@@ -79,7 +108,7 @@ hexo.extend.helper.register('bd_post_lang', function(post) {
   var targetId = post._id ? String(post._id) : '';
   var targetSource = post.source || '';
 
-  this.site.posts.each(function(item) {
+  this.site.posts.each(function (item) {
     if (found) return;
     if (targetId && item._id && String(item._id) === targetId) {
       found = item;
@@ -100,7 +129,7 @@ hexo.extend.helper.register('bd_post_lang', function(post) {
   return inferLangFromPath(post.path, defaultLang);
 });
 
-hexo.extend.helper.register('bd_url_for_lang', function(targetPath, lang) {
+hexo.extend.helper.register('bd_url_for_lang', function (targetPath, lang) {
   var defaultLang = siteDefaultLang();
   var targetLang = lang || currentLangFromContext(this);
   var normalized = normalizePath(targetPath);
@@ -117,14 +146,16 @@ hexo.extend.helper.register('bd_url_for_lang', function(targetPath, lang) {
     return this.url_for('/' + targetLang + '/');
   }
 
-  if (normalized.indexOf('/en/') === 0 || normalized.indexOf('/zh-tw/') === 0) {
+  var firstSeg = normalized.split('/')[1] || '';
+  var langs = getSiteLanguages();
+  if (langs.indexOf(firstSeg) !== -1){
     return this.url_for(normalized);
   }
 
   return this.url_for('/' + targetLang + normalized);
 });
 
-hexo.extend.helper.register('bd_label', function(key, lang) {
+hexo.extend.helper.register('bd_label', function (key, lang) {
   var targetLang = lang || currentLangFromContext(this);
   var table = labels[targetLang] || labels[siteDefaultLang()] || labels.en;
   return table[key] || key;
