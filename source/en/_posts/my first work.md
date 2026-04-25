@@ -7,7 +7,6 @@ tags:
 categories:
   - [EN]
   - [C1]
-lang: en
 translation_key: post-hello
 ---
 english

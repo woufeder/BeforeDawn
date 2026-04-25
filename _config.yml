@@ -9,16 +9,23 @@ description: ''
 keywords:
 author: woufeder
 language: 
-  - zh-TW
+  - zh-tw
   - en
   - it
 timezone: 'Asia/Taipei'
+
+
+i18n:
+  type: [post, page]
+  generator:
+    per_page: 10
+    order_by: -date
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://woufeder.github.io/BeforeDawn
 root: /BeforeDawn/
-permalink: blog/:title/
+permalink: :lang/blog/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -31,7 +38,7 @@ tag_dir: blog/tags
 archive_dir: blog/archives
 category_dir: blog/categories
 code_dir: downloads/code
-i18n_dir: :lang
+# i18n_dir: :lang
 skip_render:
 
 # Writing
