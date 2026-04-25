@@ -5,14 +5,8 @@ menu:
 	project: /project/
 	music: /music/
 	others: /others/
-	#blog: /blog/
-	#archives: /blog/archives/
-
-	# Original 的子選單（不要移除 parent，template 會尋找 original_submenu）
-	original_submenu:
-		parent: original
-		submenu:
-			archives: /blog/archives/
+	# blog: /blog/
+	# archives: /blog/archives/
 
 widgets:
 	- category

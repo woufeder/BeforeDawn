@@ -11,6 +11,7 @@ var labels = {
     blog: 'Blog',
     archives: 'Archives',
     categories: 'Categories',
+    all_posts: 'All Posts',
     tags: 'Tags',
     recent_posts: 'Recent Posts',
     search: 'Search',
@@ -27,6 +28,7 @@ var labels = {
     blog: 'Blog',
     archives: 'Archives',
     categories: 'Categories',
+    all_posts: 'Tutti gli articoli',
     tags: 'Tags',
     recent_posts: 'Recent Posts',
     search: 'Search',
@@ -43,6 +45,7 @@ var labels = {
     blog: '文章',
     archives: '文章存檔',
     categories: '分類',
+    all_posts: '所有文章',
     tags: '標籤',
     recent_posts: '最新文章',
     search: '搜尋',
@@ -56,21 +59,35 @@ function siteDefaultLang() {
 }
 
 function getSiteLanguages() {
+  var src = null;
   if (hexo && hexo.config && hexo.config.i18n && Array.isArray(hexo.config.i18n.languages) && hexo.config.i18n.languages.length) {
-    return hexo.config.i18n.languages;
+    src = hexo.config.i18n.languages;
+  } else {
+    src = hexo.config.language;
   }
-  var langs = hexo.config.language;
-  if (!Array.isArray(langs)) langs = [langs];
-  return langs.filter(function(l){ return !!l; });
+  if (!Array.isArray(src)) src = [src];
+  // normalize to lower-case and remove falsy/duplicates
+  var seen = {};
+  var out = [];
+  for (var i = 0; i < src.length; i++){
+    var v = src[i];
+    if (!v) continue;
+    var s = String(v).toLowerCase();
+    if (seen[s]) continue;
+    seen[s] = true;
+    out.push(s);
+  }
+  return out;
 }
 
 function inferLangFromPath(path, fallback) {
   if (!path) return fallback;
   var langs = getSiteLanguages();
+  var pathLower = String(path).toLowerCase();
   for (var i = 0; i < langs.length; i++){
     var l = langs[i];
     if (!l) continue;
-    if (path.indexOf('/' + l + '/') !== -1 || path.indexOf(l + '/') === 0) return l;
+    if (pathLower.indexOf('/' + l + '/') !== -1 || pathLower.indexOf(l + '/') === 0) return l;
   }
   return fallback;
 }
@@ -146,7 +163,7 @@ hexo.extend.helper.register('bd_url_for_lang', function (targetPath, lang) {
     return this.url_for('/' + targetLang + '/');
   }
 
-  var firstSeg = normalized.split('/')[1] || '';
+  var firstSeg = (normalized.split('/')[1] || '').toLowerCase();
   var langs = getSiteLanguages();
   if (langs.indexOf(firstSeg) !== -1){
     return this.url_for(normalized);

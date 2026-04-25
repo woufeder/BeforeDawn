@@ -11,12 +11,6 @@ menu:
   others: /others/
   # blog: /blog/
   # archives: /blog/archives/
-
-  # second-level menu under Original
-  original_submenu:
-    parent: original
-    submenu:
-      archives: /blog/archives/
 # RSS link
 rss: /atom.xml
 # Path of title banner image of page top

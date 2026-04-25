@@ -43,7 +43,6 @@ candidates.forEach(c => {
   }
 });
 
-// Also copy blog index if exists at /blog/index.html to /zh-tw/blog/index.html
 const blogIndex = path.join(publicDir, 'blog', 'index.html');
 if (fs.existsSync(blogIndex)){
   const target = path.join(zhDir, 'blog');

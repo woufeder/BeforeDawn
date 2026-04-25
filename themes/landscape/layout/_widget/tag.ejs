@@ -32,9 +32,7 @@ var tagRows = Object.keys(tagMap).map(function(key){ return tagMap[key]; }).sort
         <% tagRows.forEach(function(tag){ %>
           <li class="tag-list-item">
             <a class="tag-list-link" href="<%- bd_url_for_lang(tag.path) %>"><%= tag.name %></a>
-            <% if (theme.show_count){ %>
-              <span class="tag-list-count"><%= tag.count %></span>
-            <% } %>
+            <span class="tag-list-count"><%= tag.count %></span>
           </li>
         <% }) %>
       </ul>

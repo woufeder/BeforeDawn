@@ -11,13 +11,6 @@ function detectLang(post){
   return bd_post_lang(post) || defaultLang;
 }
 function isPostVisible(post){
-  var postUrl = url_for(post.path) || '';
-  if (currentLang === 'en') {
-    return postUrl.indexOf('/en/') !== -1;
-  }
-  if (currentLang === 'zh-tw') {
-    return postUrl.indexOf('/en/') === -1;
-  }
   return detectLang(post) === currentLang;
 }
 var filteredPosts = [];

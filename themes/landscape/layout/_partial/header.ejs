@@ -16,20 +16,15 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
         <% for (var i in theme.menu){ %>
-          <% var item = theme.menu[i]; %>
-          <% if (typeof item === 'string'){ %>
-            <a class="main-nav-link" href="<%- bd_url_for_lang(item) %>"><%= bd_label(i) %></a>
-          <% } else if (typeof item === 'object' && item.parent && item.submenu){ %>
-            <% if (i === 'original_submenu'){ %>
-              <div class="main-nav-dropdown">
-                <a class="main-nav-link" href="<%- bd_url_for_lang(theme.menu[item.parent]) %>"><%= bd_label(item.parent) %></a>
-                <div class="main-nav-dropdown-menu">
-                  <% for (var k in item.submenu){ %>
-                    <a class="main-nav-sublink" href="<%- bd_url_for_lang(item.submenu[k]) %>"><%= bd_label(k) %></a>
-                  <% } %>
-                </div>
+          <% if (i === 'original') { %>
+            <div class="main-nav-item has-submenu">
+              <a class="main-nav-link" href="<%- bd_url_for_lang(theme.menu[i]) %>"><%= bd_label(i) %></a>
+              <div class="main-nav-submenu">
+                <a class="main-nav-submenu-link" href="<%- bd_url_for_lang('/blog/') %>"><%= bd_label('blog') %></a>
               </div>
-            <% } %>
+            </div>
+          <% } else { %>
+            <a class="main-nav-link" href="<%- bd_url_for_lang(theme.menu[i]) %>"><%= bd_label(i) %></a>
           <% } %>
         <% } %>
       </nav>
