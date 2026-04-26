@@ -1,8 +1,8 @@
 <nav id="mobile-nav">
   <% for (var i in theme.menu){ %>
-    <a href="<%- bd_url_for_lang(theme.menu[i]) %>" class="mobile-nav-link"><%= bd_label(i) %></a>
+    <a href="<%- bd_url_for_lang(theme.menu[i]) %>" class="mobile-nav-link"><%= bd_i18n(i) %></a>
     <% if (i === 'original') { %>
-      <a href="<%- bd_url_for_lang('/blog/') %>" class="mobile-nav-link mobile-nav-sub-link"><%= bd_label('blog') %></a>
+      <a href="<%- bd_url_for_lang('/blog/') %>" class="mobile-nav-link mobile-nav-sub-link"><%= bd_i18n('blog') %></a>
     <% } %>
   <% } %>
 </nav>

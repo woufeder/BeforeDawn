@@ -27,7 +27,7 @@ var archiveKeys = Object.keys(archives).sort().reverse();
 %>
 <% if (archiveKeys.length){ %>
   <div class="widget-wrap">
-    <h3 class="widget-title"><%= bd_label('archives') %></h3>
+    <h3 class="widget-title"><%= bd_i18n('archives') %></h3>
     <div class="widget">
       <ul class="archive-list">
         <% archiveKeys.forEach(function(key){ %>

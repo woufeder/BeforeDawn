@@ -2,7 +2,7 @@
 
 var labels = {
   en: {
-    home: 'Home',
+    home: 'HomeJS',
     about: 'About',
     original: 'Original',
     project: 'Project',
@@ -172,8 +172,21 @@ hexo.extend.helper.register('bd_url_for_lang', function (targetPath, lang) {
   return this.url_for('/' + targetLang + normalized);
 });
 
-hexo.extend.helper.register('bd_label', function (key, lang) {
+hexo.extend.helper.register('bd_i18n', function (key, lang) {
   var targetLang = lang || currentLangFromContext(this);
+
+  // ① 先吃 Hexo i18n（yml）
+  var fromHexo = this.__(key);
+  if (fromHexo && fromHexo !== key) {
+    return fromHexo;
+  }
+
+  // ② fallback 到 labels
   var table = labels[targetLang] || labels[siteDefaultLang()] || labels.en;
-  return table[key] || key;
+  if (table && table[key]) {
+    return table[key];
+  }
+
+  // ③ 最後 fallback key
+  return key;
 });

@@ -21,7 +21,7 @@
         <%- post.excerpt %>
         <% if (theme.excerpt_link){ %>
           <p class="article-more-link">
-            <a href="<%- bd_url_for_lang(post.path, bd_post_lang(post)) %>#more"><%= theme.excerpt_link %></a>
+            <a href="<%- bd_url_for_lang(post.path, bd_post_lang(post)) %>"><%= __('read_more') %></a>
           </p>
         <% } %>
       <% } else { %>
@@ -30,7 +30,7 @@
     </div>
 
     <footer class="article-footer">
-      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-share-link"><span class="fa fa-share"><%= bd_label('share', bd_post_lang(post)) %></span></a>
+      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-share-link"><span class="fa fa-share"><%= bd_i18n('share', bd_post_lang(post)) %></span></a>
       <% if (post.comments && theme.disqus_shortname){ %>
         <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><span class="fa fa-comment"><%= __('comment') %></span></a>
       <% } %>

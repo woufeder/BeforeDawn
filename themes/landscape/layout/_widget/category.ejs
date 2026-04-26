@@ -26,11 +26,11 @@ var categoryRows = Object.keys(categoryMap).map(function(key){ return categoryMa
 %>
 <% if (categoryRows.length){ %>
   <div class="widget-wrap">
-    <h3 class="widget-title"><%= bd_label('categories') %></h3>
+    <h3 class="widget-title"><%= bd_i18n('categories') %></h3>
     <div class="widget">
       <ul class="category-list">
         <li class="category-list-item">
-          <a class="category-list-link" href="<%- bd_url_for_lang('/' + config.archive_dir + '/') %>"><%= bd_label('all_posts') %></a>
+          <a class="category-list-link" href="<%- bd_url_for_lang('/' + config.archive_dir + '/') %>"><%= bd_i18n('all_posts') %></a>
           <span class="category-list-count"><%= visiblePosts.length %></span>
         </li>
         <% categoryRows.forEach(function(category){ %>

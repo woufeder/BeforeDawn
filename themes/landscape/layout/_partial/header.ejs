@@ -18,13 +18,13 @@
         <% for (var i in theme.menu){ %>
           <% if (i === 'original') { %>
             <div class="main-nav-item has-submenu">
-              <a class="main-nav-link" href="<%- bd_url_for_lang(theme.menu[i]) %>"><%= bd_label(i) %></a>
+              <a class="main-nav-link" href="<%- bd_url_for_lang(theme.menu[i]) %>"><%= bd_i18n(i) %></a>
               <div class="main-nav-submenu">
-                <a class="main-nav-submenu-link" href="<%- bd_url_for_lang('/blog/') %>"><%= bd_label('blog') %></a>
+                <a class="main-nav-submenu-link" href="<%- bd_url_for_lang('/blog/') %>"><%= bd_i18n("blog") %></a>
               </div>
             </div>
           <% } else { %>
-            <a class="main-nav-link" href="<%- bd_url_for_lang(theme.menu[i]) %>"><%= bd_label(i) %></a>
+            <a class="main-nav-link" href="<%- bd_url_for_lang(theme.menu[i]) %>"><%= bd_i18n(i) %></a>
           <% } %>
         <% } %>
       </nav>
@@ -36,11 +36,13 @@
           <% } %>
         <% } %>
 
-        <a class="nav-icon nav-search-btn" title="<%= bd_label('search') %>"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="<%= bd_i18n('search') %>"><span class="fa fa-search"></span></a>
       </nav> -->
       <div id="search-form-wrap">
-        <%- search_form({button: '&#xF002;', text: bd_label('search')}) %>
+        <%- search_form({button: '&#xF002;', text: bd_i18n('search')}) %>
       </div>
     </div>
   </div>
 </header>
+
+
