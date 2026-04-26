@@ -33,8 +33,8 @@
     <%- css('https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css') %>
   <% } %>
   <%- css('css/style') %>
-  <link rel="stylesheet" href="<%- url_for('/css/reset.css') %>">
-  <link rel="stylesheet" href="<%- url_for('/css/app.css') %>">
+  <!-- css設定在這裡 -->
+  <%- partial('_partial/assets') %>
   
   <% if (theme.fancybox){ %>
     <%- css('fancybox/jquery.fancybox.min.css') %>
