@@ -2,7 +2,7 @@
 
 var labels = {
   en: {
-    home: 'HomeJS',
+    home: 'Home',
     about: 'About',
     original: 'Original',
     project: 'Project',
@@ -19,7 +19,7 @@ var labels = {
     share: 'Share'
   },
   it: {
-    home: 'Home456',
+    home: 'Home',
     about: 'About',
     original: 'Original',
     project: 'Project',
@@ -190,3 +190,4 @@ hexo.extend.helper.register('bd_i18n', function (key, lang) {
   // ③ 最後 fallback key
   return key;
 });
+ 

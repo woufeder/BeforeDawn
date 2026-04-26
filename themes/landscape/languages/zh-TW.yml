@@ -1,29 +1,38 @@
-categories: 分類
-search: 搜尋
-tags: 標籤
-tagcloud: 標籤雲
-tweets: 推文
+# 分頁
+home: Home
+about: About Me
+original: Original
+project: Project
+music: Music
+others: Others
+# 部落格
+# 總頁
+blog: 全文章集中
+read_more: 閱讀全文
 prev: 上一頁
 next: 下一頁
-comment: 留言
-archive_a: 彙整
-archive_b: 彙整：%s
 page: 第 %d 頁
-recent_posts: 最新文章
-newer: Newer
-older: Older
-share: Share
-powered_by: Powered by
-rss_feed: RSS Feed
-category: Category
+# 邊欄
+categories: 所有類別
+category: 類別
+all_posts: 所有文章
+
+archives: 月份封存
+archive_a: 月份封存
+archive_b: 月份封存：%s
+
+tags: CP TAG
 tag: Tag
-home: 首頁兮兮兮
-about: 關於
-original: 原創
-project: 作品
-music: 音樂
-others: 其他
-# blog: 部落格
-archives: 文章存檔
-read_more: 閱讀全文
+tagcloud: 標籤雲
+
+comment: 留言
+
+recent_posts: 最新文章
+newer: 下一篇文章
+older: 上一篇文章
+share: 分享
+
 search_placeholder: 搜尋
+search: 搜尋
+
+copyright:  © 2015 by After Light. All Rights Reserved.

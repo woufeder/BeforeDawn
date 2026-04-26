@@ -1,29 +1,38 @@
-categories: Categories
-search: Search
-tags: Tags
-tagcloud: Tag Cloud
-tweets: Tweets
-prev: Prev
-next: Next
-comment: Comments
-archive_a: Archives
-archive_b: "Archives: %s"
-page: Page %d
-recent_posts: Recent Posts
-newer: Newer
-older: Older
-share: Share
-powered_by: Powered by
-rss_feed: RSS Feed
-category: Category
-tag: Tag
-home: HomeYML
-about: About
+# 分頁
+home: Home
+about: About Me
 original: Original
 project: Project
 music: Music
 others: Others
+#部落格
+# 總頁
 blog: Blog
+read_more: "Read more"
+prev: Prev
+next: Next
+page: Page %d
+# 邊欄
+categories: Categories
+category: Category
+all_posts: All Posts
+
 archives: Archives
-read_more: "Read More"
+archive_a: Archives
+archive_b: "Archives: %s"
+
+tags: Tags
+tag: Tag
+tagcloud: Tag Cloud
+
+comment: Comments
+
+recent_posts: Recent Posts
+newer: Newer
+older: Older
+share: Share
+
 search_placeholder: "Search"
+search: Search
+
+copyright: © 2015 by After Light. All rights reserved.
