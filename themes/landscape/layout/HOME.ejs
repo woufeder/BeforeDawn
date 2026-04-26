@@ -7,9 +7,8 @@ layout: false
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Before Dawn | Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=LXGW+WenKai+Mono+TC:wght@300;400;700&family=Noto+Sans+TC:wght@100..900&family=Shippori+Mincho+B1:wght@500;600;700;800&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+  <%- partial('_partial/assets') %>
+  <link rel="stylesheet" href="<%- url_for('/css/main.css') %>">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -164,7 +163,8 @@ layout: false
 </head>
 <body>
 
-  <nav>
+        <%- partial('_partial/header') %>
+  <!-- <nav>
     <div class="logo">Before Dawn</div>
     <div style="display: flex; align-items: center; gap: 2rem;">
 
@@ -183,7 +183,7 @@ layout: false
         <option value="/BeforeDawn/zh-tw/">中文</option>
       </select>
     </div>
-  </nav>
+  </nav> -->
 
   <div class="hero">
     <h1>Hello, I'm<br /><span>woufeder.</span></h1>
