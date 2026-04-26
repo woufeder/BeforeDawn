@@ -1,9 +1,15 @@
 <% if (post.categories && post.categories.length){ %>
-  <div class="article-category">
-    <% var categoryItems = []; %>
-    <% post.categories.each(function(category){ categoryItems.push(category); }); %>
-    <% categoryItems.forEach(function(category, index){ %>
-      <a class="article-category-link" href="<%- bd_url_for_lang(category.path, bd_post_lang(post)) %>"><%= category.name %></a><% if (index !== categoryItems.length - 1){ %>►<% } %>
-    <% }) %>
+  <div class="article-category mt-1">
+    <span>分類│</span>
+    <% var categoryItems=[]; %>
+      <% post.categories.each(function(category){ categoryItems.push(category); }); %>
+        <% categoryItems.forEach(function(category, index){ %>
+          <a class="article-category-link" href="<%- bd_url_for_lang(category.path, bd_post_lang(post)) %>">
+            <%= category.name %>
+          </a>
+          <% if (index !==categoryItems.length - 1){ %>
+            |
+            <% } %>
+              <% }) %>
   </div>
-<% } %>
+  <% } %>

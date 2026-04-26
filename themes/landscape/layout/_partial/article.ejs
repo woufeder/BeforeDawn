@@ -4,12 +4,18 @@
     <%- partial('post/category') %>
   </div>
   <div class="article-inner">
+
     <%- partial('post/gallery') %>
+    
     <% if (post.link || post.title){ %>
       <header class="article-header">
         <%- partial('post/title', {class_name: 'p-name article-title'}) %>
+
+        <%- partial('post/category', {class_name: 'p-name article-title'}) %>
+
       </header>
     <% } %>
+
     <div class="e-content article-entry" itemprop="articleBody">
       <% if (post.excerpt && index){ %>
         <%- post.excerpt %>
@@ -22,6 +28,7 @@
         <%- post.content %>
       <% } %>
     </div>
+
     <footer class="article-footer">
       <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-share-link"><span class="fa fa-share"><%= bd_label('share', bd_post_lang(post)) %></span></a>
       <% if (post.comments && theme.disqus_shortname){ %>
