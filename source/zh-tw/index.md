@@ -1,3 +1,3 @@
 ---
-layout: HOME
+layout: page/zh-tw/home
 ---
