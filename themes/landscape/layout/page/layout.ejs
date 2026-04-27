@@ -1,0 +1,26 @@
+---
+layout: false
+---
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= page.title %>
+  </title>
+  <%- partial('_partial/assets') %>
+    <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>">
+
+</head>
+
+<body style="background-image: url('<%= url_for(page.bg) %>');">
+  <%- partial('_partial/header') %>
+    <main class="container">
+      <%- body %>
+    </main>
+</body>
+
+</html>

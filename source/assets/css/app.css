@@ -202,11 +202,17 @@
       max-width: 96rem;
     }
   }
+  .ms-auto {
+    margin-inline-start: auto;
+  }
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
   }
   .block {
     display: block;
+  }
+  .flex {
+    display: flex;
   }
   .grid {
     display: grid;
@@ -223,6 +229,15 @@
   .table {
     display: table;
   }
+  .w-auto {
+    width: auto;
+  }
+  .w-fit {
+    width: fit-content;
+  }
+  .w-full {
+    width: 100%;
+  }
   .border-collapse {
     border-collapse: collapse;
   }
@@ -232,9 +247,28 @@
   .resize {
     resize: both;
   }
+  .flex-row {
+    flex-direction: row;
+  }
+  .items-end {
+    align-items: flex-end;
+  }
+  .justify-end {
+    justify-content: flex-end;
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
+  }
+  .border-s {
+    border-inline-start-style: var(--tw-border-style);
+    border-inline-start-width: 1px;
+  }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
+  }
+  .text-wrap {
+    text-wrap: wrap;
   }
   .underline {
     text-decoration-line: underline;

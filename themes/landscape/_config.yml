@@ -3,7 +3,7 @@
 # ===============
 # Navigation menu
 menu:
-  home: /
+  # home: /
   about: /about/
   original: /original/
   project: /project/

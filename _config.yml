@@ -4,6 +4,11 @@
 
 # Site
 title: Before Dawn
+site_title:
+  en: Anywhere Before Dawn
+  zh-tw: 夜明曉更前
+  ja: "夜明け前"
+  it: Before Dawn
 subtitle: ''
 description: ''
 keywords:
