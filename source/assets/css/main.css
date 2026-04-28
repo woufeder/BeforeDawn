@@ -14,7 +14,7 @@ body {
   background-blend-mode: multiply;
   color: #f0f0f0;
   min-height: 100vh;
-  background-image: var(--bg-url);
+  /* background-image: var(--bg-url); */
   background-size: cover;
   background-position: center;
 }
@@ -139,4 +139,30 @@ body {
 #sub-nav {
   float: right;
   margin-right: -15px;
+}
+
+/* modal styles */
+.modal {
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+}
+
+.modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal__container {
+  background: white;
+  padding: 1rem;
+  max-width: 600px;
+  width: 90%;
 }

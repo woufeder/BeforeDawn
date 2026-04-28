@@ -1,25 +1,27 @@
 ---
 layout: false
 ---
+
 <!DOCTYPE html>
 <html lang="<%= page.lang || config.language || 'zh-TW' %>">
-<%- partial('_partial/google-analytics') %>
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    <%= page.title %>
-  </title>
-  <%- partial('_partial/assets') %>
-    <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>">
+  <head>
+    <%- partial('_partial/google-analytics') %>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= page.title %></title>
+    <%- partial('_partial/assets') %>
+    <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />
+  </head>
 
-</head>
+  <body style="background-image: url(&quot;<%= url_for(page.bg) %>&quot;)">
+    <%- partial('_partial/header') %>
 
-<body style="background-image: url('<%= url_for(page.bg) %>');">
-  <%- partial('_partial/header') %>
-    <main class="container">
-      <%- body %>
-    </main>
-</body>
+    <main class="container"><%- body %></main>
 
+    <%- partial('_partial/footer') %>
+    <script src="<%- url_for('js/micromodal.min.js') %>"></script>
+    <script>
+      MicroModal.init({});
+    </script>
+  </body>
 </html>
