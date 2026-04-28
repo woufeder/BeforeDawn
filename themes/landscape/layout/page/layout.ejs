@@ -13,7 +13,14 @@ layout: false
     <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />
   </head>
 
-  <body style="background-image: url(&quot;<%= url_for(page.bg) %>&quot;)">
+<body
+  style="
+    --bg-image: url('<%= url_for(page.bg || '/image/bg-base.jpg') %>');
+    --bg-color: <%= page.bgColor || 'rgba(35,36,61,0.9)' %>;
+    --bg-blend: <%= page.bgBlend || 'multiply' %>;
+    --text-color: <%= page.textColor || '#f0f0f0' %>;
+  "
+>
     <%- partial('_partial/header') %>
 
     <main class="container"><%- body %></main>
