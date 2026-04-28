@@ -81,7 +81,7 @@ p {
 
 @font-face {
   font-family: 'Iansui';
-  src: url('../fonts/Iansui-Regular.woff2') format('woff2');
+  src: url('/BeforeDawn/fonts/Iansui-Regular.woff2');
   font-weight: 400;
   font-style: normal;
 }
