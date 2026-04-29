@@ -110,6 +110,60 @@ function currentLangFromContext(context) {
   return inferLangFromPath(pagePath, defaultLang);
 }
 
+function buildLangVariants(lang) {
+  var raw = lang ? String(lang) : '';
+  if (!raw) return [];
+
+  var out = [];
+  var seen = {};
+
+  function add(v) {
+    if (!v) return;
+    var s = String(v);
+    if (seen[s]) return;
+    seen[s] = true;
+    out.push(s);
+  }
+
+  add(raw);
+  add(raw.toLowerCase());
+
+  var parts = raw.replace('_', '-').split('-');
+  if (parts.length === 2) {
+    add(parts[0].toLowerCase() + '-' + parts[1].toUpperCase());
+    add(parts[0].toLowerCase() + '-' + parts[1].toLowerCase());
+  }
+
+  return out;
+}
+
+function translateFromThemeI18n(key, lang) {
+  if (!hexo || !hexo.theme || !hexo.theme.i18n || typeof hexo.theme.i18n.__ !== 'function') {
+    return key;
+  }
+
+  var order = [];
+  var seen = {};
+
+  function pushLangVariants(v) {
+    var vars = buildLangVariants(v);
+    for (var i = 0; i < vars.length; i++) {
+      var it = vars[i];
+      if (seen[it]) continue;
+      seen[it] = true;
+      order.push(it);
+    }
+  }
+
+  pushLangVariants(lang);
+  pushLangVariants(siteDefaultLang());
+  if (!seen.default) {
+    order.push('default');
+  }
+
+  return hexo.theme.i18n.__(order)(key);
+}
+
 hexo.extend.helper.register('bd_current_lang', function () {
   return currentLangFromContext(this);
 });
@@ -176,7 +230,13 @@ hexo.extend.helper.register('bd_i18n', function (key, lang) {
   var targetLang = lang || currentLangFromContext(this);
 
   // ① 先吃 Hexo i18n（yml）
-  var fromHexo = this.__(key);
+  var fromHexo = key;
+  if (this && typeof this.__ === 'function') {
+    fromHexo = this.__(key);
+  }
+  if (!fromHexo || fromHexo === key) {
+    fromHexo = translateFromThemeI18n(key, targetLang);
+  }
   if (fromHexo && fromHexo !== key) {
     return fromHexo;
   }
