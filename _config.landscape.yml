@@ -1,12 +1,12 @@
 menu:
 	home: /
-	about: /about/
-	original: /original/
-	project: /project/
-	music: /music/
-	others: /others/
-	# blog: /blog/
-	# archives: /blog/archives/
+	about: /About/
+	original: /Original/
+	project: /Project/
+	music: /Music/
+	others: /Others/
+	# blog: /Blog/
+	# archives: /Blog/archives/
 
 widgets:
 	- category
