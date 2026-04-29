@@ -1,3 +1,6 @@
+@import './header.css';
+@import './footer.css';
+
 html,
 body {
   font-family:
@@ -9,9 +12,6 @@ body {
 }
 
 body {
-  background-color: rgba(35, 36, 61, 0.9);
-  background-blend-mode: multiply;
-  color: #f0f0f0;
   min-height: 100vh;
   background-size: cover;
   background-position: center;
@@ -20,6 +20,7 @@ body {
   background-color: var(--bg-color);
   background-blend-mode: var(--bg-blend);
   color: var(--text-color);
+  letter-spacing: 0.01rem;
 }
 
 
@@ -30,7 +31,7 @@ body {
 }
 
 #logo {
-  text-shadow: #fff 0 0 5px;
+  text-shadow: 0 0 1.5px rgba(255, 255, 255, 0.15);
 
   h4 {
     font-family: "Fredericka the Great";
