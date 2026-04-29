@@ -2,8 +2,11 @@
 @import "./footer.css";
 
 :root {
-  --header-height: 120px;
+  --header-height: 100px;
   --footer-height: 80px;
+  --all-02s-easeOut: all 0.2s ease-out;
+  --shadow-chinese: 0 0 6px rgba(255, 255, 255, 1);
+  --shadow-latin: 0px 0 5px rgba(255, 255, 255, 0.8), 0px 0px 5px rgba(255, 255, 255, 0.8);
 }
 
 /* ------------------------------------------------- */
@@ -28,4 +31,89 @@ body {
 
 main {
   min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+#home {
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+
+  section {
+    display: grid;
+
+    &::before {
+      content: '';
+      position: fixed;
+      top: 50;
+      left: 0;
+      width: 100vw;
+      height: 444px;
+      background: rgba(24, 47, 116, 0.2);
+      /* 自己調顏色 */
+
+      z-index: 2;
+    }
+
+    /* 影片 & 內容 疊在同一格 */
+    .home-video,
+    .home-content {
+      grid-area: 1 / 1;
+    }
+
+    .home-video {
+      width: 100vw;
+      height: 444px;
+      object-fit: cover;
+
+    }
+
+    /* 文字層 */
+    .home-content {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 15rem;
+      z-index: 3;
+
+      h1 {
+        text-shadow: var(--shadow-chinese);
+        font-weight: normal;
+      }
+
+      h3 {
+        font-family: "Fredericka the Great";
+        text-shadow: var(--shadow-chinese);
+        font-weight: normal;
+        margin-left: 90pt;
+      }
+
+      p {
+        text-shadow: var(--shadow-chinese);
+        line-height: 1.4;
+      }
+
+      .pageBtnBox{
+        border-left: 1px dashed  #bcbcbc ;
+        padding-left:3rem ;
+      }
+      
+    }
+  }
+}
+
+/* ----------------動畫------------------- */
+
+@keyframes revealClip {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.reveal-x {
+  animation: revealClip 0.7s cubic-bezier(.77, 0, .18, 1) both;
 }

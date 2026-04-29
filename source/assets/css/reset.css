@@ -10,9 +10,9 @@ body {
   margin: 0;
 }
 
-main {
+/* main {
   display: block;
-}
+} */
 
 hr {
   box-sizing: content-box;
@@ -93,7 +93,7 @@ p {
 /* ===== Root ===== */
 
 :root {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* ===== Base ===== */

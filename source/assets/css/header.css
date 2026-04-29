@@ -1,12 +1,19 @@
 #header {
   height: var(--header-height);
+  box-shadow: 0 0 15px #ffffff6f;
+  padding: 1rem 0 0;
 }
 
 #logo {
-  text-shadow: 0 0 1.5px rgba(255, 255, 255, 0.15);
+    h2 {
+    font-weight: normal;
+    text-shadow: var(--shadow-chinese);
+  }
 
   h4 {
     font-family: "Fredericka the Great";
+    text-shadow: var(--shadow-latin);
+    text-wrap: nowrap;
   }
 }
 
@@ -14,6 +21,7 @@
   float: left;
   margin-left: -15px;
   position: relative;
+  font-family: "Fredericka the Great";
 }
 
 .main-nav-item {
@@ -23,6 +31,46 @@
 
 .main-nav-item .main-nav-link {
   float: none;
+}
+
+
+.nav-icon,
+.main-nav-link {
+  float: left;
+  opacity: 1;
+  text-decoration: none;
+  text-shadow: var(--shadow-latin);
+  transition: var(--all-02s-easeOut);
+  display: block;
+  padding: 0px 10px;
+
+  &:hover {
+    background-color: rgba(211, 211, 211, 0.3);
+    background-blend-mode: multiply;
+  }
+}
+
+.nav-icon {
+  text-align: center;
+  color: var(--text-color);
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  padding: 20px 15px;
+  position: relative;
+  cursor: pointer;
+}
+
+.main-nav-link {
+  font-weight: 300;
+  letter-spacing: 1px;
+  border-right: #686868 0.5px solid;
+  width: 105px;
+  text-wrap: nowrap;
+  text-align: end;
+  &:last-child {
+    border-right: none;
+  }
 }
 
 .main-nav-submenu {
@@ -42,55 +90,17 @@
 
 .main-nav-submenu-link {
   display: block;
-  opacity: 0.85;
+  opacity: 1;
   text-decoration: none;
   padding: 10px 14px;
   white-space: nowrap;
 }
 
 .main-nav-submenu-link:hover {
-  opacity: 1;
+  opacity: 0.5;
   background: rgba(255, 255, 255, 0.12);
 }
 
-.nav-icon,
-.main-nav-link {
-  float: left;
-  opacity: 0.6;
-  text-decoration: none;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
-  transition: opacity 0.2s;
-  display: block;
-  padding: 0px 5px;
-}
-
-.nav-icon:hover,
-.main-nav-link:hover {
-  opacity: 1;
-}
-
-.nav-icon {
-  text-align: center;
-  color: var(--text-color);
-  font-size: 16px;
-  width: 16px;
-  height: 16px;
-  padding: 20px 15px;
-  position: relative;
-  cursor: pointer;
-}
-
-.main-nav-link {
-  font-weight: 300;
-  letter-spacing: 1px;
-  border-right: var(--text-color) 0.5px solid;
-  width: 100px;
-  text-wrap: nowrap;
-  text-align: end;
-  &:last-child {
-    border-right: none;
-  }
-}
 
 @media mq-mobile {
   .main-nav-link {
