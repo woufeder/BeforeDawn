@@ -207,6 +207,45 @@ button.hasborder {
   padding: 0 0.8rem;
   border-radius: 2px;
 }
+/* ===== Select ===== */
+select,
+select::picker(select) {
+  appearance: base-select;
+}
+
+select::picker(select) {
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  border: none;
+  padding: 0.3rem;
+  background-color: #ffffff;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+option {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+
+  border-bottom: 2px solid #dddddd;
+  background: #eeeeee;
+  padding: 10px;
+  transition: 0.4s;
+}
+option::checkmark {
+  order: 1;
+  margin-left: auto;
+  content: "☑️";
+}
+option .icon {
+  font-size: 1.6rem;
+  text-box: trim-both cap alphabetic;
+}
+option:hover,
+option:focus {
+  background: rgb(212, 212, 212);
+}
 
 /* ===== Container ===== */
 
