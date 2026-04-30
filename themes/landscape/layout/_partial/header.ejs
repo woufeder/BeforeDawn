@@ -11,8 +11,34 @@
       </a>
     </div>
 
-    <div class="ms-auto w-full flex items-end justify-end">
+    <div class="ms-auto w-full flex flex-col items-end justify-end">
+      <div class="lang-switch">
+        <select id="lang-select" class="lang-select-control" aria-label="Language" onchange="if(this.value){location.href=this.value;}">
+          <option value="<%= url_for('/zh-tw/') %>" <%= page.lang === 'zh-tw' ? 'selected' : '' %>>ZH</option>
+          <option value="<%= url_for('/en/') %>" <%= page.lang === 'en' ? 'selected' : '' %>>EN</option>
+          <option value="<%= url_for('/it/') %>" <%= page.lang === 'it' ? 'selected' : '' %>>IT</option>
+        </select>
 
+      </div>
+      <% if (page.lang==='zh-tw' ) { %>
+      <div class="zh-only-note flex flex-row items-end justify-end">
+        <div class="nav-note">
+          <p>小船住民</p>
+        </div>
+        <div class="nav-note">
+          <p>銀海塵沙</p>
+        </div>
+        <div class="nav-note">
+          <p>旅行者書</p>
+        </div>
+        <div class="nav-note">
+          <p>星梢夜歌</p>
+        </div>
+        <div class="nav-note">
+          <p>流光之外</p>
+        </div>
+      </div>
+      <% } %>
       <nav id="main-nav">
 
         <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
@@ -38,11 +64,7 @@
         <% } %>
         <% } %>
 
-        <% if (page.lang==='zh-tw' ) { %>
-      <div class="zh-only-note">
-        中文限定內容
-      </div>
-      <% } %>
+
 
 
       </nav>
