@@ -5,7 +5,7 @@
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
-    "deploy": "hexo deploy",
+    "deploy": "node tools/reset-deploy-git.js && hexo deploy",
     "server": "hexo server",
     "build:zh": "npm run build && node tools/duplicate_default_to_zh.js"
   },
