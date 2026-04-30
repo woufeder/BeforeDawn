@@ -6,7 +6,8 @@
   --footer-height: 80px;
   --all-02s-easeOut: all 0.2s ease-out;
   --shadow-chinese: 0 0 6px rgba(255, 255, 255, 1);
-  --shadow-latin: 0px 0 5px rgba(255, 255, 255, 0.8), 0px 0px 5px rgba(255, 255, 255, 0.8);
+  --shadow-latin:
+    0px 0 5px rgba(255, 255, 255, 0.8), 0px 0px 5px rgba(255, 255, 255, 0.8);
 }
 
 /* ------------------------------------------------- */
@@ -21,7 +22,6 @@ body {
   min-height: 100vh;
   background-size: cover;
   background-position: center;
-
   background-image: var(--bg-image);
   background-color: var(--bg-color);
   background-blend-mode: var(--bg-blend);
@@ -42,7 +42,7 @@ main {
     display: grid;
 
     &::before {
-      content: '';
+      content: "";
       position: fixed;
       top: 50;
       left: 0;
@@ -64,7 +64,6 @@ main {
       width: 100vw;
       height: 444px;
       object-fit: cover;
-
     }
 
     /* 文字層 */
@@ -93,11 +92,31 @@ main {
         line-height: 1.4;
       }
 
-      .pageBtnBox{
-        border-left: 1px dashed  #bcbcbc ;
-        padding-left:3rem ;
+      .pageBtnBox {
+        border-left: 1px dashed #bcbcbc;
+        box-shadow: -5px 0 12px -8px rgba(255, 255, 255, 0.3);
+        padding-left: 3rem;
+
+        .pageBtn {
+          display: inline-block;
+          text-shadow: var(--shadow-chinese);
+          transition: var(--all-02s-easeOut);
+
+          &:hover {
+            letter-spacing: 0.05rem;
+          }
+        }
       }
-      
+      .sns {
+        a {
+          text-decoration: underline;
+          text-shadow: var(--shadow-chinese);
+          transition: var(--all-02s-easeOut);
+          &:hover {
+            letter-spacing: 0.05rem;
+          }
+        }
+      }
     }
   }
 }
@@ -115,5 +134,23 @@ main {
 }
 
 .reveal-x {
-  animation: revealClip 0.7s cubic-bezier(.77, 0, .18, 1) both;
+  animation: revealClip 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) both;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(3px); /* 可拿掉 */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-once {
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+  animation-delay: 0.3s; /* 延遲多久開始 */
 }

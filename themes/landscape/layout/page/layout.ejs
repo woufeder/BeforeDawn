@@ -13,14 +13,6 @@ layout: false
   <%- partial('_partial/assets') %>
   <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />
   <style>
-    body {
-      opacity: 0;
-    }
-
-    body.loaded {
-      opacity: 1;
-      transition: opacity 0.4s ease;
-    }
   </style>
 </head>
 
@@ -39,10 +31,8 @@ layout: false
   <script src="<%- url_for('js/micromodal.min.js') %>"></script>
   <script>
     MicroModal.init({});
-    window.addEventListener('DOMContentLoaded', () => {
-      document.body.classList.add('loaded');
-    })
   </script>
+
 </body>
 
 </html>
