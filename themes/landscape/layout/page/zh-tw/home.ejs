@@ -6,13 +6,23 @@ layout: false
 
 <head>
   <%- partial('_partial/google-analytics') %>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      <%= page.title %>
-    </title>
-    <%- partial('_partial/assets') %>
-      <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= page.title %>
+  </title>
+  <%- partial('_partial/assets') %>
+  <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />
+  <style>
+    body {
+      opacity: 0;
+    }
+
+    body.loaded {
+      opacity: 1;
+      transition: opacity 0.8s ease;
+    }
+  </style>
 </head>
 
 <body style="
@@ -51,7 +61,11 @@ layout: false
       </div>
     </section>
   </main>
-
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+    })
+  </script>
 </body>
 
 </html>

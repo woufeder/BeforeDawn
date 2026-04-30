@@ -4,32 +4,45 @@ layout: false
 
 <!DOCTYPE html>
 <html lang="<%= page.lang || config.language || 'zh-TW' %>">
-  <head>
-    <%- partial('_partial/google-analytics') %>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= page.title %></title>
-    <%- partial('_partial/assets') %>
-    <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />
-  </head>
 
-<body
-  style="
+<head>
+  <%- partial('_partial/google-analytics') %>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= page.title %></title>
+  <%- partial('_partial/assets') %>
+  <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />
+  <style>
+    body {
+      opacity: 0;
+    }
+
+    body.loaded {
+      opacity: 1;
+      transition: opacity 0.4s ease;
+    }
+  </style>
+</head>
+
+<body style="
     --bg-image: url('<%= url_for(page.bg || '/image/bg-base.jpg') %>');
     --bg-color: <%= page.bgColor || 'rgba(35,36,61,0.9)' %>;
     --bg-blend: <%= page.bgBlend || 'multiply' %>;
     --text-color: <%= page.textColor || '#f0f0f0' %>;
     --text-color-hover: <%= page.textColorHover || '#f0f0f099' %>;
-  "
->
-    <%- partial('_partial/header') %>
+  ">
+  <%- partial('_partial/header') %>
 
-    <main class="container pt-10"><%- body %></main>
+  <main class="container pt-10"><%- body %></main>
 
-    <%- partial('_partial/footer') %>
-    <script src="<%- url_for('js/micromodal.min.js') %>"></script>
-    <script>
-      MicroModal.init({});
-    </script>
-  </body>
+  <%- partial('_partial/footer') %>
+  <script src="<%- url_for('js/micromodal.min.js') %>"></script>
+  <script>
+    MicroModal.init({});
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+    })
+  </script>
+</body>
+
 </html>
