@@ -10,5 +10,36 @@ layout: page/layout
     <a href="/BeforeDawn/zh-tw/blog/" class="btn">閱讀文章</a>
   </div>
 </div>
-<section >
+<%
+var currentLang = bd_current_lang();
+var introPosts = [];
+
+site.posts.each(function(post){
+  if (bd_post_lang(post) !== currentLang) return;
+
+  var matched = false;
+  post.categories.each(function(cat){
+    if (String(cat.name || '').trim() === '自介') {
+      matched = true;
+    }
+  });
+
+  if (matched) {
+    introPosts.push(post);
+  }
+});
+
+introPosts.sort(function(a, b){
+  return b.date.valueOf() - a.date.valueOf();
+});
+%>
+
+<section id="about-intro-posts">
+  <% if (introPosts.length) { %>
+    <% introPosts.forEach(function(post){ %>
+      <%- partial('_partial/article', {post: post, index: true}) %>
+    <% }) %>
+  <% } else { %>
+    <p>目前尚無「自介」分類文章。</p>
+  <% } %>
 </section>

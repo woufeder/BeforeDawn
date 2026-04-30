@@ -105,6 +105,17 @@
   text-shadow: var(--shadow-chinese);
 }
 
+.lang-switch:hover {
+  transition: var(--all-02s-easeOut)!important;
+  color: var(--text-color-hover) !important;
+}
+
+.lang-globe {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
 @media mq-mobile {
   .main-nav-link {
     display: none;
