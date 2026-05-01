@@ -10,36 +10,62 @@ layout: page/layout
     <a href="/BeforeDawn/zh-tw/blog/" class="btn">閱讀文章</a>
   </div>
 </div>
-<%
-var currentLang = bd_current_lang();
-var introPosts = [];
 
-site.posts.each(function(post){
-  if (bd_post_lang(post) !== currentLang) return;
 
-  var matched = false;
-  post.categories.each(function(cat){
-    if (String(cat.name || '').trim() === '自介') {
-      matched = true;
+
+
+<!-- 這是撈文章的 -->
+<% const currentLang=bd_current_lang(); 
+let introPosts=[]; site.posts.each(function(post){ if (bd_post_lang(post)
+  !==currentLang) return; var matched=false; post.categories.each(function(cat){ if (String(cat.name || ''
+  ).trim()==='自介' ) { matched=true; } }); if (matched) { introPosts.push(post); } }); introPosts.sort(function(a, b){
+  return b.date.valueOf() - a.date.valueOf(); }); %>
+
+  <section id="about-intro-posts">
+    <% introPosts.forEach(function(post, i){ %>
+      <div class="intro-item" data-index="<%= i %>">
+        <%- partial('_partial/article', {post: post, index: true}) %>
+      </div>
+      <% }) %>
+  </section>
+  <div id="intro-pagination">
+    <button id="prev">上一頁</button>
+    <span id="page-info"></span>
+    <button id="next">下一頁</button>
+  </div>
+
+  <script>
+    const perPage = 5;
+    const items = document.querySelectorAll('.intro-item');
+
+    let currentPage = 1;
+    const totalPages = Math.ceil(items.length / perPage);
+
+    function render() {
+      items.forEach((el, i) => {
+        el.style.display =
+          (i >= (currentPage - 1) * perPage && i < currentPage * perPage)
+            ? 'block'
+            : 'none';
+      });
+
+      document.getElementById('page-info').textContent =
+        `${currentPage} / ${totalPages}`;
     }
-  });
 
-  if (matched) {
-    introPosts.push(post);
-  }
-});
+    document.getElementById('prev').onclick = () => {
+      if (currentPage > 1) {
+        currentPage--;
+        render();
+      }
+    };
 
-introPosts.sort(function(a, b){
-  return b.date.valueOf() - a.date.valueOf();
-});
-%>
+    document.getElementById('next').onclick = () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        render();
+      }
+    };
 
-<section id="about-intro-posts">
-  <% if (introPosts.length) { %>
-    <% introPosts.forEach(function(post){ %>
-      <%- partial('_partial/article', {post: post, index: true}) %>
-    <% }) %>
-  <% } else { %>
-    <p>目前尚無「自介」分類文章。</p>
-  <% } %>
-</section>
+    render();
+  </script>

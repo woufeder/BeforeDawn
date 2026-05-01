@@ -182,6 +182,7 @@ main {
 
 }
 
+/* ----------------RWD------------------- */
 @media (max-width: 640px) and (orientation: portrait) {
   #home {
     margin:3rem 0;

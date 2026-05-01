@@ -6,12 +6,15 @@ layout: false
 <html lang="<%= page.lang || config.language || 'zh-TW' %>">
 
 <head>
+    <link rel="icon" href="<%= url_for('/favicon.ico') %>">
   <%- partial('_partial/google-analytics') %>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= page.title %></title>
-  <%- partial('_partial/assets') %>
-  <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      <%= page.title %>
+    </title>
+    <%- partial('_partial/assets') %>
+      <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />
 </head>
 
 <body style="
@@ -23,13 +26,13 @@ layout: false
   ">
   <%- partial('_partial/header') %>
 
-  <main class="container pt-10"><%- body %></main>
+    <main class="container pt-10"><%- body %></main>
 
-  <%- partial('_partial/footer') %>
-  <script src="<%- url_for('js/micromodal.min.js') %>"></script>
-  <script>
-    MicroModal.init({});
-  </script>
+    <%- partial('_partial/footer') %>
+      <script src="<%- url_for('js/micromodal.min.js') %>"></script>
+      <script>
+        MicroModal.init({});
+      </script>
 
 </body>
 
