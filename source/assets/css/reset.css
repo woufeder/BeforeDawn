@@ -4,6 +4,7 @@
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
+  /* background: #000; */
 }
 
 body {
@@ -27,7 +28,8 @@ samp {
   font-family: monospace, monospace;
   font-size: 1em;
 }
-　　 a {
+
+a {
   background-color: transparent;
 }
 
@@ -193,6 +195,7 @@ button {
   background: none;
   border: none;
   transition: all 0.2s;
+
   &:hover {
     opacity: 0.8;
     background-color: var(--bgColor);
@@ -207,6 +210,7 @@ button.hasborder {
   padding: 0 0.8rem;
   border-radius: 2px;
 }
+
 /* ===== Select ===== */
 select,
 select::picker(select) {
@@ -233,15 +237,18 @@ option {
   padding: 10px;
   transition: 0.4s;
 }
+
 option::checkmark {
   order: 1;
   margin-left: auto;
   content: "☑️";
 }
+
 option .icon {
   font-size: 1.6rem;
   text-box: trim-both cap alphabetic;
 }
+
 option:hover,
 option:focus {
   background: rgb(212, 212, 212);
