@@ -45,11 +45,11 @@ main {
 
     &::before {
       content: "";
-      position: fixed;
+      position: relative;
       top: 50;
       left: 0;
       width: 100vw;
-      height: 444px;
+      height: 100%;
       background: rgba(24, 47, 116, 0.2);
       /* 自己調顏色 */
 
@@ -64,7 +64,7 @@ main {
 
     .home-video {
       width: 100vw;
-      height: 444px;
+      height: 100%;
       object-fit: cover;
     }
 
@@ -75,7 +75,7 @@ main {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      padding: 4rem 15rem;
+      /* padding: 4rem 15rem; */
       z-index: 3;
 
       h1 {
@@ -110,11 +110,13 @@ main {
           }
         }
       }
+
       .sns {
         a {
           text-decoration: underline;
           text-shadow: var(--shadow-chinese);
           transition: var(--all-02s-easeOut);
+
           &:hover {
             letter-spacing: 0.05rem;
           }
@@ -122,6 +124,7 @@ main {
       }
     }
   }
+
   .lang-switcher {
     position: absolute;
     top: 0px;
@@ -166,6 +169,7 @@ main {
     padding: 20px 8px 0;
     cursor: pointer;
     transition: var(--all-02s-easeOut);
+
     &:hover {
       background-color: rgba(145, 151, 177, 0.5);
     }
@@ -175,22 +179,89 @@ main {
     outline: none;
   }
 
-  @media (max-width: 768px) {
-    .lang-switcher {
-      top: 10px;
-      right: 10px;
-    }
 
-    .lang-select {
-      height: 82px;
-      width: 56px;
-    }
+}
 
-    .lang-globe {
-      top: 7px;
-      width: 20px;
-      height: 20px;
+@media (max-width: 640px) and (orientation: portrait) {
+  #home {
+    margin:3rem 0;
+
+    & section {
+      & .home-content {
+        padding: 3rem 1.5rem;
+        flex-direction: column;
+
+        h3 {
+          margin-left: 0;
+        }
+
+        .intro {
+          margin-top: 1.5rem;
+        }
+
+        .pageBtnBox {
+          width: 100%;
+          margin-top: 1rem;
+          border-left: none;
+          border-top: 1px dashed #bcbcbc;
+          box-shadow: 0 -5px 12px -8px rgba(255, 255, 255, 0.3);
+          padding-left: 0.5rem;
+          padding-top: 1rem;
+          gap: 0.8rem;
+        }
+        .BtnBox{
+          gap: 0.2rem;
+        }
+      }
     }
+  }
+
+  .home-content {
+    padding: 3rem 1rem;
+  }
+}
+
+
+@media (min-width: 640px) {
+  .home-content {
+    padding: 3rem 1rem;
+  }
+    #home .lang-switcher{
+    right: -3%;
+  }
+}
+
+/* md */
+@media (min-width: 768px) {
+  .home-content {
+    padding: 3rem 1rem;
+  }
+  #home .lang-switcher{
+    right: 0%;
+  }
+}
+
+/* lg */
+@media (min-width: 1024px) {
+  .home-content {
+    padding: 4rem 5rem;
+  }
+    #home .lang-switcher{
+    right: 15%;
+  }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+  .home-content {
+    padding: 4rem 10rem;
+  }
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+  .home-content {
+    padding: 4rem 15rem;
   }
 }
 
@@ -214,8 +285,10 @@ main {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(3px); /* 可拿掉 */
+    transform: translateY(3px);
+    /* 可拿掉 */
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -225,5 +298,6 @@ main {
 .fade-in-once {
   opacity: 0;
   animation: fadeIn 1.2s ease forwards;
-  animation-delay: 0.3s; /* 延遲多久開始 */
+  animation-delay: 0.3s;
+  /* 延遲多久開始 */
 }
