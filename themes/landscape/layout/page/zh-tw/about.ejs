@@ -12,11 +12,10 @@ layout: page/layout
 </div>
 
 
-
+<div id="gallery"></div>
 
 <!-- 這是撈文章的 -->
-<% const currentLang=bd_current_lang(); 
-let introPosts=[]; site.posts.each(function(post){ if (bd_post_lang(post)
+<% const currentLang=bd_current_lang(); let introPosts=[]; site.posts.each(function(post){ if (bd_post_lang(post)
   !==currentLang) return; var matched=false; post.categories.each(function(cat){ if (String(cat.name || ''
   ).trim()==='自介' ) { matched=true; } }); if (matched) { introPosts.push(post); } }); introPosts.sort(function(a, b){
   return b.date.valueOf() - a.date.valueOf(); }); %>
@@ -35,37 +34,90 @@ let introPosts=[]; site.posts.each(function(post){ if (bd_post_lang(post)
   </div>
 
   <script>
-    const perPage = 5;
-    const items = document.querySelectorAll('.intro-item');
+    (() => {
+      const perPage = 5;
+      const items = document.querySelectorAll('.intro-item');
 
-    let currentPage = 1;
-    const totalPages = Math.ceil(items.length / perPage);
+      let currentPage = 1;
+      const totalPages = Math.ceil(items.length / perPage);
 
-    function render() {
-      items.forEach((el, i) => {
-        el.style.display =
-          (i >= (currentPage - 1) * perPage && i < currentPage * perPage)
-            ? 'block'
-            : 'none';
-      });
+      function render() {
+        items.forEach((el, i) => {
+          el.style.display =
+            (i >= (currentPage - 1) * perPage && i < currentPage * perPage)
+              ? 'block'
+              : 'none';
+        });
 
-      document.getElementById('page-info').textContent =
-        `${currentPage} / ${totalPages}`;
-    }
-
-    document.getElementById('prev').onclick = () => {
-      if (currentPage > 1) {
-        currentPage--;
-        render();
+        document.getElementById('page-info').textContent =
+          `${currentPage} / ${totalPages}`;
       }
-    };
 
-    document.getElementById('next').onclick = () => {
-      if (currentPage < totalPages) {
-        currentPage++;
-        render();
+      document.getElementById('prev').onclick = () => {
+        if (currentPage > 1) {
+          currentPage--;
+          render();
+        }
+      };
+
+      document.getElementById('next').onclick = () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          render();
+        }
+      };
+
+      render();
+    })();
+  </script>
+  <script>
+    (function () {
+      const cloudName = 'dhtsewjf1';
+      const tag = 'jatorri';
+
+      async function loadGallery() {
+        const gallery = document.getElementById('gallery');
+        if (!gallery) return;
+
+        // 每次進頁直接清空
+        gallery.innerHTML = '';
+
+        try {
+          const res = await fetch(
+            `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`
+          );
+          const data = await res.json();
+
+          const base = `https://res.cloudinary.com/${cloudName}/image/upload/`;
+
+          data.resources.forEach((item) => {
+            const full = base + item.public_id + '.jpg';
+            const thumb =
+              base + 'q_auto,f_auto,w_400/' + item.public_id + '.jpg';
+
+            const a = document.createElement('a');
+            a.href = full;
+            a.setAttribute('data-fancybox', 'gallery');
+            a.setAttribute('data-no-swup', '');
+
+            const img = document.createElement('img');
+            img.src = thumb;
+
+            a.appendChild(img);
+            gallery.appendChild(a);
+          });
+
+          if (window.Fancybox) {
+            Fancybox.bind('[data-fancybox="gallery"]', {});
+          }
+
+        } catch (err) {
+          console.error(err);
+        }
       }
-    };
 
-    render();
+      // 👉 唯一入口（關鍵）
+      loadGallery();
+
+    })();
   </script>

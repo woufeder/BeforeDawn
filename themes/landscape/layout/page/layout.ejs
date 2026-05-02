@@ -15,9 +15,22 @@ layout: false
     </title>
     <%- partial('_partial/assets') %>
       <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
       <style>
+        #gallery {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 12px;
+        }
+
+        .gallery-img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+
         html.is-changing .transition-fade {
-          transition: opacity 0.1s;
           opacity: 1;
         }
 
@@ -29,13 +42,13 @@ layout: false
 </head>
 
 <body>
-  <div id="swup" style="
+  <div id="swup" class="transition-fade" style="
     --bg-image: url('<%= url_for(page.bg || '/image/bg-base.jpg') %>');
     --bg-color: <%= page.bgColor || 'rgba(35,36,61,0.9)' %>;
     --bg-blend: <%= page.bgBlend || 'multiply' %>;
     --text-color: <%= page.textColor || '#f0f0f0' %>;
     --text-color-hover: <%= page.textColorHover || '#f0f0f099' %>;
-  " class="transition-fade">
+  ">
 
     <%- partial('_partial/header') %>
 
@@ -54,9 +67,41 @@ layout: false
     const swup = new Swup({
       plugins: [new SwupScriptsPlugin({
         body: true,
-        head: true
-      })]
+        head: false
+      })],
+      animationSelector: false
     });
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted) {
+        // 從 bfcache 回來
+        window.location.reload();
+      }
+    });
+  </script>
+  <script>
+    window.initPage = function () {
+      if (typeof loadGallery === 'function') {
+        loadGallery();
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', window.initPage);
+
+    // 👉 只綁一次！
+    function bindSwupOnce() {
+      if (!window.swup) {
+        setTimeout(bindSwupOnce, 50);
+        return;
+      }
+
+      if (window.swup.hooks) {
+        window.swup.hooks.on('page:view', window.initPage);
+      } else if (window.swup.on) {
+        window.swup.on('contentReplaced', window.initPage);
+      }
+    }
+
+    bindSwupOnce();
   </script>
 </body>
 
