@@ -1,8 +1,9 @@
 @import "./header.css";
 @import "./footer.css";
+@import "./about.css";
 
 :root {
-  --header-height: 100px;
+  --header-height: 95px;
   --footer-height: 80px;
   --all-02s-easeOut: all 0.2s ease-out;
   --shadow-chinese: 0 0 6px rgba(255, 255, 255, 1);
@@ -16,12 +17,16 @@ html,
 body {
   font-family:
     "Iansui", "LXGW WenKai Mono TC", "Noto Sans TC", system-ui, sans-serif;
-
+  -webkit-user-select: none; /* Chrome, Safari, Opera */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* 標準語法 */
 }
 
 #swup {
   min-height: 100vh;
   background-size: cover;
+  background-attachment: fixed;
   background-position: center;
   background-image: var(--bg-image);
   background-color: var(--bg-color);
@@ -179,8 +184,6 @@ main {
   .lang-select-control:focus {
     outline: none;
   }
-
-
 }
 
 /* ----------------RWD------------------- */
@@ -223,7 +226,6 @@ main {
     padding: 3rem 1rem;
   }
 }
-
 
 @media (min-width: 640px) {
   .home-content {

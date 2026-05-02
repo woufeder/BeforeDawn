@@ -1,0 +1,47 @@
+#about {
+  display: grid;
+  grid-template-columns: auto 1fr 0.3fr;
+
+  .protile {
+    display: flex;
+    flex-direction: column;
+    .dialog {
+      position: relative;
+      width: 30%;
+      height: auto;
+      padding: 1rem;
+      background: #d9d9d9;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -50%;
+        left: -1%;
+        width: 30px;
+        height: 30px;
+        background: #d9d9d9;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 0);
+      }
+    }
+  }
+
+  .portrait {
+    max-height: 90vh;
+    img {
+      max-height: 75vh;
+    }
+  }
+  .pic {
+    width: 100%;
+    height: auto;
+    padding: 0 1rem;
+    gap: 1rem;
+    img {
+      width: 80%;
+      height: auto;
+      margin: 0.5rem 0;
+    }
+  }
+}

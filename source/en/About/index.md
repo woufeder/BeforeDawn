@@ -1,5 +1,5 @@
 ---
-layout: page/zh-tw/about
+layout: page/en/about
 title: "夜明曉更前|關於我"
 
 bg: "/image/bg-base.jpg"

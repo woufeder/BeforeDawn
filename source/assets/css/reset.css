@@ -297,6 +297,26 @@ option:focus {
   }
 }
 
+/* ===== Scrollbar ===== */
+
+/* 捲軸整體 */
+::-webkit-scrollbar {
+  width: 5px;
+}
+/* 捲軸軌道 */
+::-webkit-scrollbar-track {
+  background: #000;
+}
+/* 捲軸滑塊 */
+::-webkit-scrollbar-thumb {
+  background: #a1a1a187;
+  border-radius: 10px;
+}
+/* 懸停時的滑塊 */
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
 /* ===== Modal ===== */
 .modal {
   display: none;

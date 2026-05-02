@@ -22,6 +22,7 @@ layout: false
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
           gap: 12px;
+          max-width: 500px;
         }
 
         .gallery-img {
@@ -52,7 +53,7 @@ layout: false
 
     <%- partial('_partial/header') %>
 
-      <main class="container pt-10 .fade-in-once-nodely"><%- body %></main>
+      <main class="container py-10 .fade-in-once-nodely"><%- body %></main>
 
       <%- partial('_partial/footer') %>
 
