@@ -1,6 +1,6 @@
 ---
 layout: page/zh-tw/original/jatorri
-title: "夜明曉更前|Jatorri"
+title: "夜明曉更前 |《Jatorri》"
 bg: ""
 bgColor: "rgba(35,36,61,0.9)"
 bgBlend: "multiply"

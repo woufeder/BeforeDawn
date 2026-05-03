@@ -187,11 +187,11 @@
           transition: opacity 0.3s ease-out;
         }
         .branch_top {
-          transform: translateY(-10px);
+          transform: translateY(10px);
           transition: all 0.3s ease-out;
         }
         .branch_bottom {
-          transform: translateY(10px);
+          transform: translateY(-10px);
           transition: all 0.3s ease-out;
         }
         &:hover {
@@ -204,11 +204,11 @@
             transition: opacity 0.3s ease-out;
           }
           .branch_top {
-            transform: translateY(30px);
+            transform: translateY(40px);
             transition: all 0.3s ease-out;
           }
           .branch_bottom {
-            transform: translateY(-30px);
+            transform: translateY(-40px);
             transition: all 0.3s ease-out;
           }
         }
