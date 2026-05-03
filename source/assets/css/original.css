@@ -8,7 +8,7 @@
   height: auto;
   display: block;
   color: var(--text-color);
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
 }
 
 #original {
@@ -49,7 +49,10 @@
       }
     }
     .right {
-      p {
+      p{
+        font-size: 17px;
+      }
+      span {
         text-shadow: var(--shadow-chinese);
       }
       .hover-box {
@@ -82,11 +85,11 @@
             transition: opacity 0.3s ease-out;
           }
           .branch_top {
-            transform: translateY(0px);
+            transform: translateY(10px);
             transition: all 0.3s ease-out;
           }
           .branch_bottom {
-            transform: translateY(0px);
+            transform: translateY(-10px);
             transition: all 0.3s ease-out;
           }
         }

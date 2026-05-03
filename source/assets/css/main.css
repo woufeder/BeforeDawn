@@ -99,7 +99,6 @@ main {
 
       p {
         text-shadow: var(--shadow-chinese);
-        line-height: 1.4;
       }
 
       .pageBtnBox {

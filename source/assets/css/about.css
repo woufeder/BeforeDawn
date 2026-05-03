@@ -68,7 +68,7 @@
     }
     .content {
       p {
-        line-height: 1.8;
+        margin-left: 1rem;
       }
       strong {
         font-size: 18px;
