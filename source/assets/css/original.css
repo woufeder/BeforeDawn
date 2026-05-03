@@ -103,11 +103,11 @@
           }
 
           .branch_top {
-            transform: translateY(-12px);
+            transform: translateY(0px);
           }
 
           .branch_bottom {
-            transform: translateY(12px);
+            transform: translateY(0px);
           }
         }
       }
