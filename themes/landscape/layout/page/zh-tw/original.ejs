@@ -1,19 +1,18 @@
 ---
 layout: page/layout
 ---
-<section id="original" style="--box-bg-color: <%= page.blockBgColor %>;">
+<section id="original" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
   <section id="banner" class="box">
     <div class="left">
       <h1>Original</h1>
       <h2>原創</h2>
     </div>
-    <div class="right py-8">
+    <div class="right flex flex-col items-center">
+      <div class="hover-box flex flex-col items-center gap-6 text-center py-8 w-fit">
 
-      <div class="hover-box flex flex-col items-center gap-4 text-center">
         <%- partial('_partial/svg/branch_top') %>
-
-        <div class="context-wrap">
-          <div class="context default">
+        <div class="grid">
+          <div class="context default flex items-center justify-center">
             <p>
               他們有了名字，於是有了生命<br>
               無垠星空下將晝夜為門，以雨霧為窗<br>
@@ -24,10 +23,11 @@ layout: page/layout
             </p>
           </div>
 
-          <div class="context hover">
-            <p>各原創更新狀態不一，請見下表</p>
-
-            <div class="flex flex-row gap-4 mt-4 justify-center">
+          <div class="context hover flex flex-col items-center justify-center">
+            <p>
+              各原創更新狀態不一，請見下表
+            </p>
+            <div class="flex flex-row gap-4 mt-4">
               <p class="text-right">
                 緩慢更新➤<br><br>
                 重啟中➤
@@ -36,61 +36,19 @@ layout: page/layout
                 千年流傳之風、Final Oath最終誓言<br><br>
                 Jatorri、流轉大地、雨後朝陽、未竟之聲<br>
                 竹船漂流的彼岸鄉、Before you go<br>
-                燭火搖曳之夜、餘生所歸終是妳、向妳而行
+                燭火搖曳之夜、餘生所歸終是妳、向妳而行<br>
               </p>
             </div>
           </div>
         </div>
-
         <%- partial('_partial/svg/branch_bottom') %>
+
       </div>
 
     </div>
   </section>
-  <section id="">
+  <section id="link-area" class="box">
+
 
   </section>
 </section>
-
-<script>
-  function initHoverBox(box) {
-    if (box.dataset.hoverBoxReady === 'true') return;
-    box.dataset.hoverBoxReady = 'true';
-
-    const wrap = box.querySelector('.context-wrap');
-    const defaultEl = box.querySelector('.context.default');
-    const hoverEl = box.querySelector('.context.hover');
-
-    if (!wrap || !defaultEl || !hoverEl) return;
-
-    const getDefaultHeight = () => defaultEl.scrollHeight;
-    const getHoverHeight = () => hoverEl.scrollHeight;
-
-    function setDefault() {
-      box.classList.remove('is-hover');
-      wrap.style.height = getDefaultHeight() + 'px';
-    }
-
-    function setHover() {
-      box.classList.add('is-hover');
-      wrap.style.height = getHoverHeight() + 'px';
-    }
-
-    setDefault();
-
-    box.addEventListener('pointerenter', setHover);
-    box.addEventListener('pointerleave', setDefault);
-
-    window.addEventListener('resize', () => {
-      if (box.classList.contains('is-hover')) {
-        wrap.style.height = getHoverHeight() + 'px';
-      } else {
-        wrap.style.height = getDefaultHeight() + 'px';
-      }
-    });
-  }
-
-  window.addEventListener('load', () => {
-    document.querySelectorAll('.hover-box').forEach(initHoverBox);
-  });
-</script>
