@@ -1,6 +1,7 @@
 ---
 layout: page/layout
 ---
+<div>
 <section id="original" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
   <section id="banner" class="box">
     <div class="left">
@@ -8,36 +9,34 @@ layout: page/layout
       <h2>原創</h2>
     </div>
     <div class="right flex flex-col items-center">
-      <div class="hover-box flex flex-col items-center gap-6 text-center py-8 w-fit">
+      <div class="hover-box flex flex-col items-center gap-8 text-center py-13 w-fit">
 
         <%- partial('_partial/svg/branch_top') %>
         <div class="grid">
           <div class="context default flex items-center justify-center">
-            <p>
-              他們有了名字，於是有了生命<br>
-              無垠星空下將晝夜為門，以雨霧為窗<br>
-              行經一日初光，走過花葉凋亡<br><br>
-              他們的靈魂化成水岸的泡沫，沉澱為洋底的塵沙<br>
-              存於詩人的歌聲裡，刻劃在人與人的言談中<br><br>
+            <h6>
+              他們有了名字，於是有了生命。<br>
+              無垠星空下將晝夜為門，以雨霧為窗。行經一日初光，走過花葉凋亡。<br>
+              他們的靈魂化成水岸的泡沫，沉澱為洋底的塵沙。存於詩人的歌聲裡，刻劃在人與人的言談中。<br><br>
               <span>這裡是屬於他們的世界，他們的海洋</span>
-            </p>
+            </h6>
           </div>
 
           <div class="context hover flex flex-col items-center justify-center">
-            <p>
+            <h6>
+              此區為原創故事，包含中長篇、短篇、隨筆等各類型原創作品。<br>
               各原創更新狀態不一，請見下表
-            </p>
+            </h6>
             <div class="flex flex-row gap-4 mt-4">
-              <p class="text-right">
+              <h6 class="text-right">
                 緩慢更新➤<br><br>
                 重啟中➤
-              </p>
-              <p class="text-left">
+              </h6>
+              <h6 class="text-left">
                 千年流傳之風、Final Oath最終誓言<br><br>
                 Jatorri、流轉大地、雨後朝陽、未竟之聲<br>
-                竹船漂流的彼岸鄉、Before you go<br>
-                燭火搖曳之夜、餘生所歸終是妳、向妳而行<br>
-              </p>
+                竹船漂流的彼岸鄉、Before you go、燭火搖曳之夜、餘生所歸終是妳、向妳而行<br>
+              </h6>
             </div>
           </div>
         </div>
@@ -48,27 +47,48 @@ layout: page/layout
     </div>
   </section>
   <section id="link-area" class="box">
-    <div class="novel py-6 h-full">
+    <div class="novel py-8 w-full h-full">
       <h4>中長篇</h4>
-      <p class="py-4">指定具完整世界觀，人物關係複雜<br>
-        主要人數5位↑ │ 篇幅粗估五萬↑
+      <p class="py-4">
+        指定具完整世界觀，人物關係複雜<br>
+        主要人數5位↑ │ 篇幅粗估五萬↑<br>
+        　
       </p>
+      <div class="flex flex-col gap-6 justify-center items-center mt-1">
+        <a href="<%= url_for('/' + page.lang + '/Original/Jatorri') %>" class="pageBtn"><%= __('Jatorri') %></a>
+        <a href="<%= url_for('/' + page.lang + '/Original/Incresse_Brezze') %>" class="pageBtn"><%= __('Incresse_Brezze') %></a>
+        <a href="<%= url_for('/' + page.lang + '/Original/Final_Oath') %>" class="pageBtn"><%= __('Final_Oath') %></a>
+        <a href="https://afterthelight.wixsite.com/ttop" class="pageBtn"><%= __('TTOP') %></a>
+        <a href="<%= url_for('/' + page.lang + '/Original/Sun_After_Rain') %>" class="pageBtn"><%= __('Sun_After_Rain') %></a>
+        <a href="<%= url_for('/' + page.lang + '/Original/Endless_Voice') %>" class="pageBtn"><%= __('Endless_Voice') %></a>
+      </div>
     </div>
-    <div class="short py-6 h-full">
+    <div class="short py-6 w-full h-full ">
       <h4>短篇</h4>
       <p class="py-4">
         部分故事與中長篇原創共用世界觀<br>
         可視為為獨立篇章，互不影響。<br>
         主要人數5位↓ │ 篇幅粗估五萬↓
       </p>
+      <div class="flex flex-col gap-6 justify-center items-center mt-1">
+        <a href="<%= url_for('/' + page.lang + '/Original/Where_the_Bamboo_Boat_Drifts') %>" class="pageBtn"><%= __('Where_the_Bamboo_Boat_Drifts') %></a>
+        <a href="<%= url_for('/' + page.lang + '/Original/Before_you_go') %>" class="pageBtn"><%= __('Before_you_go') %></a>
+        <a href="<%= url_for('/' + page.lang + '/Original/After_the_Candles_Burn_Low') %>" class="pageBtn"><%= __('After_the_Candles_Burn_Low') %></a>
+        <a href="<%= url_for('/' + page.lang + '/Original/A_Place_I_Belong') %>" class="pageBtn"><%= __('A_Place_I_Belong') %></a>
+        <a href="<%= url_for('/' + page.lang + '/Original/Forward') %>" class="pageBtn"><%= __('Forward') %></a>
+      </div>
     </div>
-    <div class="others py-6 h-full">
+    <div class="others py-6 w-full h-full">
       <h4>其他</h4>
       <p class="py-4">
         此為雜項及全文章集中串<br>
         含括隨筆短詩，不屬於任何世界觀的短文<br>
         塗鴉、草圖，沒參成的企劃存稿
       </p>
+      <div class="flex flex-col gap-6 justify-center items-center mt-1">
+        <a href="<%= url_for('/' + page.lang + '/Original/Miscellanies') %>" class="pageBtn"><%= __('Miscellanies') %></a>
+        <a href="<%= url_for('/' + page.lang + '/blog') %>" class="pageBtn"><%= __('blog') %></a>
+      </div>
     </div>
   </section>
 </section>

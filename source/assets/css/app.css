@@ -204,6 +204,9 @@
       max-width: 96rem;
     }
   }
+  .my-auto {
+    margin-block: auto;
+  }
   .ms-auto {
     margin-inline-start: auto;
   }
@@ -222,8 +225,14 @@
   .mb-1 {
     margin-bottom: calc(var(--spacing) * 1);
   }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
+  }
+  .mb-6 {
+    margin-bottom: calc(var(--spacing) * 6);
   }
   .mb-auto {
     margin-bottom: auto;
@@ -309,6 +318,9 @@
   .gap-6 {
     gap: calc(var(--spacing) * 6);
   }
+  .gap-8 {
+    gap: calc(var(--spacing) * 8);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -335,8 +347,29 @@
   .py-10 {
     padding-block: calc(var(--spacing) * 10);
   }
+  .py-13 {
+    padding-block: calc(var(--spacing) * 13);
+  }
+  .pt-1 {
+    padding-top: calc(var(--spacing) * 1);
+  }
   .pt-10 {
     padding-top: calc(var(--spacing) * 10);
+  }
+  .pl-2 {
+    padding-left: calc(var(--spacing) * 2);
+  }
+  .pl-4 {
+    padding-left: calc(var(--spacing) * 4);
+  }
+  .pl-8 {
+    padding-left: calc(var(--spacing) * 8);
+  }
+  .pl-13 {
+    padding-left: calc(var(--spacing) * 13);
+  }
+  .pl-20 {
+    padding-left: calc(var(--spacing) * 20);
   }
   .text-center {
     text-align: center;
@@ -384,6 +417,16 @@
   .\*\:visible {
     :is(& > *) {
       visibility: visible;
+    }
+  }
+  .xl\:px-8 {
+    @media (width >= 80rem) {
+      padding-inline: calc(var(--spacing) * 8);
+    }
+  }
+  .xl\:px-13 {
+    @media (width >= 80rem) {
+      padding-inline: calc(var(--spacing) * 13);
     }
   }
 }

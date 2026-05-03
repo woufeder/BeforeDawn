@@ -4,7 +4,7 @@
 }
 .branch_bottom,
 .branch_top {
-  width: 150px;
+  width: 180px;
   height: auto;
   display: block;
   color: var(--text-color);
@@ -16,18 +16,18 @@
     width: 100%;
     height: fit-content;
     display: grid;
-    grid-template-columns: 0.4fr 0.6fr;
+    grid-template-columns: 0.3fr 0.7fr;
     border-bottom: 1px dashed var(--text-color);
+    background-image: url("../../image/original/original-banner.avif");
+    background-color: rgba(100, 109, 125, 1);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
     .left {
-      background-image: url("../../image/original/original-banner.avif");
-      background-color: rgba(61, 89, 131, 0.5);
-      background-blend-mode: multiply;
-      background-size: cover;
-      background-position: center;
       position: relative;
       display: flex;
       justify-content: end;
-      align-items: end;
+      align-items: center;
       h1 {
         text-wrap: nowrap;
         font-size: 100px;
@@ -39,7 +39,7 @@
       h2 {
         text-wrap: nowrap;
         position: absolute;
-        bottom: 18px;
+        bottom: calc(50% - 50px);
         right: 75px;
         font-size: 20px;
         text-shadow: var(--shadow-chinese);
@@ -67,11 +67,11 @@
           transition: opacity 0.3s ease-out;
         }
         .branch_top {
-          transform: translateY(0px);
+          transform: translateY(15px);
           transition: all 0.3s ease-out;
         }
         .branch_bottom {
-          transform: translateY(0px);
+          transform: translateY(-15px);
           transition: all 0.3s ease-out;
         }
         &:hover {
@@ -84,11 +84,11 @@
             transition: opacity 0.3s ease-out;
           }
           .branch_top {
-            transform: translateY(10px);
+            transform: translateY(0px);
             transition: all 0.3s ease-out;
           }
           .branch_bottom {
-            transform: translateY(-10px);
+            transform: translateY(0px);
             transition: all 0.3s ease-out;
           }
         }
@@ -101,12 +101,161 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-
+    h4 {
+      text-shadow: var(--shadow-chinese);
+      font-weight: bold;
+    }
     .novel {
       border-right: 1px dashed var(--text-color);
     }
     .short {
       border-right: 1px dashed var(--text-color);
+    }
+    .others {
+      border-right: 1px dashed transparent;
+    }
+    .pageBtn {
+      padding: 0.4rem 1rem;
+      width: fit-content;
+      min-width: 50%;
+      /* border: 1px solid var(--text-color); */
+      display: inline-block;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+      transition: var(--all-02s-easeOut);
+
+      &:hover {
+        letter-spacing: 0.05rem;
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+}
+
+#jatorri {
+  #banner {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 0.3fr 0.7fr;
+    border-bottom: 1px dashed var(--text-color);
+    background-image: url("../../image/original/jatorri-banner.avif");
+    background-color: rgba(35, 48, 75, 0.9);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: 50% 65%;
+    .left {
+      position: relative;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      h1 {
+        text-wrap: nowrap;
+        font-size: 100px;
+        font-family: "Italianno", cursive;
+        font-weight: normal;
+        text-shadow: var(--shadow-chinese);
+        margin: 0 2rem 0 0;
+      }
+      h2 {
+        text-wrap: nowrap;
+        position: absolute;
+        bottom: calc(50% - 50px);
+        right: 75px;
+        font-size: 20px;
+        text-shadow: var(--shadow-chinese);
+        z-index: 0;
+        font-weight: bold;
+      }
+    }
+    .right {
+      p {
+        font-size: 17px;
+      }
+      span {
+        text-shadow: var(--shadow-chinese);
+      }
+      .hover-box {
+        .context {
+          grid-area: 1 / 1;
+        }
+        .context.default {
+          opacity: 1;
+          transition: opacity 0.3s ease-out;
+        }
+        .context.hover {
+          opacity: 0;
+          transition: opacity 0.3s ease-out;
+        }
+        .branch_top {
+          transform: translateY(-10px);
+          transition: all 0.3s ease-out;
+        }
+        .branch_bottom {
+          transform: translateY(10px);
+          transition: all 0.3s ease-out;
+        }
+        &:hover {
+          .context.default {
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+          }
+          .context.hover {
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
+          }
+          .branch_top {
+            transform: translateY(30px);
+            transition: all 0.3s ease-out;
+          }
+          .branch_bottom {
+            transform: translateY(-30px);
+            transition: all 0.3s ease-out;
+          }
+        }
+      }
+    }
+  }
+  #characters-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    h2 {
+      text-shadow: var(--shadow-chinese);
+      font-weight: bold;
+      letter-spacing: 0;
+    }
+    .name-list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 7rem;
+      .character-card {
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+      }
+      .avatar {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border: 1px solid #fff;
+        margin-right: 1rem;
+      }
+    }
+    .btn {
+      padding: 0.4rem 1rem;
+      width: fit-content;
+      display: inline-block;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+      transition: var(--all-02s-easeOut);
+      &:hover {
+        letter-spacing: 0.05rem;
+        background-color: rgba(255, 255, 255, 0.3);
+      }
     }
   }
 }
