@@ -1,18 +1,97 @@
 ---
 layout: page/layout
 ---
+<section id="original" style="--box-bg-color: <%= page.blockBgColor %>;">
+  <section id="banner" class="box">
+    <div class="left">
+      <h1>Original</h1>
+      <h2>原創</h2>
+    </div>
+    <div class="right py-8">
 
-<div class="hero">
-  <h1>Hello, I'm<br /><span>woufeder.</span></h1>
-  <p>原創頁。</p>
-  <div>
-    <a href="#works" class="btn primary">查看作品</a>
-    <a href="/BeforeDawn/zh-tw/blog/" class="btn">閱讀文章</a>
-  </div>
-</div>
-<section>
-  <button class="hasborder">
-    123
-  </button>
+      <div class="hover-box flex flex-col items-center gap-4 text-center">
+        <%- partial('_partial/svg/branch_top') %>
 
+        <div class="context-wrap">
+          <div class="context default">
+            <p>
+              他們有了名字，於是有了生命<br>
+              無垠星空下將晝夜為門，以雨霧為窗<br>
+              行經一日初光，走過花葉凋亡<br><br>
+              他們的靈魂化成水岸的泡沫，沉澱為洋底的塵沙<br>
+              存於詩人的歌聲裡，刻劃在人與人的言談中<br>
+              這裡是屬於他們的世界，他們的海洋
+            </p>
+          </div>
+
+          <div class="context hover">
+            <p>各原創更新狀態不一，請見下表</p>
+
+            <div class="flex flex-row gap-4 mt-4 justify-center">
+              <p class="text-right">
+                緩慢更新➤<br><br>
+                重啟中➤
+              </p>
+              <p class="text-left">
+                千年流傳之風、Final Oath最終誓言<br><br>
+                Jatorri、流轉大地、雨後朝陽、未竟之聲<br>
+                竹船漂流的彼岸鄉、Before you go<br>
+                燭火搖曳之夜、餘生所歸終是妳、向妳而行
+                123123 <br>123123 <br>123123 <br>123123 <br>123123 <br>123123 <br>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <%- partial('_partial/svg/branch_bottom') %>
+      </div>
+
+    </div>
+  </section>
+  <section id="">
+
+  </section>
 </section>
+
+<script>
+  function initHoverBox(box) {
+    if (box.dataset.hoverBoxReady === 'true') return;
+    box.dataset.hoverBoxReady = 'true';
+
+    const wrap = box.querySelector('.context-wrap');
+    const defaultEl = box.querySelector('.context.default');
+    const hoverEl = box.querySelector('.context.hover');
+
+    if (!wrap || !defaultEl || !hoverEl) return;
+
+    const getDefaultHeight = () => defaultEl.scrollHeight;
+    const getHoverHeight = () => hoverEl.scrollHeight;
+
+    function setDefault() {
+      box.classList.remove('is-hover');
+      wrap.style.height = getDefaultHeight() + 'px';
+    }
+
+    function setHover() {
+      box.classList.add('is-hover');
+      wrap.style.height = getHoverHeight() + 'px';
+    }
+
+    setDefault();
+
+    box.addEventListener('pointerenter', setHover);
+    box.addEventListener('pointerleave', setDefault);
+
+    window.addEventListener('resize', () => {
+      if (box.classList.contains('is-hover')) {
+        wrap.style.height = getHoverHeight() + 'px';
+      } else {
+        wrap.style.height = getDefaultHeight() + 'px';
+      }
+    });
+  }
+
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hover-box').forEach(initHoverBox);
+  });
+</script>

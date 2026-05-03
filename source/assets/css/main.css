@@ -1,6 +1,7 @@
 @import "./header.css";
 @import "./footer.css";
 @import "./about.css";
+@import "./original.css";
 
 :root {
   --header-height: 95px;

@@ -2,19 +2,19 @@
 layout: page/layout
 ---
 
-<section id="about">
+<section id="about" class="py-10">
 
-  <div id="portrait">
+  <div id="portrait" class="fade-in-once">
     <div class="dialog">「您好，很高興在這裡見到您。」</div>
-    <a href="<%= url_for("image/about/artist_persona.png") %>" data-fancybox="gallery" data-no-swup data-caption="繪型設定2.0">
+    <a href="<%= url_for("image/about/artist_persona.png") %>" data-fancybox="gallery" data-no-swup data-caption="繪型設定2.0" class="fade-in-once-nodely">
       <img src="<%= url_for("image/about/1p.png") %>" alt="123">
     </a>
 
   </div>
 
-  <div id="protile">
+  <div id="protile" class=" reveal-x">
 
-    <div class="flex flex-row items-end w-full mb-4">
+    <div class="flex flex-row items-end w-full mb-4 ">
       <div class="name">
         <h1>葬光</h1>
         <h2>After Light</h2>
@@ -45,11 +45,9 @@ layout: page/layout
       </p>
     </div>
 
-
-
   </div>
 
-  <div class="gallery">
+  <div class="gallery fade-in-once">
     <div class="pic-group">
       <a href="<%= url_for("image/about/avatar.png") %>" data-fancybox="gallery" data-no-swup>
         <img class="" src="<%= url_for("image/about/avatar.png") %>" alt="Avatar 1">
