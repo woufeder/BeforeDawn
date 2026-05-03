@@ -8,4 +8,5 @@ bgBlend: "multiply"
 textColor: "#fff"
 textColorHover: "#f0f0f099;"
 blockBgColor: "rgba(0, 45, 92, 0.63);"
+menuActiveColor: "rgba(105, 120, 170, 0.5)"
 ---

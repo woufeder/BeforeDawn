@@ -86,6 +86,7 @@ main {
       z-index: 3;
 
       h1 {
+        font-family: "Iansui", "LXGW WenKai Mono TC", "Noto Sans TC", system-ui, sans-serif;
         text-shadow: var(--shadow-chinese);
         font-weight: normal;
       }
