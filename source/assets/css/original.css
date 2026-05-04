@@ -36,7 +36,7 @@
 .article-title {
   font-size: 1.3rem;
   font-family: "Iansui", "LXGW WenKai Mono TC", sans-serif;
-  text-decoration: underline;
+  border-bottom: 1px solid var(--text-color);
   font-weight: normal;
   text-shadow: var(--shadow-chinese);
 }
@@ -46,8 +46,9 @@
 }
 .article-body {
   p {
-    font-size: 0.8rem;
-    max-height: 3.8rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-height: 4.2rem;
     overflow: hidden;
   }
   a {
