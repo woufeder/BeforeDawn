@@ -73,7 +73,6 @@
     display: grid;
     grid-template-columns: 0.333fr 0.667fr;
 
-
     .left {
       background-image: url("../../image/original/original-banner.avif");
       background-color: rgba(100, 109, 125, 1);
@@ -183,17 +182,16 @@
     width: 100%;
     height: fit-content;
     display: grid;
-    grid-template-columns: 0.3fr 0.7fr;
-    border-bottom: 1px dashed var(--text-color);
-    background-image: url("../../image/original/jatorri-banner.avif");
-    background-color: rgba(35, 48, 75, 0.9);
-    background-blend-mode: multiply;
-    background-size: cover;
-    background-position: 50% 65%;
+    grid-template-columns: 0.333fr 0.667fr;
     .left {
-      position: relative;
+      background-image: url("../../image/original/jatorri-banner2.avif");
+      background-color: rgb(44, 62, 93);
+      background-blend-mode: multiply;
+      background-size: cover;
+      background-position: center;
       display: flex;
-      justify-content: end;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
       h1 {
         text-wrap: nowrap;
@@ -205,9 +203,8 @@
       }
       h2 {
         text-wrap: nowrap;
-        position: absolute;
-        bottom: calc(50% - 50px);
-        right: 75px;
+        margin-top: -40px;
+        margin-left: 30px;
         font-size: 20px;
         text-shadow: var(--shadow-chinese);
         z-index: 0;
@@ -215,6 +212,7 @@
       }
     }
     .right {
+      padding: 2rem 0;
       p {
         font-size: 17px;
       }
@@ -234,11 +232,11 @@
           transition: opacity 0.3s ease-out;
         }
         .branch_top {
-          transform: translateY(10px);
+          transform: translateY(15px);
           transition: all 0.3s ease-out;
         }
         .branch_bottom {
-          transform: translateY(-10px);
+          transform: translateY(-15px);
           transition: all 0.3s ease-out;
         }
         &:hover {
