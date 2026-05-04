@@ -13,26 +13,31 @@ prev: 上一頁
 next: 下一頁
 page: 第 %d 頁
 #原創
-Jatorri: Jatorri
-Incresse_Brezze: 千年流轉之風
-Final_Oath: 最終誓言
-TTOP: 流轉大地
-Sun_After_Rain: 雨後朝陽
-Endless_Voice: 未竟之聲
+Jatorri: 《Jatorri》
+Incresse_Brezze: 《千年流轉之風》
+Final_Oath: 《最終誓言》
+TTOP: 《流轉大地》
+Sunrise_After_Rain: 《雨後朝陽》
+Endless_Voice: 《未竟之聲》
 Miscellanies: 雜項│隨筆│塗鴉
-Where_the_Bamboo_Boat_Drifts: 竹船漂流的彼岸鄉
-Before_you_go: Before you go
-After_the_Candles_Burn_Low: 燭火搖曳之夜
-A_Place_I_Belong: 餘生所歸終是妳
-Forward: 向妳而行
+Where_the_Bamboo_Boat_Drifts: 《竹船漂流的彼岸鄉》
+Before_you_go: 《Before you go》
+After_the_Candles_Burn_Low: 《燭火搖曳之夜》
+A_Place_I_Belong: 《餘生所歸終是妳》
+On_My_Way_to_You: 《向妳而行》
 #企劃
-VCA: VCA
-DUETTA: DUETTA
-AG: 橙星學園
-ST: 終焉的選擇題
-DL: 黃昏圖書館
-YMSH: 永明高中
-Sappho: Sappho
+VCA: VCA│里林
+VCA-NPC: VCA│NPC-娜希拉
+DUETTA-Lilin: DUETTA│里林
+DUETTA-Naxira: DUETTA│娜希拉
+AG: AG│十七星　望
+ST: ST│林惜淵
+ST-NPC: ST│NPC-梁幕榕
+DL: DL│衛宇天
+YMSH: YMSH│於又綾
+YMSH-NPC: YMSH│NPC-時予曦
+Sappho-Audrey: Sappho│奧黛麗
+Sappho-Yana: Sappho│夜那
 
 # 邊欄
 categories: 所有類別
