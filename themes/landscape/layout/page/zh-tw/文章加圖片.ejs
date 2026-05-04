@@ -6,13 +6,13 @@
   ).trim()==='自介' ) { matched=true; } }); if (matched) { introPosts.push(post); } }); introPosts.sort(function(a, b){
   return b.date.valueOf() - a.date.valueOf(); }); %>
 
-  <section id="about-intro-posts">
+  <div id="about-intro-posts">
     <% introPosts.forEach(function(post, i){ %>
       <div class="intro-item" data-index="<%= i %>">
         <%- partial('_partial/article', {post: post, index: true}) %>
       </div>
       <% }) %>
-  </section>
+  </div>
   <div id="intro-pagination">
     <button id="prev">上一頁</button>
     <span id="page-info"></span>

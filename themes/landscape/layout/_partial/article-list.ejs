@@ -1,0 +1,26 @@
+<article id="<%= post.layout %>-<%= post.slug %>" class="">
+
+    <% if (post.link || post.title){ %>
+    <div class="article-header flex flex-row items-end mb-4">
+      <%- partial('post/title', {class_name: 'p-name article-title'}) %>
+      <%- partial('post/date', {class_name: 'article-date ms-auto', date_format: null}) %>
+    </div>
+    <% } %>
+
+    <div class="article-body flex flex-col" itemprop="articleBody">
+      <% if (post.excerpt && index){ %>
+      <%- post.excerpt %>
+      <% if (theme.excerpt_link){ %>
+
+        <a href="<%- bd_url_for_lang(post.path, bd_post_lang(post)) %>"><%= __('read_more') %></a>
+
+      <% } %>
+      <% } else { %>
+      <%- post.content %>
+      <% } %>
+    </div>
+
+  <% if (!index){ %>
+  <%- partial('post/nav') %>
+  <% } %>
+</article>

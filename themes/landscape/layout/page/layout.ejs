@@ -8,38 +8,25 @@ layout: false
 <head>
   <link rel="icon" href="<%= url_for('/favicon.ico') %>">
   <%- partial('_partial/google-analytics') %>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      <%= page.title %>
-    </title>
-    <%- partial('_partial/assets') %>
-      <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
-      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
-      <style>
-        #gallery {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-          gap: 12px;
-          max-width: 500px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= page.title %>
+  </title>
+  <%- partial('_partial/assets') %>
+  <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+  <style>
+    html.is-changing .transition-fade {
+      opacity: 1;
+    }
 
-        .gallery-img {
-          width: 100%;
-          height: 200px;
-          object-fit: cover;
-        }
-
-        html.is-changing .transition-fade {
-          opacity: 1;
-        }
-
-        /* Define the styles for the unloaded pages */
-        html.is-animating .transition-fade {
-          opacity: 1;
-        }
-      </style>
+    /* Define the styles for the unloaded pages */
+    html.is-animating .transition-fade {
+      opacity: 1;
+    }
+  </style>
 </head>
 
 <body>
@@ -54,15 +41,17 @@ layout: false
 
     <%- partial('_partial/header') %>
 
-      <main class="container .fade-in-once-nodely"><%- body %></main>
+    <main class="container .fade-in-once-nodely"><%- body %></main>
 
-      <%- partial('_partial/footer') %>
+    <%- partial('_partial/footer') %>
 
   </div>
   <script src="<%- url_for('js/micromodal.min.js') %>"></script>
   <script>
     MicroModal.init({});
   </script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+  <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
   <script src="https://unpkg.com/swup@4"></script>
   <script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
   <script data-swup-ignore-script>
@@ -81,7 +70,7 @@ layout: false
     });
   </script>
   <script>
-    window.initPage = function () {
+    window.initPage = function() {
       if (typeof loadGallery === 'function') {
         loadGallery();
       }
