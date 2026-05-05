@@ -17,9 +17,9 @@
 }
 
 #gallery {
-  max-width: 500px;
-  width: 500px;
-  margin: 0 auto;
+  max-width: 600px;
+  width: 600px;
+  margin: 0 ;
 }
 
 .gallery-sizer,
@@ -307,8 +307,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
-    gap: 0.5rem;
-    padding: 2rem 0;
+    gap:2.5rem;
     h2 {
       text-shadow: var(--shadow-chinese);
       font-weight: bold;
