@@ -446,16 +446,6 @@
       visibility: visible;
     }
   }
-  .xl\:px-8 {
-    @media (width >= 80rem) {
-      padding-inline: calc(var(--spacing) * 8);
-    }
-  }
-  .xl\:px-13 {
-    @media (width >= 80rem) {
-      padding-inline: calc(var(--spacing) * 13);
-    }
-  }
 }
 @property --tw-rotate-x {
   syntax: "*";
