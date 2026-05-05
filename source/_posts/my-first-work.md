@@ -2,6 +2,7 @@
 title: my first work
 date: 2026-04-22 01:32:45
 lang: en
+slug: post-hello
 tags:
   - SHIP2
   - SHIP1

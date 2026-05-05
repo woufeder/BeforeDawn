@@ -7,7 +7,8 @@
     "clean": "hexo clean",
     "deploy": "node tools/reset-deploy-git.js && hexo deploy",
     "server": "hexo server",
-    "build:zh": "npm run build && node tools/duplicate_default_to_zh.js"
+    "build:zh": "npm run build && node tools/duplicate_default_to_zh.js",
+    "postinstall": "node patch-slug.js"
   },
   "hexo": {
     "version": "8.1.1"
