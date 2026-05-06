@@ -1,0 +1,271 @@
+---
+layout: page/layout
+---
+
+<section id="FO" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
+  <section id="banner" class="box">
+    <div class="left">
+      <h1>Final Oath</h1>
+      <h2>最終誓言</h2>
+    </div>
+    <div class="right flex flex-col items-center">
+      <div class="hover-box flex flex-col items-center gap-8 text-center w-fit">
+        <%- partial('_partial/svg/branch_top') %>
+        <div class="grid">
+          <div class="context default flex items-center justify-center">
+            <h6>
+              「我希望死去的是自己。」少女曾向他說過的這樣的祈願。<br>
+              萬眾的神明，從未傾聽人世卑微的冀望。<br><br>
+              錯誤的祭獻，半成的契約，凝結的燐火艷烈。<br>
+              少女在至親凍止的血中站起，向深紅的惡魔伸出弱小的雙臂。<br>
+              「▓░▒▓，你要向我發誓。」<br><br>
+              將此生的骨血與肉作為夙願的代償，許下與妳的，也是與他的最終誓言。
+            </h6>
+          </div>
+          <div class="context hover flex flex-col items-center justify-center">
+            <h6 class="text-center">
+              架空反烏托邦奇幻。<br>
+              與Jatorri共用神話觀，也存於同宇宙維度，但彼此之間沒有交集。<br>
+              獨立閱讀不影響故事理解度。<br><br>
+
+              主線緩慢重啟中，少更新，較常更新短篇CP文
+            </h6>
+          </div>
+        </div>
+        <%- partial('_partial/svg/branch_bottom') %>
+      </div>
+    </div>
+  </section>
+
+  <section id="characters-area" class=" mt-10">
+    <div class="p-8 box w-fit">
+      <div class="flex flex-row items-center mb-6">
+        <h2>
+          MAIN CHARACTERS
+        </h2>
+      </div>
+
+      <div class="name-list columns-2 h-full text-left gap-8">
+
+        <div class="character-card">
+          <div class="avatar">
+          </div>
+          <div>
+            <p>曲幻</p>
+          </div>
+        </div>
+        <div class="character-card">
+          <div class="avatar">
+          </div>
+          <div>
+            <p>衛宇天</p>
+          </div>
+        </div>
+        <div class="character-card">
+          <div class="avatar">
+          </div>
+          <div>
+            <p>曲神空</p>
+          </div>
+        </div>
+        <div class="character-card">
+          <div class="avatar">
+          </div>
+          <div>
+            <p>曲夢</p>
+          </div>
+        </div>
+        <div class="character-card">
+          <div class="avatar">
+          </div>
+          <div>
+            <p>武皓月</p>
+          </div>
+        </div>
+        <div class="character-card">
+          <div class="avatar">
+          </div>
+          <div>
+            <p>尹則誠</p>
+          </div>
+        </div>
+        <div class="character-card">
+          <div class="avatar">
+          </div>
+          <div>
+            <p>尹則靈</p>
+          </div>
+        </div>
+        <div class="character-card">
+          <div class="avatar">
+          </div>
+          <div>
+            <p>佟筑翎</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-8 box w-full">
+      <div class="flex flex-row items-center mb-6 ">
+        <h2>
+          TERMINOLOGY
+        </h2>
+      </div>
+      <div class="noun-list">
+        <table>
+          <tbody>
+            <tr class="border-dashed border border-gray-500 my-1">
+              <td class="text-right whitespace-nowrap mr-1 p-2  border-dashed border-r border-gray-500">薩拉薩托帝國</td>
+              <td class="p-2">數百年前由曲家與佟家聯合獨立的帝國。奉行嚴格的階級制度，並以50年一期的降神大賽遠近馳名。</td>
+            </tr>
+            <tr class="border-dashed border border-gray-500 my-1">
+              <td class="text-right whitespace-nowrap mr-1 p-2 border-dashed border-r border-gray-500">降神</td>
+              <td class="p-2">以某種東西做為代價，與召喚神明並與之締結契約。若受召的神明階級越高，則能使用的能力越強，但付出的代價也更大。然而目前能召喚出的神明皆非高階神。</td>
+            </tr>
+            <tr class="border-dashed border border-gray-500 my-1">
+              <td class="text-right whitespace-nowrap mr-1 p-2 border-dashed border-r border-gray-500">曲家</td>
+              <td class="p-2">建立帝國的兩大家族之一，主要掌管軍武方面。</td>
+            </tr>
+            <tr class="border-dashed border border-gray-500 my-1">
+              <td class="text-right whitespace-nowrap mr-1 p-2 border-dashed border-r border-gray-500">佟家</td>
+              <td class="p-2">建立帝國的兩大家族之一，主要掌管文職方面</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section id="creates-area" class=" mt-10">
+    <div class="p-8 box">
+      <h2 class="mb-4">
+        ILLUSTRATION
+      </h2>
+      <div class="flex flex-row justify-center">
+        <div id="gallery">
+          <div class="gallery-sizer"></div>
+        </div>
+      </div>
+    </div>
+    <div class="p-8 box">
+      <h2 class="mb-4">
+        STORY
+      </h2>
+      <% 
+        const currentLang=bd_current_lang(); 
+        let introPosts=[]; site.posts.each(function(post){ 
+          if (bd_post_lang(post)!==currentLang) return; 
+          var matched=false; post.categories.each(function(cat){ if(String(cat.name || '' ).trim()==='自介' ) { matched=true; } }); 
+          if (matched) { introPosts.push(post); } }); 
+          introPosts.sort(function(a, b){ return b.date.valueOf() - a.date.valueOf(); }); 
+        %>
+      <div id="about-intro-posts" class="px-6">
+        <% introPosts.forEach(function(post, i){ %>
+        <div class="intro-item" data-index="<%= i %>">
+          <%- partial('_partial/article-list', {post: post, index: true}) %>
+        </div>
+        <% }) %>
+      </div>
+      <div id="intro-pagination" class="flex flex-row items-center justify-center gap-4">
+        <button id="prev">上一頁</button>
+        <span id="page-info"></span>
+        <button id="next">下一頁</button>
+      </div>
+    </div>
+  </section>
+</section>
+
+<script>
+  (() => {
+    const perPage = 5;
+    const items = document.querySelectorAll('.intro-item');
+
+    let currentPage = 1;
+    const totalPages = Math.ceil(items.length / perPage);
+
+    function render() {
+      items.forEach((el, i) => {
+        el.style.display =
+          (i >= (currentPage - 1) * perPage && i < currentPage * perPage) ?
+          'block' :
+          'none';
+      });
+
+      document.getElementById('page-info').textContent =
+        `${currentPage} / ${totalPages}`;
+    }
+
+    document.getElementById('prev').onclick = () => {
+      if (currentPage > 1) {
+        currentPage--;
+        render();
+      }
+    };
+
+    document.getElementById('next').onclick = () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        render();
+      }
+    };
+
+    render();
+  })();
+</script>
+<script>
+  (function() {
+    const cloudName = 'dhtsewjf1';
+    const tag = 'FinalOath';
+
+    async function loadGallery() {
+      const gallery = document.getElementById('gallery');
+      if (!gallery) return;
+
+      // 清空舊的（保留 sizer）
+      gallery.innerHTML = '<div class="gallery-sizer"></div>';
+
+      try {
+        const res = await fetch(
+          `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`
+        );
+        const data = await res.json();
+
+        const base = `https://res.cloudinary.com/${cloudName}/image/upload/`;
+
+        data.resources.forEach(item => {
+          const full = base + item.public_id + '.jpg';
+          const thumb = base + 'q_auto,f_auto,w_400/' + item.public_id + '.jpg';
+
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'gallery-item';
+
+          const a = document.createElement('a');
+          a.href = full;
+          a.setAttribute('data-fancybox', 'gallery');
+
+          const img = document.createElement('img');
+          img.src = thumb;
+
+          a.appendChild(img);
+          itemDiv.appendChild(a);
+          gallery.appendChild(itemDiv);
+        });
+
+        imagesLoaded(gallery, function() {
+          new Masonry(gallery, {
+            itemSelector: '.gallery-item',
+            columnWidth: '.gallery-sizer'
+          });
+        });
+
+        if (window.Fancybox) {
+          Fancybox.bind('[data-fancybox="gallery"]');
+        }
+
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    loadGallery();
+  })();
+</script>
