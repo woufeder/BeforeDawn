@@ -19,7 +19,7 @@
 #gallery {
   max-width: 600px;
   width: 600px;
-  margin: 0 ;
+  margin: 0;
 }
 
 .gallery-sizer,
@@ -262,9 +262,18 @@
   }
   #characters-area {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: max-content 1fr;
     gap: 2.5rem;
-
+    & > .box:nth-child(1) {
+      align-self: start;
+    }
+    .noun-list {
+      height: 0;
+      min-height: 90%;
+      overflow-y: auto;
+      min-width: 0;
+      padding: 0.5rem 1rem 0.5rem 0.5rem;
+    }
     h2 {
       text-shadow: var(--shadow-chinese);
       font-weight: bold;
@@ -307,7 +316,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
-    gap:2.5rem;
+    gap: 2.5rem;
     h2 {
       text-shadow: var(--shadow-chinese);
       font-weight: bold;

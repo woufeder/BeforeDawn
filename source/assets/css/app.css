@@ -193,6 +193,9 @@
   .-top-0 {
     top: calc(var(--spacing) * -0);
   }
+  .-top-0\.5 {
+    top: calc(var(--spacing) * -0.5);
+  }
   .-top-1 {
     top: calc(var(--spacing) * -1);
   }
@@ -240,6 +243,9 @@
   }
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
+  }
+  .mt-15 {
+    margin-top: calc(var(--spacing) * 15);
   }
   .mt-20 {
     margin-top: calc(var(--spacing) * 20);
@@ -322,6 +328,12 @@
   .grid-flow-col {
     grid-auto-flow: column;
   }
+  .grid-cols-\[max-content_1fr\] {
+    grid-template-columns: max-content 1fr;
+  }
+  .\[grid-template-rows\:repeat\(var\(--rows\)\,auto\)\] {
+    grid-template-rows: repeat(var(--rows),auto);
+  }
   .flex-col {
     flex-direction: column;
   }
@@ -372,6 +384,9 @@
   }
   .gap-y-6 {
     row-gap: calc(var(--spacing) * 6);
+  }
+  .overflow-auto {
+    overflow: auto;
   }
   .border {
     border-style: var(--tw-border-style);
@@ -529,6 +544,16 @@
   .\*\:visible {
     :is(& > *) {
       visibility: visible;
+    }
+  }
+  .xl\:px-8 {
+    @media (width >= 80rem) {
+      padding-inline: calc(var(--spacing) * 8);
+    }
+  }
+  .xl\:px-13 {
+    @media (width >= 80rem) {
+      padding-inline: calc(var(--spacing) * 13);
     }
   }
 }
