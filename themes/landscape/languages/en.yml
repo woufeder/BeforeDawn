@@ -26,22 +26,43 @@ After_the_Candles_Burn_Low: After the Candles Burn Low
 A_Place_I_Belong: A Place I Belong
 On_My_Way_to_You: On My Way to You
 #企劃
-VCA: VCA│Lilin
-VCA-NPC: VCA│NPC-Naxira
-DUETTA-Lilin: DUETTA│Lilin
-DUETTA-Naxira: DUETTA│Naxira
-AG: AG│Nozomi
-ST: ST│HsiYuan Lin
-ST-NPC: ST│NPC-MuRong Liang
-DL: DL│YuTian Wei 
-YMSH: YMSH│Irene Yu
-YMSH-NPC: YMSH│NPC-Ada Shih
-Sappho-Audrey: Sappho│Audrey
-Sappho-Yana: Sappho│Yana
-
+VCA: VCA｜Lilin
+VCA-NPC: VCA｜NPC-Naxira
+DUETTA-Lilin: DUETTA｜Lilin
+DUETTA-Naxira: DUETTA｜Naxira
+AG: AG｜Nozomi
+ST: ST｜HsiYuan Lin
+ST-NPC: ST｜NPC-MuRong Liang
+DL: DL｜YuTian Wei 
+YMSH: YMSH｜Irene Yu
+YMSH-NPC: YMSH｜NPC-Ada Shih
+Sappho-Audrey: Sappho｜Audrey
+Sappho-Yana: Sappho｜Yana
 
 # 邊欄
-categories: Categories
+categories: 
+  All: Categories
+  Jatorri: Jatorri
+  IB: Incessant Breeze
+  FO: Final Oath
+  TTOP: The Tales of Posidara
+  SAR: Sunrise After Rain
+  EV: Endless Voice
+  Bamboo: Where the Bamboo Boat Drifts
+  BeforeYouGo: Before you go
+  Candle: After the Candles Burn Low
+  APIB: A Place I Belong
+  WTY: On My Way to You
+  CdSeN: The Song of Sun and Night
+  VCA: VCA
+  DUETTA: DUETTA
+  AG: Akase Academy
+  ST: The Selection of the End
+  DL: Dusk Library
+  YMSH: YongMing Senior High
+  Sappho: Sappho
+  poem: Poem
+  others: Miscellaneous
 category: Category
 all_posts: All Posts
 
@@ -49,7 +70,35 @@ archives: Archives
 archive_a: Archives
 archive_b: "Archives: %s"
 
-tags: Tags
+tags: 
+ All: Shipping tags
+ almighty: Almighty
+ Chedith: Chedith
+ victory: Victory
+ YukiHaru: YukiHaru
+ AkiHino: AkiHino
+ KakeNatsu: KakeNatsu
+ KaiAsa: KaiAsa
+ dimise: Dimise
+ white_moon: White Moon
+ NaxiLilin: NaxiLilin
+ "0406": FlameHeart
+ "1121": Arbiters
+ "0205": Prophets
+ "0116": Magus Heir
+ kite_wood: Kite Wood
+ rainy_morning: Rainy Morning
+ 440hz: 440hz
+ observers: Observer
+ imperfecter: Imperfecter
+ gamers : Gamers
+ SasaFuna: SasaFuna
+ spys: Spys
+ middle_night: NightAwaken
+ Audreyana: Audreyana
+ Polaris: Polaris
+ Therry: Therry
+
 tag: Tag
 tagcloud: Tag Cloud
 

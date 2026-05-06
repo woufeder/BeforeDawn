@@ -26,21 +26,44 @@ After_the_Candles_Burn_Low: Dopo che le Candele si Sono Consumate
 A_Place_I_Belong: Un Luogo a Cui Appartengo
 On_My_Way_to_You: Sulla Mia Strada Verso di Te
 #企劃
-VCA: VCA│Lilin
-VCA-NPC: VCA│NPC-Naxira
-DUETTA-Lilin: DUETTA│Lilin
-DUETTA-Naxira: DUETTA│Naxira
-AG: AG│Nozomi
-ST: ST│HsiYuan Lin
-ST-NPC: ST│NPC-MuRong Liang
-DL: DL│YuTian Wei 
-YMSH: YMSH│Irene Yu
-YMSH-NPC: YMSH│NPC-Ada Shih
-Sappho-Audrey: Sappho│Audrey
-Sappho-Yana: Sappho│Yana
+VCA: VCA｜Lilin
+VCA-NPC: VCA｜NPC-Naxira
+DUETTA-Lilin: DUETTA｜Lilin
+DUETTA-Naxira: DUETTA｜Naxira
+AG: AG｜Nozomi
+ST: ST｜HsiYuan Lin
+ST-NPC: ST｜NPC-MuRong Liang
+DL: DL｜YuTian Wei 
+YMSH: YMSH｜Irene Yu
+YMSH-NPC: YMSH｜NPC-Ada Shih
+Sappho-Audrey: Sappho｜Audrey
+Sappho-Yana: Sappho｜Yana
 
 # 邊欄
-categories: Categorie
+categories: 
+  All: Categorie
+  Jatorri: Original｜Jatorri
+  IB: Original｜Incessant Breeze
+  FO: Original｜Final Oath
+  TTOP: Original｜The Tales of Posidara
+  SAR: Original｜Sunrise After Rain
+  EV: Original｜Endless Voice
+  Bamboo: Original｜Where the Bamboo Boat Drifts
+  BeforeYouGo: Original｜Before you go
+  Candle: Original｜After the Candles Burn Low
+  APIB: Original｜A Place I Belong
+  WTY: Original｜On My Way to You
+  CdSeN: Original｜The Song of Sun and Night
+  VCA: Project｜VCA
+  DUETTA: Project｜DUETTA
+  AG: Project｜Nozomi
+  ST: Project｜HsiYuan Lin
+  DL: Project｜Twilight Library
+  YMSH: Project｜Eternal High School
+  Sappho: Project｜Sappho
+  poem: Poem
+  others: Miscellaneous
+  
 category: Categoria
 all_posts: Tutti gli articoli
 
