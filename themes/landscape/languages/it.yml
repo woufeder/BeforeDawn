@@ -63,7 +63,7 @@ categories:
   Sappho: Project｜Sappho
   poem: Poem
   others: Miscellaneous
-  
+
 category: Categoria
 all_posts: Tutti gli articoli
 
@@ -71,7 +71,34 @@ archives: Archivio
 archive_a: Archivio
 archive_b: "Archivio: %s"
 
-tags: Tag
+tags: 
+ All: Shipping tags
+ almighty: Almighty
+ Chedith: Chedith
+ victory: Victory
+ YukiHaru: YukiHaru
+ AkiHino: AkiHino
+ KakeNatsu: KakeNatsu
+ KaiAsa: KaiAsa
+ dimise: Dimise
+ white_moon: White Moon
+ NaxiLilin: NaxiLilin
+ "0406": FlameHeart
+ "1121": Arbiters
+ "0205": Prophets
+ "0116": Magus Heir
+ kite_wood: Kite Wood
+ rainy_morning: Rainy Morning
+ 440hz: 440hz
+ observers: Observer
+ imperfecter: Imperfecter
+ gamers : Gamers
+ SasaFuna: SasaFuna
+ spys: Spys
+ midwake: Midwake
+ Audreyana: Audreyana
+ Polaris: Polaris
+ Therry: Therry
 tag: Tag
 tagcloud: Nuvola di tag
 
