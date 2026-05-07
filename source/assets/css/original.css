@@ -671,8 +671,8 @@
     display: grid;
     grid-template-columns: 0.333fr 0.667fr;
     .left {
-      background-image: url("../../image/original/IB-banner.avif");
-      background-color: rgb(117, 117, 108);
+      background-image: url("../../image/original/SAR-banner.avif");
+      background-color: rgb(183, 183, 183);
       background-blend-mode: multiply;
       background-size: cover;
       background-position: center;
