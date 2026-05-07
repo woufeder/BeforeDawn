@@ -42,27 +42,27 @@ Sappho-Yana: Sappho｜Yana
 # 邊欄
 categories: 
   All: Categorie
-  Jatorri: Original｜Jatorri
-  IB: Original｜Incessant Breeze
-  FO: Original｜Final Oath
-  TTOP: Original｜The Tales of Posidara
-  SAR: Original｜Sunrise After Rain
-  EV: Original｜Endless Voice
-  Bamboo: Original｜Where the Bamboo Boat Drifts
-  BeforeYouGo: Original｜Before you go
-  Candle: Original｜After the Candles Burn Low
-  APIB: Original｜A Place I Belong
-  WTY: Original｜On My Way to You
-  CdSeN: Original｜The Song of Sun and Night
-  VCA: Project｜VCA
-  DUETTA: Project｜DUETTA
-  AG: Project｜Nozomi
-  ST: Project｜HsiYuan Lin
-  DL: Project｜Twilight Library
-  YMSH: Project｜Eternal High School
-  Sappho: Project｜Sappho
-  poem: Poem
-  others: Miscellaneous
+  Jatorri: Jatorri
+  IB: Breeze Incessanti
+  FO: Giuramento Finale
+  TTOP: La Storia di Posidara
+  SAR: Alba Dopo la Pioggia
+  EV: Voce Infinita
+  Bamboo: Dove Deriva la Barca di Bambù
+  BeforeYouGo: Prima di Andare
+  Candle: Dopo che le Candele si Sono Consumate
+  APIB: Un Luogo a Cui Appartengo
+  WTY: Sulla Mia Strada Verso di Te
+  CdSeN: Canzone di Sole e Notte
+  VCA: VCA
+  DUETTA: DUETTA
+  AG: Accademia Akase
+  ST: La Selezione della Fine
+  DL: Biblioteca del Crepuscolo
+  YMSH: Liceo Superiore YongMing
+  Sappho: Sappho
+  poem: Poesie
+  others: Miscellanea
 
 category: Categoria
 all_posts: Tutti gli articoli
@@ -72,7 +72,7 @@ archive_a: Archivio
 archive_b: "Archivio: %s"
 
 tags: 
- All: Shipping tags
+ All: Ship name tags
  almighty: Almighty
  Chedith: Chedith
  victory: Victory
@@ -95,7 +95,7 @@ tags:
  gamers : Gamers
  SasaFuna: SasaFuna
  spys: Spys
- midwake: Midwake
+ nightwake: Nightwake
  Audreyana: Audreyana
  Polaris: Polaris
  Therry: Therry

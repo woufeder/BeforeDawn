@@ -71,7 +71,7 @@ archive_a: Archives
 archive_b: "Archives: %s"
 
 tags: 
- All: Shipping tags
+ All: Ship name tags
  almighty: Almighty
  Chedith: Chedith
  victory: Victory
@@ -94,7 +94,7 @@ tags:
  gamers : Gamers
  SasaFuna: SasaFuna
  spys: Spys
- midwake: Midwake
+ nightwake: Nightwake
  Audreyana: Audreyana
  Polaris: Polaris
  Therry: Therry
