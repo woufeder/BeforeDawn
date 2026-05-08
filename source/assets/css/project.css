@@ -82,28 +82,66 @@
       }
     }
   }
-  #link-area {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  #characters-card-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    gap: 2.5rem;
-    h4 {
-      width: 80%;
-      font-weight: bold;
-    }
+    gap: 2rem;
 
-    .others {
-      border-right: 1px dashed transparent;
-    }
-    .pageBtn {
-      width: fit-content;
-      display: inline-block;
-      opacity: 0.7;
+    .chara-card {
+      min-height: 120px;
+      width: 360px;
+      border-radius: 4px;
+      display: grid;
+      grid-template-columns: 1fr 0.5fr;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      outline: 1px solid rgba(255, 255, 255, 0.2);
       transition: var(--all-02s-easeOut);
-
+      .title {
+        padding: 0.5rem;
+        .name {
+          display: block;
+        }
+        .p-name {
+          display: none;
+        }
+      }
+      .img {
+        width: 150px;
+        min-height: 120px;
+        background-size: cover;
+        background-position: center;
+        margin-left: auto;
+      }
       &:hover {
-        letter-spacing: 0.05rem;
-        opacity: 1;
+        transform: translateY(-3px);
+        transition: all 0.3s ease-out;
+        .title {
+          .name {
+            display: none;
+          }
+          .p-name {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .vca-lilin,
+    .duetta-lilin,
+    .duetta-naxira,
+    .ag,
+    .st,
+    .dl,
+    .ymsh,
+    .sappho-audrey,
+    .sappho-yana {
+      .img {
+        background-image: url("../../image/avatar.webp");
       }
     }
   }
