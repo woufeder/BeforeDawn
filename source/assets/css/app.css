@@ -194,9 +194,6 @@
   .-top-0 {
     top: calc(var(--spacing) * -0);
   }
-  .-top-0\.5 {
-    top: calc(var(--spacing) * -0.5);
-  }
   .-top-1 {
     top: calc(var(--spacing) * -1);
   }
@@ -320,9 +317,6 @@
   .min-w-1 {
     min-width: calc(var(--spacing) * 1);
   }
-  .min-w-1\/2 {
-    min-width: calc(1 / 2 * 100%);
-  }
   .flex-2 {
     flex: 2;
   }
@@ -346,12 +340,6 @@
   }
   .grid-flow-col {
     grid-auto-flow: column;
-  }
-  .grid-cols-\[max-content_1fr\] {
-    grid-template-columns: max-content 1fr;
-  }
-  .\[grid-template-rows\:repeat\(var\(--rows\)\,auto\)\] {
-    grid-template-rows: repeat(var(--rows),auto);
   }
   .flex-col {
     flex-direction: column;
@@ -570,16 +558,6 @@
   .\*\:visible {
     :is(& > *) {
       visibility: visible;
-    }
-  }
-  .xl\:px-8 {
-    @media (width >= 80rem) {
-      padding-inline: calc(var(--spacing) * 8);
-    }
-  }
-  .xl\:px-13 {
-    @media (width >= 80rem) {
-      padding-inline: calc(var(--spacing) * 13);
     }
   }
 }
