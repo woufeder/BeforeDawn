@@ -88,61 +88,94 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+  }
+}
 
-    .chara-card {
-      min-height: 120px;
-      width: 360px;
-      border-radius: 4px;
-      display: grid;
-      grid-template-columns: 1fr 0.5fr;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-      outline: 1px solid rgba(255, 255, 255, 0.2);
-      transition: var(--all-02s-easeOut);
-      .title {
-        padding: 0.5rem;
-        .name {
-          display: block;
-        }
-        .p-name {
-          display: none;
-        }
-      }
-      .img {
-        width: 150px;
-        min-height: 120px;
-        background-size: cover;
-        background-position: center;
-        margin-left: auto;
-      }
-      &:hover {
-        transform: translateY(-3px);
-        transition: all 0.3s ease-out;
-        .title {
-          .name {
-            display: none;
-          }
-          .p-name {
-            display: block;
-          }
-        }
-      }
+.chara-card {
+  display: flex;
+  flex-direction: column;
+
+  h5,
+  h6 {
+    color: #000 !important;
+  }
+  width: 300px;
+  .p-name {
+    display: none;
+  }
+  &:hover {
+    .name {
+      display: none;
     }
+    .p-name {
+      display: block;
+    }
+  }
+  .top {
+    padding: 0.5rem;
+  }
+  .photo {
+    width: 300px;
+    height: 120px;
+    padding: 0;
+    background-color: #96A296;
+    background-image: url("../../image/project/golden\ line.png");
+    background-size: cover;
+    background-position: center;
+    
+  }
 
-    .vca-lilin,
-    .duetta-lilin,
-    .duetta-naxira,
-    .ag,
-    .st,
-    .dl,
-    .ymsh,
-    .sappho-audrey,
-    .sappho-yana {
-      .img {
-        background-image: url("../../image/avatar.webp");
-      }
+  .top,
+  .bottom,
+  .rip {
+    background-color: #646464
+  }
+
+  .top {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+
+  .bottom {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: fit-content;
+    padding: 0.5rem;
+    padding-top: 0 !important;
+  }
+  .rip {
+    height: 32px;
+    margin: 0 15px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAACCAYAAAB7Xa1eAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAAaSURBVBhXY5g7f97/2XPn/AcCBmSMQ+I/AwB2eyNBlrqzUQAAAABJRU5ErkJggg==);
+    background-size: 4px 2px;
+    background-repeat: repeat-x;
+    background-position: center;
+    position: relative;
+    z-index: -1;
+    box-shadow:
+      0 1px 0 0 #646464,
+      0 -1px 0 0 #646464;
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      border: 10px solid transparent;
+      border-top-color: #646464;
+      border-right-color: #646464;
+      border-radius: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    &:before {
+      left: -15px;
+    }
+    &:after {
+      transform: translate(-50%, -50%) rotate(225deg);
+      right: -65px;
     }
   }
 }
