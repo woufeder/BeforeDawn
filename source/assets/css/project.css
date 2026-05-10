@@ -1,4 +1,7 @@
 #project {
+  .letterspacing-1px {
+    letter-spacing: -1px;
+  }
   #banner {
     width: 100%;
     height: fit-content;
@@ -84,98 +87,242 @@
   }
   #characters-card-area {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-  }
-}
-
-.chara-card {
-  display: flex;
-  flex-direction: column;
-
-  h5,
-  h6 {
-    color: #000 !important;
-  }
-  width: 300px;
-  .p-name {
-    display: none;
-  }
-  &:hover {
-    .name {
-      display: none;
+    .break {
+      flex-basis: 100%;
+      height: 0;
     }
-    .p-name {
-      display: block;
-    }
-  }
-  .top {
-    padding: 0.5rem;
-  }
-  .photo {
-    width: 300px;
-    height: 120px;
-    padding: 0;
-    background-color: #96A296;
-    background-image: url("../../image/project/golden\ line.png");
-    background-size: cover;
-    background-position: center;
-    
-  }
 
-  .top,
-  .bottom,
-  .rip {
-    background-color: #646464
-  }
-
-  .top {
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-  }
-
-  .bottom {
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    height: fit-content;
-    padding: 0.5rem;
-    padding-top: 0 !important;
-  }
-  .rip {
-    height: 32px;
-    margin: 0 15px;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAACCAYAAAB7Xa1eAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAAaSURBVBhXY5g7f97/2XPn/AcCBmSMQ+I/AwB2eyNBlrqzUQAAAABJRU5ErkJggg==);
-    background-size: 4px 2px;
-    background-repeat: repeat-x;
-    background-position: center;
-    position: relative;
-    z-index: -1;
-    box-shadow:
-      0 1px 0 0 #646464,
-      0 -1px 0 0 #646464;
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      top: 50%;
-      transform: translate(-50%, -50%) rotate(45deg);
-      border: 10px solid transparent;
-      border-top-color: #646464;
-      border-right-color: #646464;
-      border-radius: 100%;
-      pointer-events: none;
-      z-index: -1;
+    .chara-card {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      margin: 1rem;
+      filter: drop-shadow(0 0 5px #9d8cb355);
+      transition: all 0.3s ease-out;
+      h5,
+      h6 {
+        font-weight: bold;
+      }
+      span {
+        letter-spacing: -1px;
+        font-size: 12px;
+        font-family: "Shippori Mincho B1", serif;
+      }
+      .default {
+        display: flex;
+      }
+      .hover {
+        display: none;
+      }
+      &:hover {
+        transform: translateY(-5px);
+        transition: all 0.3s ease-out;
+        .default {
+          display: none;
+        }
+        .hover {
+          display: flex;
+        }
+      }
+      .top {
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        background-color: var(--chara-card);
+        padding: 0.5rem 1rem;
+      }
+      .photo {
+        width: 300px;
+        height: 120px;
+        padding: 0;
+        background-size: cover;
+        background-position: center;
+      }
+      .info {
+        background-color: var(--chara-card);
+        padding: 0.5rem 1rem;
+      }
+      .bottom {
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        height: fit-content;
+        padding: 0.5rem 1rem 1rem;
+        background-color: var(--chara-card);
+      }
+      .rip {
+        height: 32px;
+        margin: 0 15px;
+        background-color: var(--chara-card);
+        background-image: url("../../image/project/dot.png");
+        background-size: 9px 3px;
+        background-repeat: repeat-x;
+        background-position: center;
+        position: relative;
+        z-index: -1;
+        box-shadow:
+          0 1px 0 0 var(--chara-card),
+          0 -1px 0 0 var(--chara-card);
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          top: 50%;
+          transform: translate(-50%, -50%) rotate(45deg);
+          border: 10px solid transparent;
+          border-top-color: var(--chara-card);
+          border-right-color: var(--chara-card);
+          border-radius: 100%;
+          pointer-events: none;
+          z-index: -1;
+        }
+        &:before {
+          left: -15px;
+        }
+        &:after {
+          transform: translate(-50%, -50%) rotate(225deg);
+          right: -65px;
+        }
+      }
     }
-    &:before {
-      left: -15px;
+    .vca-lilin {
+      --chara-card: #e6eedf;
+
+      h5,
+      h6 {
+        color: #081f08;
+      }
+      span {
+        color: #717d71;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/VCA.png");
+      }
     }
-    &:after {
-      transform: translate(-50%, -50%) rotate(225deg);
-      right: -65px;
+    .duetta-lilin {
+      --chara-card: #f1ebd3;
+
+      h5,
+      h6 {
+        color: #140e04;
+      }
+      span {
+        color: #413c2b;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/DUETTA-Lilin.png");
+      }
+    }
+    .duetta-naxira {
+      --chara-card: #dbdbdb;
+
+      h5,
+      h6 {
+        color: #070414;
+      }
+      span {
+        color: #302d3d;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/DUETTA-Naxira.png");
+      }
+    }
+    .ag {
+      --chara-card: #f3e7ea;
+
+      h5,
+      h6 {
+        color: #050d31;
+      }
+      span {
+        color: #3f4250;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/AG.png");
+      }
+    }
+    .st {
+      --chara-card: #ded5ca;
+
+      h5,
+      h6 {
+        color: #281709;
+      }
+      span {
+        color: #5b4e43;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/ST.png");
+      }
+    }
+    .dl {
+      --chara-card: #ddcfcf;
+
+      h5,
+      h6 {
+        color: #281709;
+      }
+      span {
+        color: #5b4e43;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/DL.png");
+      }
+    }
+    .ymsh {
+      --chara-card: #dfe4f7;
+
+      h5,
+      h6 {
+        color: #0a0928;
+      }
+      span {
+        color: #7d8598;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/YMSH.png");
+      }
+    }
+    .sappho-audrey {
+      --chara-card: #e7dff7;
+
+      h5,
+      h6 {
+        color: #230731;
+      }
+      span {
+        color: #8f7d98;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/Sappho-Audrey.png");
+      }
+    }
+    .sappho-yana {
+      --chara-card: #e6f1ff;
+
+      h5,
+      h6 {
+        color: #072931;
+      }
+      span {
+        color: #495f64;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/Sappho-Yana.png");
+      }
     }
   }
 }
