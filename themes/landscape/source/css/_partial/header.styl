@@ -1,56 +1,32 @@
+$header-height = 95px
+$footer-height = 80px
+$all-02s-easeOut = all 0.2s ease-out
+$text-color = #f0f0f0
+$shadow-chinese = 0 0 6px rgba(255, 255, 255, 1)
+$shadow-latin = 0 0 5px rgba(255, 255, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.8)
+$menu-active-color = rgba(105, 120, 170, 0.5)
+
 #header
-  background-color #000
-  position: relative
-  border-bottom: 1px solid color-border
-  height 120px
-
-#header-inner
-  position: relative
-  overflow: visible
-
-#banner
-  position: absolute
-  top: 0
-  left: 0
-  width: 100%
-  height: 100%
-  background: url(banner-url) center #000
-  background-size: cover
-  z-index: -1
-
-#header-title
-  text-align: center
-  height: logo-size
-  position: absolute
-  top: 50%
-  left: 0
-  margin-top: logo-size * -0.5
-
-$logo-text
-  text-decoration: none
-  color: #fff
-  font-weight: 300
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3)
+  box-shadow: 0 0 15px #ffffff6f
+  height $header-height
 
 #logo
-  @extend $logo-text
-  font-size: logo-size
-  line-height: logo-size
-  letter-spacing: 2px
-
-#subtitle
-  @extend $logo-text
-  font-size: subtitle-size
-  line-height: subtitle-size
-  letter-spacing: 1px
-
-#subtitle-wrap
-  margin-top: subtitle-size
-
+  display: flex
+  align-items: center
+  h2 
+    font-weight: normal
+    font-family:"Iansui", "LXGW WenKai Mono TC", "Noto Sans TC", system-ui, sans-serif
+    text-shadow: $shadow-chinese
+  h4
+    font-family: "Fredericka the Great"
+    text-shadow: $shadow-latin
+    text-wrap: nowrap
+  
 #main-nav
   float: left
   margin-left: -15px
   position: relative
+  font-family: "Fredericka the Great"
 
 .main-nav-item
   float: left
@@ -59,56 +35,96 @@ $logo-text
 .main-nav-item .main-nav-link
   float: none
 
+.nav-icon,
+.main-nav-link 
+  float: left
+  opacity: 1
+  text-decoration: none
+  text-shadow: $shadow-latin
+  transition: $all-02s-easeOut
+  display: block
+  padding: 0px 10px
+  &:hover 
+    background-color: $menu-active-color
+    background-blend-mode: multiply
+  
+.nav-icon 
+  text-align: center
+  color: $text-color
+  font-size: 16px
+  width: 16px
+  height: 16px
+  padding: 20px 15px
+  position: relative
+  cursor: pointer
+
+.main-nav-link 
+  font-weight: 300
+  letter-spacing: 1px
+  border-right: #686868 0.5px solid
+  width: 105px
+  text-wrap: nowrap
+  text-align: end
+  transition: $all-02s-easeOut
+  &:last-child 
+    border-right: none
+  
+
 .main-nav-submenu
   display: none
   position: absolute
   top: 100%
   left: 0
   min-width: 140px
-  background: rgba(0, 0, 0, 0.85)
-  border: 1px solid rgba(255, 255, 255, 0.2)
+  background:
+    linear-gradient($menu-active-color, $menu-active-color),
+    #000000ee
+  border: #686868 0.5px solid
   z-index: 99
+  font-weight: 300
+  font-family: "Fredericka the Great", "Iansui"
 
 .main-nav-item.has-submenu:hover .main-nav-submenu
   display: block
 
 .main-nav-submenu-link
   display: block
-  color: #fff
-  opacity: 0.85
+  opacity: 1
   text-decoration: none
   padding: 10px 14px
   white-space: nowrap
+  transition: $all-02s-easeOut
+  text-shadow: $shadow-chinese
   &:hover
-    opacity: 1
+    opacity: 0.5
+
+.main-nav-submenu-link.is-active 
+  background-color: $menu-active-color
+  background-blend-mode: multiply
+  &:hover 
+    opacity: 0.5
     background: rgba(255, 255, 255, 0.12)
+  
 
-$nav-link
-  float: left
-  color: #fff
-  opacity: 0.6
-  text-decoration: none
-  text-shadow: 0 1px rgba(0, 0, 0, 0.2)
-  transition: opacity 0.2s
-  display: block
-  padding: 20px 15px
-  &:hover
-    opacity: 1
+.nav-note 
+  width: 105px
+  text-shadow: $shadow-chinese
 
-.nav-icon
-  @extend $nav-link
-  text-align: center
-  font-size: font-size
-  width: font-size
-  height: font-size
-  padding: 20px 15px
-  position: relative
+.lang-switch 
+  padding-right: 10px
+  padding-top: 10px
   cursor: pointer
+  &:hover 
+    transition: var(--all-02s-easeOut) !important
+    color: var(--text-color-hover) !important
+
+.lang-globe 
+  width: 20px
+  height: 20px
+  pointer-events: none
+
 
 .main-nav-link
-  @extend $nav-link
-  font-weight: 300
-  letter-spacing: 1px
   @media mq-mobile
     display: none
 
@@ -124,52 +140,3 @@ $nav-link
 #sub-nav
   float: right
   margin-right: -15px
-
-#search-form-wrap
-  position: absolute
-  top: 15px
-  width: 150px
-  height: 30px
-  right: -150px
-  opacity: 0
-  transition: 0.2s ease-out
-  &.on
-    opacity: 1
-    right: 0
-  @media mq-mobile
-    width: 100%
-    right: -100%
-
-.search-form
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  background: #fff
-  padding: 5px 15px
-  border-radius: 15px
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3)
-
-.search-form-input
-  border: none
-  background: none
-  color: color-default
-  width: 100%
-  font: 13px font-sans
-  outline: none
-  &::-webkit-search-results-decoration
-  &::-webkit-search-cancel-button
-    -webkit-appearance: none
-
-.search-form-submit
-  position: absolute
-  top: 50%
-  right: 10px
-  margin-top: -7px
-  font: 13px font-icon
-  border: none
-  background: none
-  color: #bbb
-  cursor: pointer
-  &:hover, &:focus
-    color: #777

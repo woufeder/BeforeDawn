@@ -109,8 +109,6 @@
 
 .main-nav-submenu-link:hover {
   opacity: 0.5;
-  background: var(--menu-active-color);
-  transition: var(--all-02s-easeOut);
 }
 
 .main-nav-link.is-active {
@@ -120,12 +118,8 @@
   &:hover {
     opacity: 0.5;
     background: var(--menu-active-color);
-    transition: var(--all-02s-easeOut);
   }
 }
-/* .main-nav-item.is-active > .main-nav-link {
-  color: #fff;
-} */
 
 .main-nav-submenu-link.is-active {
   background-color: var(--menu-active-color);
@@ -140,6 +134,7 @@
   width: 105px;
   text-shadow: var(--shadow-chinese);
 }
+
 .lang-switch {
   padding-right: 10px;
   padding-top: 10px;

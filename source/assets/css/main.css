@@ -5,7 +5,7 @@
 @import "./project.css";
 
 :root {
-  --header-height: 95px;
+  --header-height: px;
   --footer-height: 80px;
   --all-02s-easeOut: all 0.2s ease-out;
 }

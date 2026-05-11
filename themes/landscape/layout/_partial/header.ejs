@@ -26,8 +26,17 @@ const submenus = {
 const currentPath = page.path || '';
 
 function switchLang(targetLang) {
-  return url_for(currentPath.replace(/^([a-z\-]+)\//, targetLang + '/'));
+const rawPath = String(page.path || '');
+
+const pathWithoutLang = rawPath
+.replace(/^\/?BeforeDawn\/?/i, '')
+.replace(/^(zh-tw|en|it)\//i, '')
+.replace(/index\.html$/i, '')
+.replace(/^\/+/, '');
+
+return url_for('/' + targetLang + '/' + pathWithoutLang);
 }
+
 
 function cleanPath(path) {
   return String(path || '')
@@ -53,6 +62,8 @@ function getSubmenu(key) {
   return submenus[String(key).toLowerCase()];
 }
 %>
+
+
 
 <header id="header" class="">
   <div class="container flex flex-row h-full">
@@ -80,11 +91,21 @@ function getSubmenu(key) {
 
       <% if (page.lang === 'zh-tw') { %>
       <div class="zh-only-note flex flex-row items-end justify-end">
-        <div class="nav-note"><p>小船住民</p></div>
-        <div class="nav-note"><p>銀海塵沙</p></div>
-        <div class="nav-note"><p>旅行者書</p></div>
-        <div class="nav-note"><p>星梢夜歌</p></div>
-        <div class="nav-note"><p>流光之外</p></div>
+        <div class="nav-note">
+          <p>小船住民</p>
+        </div>
+        <div class="nav-note">
+          <p>銀海塵沙</p>
+        </div>
+        <div class="nav-note">
+          <p>旅行者書</p>
+        </div>
+        <div class="nav-note">
+          <p>星梢夜歌</p>
+        </div>
+        <div class="nav-note">
+          <p>流光之外</p>
+        </div>
       </div>
       <% } %>
 
@@ -94,9 +115,9 @@ function getSubmenu(key) {
         </a>
 
         <% for (var i in theme.menu) { %>
-          <% if (i === 'home') continue; %>
+        <% if (i === 'home') continue; %>
 
-          <%
+        <%
             const submenu = getSubmenu(i);
             const hasSubmenu = Array.isArray(submenu);
 
@@ -108,29 +129,29 @@ function getSubmenu(key) {
             const itemActive = mainActive || subActive;
           %>
 
-          <% if (hasSubmenu) { %>
-            <div class="main-nav-item has-submenu <%= itemActive ? 'is-active' : '' %>">
-              <a class="main-nav-link <%= itemActive ? 'is-active' : '' %>" href="<%- bd_url_for_lang(theme.menu[i]) %>">
-                <%= bd_i18n(i) %>
-              </a>
+        <% if (hasSubmenu) { %>
+        <div class="main-nav-item has-submenu <%= itemActive ? 'is-active' : '' %>">
+          <a class="main-nav-link <%= itemActive ? 'is-active' : '' %>" href="<%- bd_url_for_lang(theme.menu[i]) %>">
+            <%= bd_i18n(i) %>
+          </a>
 
-              <div class="main-nav-submenu">
-                <% submenu.forEach(function(sub) { %>
-                  <%
+          <div class="main-nav-submenu">
+            <% submenu.forEach(function(sub) { %>
+            <%
                     const thisSubActive = isActiveUrl(sub.url);
                   %>
 
-                  <a class="main-nav-submenu-link <%= thisSubActive ? 'is-active' : '' %>" href="<%- bd_url_for_lang(sub.url) %>">
-                    <%= bd_i18n(sub.key) %>
-                  </a>
-                <% }) %>
-              </div>
-            </div>
-          <% } else { %>
-            <a class="main-nav-link <%= itemActive ? 'is-active' : '' %>" href="<%- bd_url_for_lang(theme.menu[i]) %>">
-              <%= bd_i18n(i) %>
+            <a class="main-nav-submenu-link <%= thisSubActive ? 'is-active' : '' %>" href="<%- bd_url_for_lang(sub.url) %>">
+              <%= bd_i18n(sub.key) %>
             </a>
-          <% } %>
+            <% }) %>
+          </div>
+        </div>
+        <% } else { %>
+        <a class="main-nav-link <%= itemActive ? 'is-active' : '' %>" href="<%- bd_url_for_lang(theme.menu[i]) %>">
+          <%= bd_i18n(i) %>
+        </a>
+        <% } %>
         <% } %>
       </nav>
     </div>
