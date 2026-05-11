@@ -1,6 +1,7 @@
 ---
 layout: page/zh-tw/original/IncessantBreeze
 title: "夜明曉更前 |《千年流傳之風》"
+
 bg: "/image/original/IB-bg-2.avif"
 bgColor: "rgba(144, 166, 144, 0.3)"
 bgBlend: "multiply"

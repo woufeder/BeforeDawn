@@ -1,3 +1,30 @@
+.label-links {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  right: 0;
+  top: -5rem;
+}
+
+.label-zh {
+  width: 35px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  background-color: var(--box-bg-color);
+  -webkit-writing-mode: vertical-rl; /* 兼容 Safari/Chrome */
+  writing-mode: vertical-rl;
+  clip-path: polygon(100% 0%, 100% 100%, 50% 90%, 0% 100%, 0% 0%);
+  padding: 0.51rem 0.5rem 1rem;
+  text-shadow: var(--shadow-chinese);
+}
+.label-wrap {
+  width: fit-content;
+  height: fit-content;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+
 #project {
   .letterspacing-1px {
     letter-spacing: -1px;
@@ -106,6 +133,9 @@
       h5,
       h6 {
         font-weight: bold;
+      }
+      h6{
+        font-size: 1rem;
       }
       span {
         letter-spacing: -1px;
@@ -328,9 +358,59 @@
 }
 
 #VCA {
-  #top{
-    .setting{
-      width: 250px;
+  position: relative;
+  #top {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr 0.2fr;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5rem;
+  }
+  .setting {
+    width: 250px;
+    position: absolute;
+    top: -4rem;
+    left: 10rem;
+    z-index: -1;
+  }
+  #info {
+    position: relative;
+    z-index: -2;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 450px 0.9fr 0.5fr;
+    align-items: stretch;
+
+    .content {
+      padding: 2rem 1rem;
+      h6 {
+        font-family: "Iansui";
+        text-shadow: var(--shadow-chinese);
+      }
+      p {
+        line-height: 2;
+        text-shadow: var(--shadow-chinese);
+      }
+    }
+    .chibi {
+      contain: size;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      a,
+      img {
+        display: block;
+        max-height: 100%;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+      }
+      a {
+        width: fit-content;
+      }
     }
   }
   #creates-area {

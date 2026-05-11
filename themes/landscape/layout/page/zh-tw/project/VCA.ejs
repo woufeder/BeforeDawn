@@ -3,11 +3,66 @@ layout: page/layout
 ---
 
 <section id="VCA" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
+  <div class="label-links ">
+    <a href="">
+      <div class="label-wrap">
+        <div class="label-zh">五年後</div>
+      </div>
+    </a>
+    <a href="">
+      <div class="label-wrap">
+        <div class="label-zh">本家</div>
+      </div>
+    </a>
+
+  </div>
   <section id="top" class="">
-    <img class="setting" src="<%= url_for("image/project/vca/setting.png") %>" alt="">
+    <div class="back-to-list self-start">
+      <a href="<%= url_for('/' + page.lang + '/Project/') %>"><svg fill="#18240a" width="36px" height="36px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+          <path d="M48,256c0,114.87,93.13,208,208,208s208-93.13,208-208S370.87,48,256,48,48,141.13,48,256Zm252-74.14V330.14a16,16,0,0,1-26.23,12.29L184.68,268.3a16,16,0,0,1,0-24.6l89.09-74.13A16,16,0,0,1,300,181.86Z" />
+        </svg></a>
+    </div>
+    <div class="name justify-self-center">
+      <h2>
+        ​里林‧涅爾佩特
+      </h2>
+      <h3>Lilin Neilpet</h3>
+    </div>
+
+    <div class="plurk-link">
+
+    </div>
+    <a href="<%= url_for("image/project/vca/setting.png") %>" data-fancybox="gallery" data-no-swup>
+      <img class="setting" src="<%= url_for("image/project/vca/setting.png") %>" alt="">
+    </a>
+
   </section>
   <section id="info" class="box">
+    <div>
 
+    </div>
+    <div class="content">
+      <h6 class="italic">「我會為了妳閃耀，直到妳看見。」</h6><br>
+      <div class="flex flex-row justify-between">
+        <p>
+          ▍男性<br>
+          ▍07.13 20歲<br>
+          ▍170 cm<br>
+          ▍聲線：<a href="https://www.youtube.com/watch?v=MiatkmNBA8w" class="underline">Denis Kalytovskyi</a>
+        </p>
+        <p>
+          ▍金髮，翠綠色虹膜，雙眼皮不明顯，近視不深<br>
+          ▍膚色以白人來說偏深，左撇子<br>
+          ▍穿戴整齊，不喜歡過於暴露的服裝<br>
+        </p>
+      </div>
+
+    </div>
+    <div class="chibi">
+      <a href="<%= url_for("image/project/vca/chibi.png") %>" data-fancybox="gallery" data-no-swup>
+        <img class="" src="<%= url_for("image/project/vca/chibi.png") %>" alt="">
+      </a>
+    </div>
   </section>
   <section id="biography" class="">
 
