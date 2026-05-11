@@ -28,7 +28,7 @@
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^1.0.0",
     "micromodal": "^0.6.1",
-    "swup": "^4.8.3"
+    "swup": "^4.9.0"
   },
   "devDependencies": {
     "tailwindcss": "^4.2.4"
