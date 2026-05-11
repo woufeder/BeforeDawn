@@ -1,15 +1,15 @@
 <% if (post.link){ %>
-  <h1 itemprop="name">
-    <a class="<%= class_name %>" href="<%- url_for(post.link) %>" target="_blank" itemprop="url"><%= post.title %></a>
-  </h1>
+  <h4 itemprop="name">
+    <a class="<%= class_name %>" href="<%- url_for(post.link) %>" data-no-swup target="_blank" itemprop="url"><%= post.title %></a>
+  </h4>
 <% } else if (post.title){ %>
   <% if (index){ %>
-    <h1 itemprop="name">
-      <a class="<%= class_name %>" href="<%- url_for(post.path) %>"><%= post.title %></a>
-    </h1>
+    <h4 itemprop="name">
+      <a class="<%= class_name %>" href="<%- url_for(post.path) %>" data-no-swup><%= post.title %></a>
+    </h4>
   <% } else { %>
-    <h1 class="<%= class_name %>" itemprop="headline name">
+    <h4 class="<%= class_name %>" itemprop="headline name">
       <%= post.title %>
-    </h1>
+    </h4>
   <% } %>
 <% } %>

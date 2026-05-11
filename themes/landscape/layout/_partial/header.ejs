@@ -141,7 +141,7 @@ function getSubmenu(key) {
                     const thisSubActive = isActiveUrl(sub.url);
                   %>
 
-            <a class="main-nav-submenu-link <%= thisSubActive ? 'is-active' : '' %>" href="<%- bd_url_for_lang(sub.url) %>">
+            <a class="main-nav-submenu-link <%= thisSubActive ? 'is-active' : '' %>" href="<%- bd_url_for_lang(sub.url) %>" <%- sub.key === 'blog' ? 'data-no-swup' : '' %>>
               <%= bd_i18n(sub.key) %>
             </a>
             <% }) %>

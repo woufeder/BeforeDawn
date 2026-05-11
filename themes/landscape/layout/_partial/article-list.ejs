@@ -12,7 +12,7 @@
       <%- post.excerpt %>
       <% if (theme.excerpt_link){ %>
 
-        <a href="<%- bd_url_for_lang(post.path, bd_post_lang(post)) %>"><%= __('read_more') %></a>
+        <a href="<%- bd_url_for_lang(post.path, bd_post_lang(post)) %>" data-no-swup><%= __('read_more') %></a>
 
       <% } %>
       <% } else { %>

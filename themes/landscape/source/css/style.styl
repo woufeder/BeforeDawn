@@ -3,6 +3,10 @@
 @import "_util/mixin"
 @import "_util/grid"
 
+:root 
+  font-size: 17px;
+
+
 global-reset()
 
 input, button
@@ -34,11 +38,16 @@ html, body
   -ms-user-select: none;
   user-select: none;
 
-.outer
-  clearfix()
-  max-width: (column-width + gutter-width) * columns + gutter-width
-  margin: 0 auto
-  padding: 0 gutter-width
+
+main 
+  min-height: calc(100vh - $header-height - $footer-height)
+
+
+#main
+  display: grid
+  grid-template-columns: auto minmax(200px, 300px)
+  gap 2rem
+
 
 .inner
   column(columns)

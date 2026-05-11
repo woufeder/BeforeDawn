@@ -9,7 +9,9 @@
     <%- partial('_partial/header') %>
 
     <main id="main" class="container">
+      <div>
       <%- body %>
+      </div>
       <% if (theme.sidebar && theme.sidebar !== 'bottom'){ %>
       <%- partial('_partial/sidebar') %>
       <% } %>
