@@ -1,22 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="<%= page.lang || config.language || 'zh-tw' %>">
-  
+
 <%- partial('_partial/head') %>
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <%- partial('_partial/header') %>
-      <div class="outer">
-        <section id="main"><%- body %></section>
-        <% if (theme.sidebar && theme.sidebar !== 'bottom'){ %>
-          <%- partial('_partial/sidebar') %>
-        <% } %>
-      </div>
-      <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-    </div>
-    <%- partial('_partial/mobile-nav') %>
-    <%- partial('_partial/after-footer') %>
+
+  <div id="swup" class="transition-fade">
+    <%- partial('_partial/header') %>
+
+    <main id="main" class="container">
+      <%- body %>
+      <% if (theme.sidebar && theme.sidebar !== 'bottom'){ %>
+      <%- partial('_partial/sidebar') %>
+      <% } %>
+    </main>
+    <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
   </div>
+  <%- partial('_partial/mobile-nav') %>
+  <!-- <%- partial('_partial/after-footer') %> -->
+
 </body>
+
 </html>
