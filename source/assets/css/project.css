@@ -370,7 +370,7 @@
     width: 250px;
     position: absolute;
     top: -4rem;
-    left: 10rem;
+    left: 7rem;
     z-index: -1;
   }
   #info {
@@ -378,11 +378,12 @@
     z-index: -2;
     margin-top: 2rem;
     display: grid;
-    grid-template-columns: 450px 0.9fr 0.5fr;
+    margin-left: 450px ;
+    grid-template-columns: 1fr 0.35fr;
     align-items: stretch;
 
     .content {
-      padding: 2rem 1rem;
+      padding: 2rem 2rem 2rem 4rem;
       h6 {
         font-family: "Iansui";
         text-shadow: var(--shadow-chinese);
