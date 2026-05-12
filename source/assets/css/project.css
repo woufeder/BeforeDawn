@@ -1,28 +1,29 @@
 .label-links {
-  position: absolute;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: flex-end;
   gap: 1rem;
-  right: 0;
-  top: -5rem;
+  margin-bottom: 1rem;
 }
 
 .label-zh {
-  width: 35px;
-  height: 90px;
+  width: 100px;
+  height: 35px;
   display: flex;
   align-items: center;
-  background-color: var(--box-bg-color);
-  -webkit-writing-mode: vertical-rl; /* 兼容 Safari/Chrome */
-  writing-mode: vertical-rl;
-  clip-path: polygon(100% 0%, 100% 100%, 50% 90%, 0% 100%, 0% 0%);
-  padding: 0.51rem 0.5rem 1rem;
+  background-color: #fff;
+  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
+  padding: 0.5rem 1rem 0.5rem 0.7rem;
   text-shadow: var(--shadow-chinese);
+  transition: var(--all-02s-easeOut);
+  &:hover {
+    opacity: 0.5;
+  }
 }
 .label-wrap {
   width: fit-content;
   height: fit-content;
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
 }
 
 #project {
@@ -359,10 +360,38 @@
 
 #VCA {
   position: relative;
+
   .box-title {
-    position: relative;
-    top: -3.5rem;
-    text-shadow: 0px 0px 4px #fff;
+    position: absolute;
+    top: -1.5rem;
+    letter-spacing: -1px;
+    text-shadow:
+      0px 0px 4px #fff,
+      0px 0px 8px #fff,
+      0px 0px 12px #fff,
+      0px 0px 16px #fff;
+    font-weight: bold;
+  }
+  .chibi {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    a,
+    img {
+      display: block;
+      max-height: 320px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    a {
+      width: fit-content;
+      position: absolute;
+      top: 100px;
+      z-index: -2;
+    }
   }
   #top {
     display: grid;
@@ -370,6 +399,28 @@
     justify-content: center;
     align-items: center;
     margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+
+    .name {
+      position: relative;
+      width: 400px;
+      height: 60px;
+      h1 {
+        position: absolute;
+        top: -30px;
+        left: -30px;
+        text-shadow: var(--shadow-chinese);
+      }
+      h2 {
+        position: absolute;
+        bottom: -40px;
+        right: -40px;
+        font-family: "Italianno", cursive;
+        font-size: 60px;
+        font-weight: 500;
+        text-shadow: var(--shadow-chinese);
+      }
+    }
   }
   .setting {
     width: 250px;
@@ -383,12 +434,11 @@
     z-index: -2;
     margin-top: 2rem;
     display: grid;
-    margin-left: 450px;
-    grid-template-columns: 1fr 0.35fr;
-    align-items: stretch;
+    margin-left: 400px;
+    grid-template-columns: 1fr 0.4fr;
 
     .content {
-      padding: 2rem 2rem 2rem 4rem;
+      padding: 2rem 4rem;
       h6 {
         font-family: "Iansui";
         text-shadow: var(--shadow-chinese);
@@ -398,42 +448,32 @@
         text-shadow: var(--shadow-chinese);
       }
     }
-    .chibi {
-      contain: size;
-      align-self: stretch;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      a,
-      img {
-        display: block;
-        max-height: 100%;
-        width: auto;
-        max-width: 100%;
-        object-fit: contain;
-      }
-      a {
-        width: fit-content;
-      }
-    }
   }
   #bio-pj {
     display: grid;
-    grid-template-columns: 0.7fr 0.3fr;
-    gap: 2rem;
+    grid-template-columns: 1fr 0.6fr;
+    gap: 2.5rem;
+    .npc-btn {
+      border: var(--text-color) 2px solid;
+      border-radius: 5px;
+      padding: 0.4rem 1rem;
+      font-weight: bold;
+      transition: var(--all-02s-easeOut);
+      &:hover {
+        opacity: 0.5;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+    }
+    p {
+      text-shadow: var(--shadow-chinese);
+      line-height: 1.8;
+    }
   }
   #creates-area {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
     gap: 2.5rem;
-    h2 {
-      text-shadow: var(--shadow-chinese);
-      font-weight: bold;
-      letter-spacing: 0;
-    }
     .btn {
       padding: 0.4rem 1rem;
       width: fit-content;
