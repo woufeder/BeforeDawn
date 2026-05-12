@@ -134,7 +134,7 @@
       h6 {
         font-weight: bold;
       }
-      h6{
+      h6 {
         font-size: 1rem;
       }
       span {
@@ -359,6 +359,11 @@
 
 #VCA {
   position: relative;
+  .box-title {
+    position: relative;
+    top: -3.5rem;
+    text-shadow: 0px 0px 4px #fff;
+  }
   #top {
     display: grid;
     grid-template-columns: 0.2fr 1fr 0.2fr;
@@ -378,7 +383,7 @@
     z-index: -2;
     margin-top: 2rem;
     display: grid;
-    margin-left: 450px ;
+    margin-left: 450px;
     grid-template-columns: 1fr 0.35fr;
     align-items: stretch;
 
@@ -413,6 +418,11 @@
         width: fit-content;
       }
     }
+  }
+  #bio-pj {
+    display: grid;
+    grid-template-columns: 0.7fr 0.3fr;
+    gap: 2rem;
   }
   #creates-area {
     display: grid;
