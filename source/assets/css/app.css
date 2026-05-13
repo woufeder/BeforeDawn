@@ -360,6 +360,9 @@
   .items-baseline {
     align-items: baseline;
   }
+  .items-baseline-last {
+    align-items: last baseline;
+  }
   .items-center {
     align-items: center;
   }
@@ -395,6 +398,15 @@
   }
   .gap-8 {
     gap: calc(var(--spacing) * 8);
+  }
+  .self-baseline {
+    align-self: baseline;
+  }
+  .self-baseline-last {
+    align-self: last baseline;
+  }
+  .self-end {
+    align-self: flex-end;
   }
   .self-start {
     align-self: flex-start;
