@@ -56,6 +56,7 @@ layout: false
   <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
   <script src="https://unpkg.com/swup@4"></script>
   <script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
+  <script src="<%= url_for('/js/swup-init.js') %>" defer></script>
   <script data-swup-ignore-script>
     const swup = new Swup({
       plugins: [new SwupScriptsPlugin({
@@ -71,31 +72,7 @@ layout: false
       }
     });
   </script>
-  <script>
-    window.initPage = function() {
-      if (typeof loadGallery === 'function') {
-        loadGallery();
-      }
-    };
-
-    document.addEventListener('DOMContentLoaded', window.initPage);
-
-    // 👉 只綁一次！
-    function bindSwupOnce() {
-      if (!window.swup) {
-        setTimeout(bindSwupOnce, 50);
-        return;
-      }
-
-      if (window.swup.hooks) {
-        window.swup.hooks.on('page:view', window.initPage);
-      } else if (window.swup.on) {
-        window.swup.on('contentReplaced', window.initPage);
-      }
-    }
-
-    bindSwupOnce();
-  </script>
+  
 </body>
 
 </html>
