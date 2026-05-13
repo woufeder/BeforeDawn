@@ -359,7 +359,8 @@
 }
 
 #VCA,
-#VCANPC {
+#VCANPC,
+#DUET-L {
   position: relative;
 
   .box-title {
@@ -386,12 +387,12 @@
       width: auto;
       max-width: 100%;
       object-fit: contain;
+      z-index: -2;
     }
     a {
       width: fit-content;
       position: absolute;
       top: 100px;
-      z-index: -2;
     }
   }
   #top {
@@ -494,4 +495,9 @@
 
 #VCANPC .setting {
   width: 200px;
+}
+
+#DUET-L .setting {
+  width: 450px;
+  left: -5rem;
 }
