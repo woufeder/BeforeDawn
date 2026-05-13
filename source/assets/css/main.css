@@ -48,19 +48,6 @@ main {
   section {
     display: grid;
 
-    &::before {
-      content: "";
-      position: relative;
-      top: 50;
-      left: 0;
-      width: 100vw;
-      height: 100%;
-      background: rgba(24, 47, 116, 0.2);
-      /* 自己調顏色 */
-
-      z-index: 2;
-    }
-
     /* 影片 & 內容 疊在同一格 */
     .home-video,
     .home-content {
@@ -80,11 +67,12 @@ main {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      /* padding: 4rem 15rem; */
+      padding: 4rem 15rem;
       z-index: 3;
 
       h1 {
-        font-family: "Iansui", "LXGW WenKai Mono TC", "Noto Sans TC", system-ui, sans-serif;
+        font-family:
+          "Iansui", "LXGW WenKai Mono TC", "Noto Sans TC", system-ui, sans-serif;
         text-shadow: var(--shadow-chinese);
         font-weight: normal;
       }
@@ -254,9 +242,64 @@ main {
 }
 
 /* ----------------RWD------------------- */
-@media (max-width: 640px) and (orientation: portrait) {
+/* 2xl */
+@media (max-width: 1535px) {
   #home {
-    margin: 3rem 0;
+    section {
+      .home-content {
+        padding: 4rem 10rem;
+      }
+    }
+  }
+}
+
+/* xl */
+@media (max-width: 1279px) {
+  #home {
+    section {
+      .home-content {
+        padding: 4rem 3rem;
+      }
+    }
+    .lang-switcher {
+      right: 5%;
+    }
+  }
+}
+
+/* lg */
+@media (max-width: 1023px) {
+  #home {
+    section {
+      .home-content {
+        padding: 3rem 1rem;
+        gap: 1rem;
+        h3 {
+          margin-left: 0;
+        }
+        .pageBtnBox {
+          padding-left: 1rem;
+        }
+      }
+    }
+    .lang-switcher {
+      right: -1%;
+    }
+  }
+}
+
+/* md */
+@media (max-width: 767px) {
+  #home {
+    .lang-switcher {
+      right: -3%;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  #home {
+    padding: 15rem 0;
 
     & section {
       & .home-content {
@@ -286,57 +329,10 @@ main {
           gap: 0.2rem;
         }
       }
+      .lang-switcher {
+        right: 10%;
+      }
     }
-  }
-
-  .home-content {
-    padding: 3rem 1rem;
-  }
-}
-
-@media (min-width: 640px) {
-  .home-content {
-    padding: 3rem 1rem;
-  }
-
-  #home .lang-switcher {
-    right: -3%;
-  }
-}
-
-/* md */
-@media (min-width: 768px) {
-  .home-content {
-    padding: 3rem 1rem;
-  }
-
-  #home .lang-switcher {
-    right: 0%;
-  }
-}
-
-/* lg */
-@media (min-width: 1024px) {
-  .home-content {
-    padding: 4rem 5rem;
-  }
-
-  #home .lang-switcher {
-    right: 15%;
-  }
-}
-
-/* xl */
-@media (min-width: 1280px) {
-  .home-content {
-    padding: 4rem 10rem;
-  }
-}
-
-/* 2xl */
-@media (min-width: 1536px) {
-  .home-content {
-    padding: 4rem 15rem;
   }
 }
 

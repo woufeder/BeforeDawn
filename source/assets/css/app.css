@@ -301,6 +301,9 @@
   .w-full {
     width: 100%;
   }
+  .flex-1 {
+    flex: 1;
+  }
   .flex-2 {
     flex: 2;
   }
@@ -561,6 +564,31 @@
       @media (hover: hover) {
         opacity: 70%;
       }
+    }
+  }
+  .xl\:mt-auto {
+    @media (width >= 80rem) {
+      margin-top: auto;
+    }
+  }
+  .xl\:flex {
+    @media (width >= 80rem) {
+      display: flex;
+    }
+  }
+  .xl\:flex-1 {
+    @media (width >= 80rem) {
+      flex: 1;
+    }
+  }
+  .xl\:flex-2 {
+    @media (width >= 80rem) {
+      flex: 2;
+    }
+  }
+  .xl\:flex-3 {
+    @media (width >= 80rem) {
+      flex: 3;
     }
   }
 }
