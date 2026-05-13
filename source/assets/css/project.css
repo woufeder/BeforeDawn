@@ -358,7 +358,8 @@
   }
 }
 
-#VCA {
+#VCA,
+#VCANPC {
   position: relative;
 
   .box-title {
@@ -486,4 +487,8 @@
       }
     }
   }
+}
+
+#VCANPC .setting {
+  width: 200px;
 }

@@ -196,7 +196,7 @@
   }
   #characters-area {
     display: grid;
-    grid-template-columns: max-content 1fr;
+    grid-template-columns: 0.6fr 0.4fr;
     gap: 2.5rem;
     & > .box:nth-child(1) {
       align-self: start;
