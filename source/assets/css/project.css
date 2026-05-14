@@ -360,7 +360,8 @@
 
 #VCA,
 #VCANPC,
-#DUET-L {
+#DUET-L,
+#DUET-N {
   position: relative;
 
   .box-title {
@@ -501,3 +502,4 @@
   width: 450px;
   left: -5rem;
 }
+
