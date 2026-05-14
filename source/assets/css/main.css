@@ -47,8 +47,8 @@ main {
 
   section {
     display: grid;
-    width: 100%;
-    overflow: hidden;
+      width: 100%;
+  overflow: hidden; 
 
     /* 影片 & 內容 疊在同一格 */
     .home-video,

@@ -27,11 +27,32 @@ function initHome() {
 }
 
 function initPage() {
+  document.body.classList.remove("mobile-menu-open");
+
   if (typeof loadGallery === "function") {
     loadGallery();
   }
 
   initHome();
+}
+
+if (!window.mobileMenuBound) {
+  window.mobileMenuBound = true;
+
+  document.addEventListener("click", (event) => {
+    const toggle = event.target.closest("#mobile-menu-toggle");
+    const overlay = event.target.closest("#mobile-menu-overlay");
+    const menuLink = event.target.closest("#mobile-menu a");
+
+    if (toggle) {
+      document.body.classList.toggle("mobile-menu-open");
+      return;
+    }
+
+    if (overlay || menuLink) {
+      document.body.classList.remove("mobile-menu-open");
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", initPage);

@@ -146,3 +146,221 @@ $menu-active-color = rgba(105, 120, 170, 0.5)
 #sub-nav
   float: right
   margin-right: -15px
+
+/* ===============================
+   trigger
+================================= */
+
+#mobile-menu-toggle
+  width 30px
+  height 42px
+
+  flex-direction column
+  justify-content center
+  gap 6px
+
+  background transparent
+  border none
+  cursor pointer
+
+  position fixed
+  top 1.2rem
+  right 1.2rem
+  z-index 3000
+
+  span
+    width 100%
+    height 3px
+    background-color $text-color
+    transition 0.3s ease
+
+/* active */
+
+body.mobile-menu-open
+  overflow hidden
+
+  #mobile-menu-toggle
+    span:nth-child(1)
+      transform translateY(10px) rotate(45deg)
+
+    span:nth-child(2)
+      opacity 0
+
+    span:nth-child(3)
+      transform translateY(-7px) rotate(-45deg)
+
+/* ===============================
+   overlay
+================================= */
+
+#mobile-menu-overlay
+  position fixed
+  inset 0
+
+  background rgba(0, 0, 0, 0.45)
+  backdrop-filter blur(10px)
+
+  opacity 0
+  visibility hidden
+  transition 0.35s ease
+
+  z-index 1990
+
+body.mobile-menu-open
+  #mobile-menu-overlay
+    opacity 1
+    visibility visible
+
+/* ===============================
+   offcanvas
+================================= */
+
+#mobile-menu
+  position fixed
+  top 0
+  right 0
+
+  width 250px
+  height 100dvh
+
+  background linear-gradient($menu-active-color, $menu-active-color), #000000ee
+
+  border-right 1px solid rgba(255, 255, 255, 0.12)
+
+  transform translateX(100%)
+  transition transform 0.42s cubic-bezier(0.77, 0, 0.18, 1)
+
+  z-index 2000
+
+  overflow-y auto
+
+body.mobile-menu-open
+  #mobile-menu
+    transform translateX(0)
+
+/* ===============================
+   inner
+================================= */
+
+.mobile-menu-inner
+  padding 3rem 1rem 4rem
+
+  display flex
+  flex-direction column
+  gap 0.75rem
+
+/* ===============================
+   links
+================================= */
+
+.mobile-link,
+.mobile-summary
+  color $text-color
+  text-decoration none
+
+  font-size 1rem
+  letter-spacing 0.06rem
+
+  padding 0 0.85rem
+
+  border-bottom 1px solid rgba(255, 255, 255, 0.08)
+
+.mobile-link.is-active,
+.mobile-collapse.is-active > .mobile-summary,
+.mobile-submenu a.is-active
+  background-color $menu-active-color
+  border-radius 4px
+
+  color $text-color
+  text-shadow $shadow-chinese
+
+/* ===============================
+   collapse
+================================= */
+
+.mobile-collapse
+  border-bottom 1px solid rgba(255, 255, 255, 0.08)
+
+.mobile-summary
+  list-style none
+  cursor pointer
+
+  display flex
+  justify-content space-between
+  align-items center
+
+.mobile-summary::-webkit-details-marker
+  display none
+
+.mobile-summary::after
+  font-size 13px
+  content "▼"
+  transition transform 0.25s ease
+
+.mobile-collapse[open]
+  .mobile-summary::after
+    transform rotate(180deg)
+
+/* ===============================
+   submenu
+================================= */
+
+.mobile-submenu
+  padding 0 0.85rem
+
+  display flex
+  flex-direction column
+  gap 0.35rem
+
+  padding 0.4rem 0 0 1rem
+
+.mobile-submenu a
+  color $text-color
+  text-decoration none
+
+  font-size 0.95rem
+  line-height 1.6
+
+  transition 0.2s ease
+
+.mobile-submenu a:hover,
+.mobile-link:hover,
+.mobile-summary:hover
+  color $text-color
+
+/* ===============================
+   language switch
+================================= */
+
+.mobile-lang-switch
+  display flex
+  align-items center
+  gap 0.75rem
+
+  padding-bottom 1.5rem
+  margin-bottom 1rem
+
+  border-bottom 1px solid rgba(255, 255, 255, 0.08)
+
+  color $text-color
+
+  .lang-globe
+    width 18px
+    height 18px
+    flex-shrink 0
+
+.mobile-lang-select
+  background transparent
+  border none
+
+  color inherit
+
+  font-size 1rem
+  letter-spacing 0.04rem
+
+  outline none
+  cursor pointer
+
+  option
+    background linear-gradient($menu-active-color, $menu-active-color), #000000ee
+    color $text-color

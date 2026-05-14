@@ -6,9 +6,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 90vh;
+    max-width: fit-content;
     img {
-      max-height: 75vh;
+      max-width: 300px;
+      height: 80vh;
+      min-height: 600px;
     }
     .dialog {
       position: relative;
@@ -23,8 +25,8 @@
       &::before {
         content: "";
         position: absolute;
-        bottom: -50%;
-        left: 20%;
+        bottom: -25px;
+        left: 20px;
         width: 30px;
         height: 30px;
         background: #cbd3de;
@@ -147,6 +149,101 @@
       .gif2 {
         opacity: 0;
         transition: all 0.2s ease-out;
+      }
+    }
+  }
+}
+
+/* ----------------RWD------------------- */
+/* 2xl */
+@media (max-width: 1535px) {
+  #about {
+    section {
+      .home-content {
+        padding: 4rem 10rem;
+      }
+    }
+  }
+}
+
+/* xl */
+@media (max-width: 1279px) {
+  #about {
+    section {
+      .home-content {
+        padding: 4rem 3rem;
+      }
+    }
+    .lang-switcher {
+      right: 5%;
+    }
+  }
+}
+
+/* lg */
+@media (max-width: 1023px) {
+  #about {
+    section {
+      .home-content {
+        padding: 3rem 1rem;
+        gap: 1rem;
+        h3 {
+          margin-left: 0;
+        }
+        .pageBtnBox {
+          padding-left: 1rem;
+        }
+      }
+    }
+    .lang-switcher {
+      right: -1%;
+    }
+  }
+}
+
+/* md */
+@media (max-width: 767px) {
+  #about {
+    .lang-switcher {
+      right: -3%;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  #about {
+    padding: 15rem 0;
+
+    & section {
+      & .home-content {
+        padding: 3rem 1.5rem;
+        flex-direction: column;
+
+        h3 {
+          margin-left: 0;
+        }
+
+        .intro {
+          margin-top: 1.5rem;
+        }
+
+        .pageBtnBox {
+          width: 100%;
+          margin-top: 1rem;
+          border-left: none;
+          border-top: 1px dashed #bcbcbc;
+          box-shadow: 0 -5px 12px -8px rgba(255, 255, 255, 0.3);
+          padding-left: 0.5rem;
+          padding-top: 1rem;
+          gap: 0.8rem;
+        }
+
+        .BtnBox {
+          gap: 0.2rem;
+        }
+      }
+      .lang-switcher {
+        right: 10%;
       }
     }
   }
