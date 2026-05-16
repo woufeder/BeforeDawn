@@ -11,7 +11,8 @@
   height: 35px;
   display: flex;
   align-items: center;
-  background-color: #fff;
+  background: linear-gradient(var(--bg-color), var(--bg-color)), #000000ee;
+  color: #fff;
   clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
   padding: 0.5rem 1rem 0.5rem 0.7rem;
   text-shadow: var(--shadow-chinese);
@@ -361,7 +362,8 @@
 #VCA,
 #VCANPC,
 #DUET-L,
-#DUET-N {
+#DUET-N,
+#AG {
   position: relative;
 
   .box-title {
@@ -503,3 +505,19 @@
   left: -5rem;
 }
 
+#AG {
+  #top {
+    .name {
+      h2 {
+        bottom: -15px;
+        right: -15px;
+        font-family: "Iansui", cursive;
+        font-size: 25px;
+      }
+    }
+  }
+  .setting {
+    width: 350px;
+    left: 2.5rem;
+  }
+}
