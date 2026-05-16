@@ -60,7 +60,6 @@
   font-size: 16px;
   width: 16px;
   height: 16px;
-  padding: 20px 15px;
   position: relative;
   cursor: pointer;
 }
@@ -168,7 +167,7 @@
   border: none;
   cursor: pointer;
   position: fixed;
-  top: 1.2rem;
+  top: 10px;
   right: 2rem;
   z-index: 3000;
 
@@ -408,5 +407,44 @@ body.mobile-menu-open #mobile-menu {
       linear-gradient(var(--menu-active-color), var(--menu-active-color)),
       #000000ee;
     color: var(--text-color);
+  }
+}
+/* ================RWD================ */
+
+@media (max-width: 1023px) {
+  .main-nav-link {
+    width: 90px;
+  }
+  .main-nav-link {
+    letter-spacing: 0px;
+    padding: 0px 8px;
+  }
+  .nav-note {
+    width: 90px;
+  }
+  .nav-icon {
+    width: 0;
+    height: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  #header {
+    position: fixed;
+    top: 0;
+    z-index: 5000;
+    width: 100%;
+    background:
+      linear-gradient(var(--menu-active-color), var(--menu-active-color)),
+      #000000ee;
+      
+  }
+  #logo {
+    h2 {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    h4{
+    font-size: 0.8rem;}
   }
 }

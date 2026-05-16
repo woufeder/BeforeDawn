@@ -10,7 +10,7 @@
     img {
       max-width: 300px;
       height: 80vh;
-      min-height: 600px;
+      min-height: 700px;
     }
     .dialog {
       position: relative;
@@ -85,26 +85,18 @@
     }
   }
   .gallery {
-    width: fit-content;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    max-width: 280px;
     gap: 1rem;
     img {
       width: 100%;
       height: auto;
     }
     .pic-group {
-      display: flex;
-      /* display: none; */
-      flex-direction: row;
-      flex-wrap: wrap;
-      margin-left: auto;
       gap: 0.5rem;
       a {
         display: block;
-        max-width: 50px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         img {
           outline: #fff 1px solid;
@@ -158,24 +150,17 @@
 /* 2xl */
 @media (max-width: 1535px) {
   #about {
-    section {
-      .home-content {
-        padding: 4rem 10rem;
-      }
-    }
   }
 }
 
 /* xl */
 @media (max-width: 1279px) {
   #about {
-    section {
-      .home-content {
-        padding: 4rem 3rem;
+    grid-template-columns: 0.3fr 1fr;
+    #protile {
+      .note {
+        align-self: flex-end;
       }
-    }
-    .lang-switcher {
-      right: 5%;
     }
   }
 }
@@ -183,20 +168,8 @@
 /* lg */
 @media (max-width: 1023px) {
   #about {
-    section {
-      .home-content {
-        padding: 3rem 1rem;
-        gap: 1rem;
-        h3 {
-          margin-left: 0;
-        }
-        .pageBtnBox {
-          padding-left: 1rem;
-        }
-      }
-    }
-    .lang-switcher {
-      right: -1%;
+    #protile {
+      margin-left: 1rem;
     }
   }
 }
@@ -204,46 +177,37 @@
 /* md */
 @media (max-width: 767px) {
   #about {
-    .lang-switcher {
-      right: -3%;
+    grid-template-columns: 0.1fr 1fr;
+    margin-top: 3rem;
+    #portrait {
+      justify-content: flex-end;
+      img {
+        max-width: 150px;
+        height: auto;
+        min-height: 0;
+      }
     }
   }
 }
 
 @media (max-width: 639px) {
   #about {
-    padding: 15rem 0;
+    grid-template-columns: 1fr;
+    #portrait {
+      display: none;
+    }
+    #protile {
+      margin-left: 0;
+    }
+    .gallery {
+      align-items: flex-end;
+      .Q {
+        width: 100%;
+        display: inline-block;
 
-    & section {
-      & .home-content {
-        padding: 3rem 1.5rem;
-        flex-direction: column;
-
-        h3 {
-          margin-left: 0;
-        }
-
-        .intro {
-          margin-top: 1.5rem;
-        }
-
-        .pageBtnBox {
+        img {
           width: 100%;
-          margin-top: 1rem;
-          border-left: none;
-          border-top: 1px dashed #bcbcbc;
-          box-shadow: 0 -5px 12px -8px rgba(255, 255, 255, 0.3);
-          padding-left: 0.5rem;
-          padding-top: 1rem;
-          gap: 0.8rem;
         }
-
-        .BtnBox {
-          gap: 0.2rem;
-        }
-      }
-      .lang-switcher {
-        right: 10%;
       }
     }
   }

@@ -5,7 +5,7 @@
 @import "./project.css";
 
 :root {
-  --header-height: px;
+  --header-height: 95px;
   --footer-height: 80px;
   --all-02s-easeOut: all 0.2s ease-out;
 }
@@ -41,14 +41,15 @@ main {
 /* ----------------首頁------------------- */
 
 #home {
+  min-height: 0;
   height: 100vh;
   position: relative;
   z-index: 1;
 
   section {
     display: grid;
-      width: 100%;
-  overflow: hidden; 
+    width: 100%;
+    overflow: hidden;
 
     /* 影片 & 內容 疊在同一格 */
     .home-video,
@@ -68,7 +69,7 @@ main {
       position: relative;
       display: flex;
       flex-direction: row;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       padding: 4rem 15rem;
       z-index: 3;
@@ -92,9 +93,7 @@ main {
       }
 
       .pageBtnBox {
-        border-left: 1px dashed #bcbcbc;
-        box-shadow: -5px 0 12px -8px rgba(255, 255, 255, 0.3);
-        padding-left: 3rem;
+        /* border-left: 1px dashed #bcbcbc; */
 
         .pageBtn {
           display: inline-block;
@@ -281,7 +280,6 @@ main {
           margin-left: 0;
         }
         .pageBtnBox {
-          padding-left: 1rem;
         }
       }
     }
@@ -293,16 +291,22 @@ main {
 
 /* md */
 @media (max-width: 767px) {
+  :root {
+    --header-height: 48px;
+    --footer-height: 50px;
+  }
   #home {
     .lang-switcher {
-      right: -3%;
+      right: 5%;
     }
   }
 }
 
-@media (max-width: 639px) {
+@media (max-width: 639px) and (orientation: portrait) {
   #home {
-    padding: 15rem 0;
+    height: 100%;
+    min-height: 100vh;
+    padding: 2rem 0;
 
     & section {
       & .home-content {
@@ -315,21 +319,6 @@ main {
 
         .intro {
           margin-top: 1.5rem;
-        }
-
-        .pageBtnBox {
-          width: 100%;
-          margin-top: 1rem;
-          border-left: none;
-          border-top: 1px dashed #bcbcbc;
-          box-shadow: 0 -5px 12px -8px rgba(255, 255, 255, 0.3);
-          padding-left: 0.5rem;
-          padding-top: 1rem;
-          gap: 0.8rem;
-        }
-
-        .BtnBox {
-          gap: 0.2rem;
         }
       }
       .lang-switcher {

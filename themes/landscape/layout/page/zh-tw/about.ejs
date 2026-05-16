@@ -13,14 +13,15 @@ layout: page/layout
   </div>
 
   <div id="protile" class=" reveal-x">
-
-    <div class="flex flex-row items-end w-full mb-4 ">
+    <!-- 名字 -->
+    <div class="flex flex-col lg:flex-row items-start xl:items-end w-full mb-4 ">
       <div class="name">
         <h1>葬光</h1>
         <h2>After Light</h2>
       </div>
       <p class="note">埋葬悲傷後的微小光芒</p>
     </div>
+    <!-- 文字 -->
     <div class="content">
       <strong>▌About Me</strong><br>
       <p class="mt-4">
@@ -50,8 +51,8 @@ layout: page/layout
 
   </div>
 
-  <div class="gallery fade-in-once">
-    <div class="pic-group">
+  <div class="gallery flex flex-row xl:flex-col fade-in-once max-xl:col-span-2 mt-1 xl:mt-0">
+    <div class="pic-group flex flex-col xl:flex-row flex-wrap mt-auto xl:mt-0 xl:ms-auto gap-2">
       <a href="<%= url_for("image/about/avatar.png") %>" data-fancybox="gallery" data-no-swup>
         <img class="" src="<%= url_for("image/about/avatar.png") %>" alt="Avatar 1">
       </a>
@@ -62,7 +63,7 @@ layout: page/layout
         <img class="" src="<%= url_for("image/about/avatar-zokunya.png") %>" alt="">
       </a>
     </div>
-    <div class="chibi-gif mt-auto">
+    <div class="chibi-gif ms-auto xl:mt-auto">
       <a href="<%= url_for("image/about/1.gif") %>" data-fancybox="gallery" data-no-swup class="chibi gif1">
         <img src="<%= url_for("image/about/1.gif") %>" alt="">
       </a>
@@ -70,12 +71,12 @@ layout: page/layout
         <img src="<%= url_for("image/about/2.gif") %>" alt="">
       </a>
     </div>
-    <div class="relative">
+    <div class="relative flex flex-col-reverse xl:flex-col w-1/2 md:w-min">
 
       <a class="Q" href="<%= url_for("image/about/Q-mrerror.png") %>" data-fancybox="gallery" data-no-swup data-caption="繪師：哩哩">
         <img src="<%= url_for("image/about/Q-mrerror.png") %>" alt="">
       </a>
-      <div class="w-full text-right">
+      <div class="w-fit md:w-full text-right">
         繪師：哩哩
       </div>
     </div>

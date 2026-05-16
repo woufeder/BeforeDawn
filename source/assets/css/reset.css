@@ -88,6 +88,12 @@ textarea {
   font-size: 17px;
 }
 
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
 /* ===== Base ===== */
 
 body {
@@ -150,6 +156,43 @@ h6 {
   font-weight: 500;
   line-height: 1.5;
   color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  h3 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  h5 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  h6 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
 }
 
 /* Paragraph */
