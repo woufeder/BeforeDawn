@@ -115,67 +115,20 @@ layout: page/layout
       <h2 class="box-title">
         STORY
       </h2>
-      <% 
-        const currentLang=bd_current_lang(); 
-        let introPosts=[]; site.posts.each(function(post){ 
-          if (bd_post_lang(post)!==currentLang) return; 
-          var matched=false; post.categories.each(function(cat){ if(String(cat.name || '' ).trim()==='自介' ) { matched=true; } }); 
-          if (matched) { introPosts.push(post); } }); 
-          introPosts.sort(function(a, b){ return b.date.valueOf() - a.date.valueOf(); }); 
-        %>
-      <div id="about-intro-posts" class="px-6">
-        <% introPosts.forEach(function(post, i){ %>
-        <div class="intro-item" data-index="<%= i %>">
-          <%- partial('_partial/article-list', {post: post, index: true}) %>
-        </div>
-        <% }) %>
-      </div>
-      <div id="intro-pagination" class="flex flex-row items-center justify-center gap-4">
-        <button id="prev">上一頁</button>
-        <span id="page-info"></span>
-        <button id="next">下一頁</button>
-      </div>
+
+      <%- partial('_partial/post-category-pager', {
+    id: 'story',
+    category: '自介',
+    perPage: 5,
+    listClass: 'px-6',
+    prevText: '上一頁',
+    nextText: '下一頁'
+  }) %>
     </div>
   </section>
 </section>
 
-<script>
-  (() => {
-    const perPage = 5;
-    const items = document.querySelectorAll('.intro-item');
 
-    let currentPage = 1;
-    const totalPages = Math.ceil(items.length / perPage);
-
-    function render() {
-      items.forEach((el, i) => {
-        el.style.display =
-          (i >= (currentPage - 1) * perPage && i < currentPage * perPage) ?
-          'block' :
-          'none';
-      });
-
-      document.getElementById('page-info').textContent =
-        `${currentPage} / ${totalPages}`;
-    }
-
-    document.getElementById('prev').onclick = () => {
-      if (currentPage > 1) {
-        currentPage--;
-        render();
-      }
-    };
-
-    document.getElementById('next').onclick = () => {
-      if (currentPage < totalPages) {
-        currentPage++;
-        render();
-      }
-    };
-
-    render();
-  })();
-</script>
 <%- partial('_partial/cloudinary-gallery', {
   tag: 'vca',
   captions: {

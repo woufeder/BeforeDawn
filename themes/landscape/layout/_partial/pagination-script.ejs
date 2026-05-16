@@ -1,0 +1,47 @@
+<script>
+  (() => {
+    const perPage = <%= perPage || 5 %>;
+
+    const items = document.querySelectorAll('<%- itemSelector %>');
+
+    const prevBtn = document.querySelector('<%- prevSelector %>');
+    const nextBtn = document.querySelector('<%- nextSelector %>');
+    const pageInfo = document.querySelector('<%- pageInfoSelector %>');
+
+    if (!items.length) return;
+
+    let currentPage = 1;
+    const totalPages = Math.ceil(items.length / perPage);
+
+    function render() {
+      items.forEach((el, i) => {
+        el.style.display =
+          i >= (currentPage - 1) * perPage &&
+          i < currentPage * perPage
+            ? 'block'
+            : 'none';
+      });
+
+      if (pageInfo) {
+        pageInfo.textContent =
+          `${currentPage} / ${totalPages}`;
+      }
+    }
+
+    prevBtn?.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        render();
+      }
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        render();
+      }
+    });
+
+    render();
+  })();
+</script>

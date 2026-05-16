@@ -1,0 +1,96 @@
+<%
+  const currentLang = bd_current_lang();
+
+  const pagerId = id || 'post-pager';
+  const targetCategory = category || '';
+
+  const listId = pagerId + '-posts';
+  const itemClass = pagerId + '-item';
+  const prevId = pagerId + '-prev';
+  const nextId = pagerId + '-next';
+  const pageInfoId = pagerId + '-page-info';
+
+    const safePerPage = typeof perPage !== 'undefined' ? perPage : 5;
+  const safeListClass = typeof listClass !== 'undefined' ? listClass : '';
+  const safePaginationClass = typeof paginationClass !== 'undefined'
+    ? paginationClass
+    : 'flex flex-row items-center justify-center gap-4';
+
+  const safePrevText = typeof prevText !== 'undefined' ? prevText : '上一頁';
+  const safeNextText = typeof nextText !== 'undefined' ? nextText : '下一頁';
+
+  let matchedPosts = [];
+
+  site.posts.each(function(post) {
+    if (bd_post_lang(post) !== currentLang) return;
+
+    let matched = false;
+
+    post.categories.each(function(cat) {
+      if (String(cat.name || '').trim() === targetCategory) {
+        matched = true;
+      }
+    });
+
+    if (matched) {
+      matchedPosts.push(post);
+    }
+  });
+
+  matchedPosts.sort(function(a, b) {
+    return b.date.valueOf() - a.date.valueOf();
+  });
+%>
+
+<div id="<%= listId %>" class="<%= safeListClass %>">
+  <% matchedPosts.forEach(function(post, i) { %>
+  <div class="<%= itemClass %>" data-index="<%= i %>">
+    <article id="<%= post.layout %>-<%= post.slug %>">
+      <% if (post.link || post.title) { %>
+      <div class="article-header flex flex-row items-end mb-4">
+        <%- partial('post/title', {
+              post: post,
+              index: true,
+              class_name: 'p-name article-title'
+            }) %>
+
+        <%- partial('post/date', {
+              post: post,
+              index: true,
+              class_name: 'article-date ms-auto',
+              date_format: null
+            }) %>
+      </div>
+      <% } %>
+
+      <div class="article-body flex flex-col" itemprop="articleBody">
+        <% if (post.excerpt) { %>
+        <%- post.excerpt %>
+
+        <% if (theme.excerpt_link) { %>
+        <a href="<%- bd_url_for_lang(post.path, bd_post_lang(post)) %>" data-no-swup>
+          <%= __('read_more') %>
+        </a>
+        <% } %>
+        <% } else { %>
+        <%- post.content %>
+        <% } %>
+      </div>
+    </article>
+  </div>
+  <% }) %>
+</div>
+
+<div id="<%= pagerId %>-pagination" class="<%= safePaginationClass %>">
+  <button id="<%= prevId %>"><%= safePrevText %></button>
+  <span id="<%= pageInfoId %>"></span>
+  <button id="<%= nextId %>"><%= safeNextText %></button>
+</div>
+
+<%- partial('_partial/pagination-script', {
+  perPage: safePerPage,
+  itemSelector: '.' + itemClass,
+  prevSelector: '#' + prevId,
+  nextSelector: '#' + nextId,
+  pageInfoSelector: '#' + pageInfoId
+}) %>
