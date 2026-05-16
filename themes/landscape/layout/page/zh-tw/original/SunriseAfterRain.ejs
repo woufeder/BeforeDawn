@@ -33,106 +33,6 @@ layout: page/layout
     </div>
   </section>
 
-  <section id="characters-area" class=" mt-10">
-    <div class="p-8 box w-fit">
-      <div class="flex flex-row items-center mb-6">
-        <h2>
-          MAIN CHARACTERS
-        </h2>
-        <!-- <a href="https://docs.google.com/spreadsheets/d/1Cxz4chKcb1_rkF7xz_W2xEI7c2XZCl3L5kT-26hfEJY/edit?gid=905747692#gid=905747692" class="btn ms-auto">詳細設定</a> -->
-      </div>
-
-      <div class="name-list columns-2 h-full text-left gap-8">
-
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>天雨甯</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>文以朝</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>言少罌</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>封曄楠</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>紀梓璇</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>黎書琴</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>遲夏</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="p-8 box w-full">
-      <div class="flex flex-row items-center mb-6 ">
-        <h2>
-          TERMINOLOGY
-        </h2>
-      </div>
-      <div class="noun-list">
-        <table>
-          <tbody>
-            <tr class="border-dashed border border-gray-500 my-1">
-              <td class="text-right mr-1 p-2  border-dashed border-r border-gray-500">仁北市</td>
-              <td class="p-2">位於台灣北部的架空都市，大致位置介於新北與桃園的交界處。</td>
-            </tr>
-            <tr class="border-dashed border border-gray-500 my-1">
-              <td class="text-right mr-1 p-2 border-dashed border-r border-gray-500">景湖區</td>
-              <td class="p-2">仁北市第一大區，永明高中所在地與冬城科大所在地。</td>
-            </tr>
-            <tr class="border-dashed border border-gray-500 my-1">
-              <td class="text-right mr-1 p-2 border-dashed border-r border-gray-500">靖山區</td>
-              <td class="p-2">仁北市第二大區，恆安高中所在地。相對景湖區靠近山邊，房價較低且生活步調較慢。</td>
-            </tr>
-            <tr class="border-dashed border border-gray-500 my-1">
-              <td class="text-right mr-1 p-2 border-dashed border-r border-gray-500">冬陽溪</td>
-              <td class="p-2"></td>
-            </tr>
-            <tr class="border-dashed border border-gray-500 my-1">
-              <td class="text-right mr-1 p-2 border-dashed border-r border-gray-500">恆安高中</td>
-              <td class="p-2">位於靖山區的全日制私立高中。</td>
-            </tr>
-            <tr class="border-dashed border border-gray-500 my-1">
-              <td class="text-right mr-1 p-2 border-dashed border-r border-gray-500">冬城科技大學</td>
-              <td class="p-2"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
   <section id="creates-area" class=" mt-10">
     <div class="p-8 box">
       <h2 class="mb-4">
@@ -148,122 +48,20 @@ layout: page/layout
       <h2 class="mb-4">
         STORY
       </h2>
-      <% 
-        const currentLang=bd_current_lang(); 
-        let introPosts=[]; site.posts.each(function(post){ 
-          if (bd_post_lang(post)!==currentLang) return; 
-          var matched=false; post.categories.each(function(cat){ if(String(cat.name || '' ).trim()==='自介' ) { matched=true; } }); 
-          if (matched) { introPosts.push(post); } }); 
-          introPosts.sort(function(a, b){ return b.date.valueOf() - a.date.valueOf(); }); 
-        %>
-      <div id="about-intro-posts" class="px-6">
-        <% introPosts.forEach(function(post, i){ %>
-        <div class="intro-item" data-index="<%= i %>">
-          <%- partial('_partial/article-list', {post: post, index: true}) %>
-        </div>
-        <% }) %>
-      </div>
-      <div id="intro-pagination" class="flex flex-row items-center justify-center gap-4">
-        <button id="prev">上一頁</button>
-        <span id="page-info"></span>
-        <button id="next">下一頁</button>
-      </div>
+      <%- partial('_partial/post-category-pager', {
+    id: 'story',
+    category: '文章',
+    perPage: 5,
+    listClass: 'px-6',
+    prevText: '上一頁',
+    nextText: '下一頁'
+  }) %>
     </div>
   </section>
 </section>
 
-<script>
-  (() => {
-    const perPage = 5;
-    const items = document.querySelectorAll('.intro-item');
-
-    let currentPage = 1;
-    const totalPages = Math.ceil(items.length / perPage);
-
-    function render() {
-      items.forEach((el, i) => {
-        el.style.display =
-          (i >= (currentPage - 1) * perPage && i < currentPage * perPage) ?
-          'block' :
-          'none';
-      });
-
-      document.getElementById('page-info').textContent =
-        `${currentPage} / ${totalPages}`;
-    }
-
-    document.getElementById('prev').onclick = () => {
-      if (currentPage > 1) {
-        currentPage--;
-        render();
-      }
-    };
-
-    document.getElementById('next').onclick = () => {
-      if (currentPage < totalPages) {
-        currentPage++;
-        render();
-      }
-    };
-
-    render();
-  })();
-</script>
-<script>
-  (function() {
-    const cloudName = 'dhtsewjf1';
-    const tag = 'SAR';
-
-    async function loadGallery() {
-      const gallery = document.getElementById('gallery');
-      if (!gallery) return;
-
-      // 清空舊的（保留 sizer）
-      gallery.innerHTML = '<div class="gallery-sizer"></div>';
-
-      try {
-        const res = await fetch(
-          `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`
-        );
-        const data = await res.json();
-
-        const base = `https://res.cloudinary.com/${cloudName}/image/upload/`;
-
-        data.resources.forEach(item => {
-          const full = base + item.public_id + '.jpg';
-          const thumb = base + 'q_auto,f_auto,w_400/' + item.public_id + '.jpg';
-
-          const itemDiv = document.createElement('div');
-          itemDiv.className = 'gallery-item';
-
-          const a = document.createElement('a');
-          a.href = full;
-          a.setAttribute('data-fancybox', 'gallery');
-
-          const img = document.createElement('img');
-          img.src = thumb;
-
-          a.appendChild(img);
-          itemDiv.appendChild(a);
-          gallery.appendChild(itemDiv);
-        });
-
-        imagesLoaded(gallery, function() {
-          new Masonry(gallery, {
-            itemSelector: '.gallery-item',
-            columnWidth: '.gallery-sizer'
-          });
-        });
-
-        if (window.Fancybox) {
-          Fancybox.bind('[data-fancybox="gallery"]');
-        }
-
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    loadGallery();
-  })();
-</script>
+<%- partial('_partial/cloudinary-gallery', {
+  tag: 'SAR',
+  captions: {
+    '': ''
+  }}) %>

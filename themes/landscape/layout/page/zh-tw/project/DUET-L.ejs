@@ -16,7 +16,7 @@ layout: page/layout
     </div>
     <div class="plurk-link">
     </div>
-    <a href="<%= url_for("image/project/duet/L.png") %>" data-fancybox="gallery" data-no-swup>
+    <a href="https://res.cloudinary.com/dhtsewjf1/image/upload/v1778951841/%E4%BA%BA%E8%A8%AD-%E9%87%8C%E6%9E%97_sxjqxm.jpg" data-fancybox="setting" data-no-swup>
       <img class="setting" src="<%= url_for("image/project/duet/L.png") %>" alt="">
     </a>
 
@@ -131,122 +131,24 @@ layout: page/layout
       <h2 class="box-title">
         STORY
       </h2>
-      <% 
-        const currentLang=bd_current_lang(); 
-        let introPosts=[]; site.posts.each(function(post){ 
-          if (bd_post_lang(post)!==currentLang) return; 
-          var matched=false; post.categories.each(function(cat){ if(String(cat.name || '' ).trim()==='自介' ) { matched=true; } }); 
-          if (matched) { introPosts.push(post); } }); 
-          introPosts.sort(function(a, b){ return b.date.valueOf() - a.date.valueOf(); }); 
-        %>
-      <div id="about-intro-posts" class="px-6">
-        <% introPosts.forEach(function(post, i){ %>
-        <div class="intro-item" data-index="<%= i %>">
-          <%- partial('_partial/article-list', {post: post, index: true}) %>
-        </div>
-        <% }) %>
-      </div>
-      <div id="intro-pagination" class="flex flex-row items-center justify-center gap-4">
-        <button id="prev">上一頁</button>
-        <span id="page-info"></span>
-        <button id="next">下一頁</button>
-      </div>
+      <%- partial('_partial/post-category-pager', {
+    id: 'story',
+    category: '自介',
+    perPage: 5,
+    listClass: 'px-6',
+    prevText: '上一頁',
+    nextText: '下一頁'
+  }) %>
     </div>
   </section>
 </section>
 
-<script>
-  (() => {
-    const perPage = 5;
-    const items = document.querySelectorAll('.intro-item');
 
-    let currentPage = 1;
-    const totalPages = Math.ceil(items.length / perPage);
-
-    function render() {
-      items.forEach((el, i) => {
-        el.style.display =
-          (i >= (currentPage - 1) * perPage && i < currentPage * perPage) ?
-          'block' :
-          'none';
-      });
-
-      document.getElementById('page-info').textContent =
-        `${currentPage} / ${totalPages}`;
-    }
-
-    document.getElementById('prev').onclick = () => {
-      if (currentPage > 1) {
-        currentPage--;
-        render();
-      }
-    };
-
-    document.getElementById('next').onclick = () => {
-      if (currentPage < totalPages) {
-        currentPage++;
-        render();
-      }
-    };
-
-    render();
-  })();
-</script>
-<script>
-  (function() {
-    const cloudName = 'dhtsewjf1';
-    const tag = 'EV';
-
-    async function loadGallery() {
-      const gallery = document.getElementById('gallery');
-      if (!gallery) return;
-
-      // 清空舊的（保留 sizer）
-      gallery.innerHTML = '<div class="gallery-sizer"></div>';
-
-      try {
-        const res = await fetch(
-          `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`
-        );
-        const data = await res.json();
-
-        const base = `https://res.cloudinary.com/${cloudName}/image/upload/`;
-
-        data.resources.forEach(item => {
-          const full = base + item.public_id + '.jpg';
-          const thumb = base + 'q_auto,f_auto,w_400/' + item.public_id + '.jpg';
-
-          const itemDiv = document.createElement('div');
-          itemDiv.className = 'gallery-item';
-
-          const a = document.createElement('a');
-          a.href = full;
-          a.setAttribute('data-fancybox', 'gallery');
-
-          const img = document.createElement('img');
-          img.src = thumb;
-
-          a.appendChild(img);
-          itemDiv.appendChild(a);
-          gallery.appendChild(itemDiv);
-        });
-
-        imagesLoaded(gallery, function() {
-          new Masonry(gallery, {
-            itemSelector: '.gallery-item',
-            columnWidth: '.gallery-sizer'
-          });
-        });
-
-        if (window.Fancybox) {
-          Fancybox.bind('[data-fancybox="gallery"]');
-        }
-
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    loadGallery();
-  })();
-</script>
+<%- partial('_partial/cloudinary-gallery', {
+  tag: 'DUET',
+  captions: {
+    '角色卡-里林_etvmi1': '角色卡-里林',
+    '角色卡-娜希拉_ypp3f2': '角色卡-娜希拉',
+    '染_fnkizj': '鹿島　染（月月）',
+  }
+}) %>
