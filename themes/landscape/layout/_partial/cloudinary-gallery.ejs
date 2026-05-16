@@ -1,0 +1,65 @@
+<script>
+  (function() {
+    const cloudName = 'dhtsewjf1';
+    const tag = '<%- tag %>';
+
+    const captions = <%- JSON.stringify(captions || {}) %>;
+
+    async function loadGallery() {
+      const gallery = document.getElementById('gallery');
+      if (!gallery) return;
+
+      gallery.innerHTML = '<div class="gallery-sizer"></div>';
+
+      try {
+        const res = await fetch(
+          `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`
+        );
+
+        const data = await res.json();
+        const base = `https://res.cloudinary.com/${cloudName}/image/upload/`;
+
+        data.resources.sort((a, b) => a.version - b.version);
+
+        data.resources.forEach(item => {
+          const full = base + item.public_id + '.jpg';
+          const thumb = base + 'q_auto,f_auto,w_400/' + item.public_id + '.jpg';
+
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'gallery-item';
+
+          const a = document.createElement('a');
+          a.href = full;
+          a.setAttribute('data-fancybox', 'gallery');
+
+          const publicId = item.public_id.split('/').pop();
+          a.setAttribute('data-caption', captions[publicId] || '');
+
+          const img = document.createElement('img');
+          img.src = thumb;
+          img.alt = captions[publicId] || '';
+
+          a.appendChild(img);
+          itemDiv.appendChild(a);
+          gallery.appendChild(itemDiv);
+        });
+
+        imagesLoaded(gallery, function() {
+          new Masonry(gallery, {
+            itemSelector: '.gallery-item',
+            columnWidth: '.gallery-sizer'
+          });
+        });
+
+        if (window.Fancybox) {
+          Fancybox.bind('[data-fancybox="gallery"]');
+        }
+
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    loadGallery();
+  })();
+</script>

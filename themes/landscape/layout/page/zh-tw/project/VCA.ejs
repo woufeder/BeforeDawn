@@ -16,7 +16,7 @@ layout: page/layout
     </div>
     <div class="plurk-link">
     </div>
-    <a href="<%= url_for("image/project/vca/setting.png") %>" data-fancybox="gallery" data-no-swup>
+    <a href="https://res.cloudinary.com/dhtsewjf1/image/upload/v1778925878/VCA%E9%87%8C%E6%9E%97_cvenv9.jpg" data-fancybox="setting" data-no-swup>
       <img class="setting" src="<%= url_for("image/project/vca/setting.png") %>" alt="">
     </a>
 
@@ -176,61 +176,9 @@ layout: page/layout
     render();
   })();
 </script>
-<script>
-  (function() {
-    const cloudName = 'dhtsewjf1';
-    const tag = 'EV';
-
-    async function loadGallery() {
-      const gallery = document.getElementById('gallery');
-      if (!gallery) return;
-
-      // 清空舊的（保留 sizer）
-      gallery.innerHTML = '<div class="gallery-sizer"></div>';
-
-      try {
-        const res = await fetch(
-          `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`
-        );
-        const data = await res.json();
-
-        const base = `https://res.cloudinary.com/${cloudName}/image/upload/`;
-
-        data.resources.forEach(item => {
-          const full = base + item.public_id + '.jpg';
-          const thumb = base + 'q_auto,f_auto,w_400/' + item.public_id + '.jpg';
-
-          const itemDiv = document.createElement('div');
-          itemDiv.className = 'gallery-item';
-
-          const a = document.createElement('a');
-          a.href = full;
-          a.setAttribute('data-fancybox', 'gallery');
-
-          const img = document.createElement('img');
-          img.src = thumb;
-
-          a.appendChild(img);
-          itemDiv.appendChild(a);
-          gallery.appendChild(itemDiv);
-        });
-
-        imagesLoaded(gallery, function() {
-          new Masonry(gallery, {
-            itemSelector: '.gallery-item',
-            columnWidth: '.gallery-sizer'
-          });
-        });
-
-        if (window.Fancybox) {
-          Fancybox.bind('[data-fancybox="gallery"]');
-        }
-
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    loadGallery();
-  })();
-</script>
+<%- partial('_partial/cloudinary-gallery', {
+  tag: 'vca',
+  captions: {
+    'VCA里林_cvenv9': '里林設定圖'
+  }
+}) %>
