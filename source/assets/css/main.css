@@ -201,7 +201,7 @@ main {
 
 .gallery-sizer,
 .gallery-item {
-  width: 150px;
+  width: 120px;
 }
 
 .gallery-item {
@@ -253,6 +253,11 @@ main {
       }
     }
   }
+  #gallery {
+    max-width: 480px;
+    width: 480px;
+    margin: 0;
+  }
 }
 
 /* xl */
@@ -266,6 +271,11 @@ main {
     .lang-switcher {
       right: 5%;
     }
+  }
+    #gallery {
+    max-width: 360px;
+    width: 360px;
+    margin: 0;
   }
 }
 

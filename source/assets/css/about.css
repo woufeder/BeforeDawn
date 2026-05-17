@@ -178,7 +178,6 @@
 @media (max-width: 767px) {
   #about {
     grid-template-columns: 0.1fr 1fr;
-    margin-top: 3rem;
     #portrait {
       justify-content: flex-end;
       img {
