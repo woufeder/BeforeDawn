@@ -606,6 +606,46 @@
 
 /* xl */
 @media (max-width: 1279px) {
+  #VCA,
+  #VCANPC,
+  #DUET-L,
+  #DUET-N,
+  #AG,
+  #ST {
+    #top {
+      grid-template-columns: 0.05fr 1fr;
+    }
+    #info {
+      margin-left: 300px;
+      grid-template-columns: 1fr 0.2fr;
+    }
+    #bio-pj {
+      grid-template-columns: 1fr 1fr;
+      .npc-btn {
+        padding: 0.2rem 0.5rem;
+      }
+    }
+    .chibi {
+      position: relative;
+      top: -260px;
+      a,
+      img {
+        max-height: 250px;
+      }
+    }
+  }
+  #VCA,
+  #VCANPC,
+  #DUET-L,
+  #DUET-N,
+  #AG,
+  #ST {
+    .setting {
+      width: 250px;
+      top: -4rem;
+      left: 2rem;
+    }
+  }
 }
 
 /* lg */
@@ -616,6 +656,58 @@
       .left {
         padding: 0.5rem 0 1.5rem;
       }
+    }
+  }
+  #VCA,
+  #VCANPC,
+  #DUET-L,
+  #DUET-N,
+  #AG,
+  #ST {
+    #top {
+      grid-template-columns: 1fr 1fr;
+    }
+    #info {
+      margin-left: 0px;
+      grid-template-columns: 1fr 0.05fr;
+      z-index: 1;
+      .content {
+        padding: 2rem;
+      }
+    }
+    #bio-pj {
+      grid-template-columns: auto;
+      grid-template-rows: 1fr 1fr;
+      .npc-btn {
+        padding: 0.2rem 0.5rem;
+      }
+    }
+    .chibi {
+      position: static;
+      margin-right: -60px;
+      a,
+      img {
+        max-height: 250px;
+      }
+    }
+    #creates-area {
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+  }
+  #VCA,
+  #VCANPC,
+  #DUET-L,
+  #DUET-N,
+  #AG,
+  #ST {
+    .setting {
+      width: 250px;
+      top: -4rem;
+      left: 2rem;
     }
   }
 }
@@ -647,6 +739,27 @@
       }
     }
   }
+  #VCA,
+  #VCANPC,
+  #DUET-L,
+  #DUET-N,
+  #AG,
+  #ST {
+    #top {
+      .name {
+        position: relative;
+        width: 300px;
+        height: 45px;
+        h1 {
+          top: -20px;
+          left: -10px;
+        }
+        h2 {
+          right: -10px;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 639px) and (orientation: portrait) {
@@ -673,6 +786,30 @@
           background-position: center;
         }
       }
+    }
+  }
+  #VCA,
+  #VCANPC,
+  #DUET-L,
+  #DUET-N,
+  #AG,
+  #ST {
+    #top {
+      grid-template-columns: 1fr 2fr;
+    }
+    .chibi {
+      position: static;
+      margin-right: -20px;
+
+      a,
+      img {
+        max-height: 180px;
+      }
+    }
+    .setting {
+      width: 150px;
+      top: -4rem;
+      left: 1rem;
     }
   }
 }
