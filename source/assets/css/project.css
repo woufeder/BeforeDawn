@@ -363,7 +363,8 @@
 #VCANPC,
 #DUET-L,
 #DUET-N,
-#AG {
+#AG,
+#ST {
   position: relative;
 
   .box-title {
@@ -519,5 +520,61 @@
   .setting {
     width: 350px;
     left: 2.5rem;
+  }
+}
+
+#ST {
+  .box-title {
+    text-shadow: var(--shadow-chinese);
+  }
+  .chibi {
+    a,
+    img {
+      max-height: 275px;
+    }
+    a {
+      top: 110px;
+      right: -10px;
+    }
+    .auth {
+      top: 100px;
+    }
+  }
+  #top {
+    .name {
+      position: relative;
+      width: 400px;
+      height: 60px;
+      h1,
+      h2 {
+        text-shadow: none;
+      }
+    }
+  }
+  .setting {
+    width: 250px;
+    position: absolute;
+    top: -4rem;
+    left: 7rem;
+    z-index: -1;
+  }
+  #info {
+    .content {
+      h6,
+      p {
+        text-shadow: none;
+      }
+    }
+  }
+  #bio-pj {
+    h4,
+    p {
+      text-shadow: none;
+    }
+    .box.p-8.relative.flex.flex-col {
+      p {
+        line-height: 1.5;
+      }
+    }
   }
 }
