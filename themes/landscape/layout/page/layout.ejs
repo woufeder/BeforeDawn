@@ -57,21 +57,6 @@ layout: false
   <script src="https://unpkg.com/swup@4"></script>
   <script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
   <script src="<%= url_for('/js/swup-init.js') %>" defer></script>
-  <script data-swup-ignore-script>
-    const swup = new Swup({
-      plugins: [new SwupScriptsPlugin({
-        body: true,
-        head: false
-      })],
-      animationSelector: false
-    });
-    window.addEventListener('pageshow', (event) => {
-      if (event.persisted) {
-        // 從 bfcache 回來
-        window.location.reload();
-      }
-    });
-  </script>
 
 </body>
 

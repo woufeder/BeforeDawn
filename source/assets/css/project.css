@@ -93,7 +93,7 @@
           transform: translateY(-15px);
           transition: all 0.3s ease-out;
         }
-        &:hover {
+        &.is-active {
           .context.default {
             opacity: 0;
             transition: opacity 0.3s ease-out;
@@ -109,6 +109,26 @@
           .branch_bottom {
             transform: translateY(0px);
             transition: all 0.3s ease-out;
+          }
+        }
+        @media (min-width: 768px) {
+          &:hover {
+            .context.default {
+              opacity: 0;
+              transition: opacity 0.3s ease-out;
+            }
+            .context.hover {
+              opacity: 1;
+              transition: opacity 0.3s ease-out;
+            }
+            .branch_top {
+              transform: translateY(0px);
+              transition: all 0.3s ease-out;
+            }
+            .branch_bottom {
+              transform: translateY(0px);
+              transition: all 0.3s ease-out;
+            }
           }
         }
       }
@@ -354,6 +374,22 @@
       .photo {
         background-color: #96a296;
         background-image: url("../../image/project/Sappho-Yana.png");
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  #project {
+    #banner {
+      .right {
+        .hover-box {
+          cursor: pointer;
+        }
+        .hover-box:focus-visible {
+          outline: 1px dashed var(--text-color);
+          outline-offset: 0.75rem;
+        }
       }
     }
   }

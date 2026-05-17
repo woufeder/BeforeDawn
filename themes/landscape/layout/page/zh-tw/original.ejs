@@ -1,7 +1,6 @@
 ---
 layout: page/layout
 ---
-<div>
 <section id="original" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
   <section id="banner" class="box">
     <div class="left">
@@ -9,7 +8,7 @@ layout: page/layout
       <h2>原創</h2>
     </div>
     <div class="right flex flex-col items-center">
-      <div class="hover-box flex flex-col items-center gap-8 text-center w-fit px-4 xl:px-0">
+      <div class="hover-box flex flex-col items-center gap-8 text-center w-fit px-4 xl:px-0" data-mobile-toggle="hover-box">
         <%- partial('_partial/svg/branch_top') %>
         <div class="grid">
           <div class="context default flex items-center justify-center">
@@ -47,14 +46,16 @@ layout: page/layout
   </section>
 
   <section id="link-area" class=" mt-10">
-    <div class="novel p-8 w-full h-full box ">
-      <h4>中長篇</h4>
-      <p class="py-4">
-        指定具完整獨立世界觀，人物關係複雜<br>
-        偶會有跨篇章的角色客串<br>
-        主要人數5位↑ ｜ 篇幅粗估五萬↑<br>
-      </p>
-      <div class="flex flex-col gap-2 justify-center items-end mt-1">
+    <div class="novel p-8 w-full h-full box flex flex-row lg:flex-col">
+      <div>
+        <h4>中長篇</h4>
+        <p class="py-4">
+          指定具完整獨立世界觀，人物關係複雜<br>
+          偶會有跨篇章的角色客串<br>
+          主要人數5位↑ ｜ 篇幅粗估五萬↑<br>
+        </p>
+      </div>
+      <div class="flex flex-col gap-2 justify-center items-end mt-1 ms-auto lg:ms-0">
         <a href="<%= url_for('/' + page.lang + '/Original/Jatorri') %>" class="pageBtn"><%= __('Jatorri') %> ➤</a>
         <a href="<%= url_for('/' + page.lang + '/Original/Incessant_Breeze') %>" class="pageBtn"><%= __('Incessant_Breeze') %> ➤</a>
         <a href="<%= url_for('/' + page.lang + '/Original/Final_Oath') %>" class="pageBtn"><%= __('Final_Oath') %> ➤</a>
@@ -63,14 +64,16 @@ layout: page/layout
         <a href="<%= url_for('/' + page.lang + '/Original/Endless_Voice') %>" class="pageBtn"><%= __('Endless_Voice') %> ➤</a>
       </div>
     </div>
-    <div class="short p-8 w-full h-full box">
-      <h4>短篇</h4>
-      <p class="py-4">
-        部分故事與中長篇原創共用世界觀<br>
-        可視為為獨立篇章，互不影響<br>
-        主要人數5位↓ ｜ 篇幅粗估五萬↓
-      </p>
-      <div class="flex flex-col gap-2 justify-center items-end mt-1">
+    <div class="short p-8 w-full h-full box flex flex-row lg:flex-col">
+      <div>
+        <h4>短篇</h4>
+        <p class="py-4">
+          部分故事與中長篇原創共用世界觀<br>
+          可視為為獨立篇章，互不影響<br>
+          主要人數5位↓ ｜ 篇幅粗估五萬↓
+        </p>
+      </div>
+      <div class="flex flex-col gap-2 justify-center items-end mt-1 ms-auto lg:ms-0">
         <a href="<%= url_for('/' + page.lang + '/Original/Where_the_Bamboo_Boat_Drifts') %>" class="pageBtn"><%= __('Where_the_Bamboo_Boat_Drifts') %> ➤</a>
         <a href="<%= url_for('/' + page.lang + '/Original/Before_you_go') %>" class="pageBtn"><%= __('Before_you_go') %> ➤</a>
         <a href="<%= url_for('/' + page.lang + '/Original/After_the_Candles_Burn_Low') %>" class="pageBtn"><%= __('After_the_Candles_Burn_Low') %> ➤</a>
@@ -78,14 +81,16 @@ layout: page/layout
         <a href="<%= url_for('/' + page.lang + '/Original/On_My_Way_to_You') %>" class="pageBtn"><%= __('On_My_Way_to_You') %> ➤</a>
       </div>
     </div>
-    <div class="others p-8 w-full h-full box">
-      <h4>其他</h4>
-      <p class="py-4">
-        此為雜項及全文章集中串<br>
-        含括隨筆短詩，不屬於任何世界觀的短文<br>
-        塗鴉、草圖，沒參成的企劃存稿
-      </p>
-      <div class="flex flex-col gap-2 justify-center items-end mt-1">
+    <div class="others p-8 w-full h-full box flex flex-row lg:flex-col">
+      <div>
+        <h4>其他</h4>
+        <p class="py-4">
+          此為雜項及全文章集中串<br>
+          含括隨筆短詩，不屬於任何世界觀的短文<br>
+          塗鴉、草圖，沒參成的企劃存稿
+        </p>
+      </div>
+      <div class="flex flex-col gap-2 justify-center items-end mt-1 ms-auto lg:ms-0">
         <a href="<%= url_for('/' + page.lang + '/Original/Miscellanies') %>" class="pageBtn"><%= __('Miscellanies') %> ➤</a>
         <a href="<%= url_for('/' + page.lang + '/blog') %>" class="pageBtn"><%= __('blog') %> ➤</a>
       </div>

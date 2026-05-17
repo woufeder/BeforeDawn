@@ -272,7 +272,7 @@ main {
       right: 5%;
     }
   }
-    #gallery {
+  #gallery {
     max-width: 360px;
     width: 360px;
     margin: 0;
@@ -289,13 +289,16 @@ main {
         h3 {
           margin-left: 0;
         }
-        .pageBtnBox {
-        }
       }
     }
     .lang-switcher {
       right: -1%;
     }
+  }
+  #gallery {
+    max-width: 600px;
+    width: 600px;
+    margin: 0;
   }
 }
 
@@ -309,6 +312,15 @@ main {
     .lang-switcher {
       right: 5%;
     }
+  }
+  #gallery {
+    max-width: 480px;
+    width: 480px;
+    margin: 0;
+  }
+  .gallery-sizer,
+  .gallery-item {
+    width: 80px;
   }
 }
 
@@ -335,6 +347,11 @@ main {
         right: 10%;
       }
     }
+  }
+  #gallery {
+    max-width: 320px;
+    width: 320px;
+    margin: 0;
   }
 }
 
