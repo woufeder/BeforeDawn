@@ -35,7 +35,7 @@
     width: 100%;
     height: fit-content;
     display: grid;
-    grid-template-columns: 0.333fr 0.667fr;
+    grid-template-columns: 1fr 2fr;
 
     .left {
       background-image: url("../../image/project/project-banner.avif");
@@ -379,22 +379,6 @@
   }
 }
 
-@media (max-width: 767px) {
-  #project {
-    #banner {
-      .right {
-        .hover-box {
-          cursor: pointer;
-        }
-        .hover-box:focus-visible {
-          outline: 1px dashed var(--text-color);
-          outline-offset: 0.75rem;
-        }
-      }
-    }
-  }
-}
-
 #VCA,
 #VCANPC,
 #DUET-L,
@@ -610,6 +594,84 @@
     .box.p-8.relative.flex.flex-col {
       p {
         line-height: 1.5;
+      }
+    }
+  }
+}
+
+/* ----------------RWD------------------- */
+/* 2xl */
+@media (max-width: 1535px) {
+}
+
+/* xl */
+@media (max-width: 1279px) {
+}
+
+/* lg */
+@media (max-width: 1023px) {
+  #project {
+    #banner {
+      grid-template-columns: inherit;
+      .left {
+        padding: 0.5rem 0 1.5rem;
+      }
+    }
+  }
+}
+
+/* md */
+@media (max-width: 767px) {
+  #project {
+    #banner {
+      .right {
+        .hover-box {
+          cursor: pointer;
+        }
+        .hover-box:focus-visible {
+          outline: 1px dashed var(--text-color);
+          outline-offset: 0.75rem;
+        }
+      }
+    }
+    #characters-card-area {
+      .chara-card {
+        width: 250px;
+        .photo {
+          width: 250px;
+          height: 100px;
+          padding: 0;
+          background-size: cover;
+          background-position: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 639px) and (orientation: portrait) {
+  #project {
+    #banner {
+      .right {
+        .hover-box {
+          cursor: pointer;
+        }
+        .hover-box:focus-visible {
+          outline: 1px dashed var(--text-color);
+          outline-offset: 0.75rem;
+        }
+      }
+    }
+    #characters-card-area {
+      .chara-card {
+        width: 230px;
+        .photo {
+          width: 230px;
+          height: 92px;
+          padding: 0;
+          background-size: cover;
+          background-position: center;
+        }
       }
     }
   }
