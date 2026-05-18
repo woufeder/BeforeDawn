@@ -21,12 +21,7 @@ layout: page/layout
     </a>
 
   </section>
-  <div class="chibi">
-    <!-- <div>繪師：123123123</div> -->
-    <a href="<%= url_for("image/project/duet/chibi.png") %>" data-fancybox="gallery" data-no-swup>
-      <img class="" src="<%= url_for("image/project/duet/chibi.png") %>" alt="">
-    </a>
-  </div>
+
   <section id="info" class="">
     <div class="content box">
       <h6 class="italic">「遇見妳，是這輩子最美好的禮物」</h6><br>
@@ -44,7 +39,12 @@ layout: page/layout
           ▍穿戴整齊，不喜歡過於暴露的服裝<br>
         </p>
       </div>
-
+      <div class="chibi">
+        <!-- <div>繪師：123123123</div> -->
+        <a href="<%= url_for("image/project/duet/chibi.png") %>" data-fancybox="gallery" data-no-swup>
+          <img class="" src="<%= url_for("image/project/duet/chibi.png") %>" alt="">
+        </a>
+      </div>
     </div>
     <div class="label-links ">
       <a href="<%= url_for('/' + page.lang + '/Project/VCA') %>" class="w-fit">
@@ -52,11 +52,11 @@ layout: page/layout
           <div class="label-zh">五年前</div>
         </div>
       </a>
-      <a href="">
+      <!-- <a href="">
         <div class="label-wrap">
           <div class="label-zh">本家</div>
         </div>
-      </a>
+      </a> -->
 
     </div>
 

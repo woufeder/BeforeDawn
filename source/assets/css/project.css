@@ -398,27 +398,6 @@
       0px 0px 16px #fff;
     font-weight: bold;
   }
-  .chibi {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    a,
-    img {
-      display: block;
-      max-height: 320px;
-      width: auto;
-      max-width: 100%;
-      object-fit: contain;
-      z-index: -2;
-    }
-    a {
-      width: fit-content;
-      position: absolute;
-      top: 100px;
-    }
-  }
   #top {
     display: grid;
     grid-template-columns: 0.2fr 1fr 0.2fr;
@@ -473,6 +452,21 @@
         line-height: 2;
         text-shadow: var(--shadow-chinese);
       }
+      .chibi {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        a,
+        img {
+          height: auto;
+          max-width: 200px;
+          object-fit: contain;
+        }
+      }
     }
   }
   #bio-pj {
@@ -521,6 +515,15 @@
   width: 200px;
 }
 
+#DUET-L,
+#DUET-N {
+  #info .content .chibi {
+    a,
+    img {
+      max-width: 250px;
+    }
+  }
+}
 #DUET-L .setting {
   width: 450px;
   left: -5rem;
@@ -602,6 +605,13 @@
 /* ----------------RWD------------------- */
 /* 2xl */
 @media (max-width: 1535px) {
+  #DUET-L,
+  #DUET-N {
+    #info .content .chibi {
+      top: -10px;
+      right: 0px;
+    }
+  }
 }
 
 /* xl */
@@ -625,25 +635,44 @@
         padding: 0.2rem 0.5rem;
       }
     }
-    .chibi {
-      position: relative;
-      top: -260px;
-      a,
-      img {
-        max-height: 250px;
-      }
-    }
   }
-  #VCA,
-  #VCANPC,
-  #DUET-L,
-  #DUET-N,
-  #AG,
-  #ST {
+  #VCA {
     .setting {
       width: 250px;
       top: -4rem;
       left: 2rem;
+    }
+    #info .content .chibi {
+      top: -50px;
+      right: 0px;
+      a,
+      img {
+        height: auto;
+        max-width: 180px;
+      }
+    }
+  }
+  #DUET-L,
+  #DUET-N {
+    .setting {
+      width: 400px;
+      top: -4rem;
+      left: -7rem;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: -30px;
+      a,
+      img {
+        max-width: 220px;
+      }
+    }
+  }
+  #DUET-N {
+    .setting {
+      width: 250px;
+      top: -7rem;
+      left: 2em;
     }
   }
 }
@@ -682,14 +711,7 @@
         padding: 0.2rem 0.5rem;
       }
     }
-    .chibi {
-      position: static;
-      margin-right: -60px;
-      a,
-      img {
-        max-height: 250px;
-      }
-    }
+
     #creates-area {
       display: grid;
       grid-template-columns: auto;
@@ -698,16 +720,38 @@
       gap: 2.5rem;
     }
   }
-  #VCA,
-  #VCANPC,
-  #DUET-L,
-  #DUET-N,
-  #AG,
-  #ST {
+  #VCA {
     .setting {
       width: 250px;
       top: -4rem;
       left: 2rem;
+    }
+    #info .content .chibi {
+      top: 0px;
+      right: -30px;
+      a,
+      img {
+        height: auto;
+        max-width: 180px;
+      }
+    }
+  }
+  #DUET-L,
+  #DUET-N {
+    #info .content .chibi {
+      top: -10px;
+      right: -45px;
+      a,
+      img {
+        max-width: 200px;
+      }
+    }
+  }
+  #DUET-N {
+    .setting {
+      width: 200px;
+      top: -3rem;
+      left: 3em;
     }
   }
 }
@@ -760,6 +804,28 @@
       }
     }
   }
+  #VCA {
+    #info .content .chibi {
+      top: -5px;
+      right: -20px;
+      a,
+      img {
+        height: auto;
+        max-width: 150px;
+      }
+    }
+  }
+  #DUET-L,
+  #DUET-N {
+    #info .content .chibi {
+      top: -10px;
+      right: -45px;
+      a,
+      img {
+        max-width: 180px;
+      }
+    }
+  }
 }
 
 @media (max-width: 639px) and (orientation: portrait) {
@@ -797,19 +863,81 @@
     #top {
       grid-template-columns: 1fr 2fr;
     }
-    .chibi {
-      position: static;
-      margin-right: -20px;
-
-      a,
-      img {
-        max-height: 180px;
-      }
-    }
+  }
+  #VCA {
     .setting {
       width: 150px;
       top: -4rem;
       left: 1rem;
+    }
+    #info .content .chibi {
+      top: -5px;
+      right: -20px;
+      a,
+      img {
+        height: auto;
+        max-width: 150px;
+      }
+    }
+  }
+  #DUET-L,
+  #DUET-N {
+    .setting {
+      width: 300px;
+      top: -3.8rem;
+      left: -8rem;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: -30px;
+      a,
+      img {
+        max-width: 170px;
+      }
+    }
+  }
+  #DUET-N {
+    .setting {
+      width: 200px;
+      top: -3.8rem;
+      left: -0.5rem;
+    }
+  }
+}
+
+/* 多寫的斷點 */
+@media (max-width: 566px) and (orientation: portrait) {
+  #VCA,
+  #VCANPC,
+  #DUET-L,
+  #DUET-N,
+  #AG,
+  #ST {
+    .content.box {
+      .flex.flex-row.justify-between {
+        flex-direction: column;
+      }
+    }
+  }
+  #VCA {
+    #info .content .chibi {
+      top: 0px;
+      right: -10px;
+      a,
+      img {
+        max-width: 120px;
+      }
+    }
+  }
+  #DUET-L,
+  #DUET-N {
+    #info .content .chibi {
+      top: -10px;
+      right: 0px;
+      a,
+      img {
+        max-width: 180px;
+      }
     }
   }
 }

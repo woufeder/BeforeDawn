@@ -35,7 +35,7 @@ var categoryRows = Object.keys(categoryMap).map(function(key){ return categoryMa
         </li>
         <% categoryRows.forEach(function(category){ %>
           <li class="category-list-item">
-            <a class="category-list-link" href="<%- bd_url_for_lang(category.path) %>"><%= category.name %></a>
+            <a class="category-list-link" href="<%- bd_url_for_lang(category.path) %>"><%= bd_i18n('categories.' + category.name) %></a>
             <span class="category-list-count"><%= category.count %></span>
           </li>
         <% }) %>
