@@ -432,7 +432,7 @@
     position: absolute;
     top: -4rem;
     left: 7rem;
-    z-index: -1;
+    z-index: -2;
   }
   #info {
     position: relative;
@@ -544,23 +544,25 @@
     width: 350px;
     left: 2.5rem;
   }
+  #info .content .chibi {
+    a,
+    img {
+      max-width: 350px;
+    }
+  }
 }
 
 #ST {
   .box-title {
     text-shadow: var(--shadow-chinese);
   }
-  .chibi {
+  #info .content .chibi {
     a,
     img {
-      max-height: 275px;
-    }
-    a {
-      top: 110px;
-      right: -10px;
+      max-width: 320px;
     }
     .auth {
-      top: 100px;
+      font-size: 0.9rem;
     }
   }
   #top {
@@ -575,11 +577,9 @@
     }
   }
   .setting {
-    width: 250px;
-    position: absolute;
+    width: 400px;
     top: -4rem;
-    left: 7rem;
-    z-index: -1;
+    left: 4rem;
   }
   #info {
     .content {
@@ -605,11 +605,65 @@
 /* ----------------RWD------------------- */
 /* 2xl */
 @media (max-width: 1535px) {
+  #VCA,
+  #VCANPC,
+  #DUET-L,
+  #DUET-N,
+  #AG,
+  #ST {
+    #info {
+      margin-left: 320px;
+      .content {
+        padding: 2rem;
+      }
+    }
+  }
+  #VCA {
+    .setting {
+      width: 250px;
+      top: -4rem;
+      left: 2rem;
+    }
+  }
   #DUET-L,
   #DUET-N {
+    .setting {
+      left: -8rem;
+    }
     #info .content .chibi {
       top: -10px;
       right: 0px;
+    }
+  }
+  #DUET-N {
+    .setting {
+      left: 3rem;
+    }
+  }
+  #AG {
+    .setting {
+      left: 2rem;
+    }
+    #info .content .chibi {
+      top: -50px;
+      right: -50px;
+    }
+  }
+  #ST {
+    #info .content .chibi {
+      right: -50px;
+      .auth {
+        margin-right: 50px;
+      }
+      a,
+      img {
+        max-width: 320px;
+      }
+    }
+    .setting {
+      width: 400px;
+      top: -4rem;
+      left: 2rem;
     }
   }
 }
@@ -626,7 +680,7 @@
       grid-template-columns: 0.05fr 1fr;
     }
     #info {
-      margin-left: 300px;
+      margin-left: 200px;
       grid-template-columns: 1fr 0.2fr;
     }
     #bio-pj {
@@ -664,15 +718,44 @@
       right: -30px;
       a,
       img {
-        max-width: 220px;
+        max-width: 190px;
       }
     }
   }
   #DUET-N {
     .setting {
       width: 250px;
-      top: -7rem;
+      top: -4rem;
       left: 2em;
+    }
+  }
+  #AG {
+    .setting {
+      left: 0rem;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: -60px;
+      a,
+      img {
+        max-width: 270px;
+      }
+    }
+  }
+  #ST {
+    #info .content .chibi {
+      flex-direction: column-reverse;
+      top: 0;
+      right: -100px;
+      a,
+      img {
+        max-width: 280px;
+      }
+    }
+    .setting {
+      width: 400px;
+      top: -4rem;
+      left: 2rem;
     }
   }
 }
@@ -754,6 +837,36 @@
       left: 3em;
     }
   }
+  #AG {
+    .setting {
+      left: 0rem;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: -80px;
+      a,
+      img {
+        max-width: 270px;
+      }
+    }
+  }
+  #ST {
+    #info .content .chibi {
+      justify-content: flex-end;
+      a,
+      img {
+        max-width: 250px;
+      }
+      .auth {
+        font-size: 0.8rem;
+      }
+    }
+    .setting {
+      width: 350px;
+      top: -4rem;
+      left: 2rem;
+    }
+  }
 }
 
 /* md */
@@ -824,6 +937,28 @@
       img {
         max-width: 180px;
       }
+    }
+  }
+  #AG {
+    .setting {
+      width: 300px;
+    }
+  }
+  #ST {
+    #info .content .chibi {
+      right: -60px;
+      a,
+      img {
+        max-width: 200px;
+      }
+      .auth {
+        font-size: 0.8rem;
+      }
+    }
+    .setting {
+      width: 300px;
+      top: -4rem;
+      left: 2rem;
     }
   }
 }
@@ -903,6 +1038,37 @@
       left: -0.5rem;
     }
   }
+  #AG {
+    .setting {
+      left: 0rem;
+      width: 300px;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: -80px;
+      a,
+      img {
+        max-width: 270px;
+      }
+    }
+  }
+  #ST {
+    #info .content .chibi {
+      right: -45px;
+      a,
+      img {
+        max-width: 200px;
+      }
+      .auth {
+        font-size: 0.8rem;
+      }
+    }
+    .setting {
+      width: 280px;
+      top: -3rem;
+      left: 1rem;
+    }
+  }
 }
 
 /* 多寫的斷點 */
@@ -938,6 +1104,28 @@
       img {
         max-width: 180px;
       }
+    }
+  }
+  #AG {
+    .setting {
+      left: -2rem;
+    }
+  }
+  #ST {
+    #info .content .chibi {
+      right: -45px;
+      a,
+      img {
+        max-width: 200px;
+      }
+      .auth {
+        font-size: 0.8rem;
+      }
+    }
+    .setting {
+      width: 280px;
+      top: -3rem;
+      left: -1rem;
     }
   }
 }
