@@ -384,7 +384,8 @@
 #DUET-L,
 #DUET-N,
 #AG,
-#ST {
+#ST,
+#ST-N {
   position: relative;
 
   .box-title {
@@ -552,7 +553,8 @@
   }
 }
 
-#ST {
+#ST,
+#ST-N {
   .box-title {
     text-shadow: var(--shadow-chinese);
   }
@@ -601,6 +603,13 @@
     }
   }
 }
+#ST-N {
+  .setting {
+    width: 500px;
+    top: -4rem;
+    left: 0rem;
+  }
+}
 
 /* ----------------RWD------------------- */
 /* 2xl */
@@ -610,7 +619,8 @@
   #DUET-L,
   #DUET-N,
   #AG,
-  #ST {
+  #ST,
+  #ST-N {
     #info {
       margin-left: 320px;
       .content {
@@ -649,7 +659,8 @@
       right: -50px;
     }
   }
-  #ST {
+  #ST,
+  #ST-N {
     #info .content .chibi {
       right: -50px;
       .auth {
@@ -666,6 +677,13 @@
       left: 2rem;
     }
   }
+  #ST-N {
+    .setting {
+      width: 500px;
+      top: -4rem;
+      left: -2rem;
+    }
+  }
 }
 
 /* xl */
@@ -675,7 +693,8 @@
   #DUET-L,
   #DUET-N,
   #AG,
-  #ST {
+  #ST,
+  #ST-N {
     #top {
       grid-template-columns: 0.05fr 1fr;
     }
@@ -742,7 +761,8 @@
       }
     }
   }
-  #ST {
+  #ST,
+  #ST-N {
     #info .content .chibi {
       flex-direction: column-reverse;
       top: 0;
@@ -756,6 +776,11 @@
       width: 400px;
       top: -4rem;
       left: 2rem;
+    }
+  }
+  #ST-N {
+    .setting {
+      left: -4rem;
     }
   }
 }
@@ -775,7 +800,8 @@
   #DUET-L,
   #DUET-N,
   #AG,
-  #ST {
+  #ST,
+  #ST-N {
     #top {
       grid-template-columns: 1fr 1fr;
     }
@@ -850,7 +876,8 @@
       }
     }
   }
-  #ST {
+  #ST,
+  #ST-N {
     #info .content .chibi {
       justify-content: flex-end;
       a,
@@ -865,6 +892,11 @@
       width: 350px;
       top: -4rem;
       left: 2rem;
+    }
+  }
+  #ST-N {
+    .setting {
+      left: 0rem;
     }
   }
 }
@@ -901,7 +933,8 @@
   #DUET-L,
   #DUET-N,
   #AG,
-  #ST {
+  #ST,
+  #ST-N {
     #top {
       .name {
         position: relative;
@@ -944,7 +977,8 @@
       width: 300px;
     }
   }
-  #ST {
+  #ST,
+  #ST-N {
     #info .content .chibi {
       right: -60px;
       a,
@@ -957,8 +991,13 @@
     }
     .setting {
       width: 300px;
-      top: -4rem;
+
       left: 2rem;
+    }
+  }
+  #ST-N {
+    .setting {
+      top: -2rem;
     }
   }
 }
@@ -994,7 +1033,8 @@
   #DUET-L,
   #DUET-N,
   #AG,
-  #ST {
+  #ST,
+  #ST-N {
     #top {
       grid-template-columns: 1fr 2fr;
     }
@@ -1052,7 +1092,8 @@
       }
     }
   }
-  #ST {
+  #ST,
+  #ST-N {
     #info .content .chibi {
       right: -45px;
       a,
@@ -1069,6 +1110,12 @@
       left: 1rem;
     }
   }
+  #ST-N {
+    .setting {
+      top: -2rem;
+      left: 0rem;
+    }
+  }
 }
 
 /* 多寫的斷點 */
@@ -1078,7 +1125,8 @@
   #DUET-L,
   #DUET-N,
   #AG,
-  #ST {
+  #ST,
+  #ST-N {
     .content.box {
       .flex.flex-row.justify-between {
         flex-direction: column;
@@ -1111,7 +1159,8 @@
       left: -2rem;
     }
   }
-  #ST {
+  #ST,
+  #ST-N {
     #info .content .chibi {
       right: -45px;
       a,
@@ -1126,6 +1175,12 @@
       width: 280px;
       top: -3rem;
       left: -1rem;
+    }
+  }
+  #ST-N {
+    .setting {
+      top: -2rem;
+      left: -2rem;
     }
   }
 }
