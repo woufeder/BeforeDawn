@@ -38,7 +38,7 @@ layout: page/layout
       </div>
       <div class="chibi">
 
-        <a href="<%= url_for("image/project/st/chibi.gif") %>" data-fancybox="gallery" data-no-swup>
+        <a href="<%= url_for("image/project/st/chibi.gif") %>" data-fancybox="gallery" data-no-swup data-caption="小動圖繪師：賊喵">
           <img class="" src="<%= url_for("image/project/st/chibi.gif") %>" alt="">
         </a>
         <a href="https://www.plurk.com/zokunya" class="underline auth hover:opacity-70 transition-opacity duration-300">
@@ -76,6 +76,7 @@ layout: page/layout
             得知末日迫近時，因為不希望自己連死去的方式都無法決定。所以和林惜淵約好完成所有想做的事之後就自殺。但只有梁慕榕自殺成功，留下林惜淵獨自活著。<br><br>
             林惜淵死後一同轉生到了原創世界觀《Jatorri》，仍保有上一世的記憶，年齡與身體素質也相同。
           </p>
+          <a href="<%= url_for('/' + page.lang + '/Project/ST') %>" class="mt-auto ms-auto npc-btn w-fit">參企角 ➤</a>
         </di>
 
         <div class="flex flex-col items-end">
@@ -95,7 +96,7 @@ layout: page/layout
                 </g>
               </g>
             </svg></a>
-          <a href="<%= url_for('/' + page.lang + '/Project/ST') %>" class="mt-auto npc-btn">參企角 ➤</a>
+
         </div>
       </div>
 

@@ -1,0 +1,155 @@
+---
+layout: page/layout
+---
+
+<section id="DL" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
+
+  <section id="top" class="">
+    <div class="back-to-list self-start">
+      <a href="<%= url_for('/' + page.lang + '/Project/') %>" class="w-fit block hover:opacity-70 transition-opacity duration-300"><svg fill="currentColor" width="36px" height="36px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+          <path d="M48,256c0,114.87,93.13,208,208,208s208-93.13,208-208S370.87,48,256,48,48,141.13,48,256Zm252-74.14V330.14a16,16,0,0,1-26.23,12.29L184.68,268.3a16,16,0,0,1,0-24.6l89.09-74.13A16,16,0,0,1,300,181.86Z" />
+        </svg></a>
+    </div>
+    <div class="name flex flex-row justify-self-center h-full box">
+      <h1>衛宇天</h1>
+    </div>
+    <div class="plurk-link">
+    </div>
+    <img class="setting" src="<%= url_for("image/project/dl/dl.png") %>" alt="">
+
+  </section>
+
+  <section id="info" class="">
+    <div class="content box">
+      <h6 class="italic">「曲幻，妳一定要好好活下去。」</h6><br>
+      <div class="flex flex-row justify-between gap-0 md:gap-2">
+        <p>
+          ▍男性<br>
+          ▍04.30 27歲<br>
+          ▍177 cm<br>
+          ▍聲線：——
+        </p>
+        <p>
+          ▍紅褐色短髮，兩側各一赤紅挑色，右側瀏海較長<br>
+          ▍金色虹膜，瞳孔狹長，給人一種非人類的錯覺<br>
+          ▍喜歡穿著有格紋的衣物，隨身攜帶深褐色的珠鏈<br>
+          ▍雖不壯碩，但體能優異<br>
+        </p>
+      </div>
+      <div class="chibi">
+
+        <a href="<%= url_for("image/project/dl/chibi.png") %>" data-fancybox="gallery" data-no-swup data-caption="Q版繪師：賊喵">
+          <img class="" src="<%= url_for("image/project/dl/chibi.png") %>" alt="">
+        </a>
+        <a href="https://www.plurk.com/zokunya" class="underline auth hover:opacity-70 transition-opacity duration-300" >
+          Q版繪師：賊喵
+        </a>
+
+      </div>
+    </div>
+    <div class="label-links ">
+      <a href="<%= url_for('/' + page.lang + '/Original/Final_Oath/') %> " class="w-fit">
+        <div class="label-wrap">
+          <div class="label-zh">本家</div>
+        </div>
+      </a>
+    </div>
+
+  </section>
+  <section id="bio-pj" class="mt-10">
+    <div class="box p-8 relative">
+      <h2 class="box-title">
+        BIOGRAPHY
+      </h2>
+
+
+      <div class="grid grid-cols-[1fr_auto] gap-6 h-full">
+        <di class="flex flex-col gap-4 ">
+          <p class="">
+            來到黃昏圖書館的自殺者。雖然明白自己是自殺，卻不明白自殺的理由。<br><br>
+
+            性格玩世不恭，三觀清奇，完全的享樂主義者。對人們在乎的事沒有共感，說話也不太顧慮別人的感受，非常難相處。 並非沒有社會化，只是認為同理心很麻煩而選擇有話直說。但對小孩子會稍微溫和一點。<br>
+            喜歡觀察其他人的情緒，尤其是憤怒或是悲傷等負面反應。覺得把希望寄託給未來的人很愚蠢，一旦聽到相關言論會毫不留情的嘲笑對方。<br><br>
+
+            真實身分為沒有名字的棄嬰，從小就在街頭流浪。以行竊和乞討維生，一邊艱難地求生一邊照顧沒有血緣關係的女孩，並為她取名為「亮亮」。因為她盯著自己時的眼睛總是閃著像星辰一般的微光。<br><br>
+            因長相和衛家亡故多年的幼子相仿，被衛家老爺與夫人強行帶離街頭，戲劇化地替代成為了衛宇天。而這也間接導致沒有生存能力的亮亮，最終沒能活下來。<br>
+            16歲那年用紅酒毒殺養母後，凌遲了漠視一切的養父。最後一把火燒掉了衛家宅邸，也葬送了能證明自己過去生活過的一切。<br><br>
+            憑藉著才智和養父母的菁英教育。考取並成為了曲幻國中時的教師。為使其完全脫離父親的虐待，殺了對方的父親後在曲幻面前刎頸自殺。用自己的生命交換曲幻好好活下去的未來。
+
+          </p>
+        </di>
+
+        <div class="flex flex-col items-end">
+          <a href="https://www.plurk.com/LearnHowToLove" class="" alt="角噗" title="角噗">
+            <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="28px" height="36px" viewBox="53.5 23 93 154.001" data-type="color" role="presentation" aria-hidden="true" class="hover:opacity-70 transition-opacity duration-300">
+              <g>
+                <path fill="currentColor" d="M94.041 176.602s-30.785-5.289-38.199-33.211c-7.264-27.357 3.696-42.898 14.737-55.352C81.62 75.584 103.77 58.819 94.041 23c0 0 44.34 24.564 26.567 89.282 0 0 13.096-10.317 11.225-29.076 0 0 15.189 24.172 14.653 47.731-.621 27.305-20.266 40.436-36.168 46.064 0 0 11.225-15.007-9.821-31.78-14.175-11.297-2.34-38.566-2.34-38.566s-41.16 25.324-4.116 69.947z" data-color="1"></path>
+              </g>
+            </svg></a>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="box p-8 relative flex flex-col">
+      <h2 class="box-title">
+        ABOUT PROJECT
+      </h2>
+      <div class="mb-4 flex flex-row gap-2 items-end">
+        <h4>黃昏圖書館</h4><span class="italic text-stone-300 text-[14px] ">2019.09-2019.10</span>
+        <a href="https://librarydusk.wixsite.com/mysite" class="ms-auto" alt="企劃官網" title="企劃官網">
+          <svg fill="currentColor" width="32px" height="32px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="hover:opacity-70 transition-opacity duration-300">
+            <path d="M17.203 2.542c-4.073-0.031-7.938 1.786-10.505 4.943-0.13 0.156-0.255 0.313-0.38 0.474h0.005c0.313-0.266 0.63-0.464 0.958-0.594l0.078-0.031c0.396-0.151 0.802-0.198 1.198-0.12 1.922 0.385 2.922 3.479 2.234 6.911s-2.802 5.901-4.719 5.521c-1.349-0.271-2.24-1.875-2.417-3.99v-0.010 0.073c-0.005 0.177-0.005 0.354 0 0.531v0.177c0.005 0.198 0.021 0.396 0.031 0.589 0.010 0.089 0.016 0.182 0.026 0.271 0.151 1.594 0.583 3.146 1.281 4.589 0.083 0.167 0.042 0.37-0.104 0.484l-0.37 0.302c-0.38 0.313-0.531 0.823-0.385 1.292 0 0.010 0.005 0.016 0.010 0.021 0.021 0.068 0.047 0.13 0.078 0.193l0.068-0.052 0.302-0.234c0.37-0.281 0.792 0.276 0.422 0.557l-0.323 0.245-0.052 0.036 1.568 1.932c0.427 0.516 1.182 0.594 1.703 0.177l0.344-0.281c0.146-0.12 0.354-0.12 0.5 0 2.469 1.964 5.547 2.995 8.703 2.906 2.667-0.063 5.25-0.927 7.427-2.474 0.156-0.109 0.37-0.094 0.505 0.036l0.219 0.208c0.432 0.406 1.099 0.443 1.573 0.078l-0.005-0.005-0.281-0.266c-0.313-0.318 0.141-0.797 0.479-0.505l0.297 0.276 1.682-1.766c0.458-0.484 0.438-1.25-0.047-1.708l-0.349-0.333c-0.13-0.125-0.161-0.323-0.073-0.479 1.505-2.708 2.021-5.849 1.474-8.896 0.401-0.37 1.135-1.099 1.422-1.724 0.307-0.667 0.391-1.359-0.427-1.057-0.635 0.24-1.125 0.391-1.719 0.255-1.885-4.792-6.458-8.255-11.797-8.531-0.214-0.016-0.422-0.021-0.635-0.021zM3.021 8.328c-1.198 0.021-1.964 1.276-1.443 2.354-1.094 0.042-1.844 1.125-1.49 2.161 0.349 1.036 1.599 1.448 2.495 0.818 0.234-0.167 0.406-0.385 0.526-0.625 0.25 0.453 0.615 0.833 1.036 1.099-0.005 0.266 0 0.531 0.026 0.797 0.135 1.641 0.823 2.88 1.865 3.089 1.484 0.297 3.12-1.615 3.651-4.266 0.531-2.656-0.24-5.047-1.724-5.344-0.583-0.115-1.182 0.109-1.734 0.578-0.599 0.51-1.135 1.318-1.521 2.307-0.010-0.005-0.026-0.005-0.036-0.010-0.188-0.052-0.286-0.177-0.417-0.203 0.979-1.063 0.208-2.781-1.234-2.755zM6.839 9.99c0.068 0 0.141 0.005 0.208 0.021 0.969 0.188 1.474 1.745 1.13 3.474-0.349 1.729-1.411 2.974-2.38 2.781-0.656-0.13-1.099-0.896-1.208-1.911 0.245 0.094 0.495 0.151 0.75 0.161 0.703 0.031 1.161-0.203 1.521-0.682 0.458-0.62 0.109-2.339-0.5-2.563-0.474-0.172-0.755 0.036-1.177 0.068 0.214-0.396 0.464-0.724 0.74-0.958 0.292-0.245 0.604-0.391 0.917-0.396z" />
+          </svg></a>
+      </div>
+
+      <p>「您好，您已經死了。」<br><br>「……完全聽不懂你在說什麼。」<br><br><br>
+        人一出生，身上就有許多的「線」，不管是月老廟常見的結緣紅線也好，象徵血濃於水的親情線也好，人們就像個毛線團一樣被這些緣分構成的線給包圍著。<br><br>
+
+        那麼，人死掉之後呢？<br><br>
+
+        歡迎來到「黃昏圖書館」，請緊握您手中的最後一條線，直到您回想起一切。
+      </p>
+      <span class=" text-stone-300 text-[15px] mt-auto">#致鬱向 #現代 #自殺主題 #多ED分歧</span>
+    </div>
+  </section>
+
+  <section id="creates-area" class=" mt-10">
+    <div class="p-8 box relative">
+      <h2 class="box-title">
+        ILLUSTRATION
+      </h2>
+      <div class="flex flex-row justify-center">
+        <div id="gallery">
+          <div class="gallery-sizer"></div>
+        </div>
+      </div>
+    </div>
+    <div class="p-8 box relative">
+      <h2 class="box-title">
+        STORY
+      </h2>
+      <%- partial('_partial/post-category-pager', {
+    id: 'story',
+    category: '文章',
+    perPage: 5,
+    listClass: 'px-6',
+    prevText: '上一頁',
+    nextText: '下一頁'
+  }) %>
+    </div>
+  </section>
+</section>
+
+
+<%- partial('_partial/cloudinary-gallery', {
+  tag: 'DL',
+  captions: {
+    'AW_cbgwr1': '葉夫根尼（瀧）',
+    'BS_ehpugb': '木田 加斗 (阿蝕)',
+    'L_o767ai': '芳 (猩猩)',
+    '芳_zi3x1i': '芳 (猩猩)',
+    '葉夫_zaicxp': '葉夫根尼（瀧）',
+    '加斗_lmfkps': '木田 加斗 (阿蝕)',
+  }
+}) %>

@@ -385,7 +385,9 @@
 #DUET-N,
 #AG,
 #ST,
-#ST-N {
+#ST-N,
+#DL,
+#YMSH {
   position: relative;
 
   .box-title {
@@ -554,7 +556,8 @@
 }
 
 #ST,
-#ST-N {
+#ST-N,
+#DL {
   .box-title {
     text-shadow: var(--shadow-chinese);
   }
@@ -620,7 +623,9 @@
   #DUET-N,
   #AG,
   #ST,
-  #ST-N {
+  #ST-N,
+  #DL,
+  #YMSH {
     #info {
       margin-left: 320px;
       .content {
@@ -684,6 +689,24 @@
       left: -2rem;
     }
   }
+  #DL {
+    .setting {
+      width: 400px;
+      top: -4rem;
+      left: 0rem;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: -30px;
+      .auth {
+        margin-right: 50px;
+      }
+      a,
+      img {
+        max-width: 250px;
+      }
+    }
+  }
 }
 
 /* xl */
@@ -694,7 +717,9 @@
   #DUET-N,
   #AG,
   #ST,
-  #ST-N {
+  #ST-N,
+  #DL,
+  #YMSH {
     #top {
       grid-template-columns: 0.05fr 1fr;
     }
@@ -783,6 +808,22 @@
       left: -4rem;
     }
   }
+  #DL {
+    .setting {
+      width: 400px;
+      top: -4rem;
+      left: 0rem;
+    }
+    #info .content .chibi {
+      flex-direction: column-reverse;
+      top: -10px;
+      right: -100px;
+      a,
+      img {
+        max-width: 250px;
+      }
+    }
+  }
 }
 
 /* lg */
@@ -801,7 +842,9 @@
   #DUET-N,
   #AG,
   #ST,
-  #ST-N {
+  #ST-N,
+  #DL,
+  #YMSH {
     #top {
       grid-template-columns: 1fr 1fr;
     }
@@ -877,7 +920,7 @@
     }
   }
   #ST,
-  #ST-N {
+  #ST-N,#DL {
     #info .content .chibi {
       justify-content: flex-end;
       a,
@@ -899,6 +942,7 @@
       left: 0rem;
     }
   }
+
 }
 
 /* md */
@@ -934,7 +978,9 @@
   #DUET-N,
   #AG,
   #ST,
-  #ST-N {
+  #ST-N,
+  #DL,
+  #YMSH {
     #top {
       .name {
         position: relative;
@@ -978,7 +1024,8 @@
     }
   }
   #ST,
-  #ST-N {
+  #ST-N,
+  #DL {
     #info .content .chibi {
       right: -60px;
       a,
@@ -1000,6 +1047,7 @@
       top: -2rem;
     }
   }
+
 }
 
 @media (max-width: 639px) and (orientation: portrait) {
@@ -1034,7 +1082,9 @@
   #DUET-N,
   #AG,
   #ST,
-  #ST-N {
+  #ST-N,
+  #DL,
+  #YMSH {
     #top {
       grid-template-columns: 1fr 2fr;
     }
@@ -1093,7 +1143,7 @@
     }
   }
   #ST,
-  #ST-N {
+  #ST-N,#DL {
     #info .content .chibi {
       right: -45px;
       a,
@@ -1126,7 +1176,9 @@
   #DUET-N,
   #AG,
   #ST,
-  #ST-N {
+  #ST-N,
+  #DL,
+  #YMSH {
     .content.box {
       .flex.flex-row.justify-between {
         flex-direction: column;
