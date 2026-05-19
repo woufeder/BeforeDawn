@@ -2,27 +2,27 @@
   margin: block-margin 0
 
 .article-inner
-  @extend $block
+  @extend $blog-box
   overflow: hidden
 
 .article-meta
   clearfix()
 
 .article-date
-  @extend $block-caption
+  @extend $blog-side-title
   float: left
 
 .article-category
   float: left
   line-height: 1em
-  color: #ccc
-  text-shadow: 0 1px #fff
   margin-left: 8px
-  // &:before
-  //   content: "\2022"
+  &:before
+    content: "\25C6"
+    font-size 0.6rem
+    // line-height 2rem
 
 .article-category-link
-  @extend $block-caption
+  @extend $blog-side-title
   margin: 0 12px 1em
 
 .article-header
