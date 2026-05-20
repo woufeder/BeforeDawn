@@ -73,14 +73,6 @@ textarea {
   box-sizing: border-box;
 }
 
-/* ===== 字體 ===== */
-
-@font-face {
-  font-family: "Iansui";
-  src: url("/BeforeDawn/fonts/Iansui-Regular.woff2");
-  font-weight: 400;
-  font-style: normal;
-}
 
 /* ===== Root ===== */
 
