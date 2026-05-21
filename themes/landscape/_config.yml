@@ -53,7 +53,7 @@ widgets:
   - category
   - tag
   - archive
-  - recent_posts
+  # - recent_posts
 
 # ===============
 # Widget behavior
