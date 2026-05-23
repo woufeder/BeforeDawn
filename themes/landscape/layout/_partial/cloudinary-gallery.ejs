@@ -7,6 +7,7 @@
 
     async function loadGallery() {
       const gallery = document.getElementById('gallery');
+
       if (!gallery) return;
 
       gallery.innerHTML = '<div class="gallery-sizer"></div>';
@@ -17,27 +18,52 @@
         );
 
         const data = await res.json();
-        const base = `https://res.cloudinary.com/${cloudName}/image/upload/`;
+
+        const base =
+          `https://res.cloudinary.com/${cloudName}/image/upload/`;
 
         data.resources.sort((a, b) => a.version - b.version);
 
         data.resources.forEach(item => {
-          const full = base + item.public_id + '.jpg';
-          const thumb = base + 'q_auto,f_auto,w_400/' + item.public_id + '.jpg';
+          const ext = item.format;
+
+          const publicId = item.public_id.split('/').pop();
+
+          const full =
+            `${base}${item.public_id}.${ext}`;
+
+          const thumb =
+            `${base}q_auto,f_auto,w_400/${item.public_id}.${ext}`;
+
+          const caption =
+            captions[publicId] || '';
 
           const itemDiv = document.createElement('div');
           itemDiv.className = 'gallery-item';
 
           const a = document.createElement('a');
-          a.href = full;
-          a.setAttribute('data-fancybox', 'gallery');
 
-          const publicId = item.public_id.split('/').pop();
-          a.setAttribute('data-caption', captions[publicId] || '');
+          a.href = full;
+
+          a.setAttribute(
+            'data-fancybox',
+            'gallery'
+          );
+
+          if (caption) {
+            a.setAttribute(
+              'data-caption',
+              caption
+            );
+          }
 
           const img = document.createElement('img');
+
           img.src = thumb;
-          img.alt = captions[publicId] || '';
+          img.alt = caption;
+
+          img.loading = 'lazy';
+          img.decoding = 'async';
 
           a.appendChild(img);
           itemDiv.appendChild(a);
@@ -56,7 +82,10 @@
         }
 
       } catch (err) {
-        console.error(err);
+        console.error(
+          '[Cloudinary Gallery Error]',
+          err
+        );
       }
     }
 

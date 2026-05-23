@@ -377,16 +377,7 @@
     }
   }
 }
-#VCA,
-#VCANPC,
-#DUET-L,
-#DUET-N,
-#AG,
-#ST,
-#ST-N,
-#DL,
-#YMSH,
-#YMSH-N {
+.project-page {
   position: relative;
 
   .box-title {
@@ -551,9 +542,7 @@
     }
   }
 }
-#ST,
-#ST-N,
-#DL {
+.dark {
   .box-title {
     text-shadow: var(--shadow-chinese);
   }
@@ -568,9 +557,6 @@
   }
   #top {
     .name {
-      position: relative;
-      width: 400px;
-      height: 60px;
       h1,
       h2 {
         text-shadow: none;
@@ -607,6 +593,19 @@
   top: -4rem;
   left: 0rem;
 }
+#DL {
+  .setting {
+    width: 500px;
+    top: -4rem;
+    left: 0rem;
+  }
+  #info .content .chibi {
+    a,
+    img {
+      max-width: 300px;
+    }
+  }
+}
 #YMSH,
 #YMSH-N {
   #info .content .chibi {
@@ -621,20 +620,41 @@
   top: -4rem;
   left: 5rem;
 }
+#Sappho-A,
+#Sappho-Y {
+  .setting {
+    width: 400px;
+    top: -4rem;
+    left: 0rem;
+  }
+  #info .content .chibi {
+    a,
+    img {
+      max-width: 250px;
+    }
+  }
+}
+#Sappho-A {
+  #top {
+    .name {
+      h1{
+        font-size: 20px;
+        
+      }
+      h2 {
+        bottom: -15px;
+        right: -15px;
+        font-family: "Iansui", cursive;
+        font-size: 25px;
+      }
+    }
+  }
+}
 
 /* ----------------RWD------------------- */
 /* 2xl */
 @media (max-width: 1535px) {
-  #VCA,
-  #VCANPC,
-  #DUET-L,
-  #DUET-N,
-  #AG,
-  #ST,
-  #ST-N,
-  #DL,
-  #YMSH,
-  #YMSH-N {
+  .project-page {
     #info {
       margin-left: 320px;
       .content {
@@ -693,11 +713,12 @@
   }
   #DL {
     .setting {
-      width: 400px;
+      width: 450px;
       top: -4rem;
       left: 0rem;
     }
     #info .content .chibi {
+      flex-direction: column-reverse;
       top: -10px;
       right: -30px;
       .auth {
@@ -705,7 +726,7 @@
       }
       a,
       img {
-        max-width: 250px;
+        max-width: 280px;
       }
     }
   }
@@ -727,20 +748,30 @@
     top: -4rem;
     left: 2rem;
   }
+  #Sappho-A,
+  #Sappho-Y {
+    .setting {
+      width: 380px;
+      top: -4rem;
+      left: -2rem;
+    }
+    #info .content .chibi {
+      a,
+      img {
+        max-width: 250px;
+      }
+    }
+  }
+  #Sappho-Y .setting {
+    width: 380px;
+    top: -4rem;
+    left: 0rem;
+  }
 }
 
 /* xl */
 @media (max-width: 1279px) {
-  #VCA,
-  #VCANPC,
-  #DUET-L,
-  #DUET-N,
-  #AG,
-  #ST,
-  #ST-N,
-  #DL,
-  #YMSH,
-  #YMSH-N {
+  .project-page {
     #top {
       grid-template-columns: 0.05fr 1fr;
     }
@@ -832,7 +863,6 @@
       left: 0rem;
     }
     #info .content .chibi {
-      flex-direction: column-reverse;
       top: -10px;
       right: -100px;
       a,
@@ -859,6 +889,31 @@
     top: -4rem;
     left: 0rem;
   }
+  #Sappho-A,
+  #Sappho-Y {
+    .setting {
+      width: 380px;
+      top: -4rem;
+      left: -5rem;
+    }
+    #info .content .chibi {
+      flex-direction: column-reverse;
+      top: 0;
+      right: -50px;
+      .auth {
+        margin-right: 50px;
+      }
+      a,
+      img {
+        max-width: 200px;
+      }
+    }
+  }
+  #Sappho-Y .setting {
+    width: 350px;
+    top: -4rem;
+    left: -1rem;
+  }
 }
 
 /* lg */
@@ -871,16 +926,7 @@
       }
     }
   }
-  #VCA,
-  #VCANPC,
-  #DUET-L,
-  #DUET-N,
-  #AG,
-  #ST,
-  #ST-N,
-  #DL,
-  #YMSH,
-  #YMSH-N {
+  .project-page {
     #top {
       grid-template-columns: 1fr 1fr;
     }
@@ -953,9 +999,7 @@
       }
     }
   }
-  #ST,
-  #ST-N,
-  #DL {
+  .dark {
     #info .content .chibi {
       justify-content: flex-end;
       a,
@@ -967,9 +1011,9 @@
       }
     }
     .setting {
-      width: 350px;
+      width: 400px;
       top: -4rem;
-      left: 2rem;
+      left: 0rem;
     }
   }
   #ST-N .setting {
@@ -993,6 +1037,30 @@
     width: 300px;
     top: -4rem;
     left: 0rem;
+  }
+  #Sappho-A,
+  #Sappho-Y {
+    .setting {
+      width: 380px;
+      top: -4rem;
+      left: -5rem;
+    }
+    #info .content .chibi {
+      top: 0;
+      right: -70px;
+      .auth {
+        margin-right: 20px;
+      }
+      a,
+      img {
+        max-width: 200px;
+      }
+    }
+  }
+  #Sappho-Y .setting {
+    width: 350px;
+    top: -4rem;
+    left: -1rem;
   }
 }
 
@@ -1023,16 +1091,7 @@
       }
     }
   }
-  #VCA,
-  #VCANPC,
-  #DUET-L,
-  #DUET-N,
-  #AG,
-  #ST,
-  #ST-N,
-  #DL,
-  #YMSH,
-  #YMSH-N {
+  .project-page {
     #top {
       .name {
         position: relative;
@@ -1085,9 +1144,7 @@
       }
     }
   }
-  #ST,
-  #ST-N,
-  #DL {
+  .dark {
     #info .content .chibi {
       right: -60px;
       a,
@@ -1128,6 +1185,35 @@
     left: 4rem;
     width: 250px;
   }
+  #Sappho-A,
+  #Sappho-Y {
+    #info .content.box {
+      .flex.flex-row.justify-between {
+        flex-direction: column;
+      }
+    }
+    .setting {
+      width: 300px;
+      top: -4rem;
+      left: -1rem;
+    }
+    #info .content .chibi {
+      top: 0;
+      right: -25px;
+      .auth {
+        margin-right: 25px;
+      }
+      a,
+      img {
+        max-width: 180px;
+      }
+    }
+  }
+  #Sappho-Y .setting {
+    width: 280px;
+    top: -4rem;
+    left: 1rem;
+  }
 }
 
 @media (max-width: 639px) and (orientation: portrait) {
@@ -1156,20 +1242,16 @@
       }
     }
   }
-  #VCA,
-  #VCANPC,
-  #DUET-L,
-  #DUET-N,
-  #AG,
-  #ST,
-  #ST-N,
-  #DL,
-  #YMSH,
-  #YMSH-N {
+  .project-page {
     #top {
       grid-template-columns: 1fr 2fr;
       .name {
         width: 250px;
+      }
+    }
+    .content.box {
+      .flex.flex-row.justify-between {
+        flex-direction: column;
       }
     }
   }
@@ -1250,26 +1332,34 @@
       left: 0rem;
     }
   }
+  #Sappho-A,
+  #Sappho-Y {
+    .setting {
+      width: 300px;
+      top: -4rem;
+      left: -3rem;
+    }
+    #info .content .chibi {
+      top: 0;
+      right: -25px;
+      .auth {
+        margin-right: 25px;
+      }
+      a,
+      img {
+        max-width: 180px;
+      }
+    }
+  }
+  #Sappho-Y .setting {
+    width: 280px;
+    top: -4rem;
+    left: 1rem;
+  }
 }
 
 /* 多寫的斷點 */
 @media (max-width: 566px) and (orientation: portrait) {
-  #VCA,
-  #VCANPC,
-  #DUET-L,
-  #DUET-N,
-  #AG,
-  #ST,
-  #ST-N,
-  #DL,
-  #YMSH,
-  #YMSH-N {
-    .content.box {
-      .flex.flex-row.justify-between {
-        flex-direction: column;
-      }
-    }
-  }
   #VCA {
     #info .content .chibi {
       top: 0px;
@@ -1335,5 +1425,29 @@
   #YMSH-N .setting {
     left: 0rem;
     width: 250px;
+  }
+  #Sappho-A,
+  #Sappho-Y {
+    .setting {
+      width: 300px;
+      top: -4rem;
+      left: -5rem;
+    }
+    #info .content .chibi {
+      top: 0;
+      right: -25px;
+      .auth {
+        margin-right: 25px;
+      }
+      a,
+      img {
+        max-width: 180px;
+      }
+    }
+  }
+  #Sappho-Y .setting {
+    width: 280px;
+    top: -4rem;
+    left: -2rem;
   }
 }
