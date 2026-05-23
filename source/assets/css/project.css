@@ -637,15 +637,8 @@
 #Sappho-A {
   #top {
     .name {
-      h1{
-        font-size: 20px;
-        
-      }
-      h2 {
-        bottom: -15px;
-        right: -15px;
-        font-family: "Iansui", cursive;
-        font-size: 25px;
+      h1 {
+        font-size: 2.2rem;
       }
     }
   }
@@ -1214,6 +1207,19 @@
     top: -4rem;
     left: 1rem;
   }
+  #Sappho-A {
+    #top {
+      .name {
+        h1 {
+          font-size: 1.9rem;
+        }
+        h2 {
+          font-size: 40px;
+          bottom: -25px;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 639px) and (orientation: portrait) {
@@ -1355,6 +1361,20 @@
     width: 280px;
     top: -4rem;
     left: 1rem;
+  }
+  #Sappho-A {
+    #top {
+      .name {
+        h1 {
+          font-size: 1.6rem;
+          top: -10px;
+        }
+        h2 {
+          font-size: 35px;
+          bottom: -25px;
+        }
+      }
+    }
   }
 }
 

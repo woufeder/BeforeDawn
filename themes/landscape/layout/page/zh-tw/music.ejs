@@ -1,0 +1,62 @@
+---
+layout: page/layout
+---
+<section id="original" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
+  <section id="banner" class="box">
+    <div class="left">
+      <h1>Original</h1>
+      <h2>原創</h2>
+    </div>
+    <div class="right flex flex-col items-center">
+      <div class="hover-box flex flex-col items-center gap-8 text-center w-fit px-4 xl:px-0" data-mobile-toggle="hover-box">
+        <%- partial('_partial/svg/branch_top') %>
+        <div class="grid">
+          <div class="context default flex items-center justify-center">
+            <h6>
+              他們有了名字，於是有了生命。<br><br>
+              無垠星空下將晝夜為門，以雨霧為窗。行經一日初光，走過花葉凋亡。<br>
+              他們的靈魂化成水岸的泡沫，沉澱為洋底的塵沙。<br>存於詩人的歌聲裡，刻劃在人與人的言談中。<br><br>
+              <span>這裡是屬於他們的世界，他們的海洋</span>
+            </h6>
+          </div>
+
+          <div class="context hover flex flex-col items-center justify-center">
+            <h6>
+              此區為原創故事，包含中長篇、短篇、隨筆等各類型原創作品。<br>
+              各原創更新狀態不一，請見下表
+            </h6>
+            <div class="flex flex-row gap-4 mt-4">
+              <h6 class="text-right">
+                重啟中➤<br><br>
+                緩慢更新➤
+              </h6>
+              <h6 class="text-left">
+                千年流傳之風、Final Oath最終誓言<br><br>
+                Jatorri、流轉大地、雨後朝陽、未竟之聲<br>
+                竹船漂流的彼岸鄉、Before you go<br>燭火搖曳之夜、餘生所歸終是妳、向妳而行<br>
+              </h6>
+            </div>
+          </div>
+        </div>
+        <%- partial('_partial/svg/branch_bottom') %>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="link-area" class=" mt-10">
+    <form action="https://formspree.io/f/xdajdzqq" method="POST">
+      <label>
+        Your email:
+        <input type="email" name="email">
+      </label>
+      <label>
+        Your message:
+        <textarea name="message"></textarea>
+      </label>
+      <!-- your other form fields go here -->
+      <button type="submit">Send</button>
+    </form>
+  </section>
+</section>
