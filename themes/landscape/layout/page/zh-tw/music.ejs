@@ -1,11 +1,11 @@
 ---
 layout: page/layout
 ---
-<section id="original" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
+<section id="music" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
   <section id="banner" class="box">
     <div class="left">
-      <h1>Original</h1>
-      <h2>原創</h2>
+      <h1>Music</h1>
+      <h2>音樂</h2>
     </div>
     <div class="right flex flex-col items-center">
       <div class="hover-box flex flex-col items-center gap-8 text-center w-fit px-4 xl:px-0" data-mobile-toggle="hover-box">
@@ -13,27 +13,20 @@ layout: page/layout
         <div class="grid">
           <div class="context default flex items-center justify-center">
             <h6>
-              他們有了名字，於是有了生命。<br><br>
-              無垠星空下將晝夜為門，以雨霧為窗。行經一日初光，走過花葉凋亡。<br>
-              他們的靈魂化成水岸的泡沫，沉澱為洋底的塵沙。<br>存於詩人的歌聲裡，刻劃在人與人的言談中。<br><br>
-              <span>這裡是屬於他們的世界，他們的海洋</span>
+              「你聽得見他們的聲音嗎？」<br><br>
+              送行者與守夜人將歌謠唱呀唱<br>
+              他們譜寫過去，織造念想。<br>
+              為行經的悲傷，點亮微弱卻恆久不滅的光。
             </h6>
           </div>
 
           <div class="context hover flex flex-col items-center justify-center">
-            <h6>
-              此區為原創故事，包含中長篇、短篇、隨筆等各類型原創作品。<br>
-              各原創更新狀態不一，請見下表
-            </h6>
-            <div class="flex flex-row gap-4 mt-4">
-              <h6 class="text-right">
-                重啟中➤<br><br>
-                緩慢更新➤
-              </h6>
-              <h6 class="text-left">
-                千年流傳之風、Final Oath最終誓言<br><br>
-                Jatorri、流轉大地、雨後朝陽、未竟之聲<br>
-                竹船漂流的彼岸鄉、Before you go<br>燭火搖曳之夜、餘生所歸終是妳、向妳而行<br>
+            <div class="flex flex-row gap-4">
+              <h6 class="">
+                此區放置原創作曲編曲<br><br>
+                網站上的音樂僅供試聽，禁止轉載、二次上傳加工、商業用途<br><br>
+                <span> 帶 ※ 意為該印象曲角色並非我的原創角，切勿擅自使用
+                </span>
               </h6>
             </div>
           </div>
@@ -45,18 +38,139 @@ layout: page/layout
     </div>
   </section>
 
-  <section id="link-area" class=" mt-10">
-    <form action="https://formspree.io/f/xdajdzqq" method="POST">
-      <label>
-        Your email:
-        <input type="email" name="email">
-      </label>
-      <label>
-        Your message:
-        <textarea name="message"></textarea>
-      </label>
-      <!-- your other form fields go here -->
-      <button type="submit">Send</button>
-    </form>
+  <%
+    const musicTracks = [
+      {
+        title: "Night Ocean",
+        create_time: "2018.07.08",
+        note: "以海為聲，以夜為歌",
+        src: "/audio/Night Ocean_20180707_Logic(Final).mp3",
+        duration: 167,
+        durationLabel: "02:47"
+      },
+      {
+        title: "花園裡的下午茶",
+        create_time: "2018.10.19",
+        note: "純粹就想寫個和弦",
+        src: "/audio/花園裡的下午茶_20181019.mp3",
+        duration: 65,
+        durationLabel: "01:05"
+      },
+      {
+        title: "Dusk Library",
+        create_time: "2019.09.26",
+        note: "噗浪企劃－黃昏圖書館　非官方印象曲",
+        src: "/audio/Dusk.mp3",
+        duration: 41,
+        durationLabel: "00:41"
+      },
+      {
+        title: "※ Deep In The Forest",
+        create_time: "2019.10.20",
+        note: "葉夫根尼印象曲",
+        src: "/audio/Deep In The Forest.mp3",
+        duration: 211,
+        durationLabel: "03:31"
+      },
+      {
+        title: "※ Happy Ending Like A Fairytale",
+        create_time: "2022.06.04",
+        note: "童話組印象曲",
+        src: "/audio/Happy ending like a fairytale.mp3",
+        duration: 54,
+        durationLabel: "00:54"
+      },
+      {
+        title: "荊に生きる",
+        create_time: "2020.08.30",
+        note: "おかえり、三輪先生。",
+        src: "/audio/荊に生きる.mp3",
+        duration: 126,
+        durationLabel: "02:06"
+      },
+      {
+        title: "海島之徑",
+        create_time: "2022.12.31",
+        note: "噗浪企劃－Sappho　印象曲",
+        src: "/audio/海島之徑.m4a",
+        duration: 114,
+        durationLabel: "01:54"
+      },
+      {
+        title: "※ Deep In The Castle",
+        create_time: "2023.01.18",
+        note: "亞德里恩印象曲",
+        src: "/audio/Deep in the castle.mp3",
+        duration: 96,
+        durationLabel: "01:36"
+      },
+      {
+        title: "Il Canto Della Farfalla",
+        create_time: "2023.01.28",
+        note: "不知從何開始，這樣的歌謠出現在聖羅撒的大街小巷。",
+        src: "/audio/il-canto-della-farfalla.m4a",
+        duration: 75,
+        durationLabel: "01:15"
+      }
+    ];
+  %>
+
+  <section id="music-area">
+    <div class="music-player-grid" aria-label="音樂播放器列表">
+      <% musicTracks.forEach((track) => { %>
+      <article class="music-player" data-music-player data-audio-src="<%- url_for(track.src) %>" data-duration="<%= track.duration %>">
+        <audio preload="none"></audio>
+
+        <div class="music-player-main">
+          <div class="music-heading">
+            <h6 class="music-title"><%= track.title %></h6>
+            <% if (track.create_time) { %>
+            <time class="music-create-time"><%= track.create_time %></time>
+            <% } %>
+          </div>
+
+          <% if (track.note) { %>
+          <p class="music-note"><%= track.note %></p>
+          <% } %>
+
+          <div class="music-timeline">
+            <time class="music-current" datetime="PT0S" data-player-current>00:00</time>
+            <input class="music-progress" type="range" min="0" max="<%= track.duration %>" step="0.1" value="0" data-player-progress aria-label="<%= track.title %> 播放進度">
+            <time class="music-duration" data-player-duration><%= track.durationLabel %></time>
+          </div>
+
+          <div class="music-player-tools">
+            <button class="music-skip" type="button" data-player-action="backward" aria-label="<%= track.title %> 倒退 10 秒"><svg width="42px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.8567 11.4931L20.4043 7.13548C21.071 6.75058 21.9043 7.23171 21.9043 8.00151L21.9043 17.0742C21.9043 17.844 21.071 18.3251 20.4043 17.9402L12.8567 13.5826L12.8567 17.0742C12.8567 17.844 12.0233 18.3251 11.3567 17.9402L3.49953 13.4039C2.83287 13.019 2.83287 12.0567 3.49953 11.6718L11.3567 7.13549C12.0233 6.75059 12.8567 7.23172 12.8567 8.00152L12.8567 11.4931Z" fill="currentColor" />
+              </svg></button>
+            <button class="music-play-toggle" type="button" data-player-action="toggle" aria-label="播放 <%= track.title %>">
+              <span class="music-play-icon" aria-hidden="true"></span>
+            </button>
+            <button class="music-skip" type="button" data-player-action="forward" aria-label="<%= track.title %> 快轉 10 秒"><svg width="42px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0476 13.5826L4.5 17.9402C3.83333 18.3251 3 17.844 3 17.0742V8.00152C3 7.23171 3.83333 6.75059 4.5 7.13549L12.0476 11.4931V8.00151C12.0476 7.23171 12.881 6.75058 13.5476 7.13548L21.4048 11.6718C22.0714 12.0567 22.0714 13.019 21.4048 13.4039L13.5476 17.9402C12.881 18.3251 12.0476 17.844 12.0476 17.0742V13.5826Z" fill="currentColor " />
+              </svg></button>
+            <div class="ms-auto">
+              <label class="music-volume" aria-label="<%= track.title %> 音量">
+                <span class="music-volume-icon" aria-hidden="true"><svg width="60px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                      <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-161.000000, -573.000000)" fill="currentColor">
+                        <path d="M161,581 L161,589 C161,590.104 161.896,591 163,591 L166,591 L166,579 L163,579 C161.896,579 161,579.896 161,581 L161,581 Z M175,573 L168,577.667 L168,592.333 L175,597 C176.104,597 177,596.104 177,595 L177,575 C177,573.896 176.104,573 175,573 L175,573 Z" id="volume-off" sketch:type="MSShapeGroup">
+
+                        </path>
+                      </g>
+                    </g>
+                  </svg></span>
+                <input type="range" min="0" max="1" step="0.01" value="1" data-player-volume>
+              </label>
+            </div>
+          </div>
+        </div>
+      </article>
+      <% }); %>
+    </div>
+
+    <p class="music-credit">帶 ※ 意為該印象曲角色並非我的原創角，切勿擅自使用</p>
   </section>
 </section>
+
+<script src="<%- url_for('/js/music-player.js') %>" defer></script>

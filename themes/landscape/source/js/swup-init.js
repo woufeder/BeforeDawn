@@ -106,6 +106,10 @@ function initPage() {
 
   initHome();
   syncMobileToggleTargets();
+
+  if (typeof initMusicPlayers === "function") {
+    initMusicPlayers();
+  }
 }
 
 if (!window.mobileMenuBound) {

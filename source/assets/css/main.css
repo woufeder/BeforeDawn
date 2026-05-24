@@ -3,6 +3,7 @@
 @import "./about.css";
 @import "./original.css";
 @import "./project.css";
+@import "./music.css";
 
 :root {
   --header-height: 95px;
@@ -32,6 +33,13 @@ body {
   background-blend-mode: var(--bg-blend);
   color: var(--text-color);
   letter-spacing: 0.01rem;
+}
+
+/* Ensure swup container is visible by default to avoid flash on full reload (F5)
+   while preserving transition behavior during swup page transitions. */
+.transition-fade {
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
 }
 
 main {
