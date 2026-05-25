@@ -1,4 +1,64 @@
 (function($){
+  var shareMessages = {
+    'zh-tw': {
+      copy: '複製連結',
+      copied: '已複製文章網址',
+      copyFailed: '複製失敗，請手動複製',
+      instagramReady: '已複製文章網址，請貼到 Instagram',
+      share: '分享文章'
+    },
+    en: {
+      copy: 'Copy link',
+      copied: 'Link copied',
+      copyFailed: 'Copy failed, please copy it manually',
+      instagramReady: 'Link copied, paste it into Instagram',
+      share: 'Share article'
+    },
+    it: {
+      copy: 'Copia link',
+      copied: 'Link copiato',
+      copyFailed: 'Copia non riuscita, copialo manualmente',
+      instagramReady: 'Link copiato, incollalo su Instagram',
+      share: 'Condividi articolo'
+    }
+  };
+
+  var shareLocale = (document.documentElement.lang || 'zh-tw').toLowerCase();
+  var shareText = shareMessages[shareLocale] || shareMessages[shareLocale.split('-')[0]] || shareMessages['zh-tw'];
+
+  var setShareFeedback = function($box, message, isError){
+    $box.find('.article-share-feedback')
+      .text(message)
+      .toggleClass('is-error', !!isError);
+  };
+
+  var fallbackCopyText = function(text){
+    var $tempInput = $('<input type="text" class="article-share-temp-input">').val(text).appendTo('body');
+    $tempInput.trigger('select');
+    var copied = false;
+
+    try {
+      copied = document.execCommand('copy');
+    } catch (err) {
+      copied = false;
+    }
+
+    $tempInput.remove();
+    return copied;
+  };
+
+  var copyShareUrl = function(text){
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).then(function(){
+        return true;
+      }).catch(function(){
+        return fallbackCopyText(text);
+      });
+    }
+
+    return Promise.resolve(fallbackCopyText(text));
+  };
+
   // Search
   var $searchWrap = $('#search-form-wrap'),
     isSearchAnim = false,
@@ -35,6 +95,7 @@
   $('body').on('click', function(){
     $('.article-share-box.on').removeClass('on');
   }).on('click', '.article-share-link', function(e){
+    e.preventDefault();
     e.stopPropagation();
 
     var $this = $(this),
@@ -53,14 +114,16 @@
       }
     } else {
       var html = [
-        '<div id="' + id + '" class="article-share-box">',
-          '<input class="article-share-input" value="' + url + '">',
+        '<div id="' + id + '" class="article-share-box" role="dialog" aria-label="' + shareText.share + '">',
+          '<input class="article-share-input" value="' + url + '" readonly>',
           '<div class="article-share-links">',
-            '<a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent(title) + '&url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"><span class="fa fa-twitter"></span></a>',
-            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"><span class="fa fa-facebook"></span></a>',
-            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"><span class="fa fa-pinterest"></span></a>',
-            '<a href="https://www.linkedin.com/shareArticle?mini=true&url=' + encodedUrl + '" class="article-share-linkedin" target="_blank" title="LinkedIn"><span class="fa fa-linkedin"></span></a>',
+            '<button type="button" class="article-share-copy" title="' + shareText.copy + '" aria-label="' + shareText.copy + '"><span class="fa-solid fa-link"></span></button>',
+            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-box-link article-share-facebook" target="_blank" rel="noopener" title="Facebook"><span class="fa-brands fa-facebook-f"></span></a>',
+            '<a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent(title) + '&url=' + encodedUrl + '" class="article-share-box-link article-share-twitter" target="_blank" rel="noopener" title="Twitter"><span class="fa-brands fa-twitter"></span></a>',
+            '<a href="https://social-plugins.line.me/lineit/share?url=' + encodedUrl + '" class="article-share-box-link article-share-line" target="_blank" rel="noopener" title="LINE"><span class="fa-brands fa-line"></span></a>',
+            '<a href="https://www.instagram.com/" class="article-share-box-link article-share-instagram" target="_blank" rel="noopener" title="Instagram"><span class="fa-brands fa-instagram"></span></a>',
           '</div>',
+          '<div class="article-share-feedback" aria-live="polite"></div>',
         '</div>'
       ].join('');
 
@@ -69,19 +132,46 @@
       $('body').append(box);
     }
 
-    $('.article-share-box.on').hide();
+    $('.article-share-box.on').removeClass('on');
 
     box.css({
       top: offset.top + 25,
       left: offset.left
     }).addClass('on');
+
+    setShareFeedback(box, '');
+    box.find('.article-share-input').trigger('focus').trigger('select');
   }).on('click', '.article-share-box', function(e){
     e.stopPropagation();
-  }).on('click', '.article-share-box-input', function(){
+  }).on('click', '.article-share-input', function(){
     $(this).select();
+  }).on('click', '.article-share-copy', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+
+    var $box = $(this).closest('.article-share-box'),
+      text = $box.find('.article-share-input').val();
+
+    copyShareUrl(text).then(function(copied){
+      setShareFeedback($box, copied ? shareText.copied : shareText.copyFailed, !copied);
+    });
   }).on('click', '.article-share-box-link', function(e){
     e.preventDefault();
     e.stopPropagation();
+
+    var $link = $(this);
+
+    if ($link.hasClass('article-share-instagram')) {
+      var $box = $link.closest('.article-share-box'),
+        text = $box.find('.article-share-input').val(),
+        windowName = 'article-share-box-window-' + Date.now();
+
+      copyShareUrl(text).then(function(copied){
+        setShareFeedback($box, copied ? shareText.instagramReady : shareText.copyFailed, !copied);
+        window.open($link.attr('href'), windowName, 'width=500,height=700');
+      });
+      return;
+    }
 
     window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
   });
