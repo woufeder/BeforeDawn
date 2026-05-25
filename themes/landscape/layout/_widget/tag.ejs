@@ -26,7 +26,7 @@ var tagRows = Object.keys(tagMap).map(function(key){ return tagMap[key]; }).sort
 %>
 <% if (tagRows.length){ %>
   <div class="widget-wrap">
-    <h3 class="widget-title"><%= bd_i18n('tags.All') %></h3>
+    <h6 class="widget-title"><%= bd_i18n('tags.All') %></h6>
     <div class="widget">
       <ul class="tag-list">
         <% tagRows.forEach(function(tag){ %>

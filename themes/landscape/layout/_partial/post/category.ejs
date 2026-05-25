@@ -5,7 +5,7 @@
       <% post.categories.each(function(category){ categoryItems.push(category); }); %>
         <% categoryItems.forEach(function(category, index){ %>
           <a class="article-category-link" href="<%- bd_url_for_lang(category.path, bd_post_lang(post)) %>">
-            <%= category.name %>
+            <%= bd_i18n('categories.' + category.name) %>
           </a>
           <% if (index !==categoryItems.length - 1){ %>
             |

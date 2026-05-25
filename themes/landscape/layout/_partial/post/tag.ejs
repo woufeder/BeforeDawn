@@ -1,7 +1,7 @@
 <% if (post.tags && post.tags.length){ %>
   <ul class="article-tag-list" itemprop="keywords">
     <% post.tags.each(function(tag){ %>
-      <li class="article-tag-list-item"><a class="article-tag-list-link" href="<%- bd_url_for_lang(tag.path, bd_post_lang(post)) %>" rel="tag"><%= tag.name %></a></li>
+      <li class="article-tag-list-item"><a class="article-tag-list-link" href="<%- bd_url_for_lang(tag.path, bd_post_lang(post)) %>" rel="tag"><%= bd_i18n('tags.' + tag.name) %></a></li>
     <% }) %>
   </ul>
 <% } %>
