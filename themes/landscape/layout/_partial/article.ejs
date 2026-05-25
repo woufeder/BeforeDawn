@@ -1,7 +1,9 @@
 <article id="<%= post.layout %>-<%= post.slug %>" class="h-entry article article-type-<%= post.layout %>" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 
   <div class="article-inner">
-
+    <% if (!index){ %>
+    <a href="#" onclick="history.back(); return false;">回到上一頁</a>
+    <% } %>
     <%- partial('post/gallery') %>
 
     <% if (post.link || post.title){ %>
@@ -31,8 +33,8 @@
     <footer class="article-footer">
       <%- partial('post/tag') %>
       <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-share-link"><span class=""><%= bd_i18n('share', bd_post_lang(post)) %>
-      <i class="fa fa-share"></i>
-      </span></a>
+          <i class="fa fa-share"></i>
+        </span></a>
 
     </footer>
   </div>
