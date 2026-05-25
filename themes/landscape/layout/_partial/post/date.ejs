@@ -1,3 +1,17 @@
+<%
+var lang = (typeof bd_post_lang === 'function' ? bd_post_lang(post) : (post.lang || post.language || '')).toLowerCase();
+var localizedDateFormat = date_format;
+
+if (!localizedDateFormat) {
+  if (lang.indexOf('zh') === 0) {
+    localizedDateFormat = 'YYYY年MM月DD日';
+  } else if (lang.indexOf('it') === 0) {
+    localizedDateFormat = 'DD/MM/YYYY';
+  } else if (lang.indexOf('en') === 0) {
+    localizedDateFormat = 'MM/DD/YYYY';
+  }
+}
+%>
 <a href="<%- url_for(post.path) %>" class="<%= class_name %>">
-  <time class="dt-published" datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, date_format) %></time>
+  <time class="dt-published" datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, localizedDateFormat) %></time>
 </a>
