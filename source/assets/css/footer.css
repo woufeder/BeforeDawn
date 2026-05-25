@@ -1,5 +1,6 @@
 #footer {
   height: var(--footer-height);
   box-shadow: 0 0 15px #ffffff6f;
+  padding: 1rem 0;
   display: flex;
 }

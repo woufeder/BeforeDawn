@@ -5,12 +5,13 @@
     <%- partial('post/gallery') %>
 
     <% if (post.link || post.title){ %>
-    <header class="article-header flex flex-row justify-between">
-      <%- partial('post/title', {class_name: 'p-name article-title '}) %>
-      <div class="article-meta flex flex-col justify-end ms-auto">
+    <header class="article-header flex flex-col ">
+      <%- partial('post/date', {class_name: 'article-date ', date_format: null}) %>
+      <div class="flex flex-row justify-between items-center gap-4">
+        <%- partial('post/title', {class_name: 'p-name article-title '}) %>
         <%- partial('post/category', {class_name: 'p-name article-title'}) %>
-        <%- partial('post/date', {class_name: 'article-date ms-auto', date_format: null}) %>
       </div>
+
     </header>
     <% } %>
 
@@ -29,8 +30,10 @@
 
     <footer class="article-footer">
       <%- partial('post/tag') %>
-      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-share-link"><span class="fa fa-share"><%= bd_i18n('share', bd_post_lang(post)) %></span></a>
-      
+      <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-share-link"><span class=""><%= bd_i18n('share', bd_post_lang(post)) %>
+      <i class="fa fa-share"></i>
+      </span></a>
+
     </footer>
   </div>
   <% if (!index){ %>
