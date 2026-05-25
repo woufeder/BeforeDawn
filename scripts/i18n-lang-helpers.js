@@ -101,6 +101,88 @@ function normalizePath(input) {
   return value;
 }
 
+function stripBeforeDawnPrefix(path) {
+  return String(path || '')
+    .replace(/^https?:\/\/[^/]+/i, '')
+    .replace(/^\/?BeforeDawn\/?/i, '')
+    .replace(/^\/+/, '');
+}
+
+function stripLeadingLang(path) {
+  return String(path || '')
+    .replace(/^(zh-tw|en|it)\//i, '')
+    .replace(/^\/+/, '');
+}
+
+function normalizePostPath(path) {
+  return String(path || '')
+    .replace(/^\/+/, '')
+    .replace(/index\.html$/i, '')
+    .replace(/\/+$/, '');
+}
+
+function isBlogDetailPath(pathWithoutLang) {
+  var clean = normalizePostPath(pathWithoutLang);
+  if (clean.indexOf('blog/') !== 0) return false;
+
+  var rest = clean.slice(5);
+  if (!rest) return false;
+
+  var restLower = rest.toLowerCase();
+  if (restLower === 'archives' || restLower.indexOf('archives/') === 0) return false;
+  if (restLower === 'categories' || restLower.indexOf('categories/') === 0) return false;
+  if (restLower === 'tags' || restLower.indexOf('tags/') === 0) return false;
+
+  return true;
+}
+
+function inferPostSlugFromPath(pathWithoutLang) {
+  var clean = normalizePostPath(pathWithoutLang);
+  if (clean.indexOf('blog/') !== 0) return '';
+  return clean.slice(5).split('/')[0] || '';
+}
+
+function findTranslatedPost(site, lang, translationKey, slug) {
+  if (!site || !site.posts) return null;
+
+  var langLower = String(lang || '').toLowerCase();
+  var key = translationKey ? String(translationKey).toLowerCase() : '';
+  var slugLower = slug ? String(slug).toLowerCase() : '';
+  var matchedBySlug = null;
+
+  site.posts.each(function (item) {
+    if (!item) return;
+
+    var itemLang = String(item.lang || item.language || '').toLowerCase();
+    if (itemLang !== langLower) return;
+
+    var itemKey = item.translation_key ? String(item.translation_key).toLowerCase() : '';
+    if (key && itemKey && itemKey === key) {
+      matchedBySlug = item;
+      return;
+    }
+
+    if (!matchedBySlug && slugLower) {
+      var itemSlug = String(item.slug || '').toLowerCase();
+      if (itemSlug && itemSlug === slugLower) {
+        matchedBySlug = item;
+      }
+    }
+  });
+
+  return matchedBySlug;
+}
+
+function buildLocalizedPath(pathWithoutLang, targetLang) {
+  var clean = String(pathWithoutLang || '')
+    .replace(/index\.html$/i, '')
+    .replace(/^\/+/, '')
+    .replace(/\/+$/, '');
+
+  if (!clean) return '/' + targetLang + '/';
+  return '/' + targetLang + '/' + clean + '/';
+}
+
 function currentLangFromContext(context) {
   var defaultLang = siteDefaultLang();
   var pagePermalink = context.page && context.page.permalink ? context.page.permalink : '';
@@ -224,6 +306,34 @@ hexo.extend.helper.register('bd_url_for_lang', function (targetPath, lang) {
   }
 
   return this.url_for('/' + targetLang + normalized);
+});
+
+hexo.extend.helper.register('bd_switch_lang_url', function (targetLang) {
+  var defaultLang = siteDefaultLang();
+  var lang = String(targetLang || defaultLang).toLowerCase();
+  var page = this.page || {};
+
+  var rawPath = String(page.path || '');
+  var pathWithoutLang = stripLeadingLang(stripBeforeDawnPrefix(rawPath));
+
+  if (isBlogDetailPath(pathWithoutLang)) {
+    var translationKey = page.translation_key || page.i18n_key || '';
+    var slug = page.slug || inferPostSlugFromPath(pathWithoutLang);
+
+    var targetPost = findTranslatedPost(this.site, lang, translationKey, slug);
+    if (targetPost && targetPost.path) {
+      return this.url_for('/' + String(targetPost.path).replace(/^\/+/, ''));
+    }
+
+    var zhTwPost = findTranslatedPost(this.site, 'zh-tw', translationKey, slug);
+    if (zhTwPost && zhTwPost.path) {
+      return this.url_for('/' + String(zhTwPost.path).replace(/^\/+/, ''));
+    }
+
+    return this.url_for('/zh-tw/blog/');
+  }
+
+  return this.url_for(buildLocalizedPath(pathWithoutLang, lang));
 });
 
 hexo.extend.helper.register('bd_i18n', function (key, lang) {

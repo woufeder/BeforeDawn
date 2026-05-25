@@ -10,6 +10,80 @@ if (window.Swup && !window.swup) {
   });
 }
 
+function enforceDefaultLangRoot() {
+  var path = window.location.pathname || '';
+  var trimmed = path.replace(/\/+$/, '');
+  var guardKey = 'bd_swup_redirect_guard';
+  var now = Date.now();
+  var last = Number(sessionStorage.getItem(guardKey) || 0);
+
+  if (last && now - last < 1200) {
+    return false;
+  }
+
+  if (/\/BeforeDawn$/i.test(trimmed)) {
+    if (trimmed.toLowerCase() === '/beforedawn/zh-tw') {
+      return false;
+    }
+    sessionStorage.setItem(guardKey, String(now));
+    window.location.replace('/BeforeDawn/zh-tw/');
+    return true;
+  }
+
+  return false;
+}
+
+function isBlogDetailPath(pathname) {
+  return /^\/BeforeDawn\/(zh-tw|en|it)\/blog\/(?!$|archives(?:\/|$)|categories(?:\/|$)|tags(?:\/|$)).+/i.test(pathname);
+}
+
+function toZhTwBlogPath(pathname) {
+  return pathname.replace(/^\/BeforeDawn\/(zh-tw|en|it)\//i, '/BeforeDawn/zh-tw/');
+}
+
+window.bdHandleLangSwitch = function (selectEl) {
+  if (!selectEl || !selectEl.value) return false;
+
+  var targetHref = selectEl.value;
+  var currentPath = window.location.pathname || '';
+
+  if (!isBlogDetailPath(currentPath)) {
+    window.location.href = targetHref;
+    return false;
+  }
+
+  var targetUrl = new URL(targetHref, window.location.origin);
+  var targetPath = targetUrl.pathname || '';
+  var targetLangMatch = targetPath.match(/^\/BeforeDawn\/(zh-tw|en|it)\//i);
+  var targetLang = targetLangMatch ? targetLangMatch[1].toLowerCase() : '';
+
+  if (targetLang === 'zh-tw') {
+    window.location.href = targetHref;
+    return false;
+  }
+
+  fetch(targetPath, {
+    method: 'GET',
+    cache: 'no-store',
+    credentials: 'same-origin'
+  }).then(function (response) {
+    if (response.ok) {
+      window.location.href = targetHref;
+      return;
+    }
+
+    var fallbackPath = toZhTwBlogPath(currentPath);
+    if (fallbackPath === currentPath) return;
+    window.location.href = fallbackPath;
+  }).catch(function () {
+    var fallbackPath = toZhTwBlogPath(currentPath);
+    if (fallbackPath === currentPath) return;
+    window.location.href = fallbackPath;
+  });
+
+  return false;
+};
+
 function initHome() {
   const home = document.querySelector("#home");
   if (!home) return;
@@ -132,6 +206,10 @@ if (!window.mobileMenuBound) {
 }
 
 document.addEventListener("DOMContentLoaded", initPage);
+
+if (enforceDefaultLangRoot()) {
+  // Stop bootstrapping when redirecting the root path.
+}
 
 if (window.swup?.hooks) {
   window.swup.hooks.on("page:view", initPage);
