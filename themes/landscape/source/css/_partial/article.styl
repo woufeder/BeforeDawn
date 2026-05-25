@@ -6,46 +6,43 @@
   overflow: hidden
 
 .article-meta
-  clearfix()
+  padding: 0 article-padding 0
+
 
 .article-date
-  @extend $blog-side-title
+  // @extend $blog-side-title
   float: left
+  font-family: "Shippori Mincho B1", serif
+  font-size 0.95rem
 
 .article-category
   float: left
-  line-height: 1em
-  margin-left: 8px
-  &:before
-    content: "\25C6"
-    font-size 0.6rem
-    // line-height 2rem
-
+  line-height: 1.5em
 .article-category-link
-  @extend $blog-side-title
-  margin: 0 12px 1em
+  font-family: "Shippori Mincho B1", serif
+  font-weight bold
+  font-size 0.95rem
+  // border-bottom: 1px solid color-border
 
 .article-header
   padding: article-padding article-padding 0
 
 .article-title
-  text-decoration: none
-  font-size: 2em
-  font-weight: bold
-  color: color-default
+  font-size: 2rem
+  color: $text-color
   line-height: line-height-title
   transition: color 0.2s
   a&:hover
-    color: color-link
+    color: $color-hover
 
 .article-entry
   @extend $base-style
   clearfix()
-  color: color-default
+  color: $text-color
   padding: 0 article-padding
   p, table
     line-height: line-height
-    margin: line-height 0
+    margin: 1.1rem 0
   h1, h2, h3, h4, h5, h6
     font-weight: bold
   h1, h2, h3, h4, h5, h6
@@ -120,20 +117,23 @@
       height: 100%
       margin-top: 0
 
-.article-more-link a
-  display: inline-block
-  line-height: 1em
-  padding: 6px 15px
-  border-radius: 15px
-  background: color-background
-  color: color-grey
-  text-shadow: 0 1px #fff
-  text-decoration: none
-  &:hover
-    background: color-link
-    color: #fff
+.article-more-link 
+  margin-top: 0
+  margin-bottom: 1.1rem
+  a
+    display: inline-block
+    line-height: 1em
+    padding: 6px 15px
+    border-radius: 15px
+    background: color-background
+    color: color-grey
+    text-shadow: 0 1px #fff
     text-decoration: none
-    text-shadow: 0 1px darken(color-link, 20%)
+    &:hover
+      background: color-link
+      color: #fff
+      text-decoration: none
+      text-shadow: 0 1px darken(color-link, 20%)
 
 .article-footer
   clearfix()
