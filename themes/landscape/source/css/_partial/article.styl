@@ -150,8 +150,8 @@
   font-size: 0.85em
   line-height: line-height
   border-top: 1px dashed color-border
-  padding-top: line-height
-  margin: 0 article-padding article-padding
+  padding-top: 1rem
+  margin: 0 article-padding 1rem
   a
     color: color-grey
     text-decoration: none
@@ -181,28 +181,14 @@
 #article-nav
   clearfix()
   position: relative
-  @media mq-normal
-    margin: block-margin 0
-    &:before
-      absolute-center(8px)
-      content: ""
-      border-radius: 50%
-      background: color-border
-      box-shadow: 0 1px 2px #fff
 
 .article-nav-link-wrap
   text-decoration: none
-  text-shadow: 0 1px #fff
-  color: color-grey
+  color: $text-color
   box-sizing: border-box
-  margin-top: block-margin
-  text-align: center
   display: block
   &:hover
     color: color-default
-  @media mq-normal
-    width: 50%
-    margin-top: 0
 
 #article-nav-newer
   @media mq-normal
@@ -219,16 +205,17 @@
 .article-nav-caption
   text-transform: uppercase
   letter-spacing: 2px
-  color: color-border
+  color: $text-sub-color
   line-height: 1em
+  font-size 0.85rem
   font-weight: bold
   #article-nav-newer &
     margin-right: -2px
 
 .article-nav-title
-  font-size: 0.85em
+  font-size: 0.95rem
   line-height: line-height
-  margin-top: 0.5em
+
 
 .article-share-box
   position: absolute
