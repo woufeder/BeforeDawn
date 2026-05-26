@@ -2,7 +2,7 @@
 
   <div class="article-inner">
     <% if (!index){ %>
-    <a href="#" onclick="history.back(); return false;">回到上一頁</a>
+    <a href="<%- bd_url_for_lang('/blog') %>"><i class="fa-solid fa-caret-left"></i> <%= __('back_to_list') %></a>
     <% } %>
     <%- partial('post/gallery') %>
 
