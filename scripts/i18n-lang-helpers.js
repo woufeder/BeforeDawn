@@ -246,6 +246,81 @@ function translateFromThemeI18n(key, lang) {
   return hexo.theme.i18n.__(order)(key);
 }
 
+function normalizeSeriesValue(post) {
+  if (!post) return '';
+  var raw = post.series;
+  if (!raw && post.series_id) raw = post.series_id;
+  if (!raw && post.collection) raw = post.collection;
+  return raw ? String(raw).trim() : '';
+}
+
+function toTimeValue(input) {
+  if (!input) return 0;
+  var time = new Date(input).getTime();
+  return Number.isFinite(time) ? time : 0;
+}
+
+function postIdentity(post) {
+  if (!post) return '';
+  if (post.path) return 'path:' + String(post.path);
+  if (post.source) return 'src:' + String(post.source);
+  if (post._id) return 'id:' + String(post._id);
+  if (post.slug) return 'slug:' + String(post.slug);
+  return '';
+}
+
+function isSamePost(a, b) {
+  if (!a || !b) return false;
+  var idA = postIdentity(a);
+  var idB = postIdentity(b);
+  return idA && idB && idA === idB;
+}
+
+function comparePostsDesc(a, b) {
+  var dateDiff = toTimeValue(b.date) - toTimeValue(a.date);
+  if (dateDiff !== 0) return dateDiff;
+
+  var updateDiff = toTimeValue(b.updated) - toTimeValue(a.updated);
+  if (updateDiff !== 0) return updateDiff;
+
+  var idA = postIdentity(a);
+  var idB = postIdentity(b);
+  if (idA < idB) return -1;
+  if (idA > idB) return 1;
+  return 0;
+}
+
+function pickAdjacent(posts, current) {
+  var currentIdx = -1;
+
+  for (var i = 0; i < posts.length; i++) {
+    if (isSamePost(posts[i], current)) {
+      currentIdx = i;
+      break;
+    }
+  }
+
+  if (currentIdx === -1) {
+    posts.push(current);
+    posts.sort(comparePostsDesc);
+    for (var j = 0; j < posts.length; j++) {
+      if (isSamePost(posts[j], current)) {
+        currentIdx = j;
+        break;
+      }
+    }
+  }
+
+  if (currentIdx === -1) {
+    return { prev: null, next: null };
+  }
+
+  return {
+    prev: currentIdx + 1 < posts.length ? posts[currentIdx + 1] : null,
+    next: currentIdx - 1 >= 0 ? posts[currentIdx - 1] : null
+  };
+}
+
 hexo.extend.helper.register('bd_current_lang', function () {
   return currentLangFromContext(this);
 });
@@ -257,29 +332,62 @@ hexo.extend.helper.register('bd_post_lang', function (post) {
   if (post.lang) return post.lang;
   if (post.language) return post.language;
 
-  var found = null;
-  var targetId = post._id ? String(post._id) : '';
-  var targetSource = post.source || '';
+  return inferLangFromPath(post.path, defaultLang);
+});
+
+hexo.extend.helper.register('bd_post_nav', function (post) {
+  if (!post) {
+    return { prev: null, next: null };
+  }
+
+  function langFromPostPath(item) {
+    var path = String((item && item.path) || '').replace(/^\/+/, '').toLowerCase();
+    var firstSeg = path.split('/')[0] || '';
+    if (firstSeg === 'zh-tw' || firstSeg === 'en' || firstSeg === 'it') return firstSeg;
+    return '';
+  }
+
+  function langFromPost(item) {
+    var fromPath = langFromPostPath(item);
+    if (fromPath) return fromPath;
+    return String((item && (item.lang || item.language)) || siteDefaultLang()).toLowerCase();
+  }
+
+  var current = post;
+  var currentLang = langFromPost(current);
+  var currentSeries = normalizeSeriesValue(current);
+  var sameLang = [];
+  var sameSeries = [];
 
   this.site.posts.each(function (item) {
-    if (found) return;
-    if (targetId && item._id && String(item._id) === targetId) {
-      found = item;
-      return;
-    }
-    if (targetSource && item.source && item.source === targetSource) {
-      found = item;
-      return;
+    if (!item) return;
+
+    var itemLang = langFromPost(item);
+    if (itemLang !== currentLang) return;
+
+    sameLang.push(item);
+
+    if (currentSeries) {
+      var itemSeries = normalizeSeriesValue(item);
+      if (itemSeries && itemSeries === currentSeries) {
+        sameSeries.push(item);
+      }
     }
   });
 
-  if (found) {
-    if (found.lang) return found.lang;
-    if (found.language) return found.language;
-    return inferLangFromPath(found.path, defaultLang);
+  sameLang.sort(comparePostsDesc);
+  sameSeries.sort(comparePostsDesc);
+
+  if (currentSeries && sameSeries.length > 1) {
+    var seriesNav = pickAdjacent(sameSeries, current);
+    var langNav = pickAdjacent(sameLang, current);
+    return {
+      prev: seriesNav.prev || langNav.prev,
+      next: seriesNav.next || langNav.next
+    };
   }
 
-  return inferLangFromPath(post.path, defaultLang);
+  return pickAdjacent(sameLang, current);
 });
 
 hexo.extend.helper.register('bd_url_for_lang', function (targetPath, lang) {
