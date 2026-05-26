@@ -1,21 +1,46 @@
-<% if (post.prev || post.next){ %>
-<nav id="article-nav flex" class="article-nav flex flex-row justify-between items-center px-4">
-  <% if (post.prev){ %>
-    <a href="<%- url_for(post.prev.path) %>" id="article-nav-older" class="article-nav-link-wrap w-full md:w-auto text-nowrap text-left">
+<%
+var navPosts = (typeof bd_post_nav === 'function') ? bd_post_nav(post) : { prev: post.prev, next: post.next };
+function navLangFromPath(targetPath) {
+  var m = String(targetPath || '').match(/^(?:\/?)(zh-tw|en|it)\//i);
+  return m ? m[1].toLowerCase() : '';
+}
+var currentLang = String(post.lang || post.language || navLangFromPath(post.path)).toLowerCase();
+if (navPosts.prev) {
+  var prevLang = String(navPosts.prev.lang || navPosts.prev.language || navLangFromPath(navPosts.prev.path)).toLowerCase();
+  if (currentLang && prevLang && currentLang !== prevLang) {
+    navPosts.prev = null;
+  }
+}
+if (navPosts.next) {
+  var nextLang = String(navPosts.next.lang || navPosts.next.language || navLangFromPath(navPosts.next.path)).toLowerCase();
+  if (currentLang && nextLang && currentLang !== nextLang) {
+    navPosts.next = null;
+  }
+}
+%>
+<% if (navPosts.prev || navPosts.next){ %>
+<%
+var hasPrev = !!navPosts.prev;
+var hasNext = !!navPosts.next;
+var navJustifyClass = hasPrev && hasNext ? 'justify-between' : (hasNext ? 'justify-end' : 'justify-start');
+%>
+<nav id="article-nav flex" class="article-nav flex flex-row <%= navJustifyClass %> items-center px-4">
+  <% if (navPosts.prev){ %>
+    <a href="<%- url_for(navPosts.prev.path) %>" id="article-nav-older" class="article-nav-link-wrap <%= hasNext ? 'flex-1' : 'w-full md:w-auto' %> text-nowrap text-left">
       <strong class="article-nav-caption"><%= __('older') %></strong>
       <div class="article-nav-title">
-        <% if (post.prev.title){ %>
-          <%= post.prev.title %>
+        <% if (navPosts.prev.title){ %>
+          <%= navPosts.prev.title %>
         <% } else { %>
           (no title)
         <% } %>
       </div>
     </a>
   <% } %>
-  <% if (post.next){ %>
-    <a href="<%- url_for(post.next.path) %>" id="article-nav-newer" class="article-nav-link-wrap w-full md:w-auto text-nowrap text-right">
+  <% if (navPosts.next){ %>
+    <a href="<%- url_for(navPosts.next.path) %>" id="article-nav-newer" class="article-nav-link-wrap <%= hasPrev ? 'flex-1' : 'w-full md:w-auto' %> text-nowrap text-right">
       <strong class="article-nav-caption"><%= __('newer') %></strong>
-      <div class="article-nav-title"><%= post.next.title %></div>
+      <div class="article-nav-title"><%= navPosts.next.title %></div>
     </a>
   <% } %>
 </nav>
