@@ -1,15 +1,36 @@
+<%
+var displayTitle = post.title;
+if (post && post.title && post.series) {
+  var pair = null;
+  if (Array.isArray(post.series)) {
+    if (post.series.length) {
+      pair = Array.isArray(post.series[0]) ? post.series[0] : post.series;
+    }
+  } else if (typeof post.series === 'string') {
+    pair = post.series.split(',');
+  }
+
+  if (pair && pair.length) {
+    var root = pair[0] != null ? String(pair[0]).trim() : '';
+    var branch = pair[1] != null ? String(pair[1]).trim() : '';
+    if (root) {
+      displayTitle = '【' + root + '】' + (branch ? branch + ' ' : '') + '| ' + post.title;
+    }
+  }
+}
+%>
 <% if (post.link){ %>
   <h4 itemprop="name">
-    <a class="<%= class_name %>" href="<%- url_for(post.link) %>" data-no-swup target="_blank" itemprop="url"><%= post.title %></a>
+    <a class="<%= class_name %>" href="<%- url_for(post.link) %>" data-no-swup target="_blank" itemprop="url"><%= displayTitle %></a>
   </h4>
 <% } else if (post.title){ %>
   <% if (index){ %>
     <h4 itemprop="name">
-      <a class="<%= class_name %>" href="<%- url_for(post.path) %>" data-no-swup><%= post.title %></a>
+      <a class="<%= class_name %>" href="<%- url_for(post.path) %>" data-no-swup><%= displayTitle %></a>
     </h4>
   <% } else { %>
     <h4 class="<%= class_name %>" itemprop="headline name">
-      <%= post.title %>
+      <%= displayTitle %>
     </h4>
   <% } %>
 <% } %>
