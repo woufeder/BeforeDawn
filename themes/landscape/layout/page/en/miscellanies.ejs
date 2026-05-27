@@ -1,0 +1,167 @@
+---
+layout: page/layout
+---
+
+<section id="miscellanies" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
+  <section id="banner" class="box">
+    <div class="left">
+      <h1>Miscellanies</h1>
+      <h2>短篇│塗鴉</h2>
+    </div>
+    <div class="right flex flex-col items-center">
+      <div class="hover-box flex flex-col items-center gap-8 text-center w-fit px-4 xl:px-0" data-mobile-toggle="hover-box">
+        <%- partial('_partial/svg/branch_top') %>
+        <div class="grid">
+          <div class="context default flex items-center justify-center">
+            <h6>
+              「一個人能使自己成為自己，比什麼都重要。」<br>
+              　　　——維吉尼亞·吳爾芙《自己的房間》
+            </h6>
+          </div>
+          <div class="context hover flex flex-col items-center justify-center">
+            <h6 class="text-center">
+              此區存放隨筆、短詩<br>
+              不屬於任何世界觀的短文、塗鴉<br>
+              ​未完成的草稿，或沒參成的企劃<br>
+            </h6>
+          </div>
+        </div>
+        <%- partial('_partial/svg/branch_bottom') %>
+      </div>
+    </div>
+  </section>
+
+  <section id="creates-area" class=" mt-10">
+    <div class="p-8 box">
+      <h2 class="mb-4">
+        ILLUSTRATION
+      </h2>
+      <div class="flex flex-row justify-center">
+        <div id="gallery">
+          <div class="gallery-sizer"></div>
+        </div>
+      </div>
+    </div>
+    <div class="p-8 box">
+      <h2 class="mb-4">
+        STORY
+      </h2>
+      <% 
+        const currentLang=bd_current_lang(); 
+        let introPosts=[]; site.posts.each(function(post){ 
+          if (bd_post_lang(post)!==currentLang) return; 
+          var matched=false; post.categories.each(function(cat){ if(String(cat.name || '' ).trim()==='自介' ) { matched=true; } }); 
+          if (matched) { introPosts.push(post); } }); 
+          introPosts.sort(function(a, b){ return b.date.valueOf() - a.date.valueOf(); }); 
+        %>
+      <div id="about-intro-posts" class="px-6">
+        <% introPosts.forEach(function(post, i){ %>
+        <div class="intro-item" data-index="<%= i %>">
+          <%- partial('_partial/article-list', {post: post, index: true}) %>
+        </div>
+        <% }) %>
+      </div>
+      <div id="intro-pagination" class="flex flex-row items-center justify-center gap-4">
+        <button id="prev">上一頁</button>
+        <span id="page-info"></span>
+        <button id="next">下一頁</button>
+      </div>
+    </div>
+  </section>
+</section>
+
+<script>
+  (() => {
+    const perPage = 5;
+    const items = document.querySelectorAll('.intro-item');
+
+    let currentPage = 1;
+    const totalPages = Math.ceil(items.length / perPage);
+
+    function render() {
+      items.forEach((el, i) => {
+        el.style.display =
+          (i >= (currentPage - 1) * perPage && i < currentPage * perPage) ?
+          'block' :
+          'none';
+      });
+
+      document.getElementById('page-info').textContent =
+        `${currentPage} / ${totalPages}`;
+    }
+
+    document.getElementById('prev').onclick = () => {
+      if (currentPage > 1) {
+        currentPage--;
+        render();
+      }
+    };
+
+    document.getElementById('next').onclick = () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        render();
+      }
+    };
+
+    render();
+  })();
+</script>
+<script>
+  (function() {
+    const cloudName = 'dhtsewjf1';
+    const tag = 'others';
+
+    async function loadGallery() {
+      const gallery = document.getElementById('gallery');
+      if (!gallery) return;
+
+      // 清空舊的（保留 sizer）
+      gallery.innerHTML = '<div class="gallery-sizer"></div>';
+
+      try {
+        const res = await fetch(
+          `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`
+        );
+        const data = await res.json();
+
+        const base = `https://res.cloudinary.com/${cloudName}/image/upload/`;
+
+        data.resources.forEach(item => {
+          const full = base + item.public_id + '.jpg';
+          const thumb = base + 'q_auto,f_auto,w_400/' + item.public_id + '.jpg';
+
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'gallery-item';
+
+          const a = document.createElement('a');
+          a.href = full;
+          a.setAttribute('data-fancybox', 'gallery');
+
+          const img = document.createElement('img');
+          img.src = thumb;
+
+          a.appendChild(img);
+          itemDiv.appendChild(a);
+          gallery.appendChild(itemDiv);
+        });
+
+        imagesLoaded(gallery, function() {
+          new Masonry(gallery, {
+            itemSelector: '.gallery-item',
+            columnWidth: '.gallery-sizer'
+          });
+        });
+
+        if (window.Fancybox) {
+          Fancybox.bind('[data-fancybox="gallery"]');
+        }
+
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    loadGallery();
+  })();
+</script>
