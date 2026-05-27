@@ -17,10 +17,11 @@ html,
 body {
   font-family:
     "Iansui", "LXGW WenKai Mono TC", "Noto Sans TC", system-ui, sans-serif;
-  -webkit-user-select: none; /* Chrome, Safari, Opera */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE 10+ */
-  user-select: none; /* 標準語法 */
+  
+    /* -webkit-user-select: none; /* Chrome, Safari, Opera */
+    /* -moz-user-select: none; /* Firefox */ 
+    /* -ms-user-select: none; /* IE 10+ */ 
+    /* user-select: none; /* 標準語法 */ 
 }
 
 #swup {
@@ -314,7 +315,7 @@ main {
 @media (max-width: 767px) {
   :root {
     --header-height: 48px;
-    --footer-height: 50px;
+    --footer-height: 90px;
   }
   #home {
     .lang-switcher {

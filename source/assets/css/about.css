@@ -48,6 +48,7 @@
         position: relative;
         font-size: 60px;
         z-index: 1;
+        text-wrap: nowrap;
       }
       h2 {
         text-wrap: nowrap;
@@ -66,6 +67,10 @@
       font-family: "Shippori Mincho B1", serif;
       color: #75869c;
       font-weight: bold;
+      &.en {
+        margin-top: 5rem;
+        text-wrap: nowrap;
+      }
     }
     .content {
       p {
@@ -160,6 +165,9 @@
     #protile {
       .note {
         align-self: flex-end;
+        &.en {
+          margin-left: auto;
+        }
       }
     }
   }
@@ -170,6 +178,11 @@
   #about {
     #protile {
       margin-left: 1rem;
+      .note {
+        &.en {
+          margin-top: 1.5rem;
+        }
+      }
     }
   }
 }
