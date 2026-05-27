@@ -1,0 +1,100 @@
+<%
+function normalizeSeriesPair(raw) {
+  if (!raw) return null;
+
+  var pair = null;
+
+  if (Array.isArray(raw)) {
+    if (!raw.length) return null;
+    if (Array.isArray(raw[0])) {
+      pair = raw[0];
+    } else {
+      pair = raw;
+    }
+  } else if (typeof raw === 'string') {
+    pair = raw.split(',');
+  }
+
+  if (!pair || !pair.length) return null;
+
+  var root = pair[0] != null ? String(pair[0]).trim() : '';
+  var branch = pair[1] != null ? String(pair[1]).trim() : '';
+  if (!root) return null;
+
+  return { root: root, branch: branch || 'General' };
+}
+
+function getPagePost() {
+  if (!page) return null;
+  if (page.layout !== 'post') return null;
+  if (!page.path) return null;
+
+  var found = null;
+  site.posts.each(function(post) {
+    if (found) return;
+    if (post.path === page.path) {
+      found = post;
+    }
+  });
+
+  return found;
+}
+
+var currentPost = getPagePost();
+if (!currentPost) {
+  return;
+}
+
+var currentSeries = normalizeSeriesPair(currentPost.series);
+if (!currentSeries) {
+  return;
+}
+
+var currentLang = bd_post_lang(currentPost);
+var groups = {};
+
+site.posts.each(function(post) {
+  if (!post) return;
+  if (bd_post_lang(post) !== currentLang) return;
+
+  var pair = normalizeSeriesPair(post.series);
+  if (!pair) return;
+  if (pair.root !== currentSeries.root) return;
+
+  if (!groups[pair.branch]) {
+    groups[pair.branch] = [];
+  }
+
+  groups[pair.branch].push(post);
+});
+
+var branchNames = Object.keys(groups).sort(function(a, b) {
+  return a.localeCompare(b);
+});
+
+if (!branchNames.length) {
+  return;
+}
+
+branchNames.forEach(function(branch) {
+  groups[branch].sort(function(a, b) {
+    return a.date.valueOf() - b.date.valueOf();
+  });
+});
+%>
+<div class="widget-wrap">
+  <h6 class="widget-title">Series: <%= currentSeries.root %></h6>
+  <div class="widget">
+    <ul class="series-list">
+      <% branchNames.forEach(function(branch) { %>
+        <li class="series-list-branch"><strong><%= branch %></strong></li>
+        <% groups[branch].forEach(function(post) { %>
+          <% var isCurrent = currentPost.path === post.path; %>
+          <li class="series-list-item">
+            <a class="series-post-link <%= isCurrent ? 'is-current' : '' %>" href="<%- url_for(post.path) %>"><%= isCurrent ? '▶ ' : '' %><%= post.title || '(no title)' %></a>
+          </li>
+        <% }) %>
+      <% }) %>
+    </ul>
+  </div>
+</div>
