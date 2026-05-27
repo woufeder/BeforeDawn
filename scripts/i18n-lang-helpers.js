@@ -355,9 +355,7 @@ hexo.extend.helper.register('bd_post_nav', function (post) {
 
   var current = post;
   var currentLang = langFromPost(current);
-  var currentSeries = normalizeSeriesValue(current);
   var sameLang = [];
-  var sameSeries = [];
 
   this.site.posts.each(function (item) {
     if (!item) return;
@@ -366,26 +364,9 @@ hexo.extend.helper.register('bd_post_nav', function (post) {
     if (itemLang !== currentLang) return;
 
     sameLang.push(item);
-
-    if (currentSeries) {
-      var itemSeries = normalizeSeriesValue(item);
-      if (itemSeries && itemSeries === currentSeries) {
-        sameSeries.push(item);
-      }
-    }
   });
 
   sameLang.sort(comparePostsDesc);
-  sameSeries.sort(comparePostsDesc);
-
-  if (currentSeries && sameSeries.length > 1) {
-    var seriesNav = pickAdjacent(sameSeries, current);
-    var langNav = pickAdjacent(sameLang, current);
-    return {
-      prev: seriesNav.prev || langNav.prev,
-      next: seriesNav.next || langNav.next
-    };
-  }
 
   return pickAdjacent(sameLang, current);
 });
