@@ -1,8 +1,10 @@
 ---
-title: 【VCA】前置01│時代的犧牲不為人知
-date: 2018-08-18 00:00:00
+title: 01 時代的犧牲不為人知
+date: 2017-08-18 00:00:00
 lang: zh-tw
 slug: VCA_Prologue_I
+series: 
+  - [VCA, 前置]
 tags:
 categories:
   - [VCA]
