@@ -5,13 +5,9 @@ function isVisible(post){
   return bd_post_lang(post) === currentLang;
 }
 var visiblePosts = [];
-if (page.posts && page.posts.each) {
-  page.posts.each(function(post){ if (isVisible(post)) visiblePosts.push(post); });
-} else {
-  site.posts.each(function(post){
-    if (isVisible(post)) visiblePosts.push(post);
-  });
-}
+site.posts.each(function(post){
+  if (isVisible(post)) visiblePosts.push(post);
+});
 var categoryMap = {};
 visiblePosts.forEach(function(post){
   if (!post.categories || !post.categories.each) return;
@@ -30,7 +26,7 @@ var categoryRows = Object.keys(categoryMap).map(function(key){ return categoryMa
     <div class="widget">
       <ul class="category-list">
         <li class="category-list-item">
-          <a class="category-list-link" href="<%- bd_url_for_lang('/' + config.archive_dir + '/') %>"><%= bd_i18n('all_posts') %></a>
+          <a class="category-list-link" href="<%- bd_url_for_lang('/blog/') %>"><%= bd_i18n('all_posts') %></a>
           <span class="category-list-count"><%= visiblePosts.length %></span>
         </li>
         <% categoryRows.forEach(function(category){ %>
