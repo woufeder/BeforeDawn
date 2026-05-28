@@ -6,13 +6,9 @@ function isVisible(post){
 }
 var archives = {};
 var visiblePosts = [];
-if (page.posts && page.posts.each) {
-  page.posts.each(function(post){ if (isVisible(post)) visiblePosts.push(post); });
-} else {
-  site.posts.each(function(post){
-    if (isVisible(post)) visiblePosts.push(post);
-  });
-}
+site.posts.each(function(post){
+  if (isVisible(post)) visiblePosts.push(post);
+});
 visiblePosts.forEach(function(post){
   var year = post.date.year();
   var month = post.date.month() + 1;
@@ -34,9 +30,7 @@ var archiveKeys = Object.keys(archives).sort().reverse();
           <% var item = archives[key]; %>
           <li class="archive-list-item">
             <a class="archive-list-link" href="<%- bd_url_for_lang('/' + config.archive_dir + '/' + item.year + '/' + item.month + '/') %>"><%= key %></a>
-            <% if (theme.show_count){ %>
-              <span class="archive-list-count"><%= item.count %></span>
-            <% } %>
+            <span class="archive-list-count"><%= item.count %></span>
           </li>
         <% }) %>
       </ul>
