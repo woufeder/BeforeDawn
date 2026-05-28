@@ -47,7 +47,7 @@
   <div class="<%= itemClass %>" data-index="<%= i %>">
     <article id="<%= post.layout %>-<%= post.slug %>">
       <% if (post.link || post.title) { %>
-      <div class="article-header flex flex-row items-end mb-4">
+      <div class="article-header flex flex-row items-end mb-2">
         <%- partial('post/title', {
               post: post,
               index: true,
@@ -68,11 +68,11 @@
         <div class="excerpt-content">
           <%- post.excerpt %>
         </div>
-        <% if (theme.excerpt_link) { %>
+        <!-- <% if (theme.excerpt_link) { %>
         <a href="<%- bd_url_for_lang(post.path, bd_post_lang(post)) %>" data-no-swup>
           <%= __('read_more') %>
         </a>
-        <% } %>
+        <% } %> -->
         <% } else { %>
         <%- post.content %>
         <% } %>

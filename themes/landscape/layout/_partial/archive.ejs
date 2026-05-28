@@ -1,25 +1,145 @@
 <%
 var defaultLang = Array.isArray(config.language) ? config.language[0] : config.language;
 var currentLang = bd_current_lang();
-var langBySource = {};
-site.posts.each(function(item){
-  if (item.source && (item.lang || item.language)) {
-    langBySource[item.source] = item.lang || item.language;
-  }
-});
 function detectLang(post){
   return bd_post_lang(post) || defaultLang;
 }
 function isPostVisible(post){
   return detectLang(post) === currentLang;
 }
-var filteredPosts = [];
-page.posts.each(function(post){
-  if (isPostVisible(post)) {
-    filteredPosts.push(post);
+
+function lowerText(input){
+  return String(input == null ? '' : input).trim().toLowerCase();
+}
+
+function listIncludesTaxonomy(list, target){
+  if (!list || !target) return false;
+  var matched = false;
+  var targetLower = lowerText(target);
+
+  list.each(function(item){
+    if (matched || !item) return;
+
+    var nameLower = lowerText(item.name);
+    var slugLower = lowerText(item.slug);
+    var pathLower = lowerText(item.path).replace(/^\/+/, '').replace(/\/+$/, '');
+
+    if (nameLower === targetLower || slugLower === targetLower || pathLower.indexOf('/' + targetLower + '/') !== -1 || pathLower.endsWith('/' + targetLower)) {
+      matched = true;
+    }
+  });
+
+  return matched;
+}
+
+function isInCurrentScope(post){
+  if (!post) return false;
+  if (!isPostVisible(post)) return false;
+
+  if (is_category()) {
+    var categoryName = page.category && (page.category.name || page.category.slug || page.category.path || page.category);
+    return listIncludesTaxonomy(post.categories, categoryName);
+  }
+
+  if (is_tag()) {
+    var tagName = page.tag && (page.tag.name || page.tag.slug || page.tag.path || page.tag);
+    return listIncludesTaxonomy(post.tags, tagName);
+  }
+
+  if (is_archive()) {
+    if (page.year && post.date.year() !== Number(page.year)) {
+      return false;
+    }
+    if (page.month && post.date.month() + 1 !== Number(page.month)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function timeValue(input){
+  if (!input) return 0;
+  if (typeof input.valueOf === 'function') {
+    var v = Number(input.valueOf());
+    if (!Number.isNaN(v)) return v;
+  }
+  var d = new Date(input).getTime();
+  return Number.isFinite(d) ? d : 0;
+}
+
+function postIdentity(post){
+  if (!post) return '';
+  if (post.path) return String(post.path);
+  if (post.source) return String(post.source);
+  if (post._id) return String(post._id);
+  if (post.slug) return String(post.slug);
+  return '';
+}
+
+function comparePostsDesc(a, b){
+  var dateDiff = timeValue(b.date) - timeValue(a.date);
+  if (dateDiff !== 0) return dateDiff;
+
+  var updateDiff = timeValue(b.updated) - timeValue(a.updated);
+  if (updateDiff !== 0) return updateDiff;
+
+  var idA = postIdentity(a);
+  var idB = postIdentity(b);
+  if (idA < idB) return -1;
+  if (idA > idB) return 1;
+  return 0;
+}
+
+var scopedPosts = [];
+site.posts.each(function(post){
+  if (isInCurrentScope(post)) {
+    scopedPosts.push(post);
   }
 });
+scopedPosts.sort(comparePostsDesc);
+
+var perPage = Number(page.per_page || config.per_page || 10);
+if (!perPage || perPage < 1) perPage = 10;
+
+var pathForPage = String(page.path || '').replace(/\\/g, '/');
+var pageFromPath = pathForPage.match(/\/page\/(\d+)\/?(?:index\.html)?$/i);
+var requestedPage = pageFromPath ? Number(pageFromPath[1]) : Number(page.current || 1);
+var visibleCurrentPage = requestedPage;
+if (!visibleCurrentPage || visibleCurrentPage < 1) visibleCurrentPage = 1;
+
+var visiblePostTotal = scopedPosts.length;
+var visibleTotalPages = Math.ceil(visiblePostTotal / perPage);
+if (!visibleTotalPages) visibleTotalPages = 1;
+if (visibleCurrentPage > visibleTotalPages) visibleCurrentPage = visibleTotalPages;
+
+var startIndex = (visibleCurrentPage - 1) * perPage;
+var filteredPosts = scopedPosts.slice(startIndex, startIndex + perPage);
+
+var paginationBasePath = pathForPage
+  .replace(/\/index\.html$/i, '/')
+  .replace(/\/page\/\d+\/?(?:index\.html)?$/i, '/')
+  .replace(/^\/+/, '')
+  .replace(/\/+$/, '') + '/';
+
+var langPrefixPattern = /^(zh-tw|en|it)\//i;
+if (!langPrefixPattern.test(paginationBasePath) && /^blog\//i.test(paginationBasePath)) {
+  paginationBasePath = String(currentLang || defaultLang || 'zh-tw').toLowerCase() + '/' + paginationBasePath;
+}
+
+var requestedPageInvalid = pageFromPath && requestedPage !== visibleCurrentPage;
+var normalizedBaseUrl = url_for('/' + paginationBasePath);
+var normalizedTargetUrl = visibleCurrentPage <= 1
+  ? normalizedBaseUrl
+  : url_for('/' + paginationBasePath + 'page/' + visibleCurrentPage + '/');
 %>
+<% if (requestedPageInvalid){ %>
+<script>
+  if (window.location.pathname !== '<%- normalizedTargetUrl %>') {
+    window.location.replace('<%- normalizedTargetUrl %>');
+  }
+</script>
+<% } %>
 <% if (expand){ %>
   <% filteredPosts.forEach(function(post){ %>
     <%- partial('article', {post: post, index: true}) %>
@@ -45,13 +165,31 @@ page.posts.each(function(post){
     </div></section>
   <% } %>
 <% } %>
-<% if (page.total > 1){ %>
+<% if (visibleTotalPages > 1){ %>
   <nav id="page-nav">
-    <% var prev_text = "&laquo; " + __('prev');var next_text = __('next') + " &raquo;"%>
+    <% var prev_text = '&lsaquo;'; var next_text = '&rsaquo;'; %>
+    <% var firstPageUrl = normalizedBaseUrl; %>
+    <% var lastPageUrl = visibleTotalPages <= 1 ? normalizedBaseUrl : url_for('/' + paginationBasePath + 'page/' + visibleTotalPages + '/'); %>
+
+    <% if (visibleCurrentPage > 1){ %>
+      <a class="extend first" rel="first" href="<%- firstPageUrl %>">&laquo;</a>
+    <% } else { %>
+      <span class="extend first disabled" aria-disabled="true">&laquo;</span>
+    <% } %>
+
     <%- paginator({
+      base: paginationBasePath,
+      current: visibleCurrentPage,
+      total: visibleTotalPages,
       prev_text: prev_text,
       next_text: next_text,
       escape: false
     }) %>
+
+    <% if (visibleCurrentPage < visibleTotalPages){ %>
+      <a class="extend last" rel="last" href="<%- lastPageUrl %>">&raquo;</a>
+    <% } else { %>
+      <span class="extend last disabled" aria-disabled="true">&raquo;</span>
+    <% } %>
   </nav>
 <% } %>

@@ -1,14 +1,34 @@
 <article id="<%= post.layout %>-<%= post.slug %>" class="h-entry article article-type-<%= post.layout %>" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 
+
+  <% if (!index){ %>
+  <div class="m-4">
+    <%- partial('post/nav') %>
+  </div>
+  <% } %>
   <div class="article-inner">
+
     <% if (!index){ %>
-    <a href="<%- bd_url_for_lang('/blog') %>"><i class="fa-solid fa-caret-left"></i> <%= __('back_to_list') %></a>
+    <div class="flex flex-row justify-between items-center m-4 mb-0 border-b border-slate-500">
+      <div>
+        <h6 class="px-3 py-1.5 mb-2 rounded w-fit">
+          <a href="<%- bd_url_for_lang('/blog') %>"><i class="fa-solid fa-caret-left"></i> <%= __('back_to_list') %></a>
+
+        </h6>
+      </div>
+
+      <div> <%- partial('post/date', {class_name: 'article-date ', date_format: null}) %></div>
+    </div>
     <% } %>
     <%- partial('post/gallery') %>
 
+
+
     <% if (post.link || post.title){ %>
     <header class="article-header flex flex-col ">
+      <% if (index){ %>
       <%- partial('post/date', {class_name: 'article-date ', date_format: null}) %>
+      <% } %>
       <div class="flex flex-row justify-between items-center gap-4">
         <%- partial('post/title', {class_name: 'p-name article-title '}) %>
         <%- partial('post/category', {class_name: 'p-name article-title'}) %>
@@ -30,17 +50,19 @@
       <% } %>
     </div>
 
+
+
     <footer class="article-footer">
       <%- partial('post/tag') %>
+      <% if(index){%>
       <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-share-link"><span class=""><%= bd_i18n('share', bd_post_lang(post)) %>
           <i class="fa fa-share"></i>
         </span></a>
-
+      <% } %>
     </footer>
+
   </div>
-  <% if (!index){ %>
-  <%- partial('post/nav') %>
-  <% } %>
+
 </article>
 
 <% if (!index && post.comments && theme.disqus_shortname){ %>
