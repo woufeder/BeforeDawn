@@ -54,11 +54,9 @@
 
     <footer class="article-footer">
       <%- partial('post/tag') %>
-      <% if(index){%>
       <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" data-title="<%= post.title %>" class="article-share-link"><span class=""><%= bd_i18n('share', bd_post_lang(post)) %>
           <i class="fa fa-share"></i>
         </span></a>
-      <% } %>
     </footer>
 
   </div>
