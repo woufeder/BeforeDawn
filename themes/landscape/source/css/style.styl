@@ -74,6 +74,71 @@ main
   .mobile-nav-on &
     left: mobile-nav-width
 
+.hbe-input-label-content-blink
+  color: rgba(255,255,255,.9) !important
+  font-size: 1.2rem
+
+.hbe-input-label-blink
+  top: -5px !important
+
+.hbe-input
+  width: 100%
+  border-radius: 0
+  padding: 1.2rem 1.5rem
+  color: rgba(255,255,255,.9)
+  letter-spacing: .03em
+
+.hbe-input-field-blink
+  color: #fff  !important
+
+.hbe-input-field-blink:focus
+  border-color: #fff !important
+  color: #fff  !important
+
+.hbe-input::placeholder
+  color: rgba(255,255,255,.45)
+
+.hbe-input-label-content-blink::after
+  color: #fff  !important
+
+button.hbe-button
+  background: transparent !important
+  border: none
+  color: transparent !important
+  font-size: 1rem !important
+  position: relative
+  padding: .3rem 1rem
+  letter-spacing: .08em
+  text-transform: uppercase
+  transition: opacity .3s ease
+  &:hover
+    background: rgba(255, 255, 255, 0.35) !important
+    outline: none
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0)
+    opacity: 0.8
+
+button.hbe-button::before
+  content: "Enter"
+  position: absolute
+  inset: 0
+  display: flex
+  align-items: center
+  justify-content: center
+  color: rgba(255,255,255,.75)
+
+button.hbe-button:hover::before
+  color: #fff
+
+.hbe-error 
+  color: #fff !important
+  font-size: 1.1rem !important
+  font-weight: 900
+
+.hbe-error:not(:empty) 
+  background: rgb(255, 0, 47)!important
+
+
+
 if sidebar and sidebar isnt bottom
   #main
     @media mq-normal

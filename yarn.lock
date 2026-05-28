@@ -758,6 +758,11 @@ hasown@^2.0.2:
   dependencies:
     function-bind "^1.1.2"
 
+hexo-blog-encrypt@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/hexo-blog-encrypt/-/hexo-blog-encrypt-4.0.1.tgz"
+  integrity sha512-8BXbuNNe6fXxEG2lqI8s4xbY11AfY5grx7NErtiH4sBu6bKgMWczayhcNgabvdINCjkFx8lQqxT1WQ+QThs/IA==
+
 hexo-cli@^4.3.2:
   version "4.3.2"
   resolved "https://registry.npmjs.org/hexo-cli/-/hexo-cli-4.3.2.tgz"
@@ -961,7 +966,7 @@ hexo-util@^4.0.0:
     prismjs "^1.29.0"
     strip-indent "^3.0.0"
 
-hexo@^8.0.0:
+hexo@^8.0.0, hexo@>=5:
   version "8.1.1"
   resolved "https://registry.npmjs.org/hexo/-/hexo-8.1.1.tgz"
   integrity sha512-UnzT4ImjKzMMuVRsvudxrl7MkdZwKe4S9xJN5pQPK9c+K0G+fLFb9kB6CqZZwj2E5ne+QK0ls4XMKqTUbNR3RQ==
@@ -1886,9 +1891,9 @@ wrappy@1:
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
 ws@^8.18.0:
-  version "8.20.0"
-  resolved "https://registry.npmjs.org/ws/-/ws-8.20.0.tgz"
-  integrity sha512-sAt8BhgNbzCtgGbt2OxmpuryO63ZoDk/sqaB/znQm94T4fCEsy/yV+7CdC1kJhOU9lboAEU7R3kquuycDoibVA==
+  version "8.21.0"
+  resolved "https://registry.npmjs.org/ws/-/ws-8.21.0.tgz"
+  integrity sha512-Vsp28b7DRcimFQvrqu2Wek3z1iYxDCWqHYB8Qsnk/S4RfaCQzPGPyBNuVjJV3cd6UiKtUtp6sNM77gWvzcCH+g==
 
 xml-name-validator@^5.0.0:
   version "5.0.0"

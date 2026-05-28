@@ -116,4 +116,3 @@ deploy:
   type: git
   repo: https://github.com/woufeder/BeforeDawn.git
   branch: gh-pages
-
