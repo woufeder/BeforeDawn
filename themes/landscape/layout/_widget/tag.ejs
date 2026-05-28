@@ -5,13 +5,9 @@ function isVisible(post){
   return bd_post_lang(post) === currentLang;
 }
 var visiblePosts = [];
-if (page.posts && page.posts.each) {
-  page.posts.each(function(post){ if (isVisible(post)) visiblePosts.push(post); });
-} else {
-  site.posts.each(function(post){
-    if (isVisible(post)) visiblePosts.push(post);
-  });
-}
+site.posts.each(function(post){
+  if (isVisible(post)) visiblePosts.push(post);
+});
 var tagMap = {};
 visiblePosts.forEach(function(post){
   if (!post.tags || !post.tags.each) return;
