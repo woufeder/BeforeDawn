@@ -21,7 +21,7 @@ function normalizeSeriesPair(raw) {
   var branch = pair[1] != null ? String(pair[1]).trim() : '';
   if (!root) return null;
 
-  return { root: root, branch: branch || 'General' };
+  return { root: root, branch: branch || '未分類' };
 }
 
 function getPagePost() {
