@@ -65,8 +65,9 @@
 
       <div class="article-body flex flex-col" itemprop="articleBody">
         <% if (post.excerpt) { %>
-        <%- post.excerpt %>
-
+        <div class="excerpt-content">
+          <%- post.excerpt %>
+        </div>
         <% if (theme.excerpt_link) { %>
         <a href="<%- bd_url_for_lang(post.path, bd_post_lang(post)) %>" data-no-swup>
           <%= __('read_more') %>
