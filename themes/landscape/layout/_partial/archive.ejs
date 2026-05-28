@@ -1,39 +1,57 @@
 <%
 var defaultLang = Array.isArray(config.language) ? config.language[0] : config.language;
 var currentLang = bd_current_lang();
-function isVisible(post){
-  return bd_post_lang(post) === currentLang;
-}
-var archives = {};
-var visiblePosts = [];
-site.posts.each(function(post){
-  if (isVisible(post)) visiblePosts.push(post);
-});
-visiblePosts.forEach(function(post){
-  var year = post.date.year();
-  var month = post.date.month() + 1;
-  var monthText = month < 10 ? '0' + month : '' + month;
-  var key = year + '-' + monthText;
-  if (!archives[key]) {
-    archives[key] = { year: year, month: monthText, count: 0 };
+var langBySource = {};
+site.posts.each(function(item){
+  if (item.source && (item.lang || item.language)) {
+    langBySource[item.source] = item.lang || item.language;
   }
-  archives[key].count += 1;
 });
-var archiveKeys = Object.keys(archives).sort().reverse();
+function detectLang(post){
+  return bd_post_lang(post) || defaultLang;
+}
+function isPostVisible(post){
+  return detectLang(post) === currentLang;
+}
+var filteredPosts = [];
+page.posts.each(function(post){
+  if (isPostVisible(post)) {
+    filteredPosts.push(post);
+  }
+});
 %>
-<% if (archiveKeys.length){ %>
-  <div class="widget-wrap">
-    <h6 class="widget-title"><%= bd_i18n('archives') %></h6>
-    <div class="widget">
-      <ul class="archive-list">
-        <% archiveKeys.forEach(function(key){ %>
-          <% var item = archives[key]; %>
-          <li class="archive-list-item">
-            <a class="archive-list-link" href="<%- bd_url_for_lang('/' + config.archive_dir + '/' + item.year + '/' + item.month + '/') %>"><%= key %></a>
-            <span class="archive-list-count"><%= item.count %></span>
-          </li>
-        <% }) %>
-      </ul>
-    </div>
-  </div>
+<% if (expand){ %>
+  <% filteredPosts.forEach(function(post){ %>
+    <%- partial('article', {post: post, index: true}) %>
+  <% }) %>
+<% } else { %>
+  <% var last; %>
+  <% filteredPosts.forEach(function(post, i){ %>
+    <% var year = post.date.year(); %>
+    <% if (last != year){ %>
+      <% if (last != null){ %>
+        </div></section>
+      <% } %>
+      <% last = year; %>
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="<%- url_for(config.archive_dir + '/' + year) %>" class="archive-year"><%= year %></a>
+        </div>
+        <div class="archives">
+    <% } %>
+    <%- partial('archive-post', {post: post, even: i % 2 == 0}) %>
+  <% }) %>
+  <% if (filteredPosts.length){ %>
+    </div></section>
+  <% } %>
+<% } %>
+<% if (page.total > 1){ %>
+  <nav id="page-nav">
+    <% var prev_text = "&laquo; " + __('prev');var next_text = __('next') + " &raquo;"%>
+    <%- paginator({
+      prev_text: prev_text,
+      next_text: next_text,
+      escape: false
+    }) %>
+  </nav>
 <% } %>
