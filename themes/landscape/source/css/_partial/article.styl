@@ -47,12 +47,15 @@
   clearfix()
   color: $text-color
   padding: 0 article-padding
-  p, table
+  table
     font-size: 1.05rem
     line-height:2rem
     margin: 1.1rem 0
   p
+    font-size: 1.05rem
+    line-height:2rem
     padding: 1.1rem 1rem
+    margin: 0
   h1, h2, h3, h4, h5, h6
     font-weight: bold
   h1, h2, h3, h4, h5, h6
@@ -134,16 +137,22 @@
     display: inline-block
     line-height: 1em
     padding: 6px 15px
-    border-radius: 15px
-    background: color-background
-    color: color-grey
-    text-shadow: 0 1px #fff
+    border: 1px solid color-border
+    border-radius: 4px
+    color $text-color
+    text-shadow: 0 0 5px #fff
     text-decoration: none
+    transition: all 0.2s
     &:hover
-      background: color-link
-      color: #fff
-      text-decoration: none
-      text-shadow: 0 1px darken(color-link, 20%)
+      text-decoration: underline
+      opacity 0.8
+
+
+// .article-entry p:last-of-type {
+//   padding: 1rem 1.1rem 0rem
+// }
+
+
 
 .article-footer
   clearfix()
