@@ -5,8 +5,6 @@ lang: zh-tw
 slug: It's raining again
 series: 
   - [YMSH, 過去的片段]
-tags: 
-  - 440hz
 categories:
   - [YMSH]
   - [EV]
