@@ -34,6 +34,8 @@ body {
   background-blend-mode: var(--bg-blend);
   color: var(--text-color);
   letter-spacing: 0.01rem;
+  min-width: 430px;
+  overflow: hidden;
 }
 
 /* Ensure swup container is visible by default to avoid flash on full reload (F5)
