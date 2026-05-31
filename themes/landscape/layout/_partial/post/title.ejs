@@ -13,8 +13,10 @@ if (post && post.title && post.series) {
   if (pair && pair.length) {
     var root = pair[0] != null ? String(pair[0]).trim() : '';
     var branch = pair[1] != null ? String(pair[1]).trim() : '';
-    if (root) {
+    if (root && branch) {
       displayTitle = '【' + root + '】' + (branch ? branch + ' ' : '') + '| ' + post.title;
+    }else if (root) {
+      displayTitle = '【' + root + '】' + post.title;
     }
   }
 }
