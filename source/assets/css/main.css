@@ -4,6 +4,9 @@
 @import "./original.css";
 @import "./project.css";
 @import "./music.css";
+@import "./others.css";
+
+
 
 :root {
   --header-height: 95px;
