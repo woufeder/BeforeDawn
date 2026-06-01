@@ -1,96 +1,188 @@
 ---
 layout: page/layout
 ---
-<div>
-  <section id="others" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
-    <section id="banner" class="box">
-      <div class="left">
-        <h1>Others</h1>
-        <h2>後記</h2>
-      </div>
-      <div class="right flex flex-col items-center">
-        <div class="hover-box flex flex-col items-center gap-8 text-center w-fit px-4 xl:px-0" data-mobile-toggle="hover-box">
-          <%- partial('_partial/svg/branch_top') %>
-          <div class="grid">
-            <div class="context default flex items-center justify-center">
-              <h6>
-                美好的時光終會遠去<br>
-                當黎明到來時，月夜的小船也將停泊於此<br><br>
 
-                <span>「願你我再於星海相會，一路順風。」</span>
-              </h6>
-            </div>
+<section id="others" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
+  <section id="banner" class="box">
+    <div class="left">
+      <h1>Others</h1>
+      <h2>後記</h2>
+    </div>
+    <div class="right flex flex-col items-center">
+      <div class="hover-box flex flex-col items-center gap-8 text-center w-fit px-4 xl:px-0" data-mobile-toggle="hover-box">
+        <%- partial('_partial/svg/branch_top') %>
+        <div class="grid">
+          <div class="context default flex items-center justify-center">
+            <h6>
+              美好的時光終會遠去<br>
+              當黎明到來時，月夜的小船也將停泊於此<br><br>
 
-            <div class="context hover flex flex-col items-center justify-center">
-              <h6 class="text-center">
-                此區​放置更新紀錄、素材銘謝以及留言板
-              </h6>
-            </div>
+              <span>「願你我再於星海相會，一路順風。」</span>
+            </h6>
           </div>
-          <%- partial('_partial/svg/branch_bottom') %>
 
+          <div class="context hover flex flex-col items-center justify-center">
+            <h6 class="text-center">
+              此區​放置更新紀錄、素材銘謝以及留言板
+            </h6>
+          </div>
         </div>
+        <%- partial('_partial/svg/branch_bottom') %>
 
       </div>
-    </section>
 
-    <section id="link-area" class="flex flex-col mt-10">
-      <div class="msg box w-full p-8">
-        <p>
-          Dear you：<br>
-          若有想訴予我的事物，請留下你的訊息，<br>
-          我會將其納入瓶中的星空。在明日的夜晩裡，你會看見它在某處閃耀著。<br>
-        </p>
-
-        <form id="contact-form" class="flex flex-col gap-4">
-
-          <div class="form-group flex flex-col">
-            <label for="name">姓名</label>
-            <input id="name" type="text" name="name" required placeholder="請留下您的名字">
-          </div>
-
-          <div class="form-group flex flex-col">
-            <label for="SNSaccount">社交平台帳號</label>
-            <input id="SNSaccount" type="text" name="SNSaccount" placeholder="非必填，若需要我聯絡您，請留下您的社交平台帳號(如噗浪、IG、FB等)">
-          </div>
-
-          <div class="form-group flex flex-col">
-            <label for="email">電子信箱</label>
-            <input id="email" type="email" name="email" placeholder="非必填，若需要我聯絡您，請留下您的電子信箱">
-          </div>
-
-          <div class="form-group flex flex-col">
-            <label for="message">留言</label>
-            <textarea id="message" name="message" required placeholder="有什麼想說的都歡迎告訴我"></textarea>
-          </div>
-
-          <!-- honeypot -->
-          <div class="hp-field" aria-hidden="true">
-            <label for="_gotcha">
-              Leave this field empty
-            </label>
-            <input id="_gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-          </div>
-
-          <button type="submit">Send</button>
-          <p id="form-status"></p>
-
-        </form>
-      </div>
-
-      <div class="flex flex-row items-center justify-between">
-        <div class="box w-full">123</div>
-        <div class="box w-full">456</div>
-      </div>
-    </section>
+    </div>
   </section>
 
-  <script>
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
+  <section id="link-area" class="mt-10">
+    <div class="msg w-full lg:w-2/3 xl:w-1/2 p-8">
+      <div class=" flex flex-col items-center justify-center p-8 ">
+        <p class="my-note w-full">
+          致停留於此的你：<br>
+          若有想訴予我的事物，請留下你的訊息，<br>
+          我會將其納入瓶中的星空。在明日的夜晚裡，你會看見它在某處閃耀著。<br>
+        </p>
+      </div>
 
+      <form id="contact-form" class="relative flex flex-col gap-6 w-full mx-auto p-8 pt-0">
+
+        <div class="form-group flex flex-col">
+          <label for="name" class="">姓名</label>
+          <p></p>
+          <input id="name" class="border p-2 border-neutral-900" type="text" name="name" required placeholder="請留下您的名字">
+        </div>
+
+        <div class="form-group flex flex-col">
+          <label for="SNSaccount" class="">社交平台帳號</label>
+          <input id="SNSaccount" class="border p-2 border-neutral-900" type="text" name="SNSaccount" placeholder="若需聯絡，請留下您的社交平台帳號(如噗浪、IG、FB等)">
+        </div>
+
+        <div class="form-group flex flex-col">
+          <label for="email" class="">電子信箱</label>
+          <input id="email" class="border p-2 border-neutral-900" type="email" name="email" placeholder="若需聯絡，請留下您的電子信箱">
+        </div>
+
+        <div class="form-group flex flex-col">
+          <label for="message" class="">留言</label>
+          <textarea id="message" class="border p-2 border-neutral-900" name="message" required placeholder="有什麼想說的，歡迎告訴我"></textarea>
+        </div>
+
+        <!-- honeypot -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="_gotcha">
+            Leave this field empty
+          </label>
+          <input id="_gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="submit">送出留言</button>
+        <p id="form-status"></p>
+
+      </form>
+      <img id="quill" src="<%- url_for('/image/quill.png') %>" alt="" aria-hidden="true" />
+    </div>
+    <div class="side-info flex flex-col flex-1 gap-6 min-h-0">
+      <div class="record box w-full flex flex-col flex-1 min-h-0 p-8 gap-6">
+        <h4>更新紀録</h4>
+
+        <div class="scroll-content flex-1 min-h-0 overflow-auto">
+          <p>
+            ◈ 2026年05月29日 部落格桌面板完成<br>
+            ◈ 2026年05月25日 音樂頁完成<br>
+            ◈ 2026年05月24日 企劃頁桌面版完成<br>
+            ◈ 2026年05月08日 原創頁桌面版完成<br>
+            ◈ 2026年05月03日 自介頁桌面版完成<br>
+            ◈ 2026年04月22日 搬遷至gitpage<br>
+            ◈ 2018年07月01日 wix舊站建立<br>
+          </p>
+        </div>
+      </div>
+
+      <div class="credits box w-full flex flex-col flex-1 min-h-0 p-8 gap-6">
+        <h4>素材銘謝</h4>
+
+        <div class="scroll-content flex-1 min-h-0 overflow-auto">
+          <p>
+            ◈ 多數背景 | Photo by <a href="https://unsplash.com/@teddykelley">teddykelley</a> on <a href="https://unsplash.com/photos/uCzBVrIbdvQ">Unsplash</a><br>
+
+
+            ◈ 後記背景 | Photo by <a href="https://unsplash.com/@giuband?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Giuseppe B.</a> on <a href="https://unsplash.com/photos/view-of-lighthouse-atop-of-mountain-Vk0DZl-M1_U?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            <br>
+
+            ◈ 原創Banner | Photo by <a href="https://unsplash.com/@juskteez?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Juskteez Vu</a> on <a href="https://unsplash.com/photos/galaxy-mwhklqGVzck?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            <br>
+
+            ◈ Jattori Banner | Photo by <a href="https://unsplash.com/@huestones?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ali Lokhandwala</a> on <a href="https://unsplash.com/photos/architectural-photography-of-hallway-KUr51Y4dOyo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            <br>
+
+            ◈ 千風Banner | Photo by <a href="https://unsplash.com/@saadchdhry?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Saad Chaudhry</a> on <a href="https://unsplash.com/photos/shallow-focus-of-white-dandelion-YNM4KStg78I?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            <br>
+
+            ◈ 千風背景 | Photo by <a href="https://unsplash.com/@ernesta_vala?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ernesta Vala</a> on <a href="https://unsplash.com/photos/photography-of-white-grass-field-gxt05XHaQ9Q?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            <br>
+
+            待更新......
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+
+  const quill = document.getElementById('quill');
+
+  if (form && quill) {
+    let enterTimer = null;
+
+    function moveQuill(e) {
+      quill.style.left = `${e.clientX}px`;
+      quill.style.top = `${e.clientY}px`;
+    }
+
+    function showQuill(e) {
+      if (window.matchMedia('(pointer: coarse)').matches) return;
+
+      clearTimeout(enterTimer);
+
+      moveQuill(e);
+
+      quill.classList.add('is-entering');
+
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          quill.classList.add('is-active');
+
+          enterTimer = setTimeout(function() {
+            quill.classList.remove('is-entering');
+          }, 80);
+        });
+      });
+    }
+
+    function hideQuill() {
+      clearTimeout(enterTimer);
+
+      quill.classList.remove('is-active');
+      quill.classList.remove('is-entering');
+
+      quill.style.left = `-9999px`;
+      quill.style.top = `-9999px`;
+    }
+
+    form.addEventListener('mouseenter', showQuill);
+    form.addEventListener('mousemove', moveQuill);
+    form.addEventListener('mouseleave', hideQuill);
+  }
+
+  if (form && status) {
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
+
+      console.log('submit triggered');
 
       const honeypot = form.querySelector('[name="_gotcha"]');
 
@@ -104,6 +196,11 @@ layout: page/layout
 
       const formData = new FormData(form);
 
+      // 檢查實際送出的欄位
+      for (const [key, value] of formData.entries()) {
+        console.log(key, value);
+      }
+
       try {
         const res = await fetch('https://formspree.io/f/xdajdzqq', {
           method: 'POST',
@@ -113,14 +210,30 @@ layout: page/layout
           },
         });
 
+        console.log('status:', res.status);
+        console.log('ok:', res.ok);
+
+        const contentType = res.headers.get('content-type') || '';
+        let result;
+
+        if (contentType.includes('application/json')) {
+          result = await res.json();
+        } else {
+          result = await res.text();
+        }
+
+        console.log('Formspree response:', result);
+
         if (res.ok) {
           status.textContent = 'Message sent. Thank you.';
           form.reset();
         } else {
-          status.textContent = 'Something went wrong. Please try again.';
+          status.textContent = `送出失敗：${res.status}`;
         }
       } catch (error) {
+        console.error('Fetch error:', error);
         status.textContent = 'Network error. Please try again later.';
       }
     });
-  </script>
+  }
+</script>
