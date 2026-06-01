@@ -1,0 +1,126 @@
+---
+layout: page/layout
+---
+<div>
+  <section id="others" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
+    <section id="banner" class="box">
+      <div class="left">
+        <h1>Others</h1>
+        <h2>後記</h2>
+      </div>
+      <div class="right flex flex-col items-center">
+        <div class="hover-box flex flex-col items-center gap-8 text-center w-fit px-4 xl:px-0" data-mobile-toggle="hover-box">
+          <%- partial('_partial/svg/branch_top') %>
+          <div class="grid">
+            <div class="context default flex items-center justify-center">
+              <h6>
+                美好的時光終會遠去<br>
+                當黎明到來時，月夜的小船也將停泊於此<br><br>
+
+                <span>「願你我再於星海相會，一路順風。」</span>
+              </h6>
+            </div>
+
+            <div class="context hover flex flex-col items-center justify-center">
+              <h6 class="text-center">
+                此區​放置更新紀錄、素材銘謝以及留言板
+              </h6>
+            </div>
+          </div>
+          <%- partial('_partial/svg/branch_bottom') %>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="link-area" class="flex flex-col mt-10">
+      <div class="msg box w-full p-8">
+        <p>
+          Dear you：<br>
+          若有想訴予我的事物，請留下你的訊息，<br>
+          我會將其納入瓶中的星空。在明日的夜晩裡，你會看見它在某處閃耀著。<br>
+        </p>
+
+        <form id="contact-form" class="flex flex-col gap-4">
+
+          <div class="form-group flex flex-col">
+            <label for="name">姓名</label>
+            <input id="name" type="text" name="name" required placeholder="請留下您的名字">
+          </div>
+
+          <div class="form-group flex flex-col">
+            <label for="SNSaccount">社交平台帳號</label>
+            <input id="SNSaccount" type="text" name="SNSaccount" placeholder="非必填，若需要我聯絡您，請留下您的社交平台帳號(如噗浪、IG、FB等)">
+          </div>
+
+          <div class="form-group flex flex-col">
+            <label for="email">電子信箱</label>
+            <input id="email" type="email" name="email" placeholder="非必填，若需要我聯絡您，請留下您的電子信箱">
+          </div>
+
+          <div class="form-group flex flex-col">
+            <label for="message">留言</label>
+            <textarea id="message" name="message" required placeholder="有什麼想說的都歡迎告訴我"></textarea>
+          </div>
+
+          <!-- honeypot -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="_gotcha">
+              Leave this field empty
+            </label>
+            <input id="_gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit">Send</button>
+          <p id="form-status"></p>
+
+        </form>
+      </div>
+
+      <div class="flex flex-row items-center justify-between">
+        <div class="box w-full">123</div>
+        <div class="box w-full">456</div>
+      </div>
+    </section>
+  </section>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const honeypot = form.querySelector('[name="_gotcha"]');
+
+      if (honeypot && honeypot.value) {
+        status.textContent = 'Message sent. Thank you.';
+        form.reset();
+        return;
+      }
+
+      status.textContent = 'Sending...';
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch('https://formspree.io/f/xdajdzqq', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+
+        if (res.ok) {
+          status.textContent = 'Message sent. Thank you.';
+          form.reset();
+        } else {
+          status.textContent = 'Something went wrong. Please try again.';
+        }
+      } catch (error) {
+        status.textContent = 'Network error. Please try again later.';
+      }
+    });
+  </script>
