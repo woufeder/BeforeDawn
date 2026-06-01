@@ -2,12 +2,12 @@
 title: "想要止住寂寞的琴聲"
 date: 2020-09-08 00:00:00
 lang: zh-tw
-slug: Stop the loneliness
+slug: YMSH_Stop the loneliness
 series: 
   - [YMSH, 短篇]
 categories:
   - [YMSH]
-translation_key: Stop the loneliness
+translation_key: YMSH_Stop the loneliness
 ---
 
 　　結束一日的繁忙後，於又綾坐在自己家裡的琴前，直視今日打算練習的樂譜，調慢了點節拍器的速度。<!-- more --> 

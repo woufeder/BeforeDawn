@@ -2,13 +2,13 @@
 title: "It's raining again"
 date: 2020-09-03 00:00:00
 lang: zh-tw
-slug: It's raining again
+slug: YMSH_It's raining again
 series: 
   - [YMSH, 過去的片段]
 categories:
   - [YMSH]
   - [EV]
-translation_key: It's raining again
+translation_key: YMSH_It's raining again
 ---
 
 　　驚蟄落下後的雨點打在地上，將沈澱的灰暈染得更深。耐髒的洗石子地板裹上層層鞋印，分不清哪裡的黑是混凝土，亦或泥濘。<!-- more --> 
