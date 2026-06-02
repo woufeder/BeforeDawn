@@ -12,7 +12,7 @@ categories:
 translation_key: ST_FirstNight
 password: yes
 theme: blink
-abstract: 此文章具有R18限制描寫，未成年請勿閱讀
+abstract: <p>此文章具有R18限制描寫，未成年請勿閱讀</p>
 message: 此文章具有R18限制描寫，請問您已是否已成年(yes/no)
 wrong_pass_message: 密碼錯誤，請注意，未成年者請勿閱讀
 

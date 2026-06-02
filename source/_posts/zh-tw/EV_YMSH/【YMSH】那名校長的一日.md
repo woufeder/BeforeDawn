@@ -1,5 +1,5 @@
 ---
-title: "那名校長的一日"
+title: "【YMSH】那名校長的一日"
 date: 2021-03-17 00:00:00
 lang: zh-tw
 slug: YMSH_Just One day

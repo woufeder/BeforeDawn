@@ -1,5 +1,5 @@
 ---
-title: 【【FO】短篇│Two sides
+title: 【FO】短篇│Two sides
 date: 2019-12-29 00:00:00
 lang: zh-tw
 slug: FinalOath_Two_sides

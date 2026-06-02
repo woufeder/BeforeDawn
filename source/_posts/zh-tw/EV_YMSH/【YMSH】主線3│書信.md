@@ -50,7 +50,7 @@ translation_key: YMSH_Main3
 <hr>
 
 <!-- ![明信片](/image/article/YMSH-03postcard.png "POST CARD") -->
-![明信片](/BeforeDawn/image/article/YMSH-03postcard.png "POST CARD")
+![明信片](/image/article/YMSH-03postcard.png "POST CARD")
 
 *親愛的南西：*
 

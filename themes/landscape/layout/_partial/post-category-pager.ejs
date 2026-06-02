@@ -2,7 +2,10 @@
   const currentLang = bd_current_lang();
 
   const pagerId = id || 'post-pager';
-  const targetCategory = category || '';
+  const targetCategories =
+  Array.isArray(category)
+    ? category
+    : [category];
 
   const listId = pagerId + '-posts';
   const itemClass = pagerId + '-item';
@@ -26,10 +29,11 @@
 
     let matched = false;
 
-    post.categories.each(function(cat) {
-      if (String(cat.name || '').trim() === targetCategory) {
-        matched = true;
-      }
+    post.categories.each(function(cat) {\
+      if (
+        targetCategories.includes(String(cat.name || '').trim())) {
+          matched = true;
+        }
     });
 
     if (matched) {
