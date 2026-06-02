@@ -1,0 +1,416 @@
+@import "./header.css";
+@import "./footer.css";
+@import "./about.css";
+@import "./original.css";
+@import "./project.css";
+@import "./music.css";
+@import "./others.css";
+
+
+
+:root {
+  --header-height: 95px;
+  --footer-height: 90px;
+  --all-02s-easeOut: all 0.2s ease-out;
+}
+
+/* ------------------------------------------------- */
+
+html,
+body {
+  font-family:
+    "Iansui", "LXGW WenKai Mono TC", "Noto Sans TC", system-ui, sans-serif;
+  
+    /* -webkit-user-select: none; /* Chrome, Safari, Opera */
+    /* -moz-user-select: none; /* Firefox */ 
+    /* -ms-user-select: none; /* IE 10+ */ 
+    /* user-select: none; /* 標準語法 */ 
+}
+
+#swup {
+  min-height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-image: var(--bg-image);
+  background-color: var(--bg-color);
+  background-blend-mode: var(--bg-blend);
+  color: var(--text-color);
+  letter-spacing: 0.01rem;
+  min-width: 430px;
+  overflow: hidden;
+}
+
+/* Ensure swup container is visible by default to avoid flash on full reload (F5)
+   while preserving transition behavior during swup page transitions. */
+.transition-fade {
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+main {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+/* ----------------首頁------------------- */
+
+#home {
+  min-height: 0;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+
+  section {
+    display: grid;
+    width: 100%;
+    overflow: hidden;
+
+    /* 影片 & 內容 疊在同一格 */
+    .home-video,
+    .home-content {
+      grid-area: 1 / 1;
+    }
+
+    .home-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 文字層 */
+    .home-content {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 4rem 15rem;
+      z-index: 3;
+
+      h1 {
+        font-family:
+          "Iansui", "LXGW WenKai Mono TC", "Noto Sans TC", system-ui, sans-serif;
+        text-shadow: var(--shadow-chinese);
+        font-weight: normal;
+      }
+
+      h3 {
+        font-family: "Fredericka the Great";
+        text-shadow: var(--shadow-chinese);
+        font-weight: normal;
+        margin-left: 90pt;
+      }
+
+      p {
+        text-shadow: var(--shadow-chinese);
+      }
+
+      .pageBtnBox {
+        /* border-left: 1px dashed #bcbcbc; */
+
+        .pageBtn {
+          display: inline-block;
+          text-shadow: var(--shadow-chinese);
+          transition: var(--all-02s-easeOut);
+
+          &:hover {
+            letter-spacing: 0.05rem;
+          }
+        }
+      }
+
+      .sns {
+        a {
+          text-decoration: underline;
+          text-shadow: var(--shadow-chinese);
+          transition: var(--all-02s-easeOut);
+
+          &:hover {
+            letter-spacing: 0.05rem;
+          }
+        }
+      }
+    }
+  }
+
+  .lang-switcher {
+    position: absolute;
+    top: 0px;
+    right: 15%;
+    z-index: 10;
+    filter: drop-shadow(0px 2px 5px rgba(255, 255, 255, 0.3));
+  }
+
+  .lang-select {
+    background-color: #ffffff;
+    height: 60px;
+    width: 35px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    clip-path: polygon(100% 0, 100% 50%, 100% 100%, 50% 77%, 0 100%, 0% 0%);
+  }
+
+  .lang-globe {
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translateX(-50%);
+    color: #4b5f96;
+    pointer-events: none;
+  }
+
+  .lang-select-control {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: #4b5f96;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-align-last: center;
+    padding: 20px 8px 0;
+    cursor: pointer;
+    transition: var(--all-02s-easeOut);
+
+    &:hover {
+      background-color: rgba(145, 151, 177, 0.5);
+    }
+  }
+
+  .lang-select-control:focus {
+    outline: none;
+  }
+}
+
+/* ---------------通用基礎設定------------------- */
+.box {
+  background-color: var(--box-bg-color);
+  border-radius: 5px;
+  /* overflow: hidden; */
+  box-shadow:
+    0 0 40px rgba(0, 0, 0, 0.4),
+    0 0 12px rgba(255, 255, 255, 0.15);
+}
+.branch_bottom,
+.branch_top {
+  width: 180px;
+  height: auto;
+  display: block;
+  color: var(--text-color);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.1));
+}
+
+#gallery {
+  max-width: 600px;
+  width: 600px;
+  margin: 0;
+}
+
+.gallery-sizer,
+.gallery-item {
+  width: 120px;
+}
+
+.gallery-item {
+  padding-left: 5px;
+  margin-bottom: 5px;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.story-item{
+  margin: 0.8rem 0;
+}
+
+.article-title {
+  font-size: 1.2rem;
+  font-family: "Iansui", "LXGW WenKai Mono TC", sans-serif;
+  border-bottom: 1px solid var(--text-color);
+  font-weight: normal;
+  text-shadow: var(--shadow-chinese);
+}
+.article-date {
+  font-size: 0.8rem;
+  font-family: "Iansui", "LXGW WenKai Mono TC", sans-serif;
+}
+.article-body {
+  p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    /* max-height: 4.2rem;
+    overflow: hidden; */
+  }
+  a {
+    font-size: 0.8rem;
+    border: 1px solid var(--text-color);
+    padding: 0.2rem 0.5rem;
+    margin-top: 10px;
+    margin-left: auto;
+    width: fit-content;
+  }
+}
+
+/* ----------------RWD------------------- */
+/* 2xl */
+@media (max-width: 1535px) {
+  #home {
+    section {
+      .home-content {
+        padding: 4rem 10rem;
+      }
+    }
+  }
+  #gallery {
+    max-width: 480px;
+    width: 480px;
+    margin: 0;
+  }
+}
+
+/* xl */
+@media (max-width: 1279px) {
+  #home {
+    section {
+      .home-content {
+        padding: 4rem 3rem;
+      }
+    }
+    .lang-switcher {
+      right: 5%;
+    }
+  }
+  #gallery {
+    max-width: 360px;
+    width: 360px;
+    margin: 0;
+  }
+}
+
+/* lg */
+@media (max-width: 1023px) {
+  #home {
+    section {
+      .home-content {
+        padding: 3rem 1rem;
+        gap: 1rem;
+        h3 {
+          margin-left: 0;
+        }
+      }
+    }
+    .lang-switcher {
+      right: -1%;
+    }
+  }
+  #gallery {
+    max-width: 600px;
+    width: 600px;
+    margin: 0;
+  }
+}
+
+/* md */
+@media (max-width: 767px) {
+  :root {
+    --header-height: 48px;
+    --footer-height: 90px;
+  }
+  #home {
+    .lang-switcher {
+      right: 5%;
+    }
+  }
+  #gallery {
+    max-width: 480px;
+    width: 480px;
+    margin: 0;
+  }
+  .gallery-sizer,
+  .gallery-item {
+    width: 80px;
+  }
+}
+
+@media (max-width: 639px) and (orientation: portrait) {
+  #home {
+    height: 100%;
+    min-height: 100vh;
+    padding: 2rem 0;
+
+    & section {
+      & .home-content {
+        padding: 3rem 1.5rem;
+        flex-direction: column;
+
+        h3 {
+          margin-left: 0;
+        }
+
+        .intro {
+          margin-top: 1.5rem;
+        }
+      }
+      .lang-switcher {
+        right: 10%;
+      }
+    }
+  }
+  #gallery {
+    max-width: 320px;
+    width: 320px;
+    margin: 0;
+  }
+}
+
+/* ----------------動畫------------------- */
+
+@keyframes revealClip {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.reveal-x {
+  animation: revealClip 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) both;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+    /* 可拿掉 */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-once {
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+  animation-delay: 0.3s;
+  /* 延遲多久開始 */
+}
+
+.fade-in-once-nodely {
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+}
