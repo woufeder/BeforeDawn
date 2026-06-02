@@ -29,7 +29,7 @@
 
     let matched = false;
 
-    post.categories.each(function(cat) {\
+    post.categories.each(function(cat) {
       if (
         targetCategories.includes(String(cat.name || '').trim())) {
           matched = true;
