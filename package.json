@@ -16,7 +16,7 @@
   "dependencies": {
     "@tailwindcss/cli": "^4.2.4",
     "hexo": "^8.0.0",
-    "hexo-blog-encrypt": "^4.0.1",
+    "hexo-blog-encrypt": "^4.0.2",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
