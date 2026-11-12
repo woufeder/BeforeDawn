@@ -1,0 +1,1473 @@
+.label-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.label-zh {
+  width: 100px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(var(--bg-color), var(--bg-color)), #000000ee;
+  color: #fff;
+  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
+  padding: 0.5rem 1rem 0.5rem 0.7rem;
+  text-shadow: var(--shadow-chinese);
+  transition: var(--all-02s-easeOut);
+  &:hover {
+    opacity: 0.5;
+  }
+}
+.label-wrap {
+  width: fit-content;
+  height: fit-content;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+#project {
+  .letterspacing-1px {
+    letter-spacing: -1px;
+  }
+  #banner {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+    .left {
+      background-image: url("../../image/project/project-banner.avif");
+      background-color: rgb(11, 8, 15);
+      background-blend-mode: screen;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        text-wrap: nowrap;
+        font-size: 100px;
+        font-family: "Italianno", cursive;
+        font-weight: normal;
+        text-shadow: var(--shadow-chinese);
+        margin: 0 2rem 0 0;
+      }
+      h2 {
+        text-wrap: nowrap;
+        margin-top: -40px;
+        margin-right: 10px;
+        font-size: 20px;
+        text-shadow: var(--shadow-chinese);
+        z-index: 0;
+        font-weight: bold;
+      }
+    }
+    .right {
+      padding: 2rem 0;
+      p {
+        font-size: 17px;
+      }
+      span {
+        text-shadow: var(--shadow-chinese);
+      }
+      .hover-box {
+        .context {
+          grid-area: 1 / 1;
+        }
+        .context.default {
+          opacity: 1;
+          transition: opacity 0.3s ease-out;
+        }
+        .context.hover {
+          opacity: 0;
+          transition: opacity 0.3s ease-out;
+        }
+        .branch_top {
+          transform: translateY(15px);
+          transition: all 0.3s ease-out;
+        }
+        .branch_bottom {
+          transform: translateY(-15px);
+          transition: all 0.3s ease-out;
+        }
+        &.is-active {
+          .context.default {
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+          }
+          .context.hover {
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
+          }
+          .branch_top {
+            transform: translateY(0px);
+            transition: all 0.3s ease-out;
+          }
+          .branch_bottom {
+            transform: translateY(0px);
+            transition: all 0.3s ease-out;
+          }
+        }
+        @media (min-width: 768px) {
+          &:hover {
+            .context.default {
+              opacity: 0;
+              transition: opacity 0.3s ease-out;
+            }
+            .context.hover {
+              opacity: 1;
+              transition: opacity 0.3s ease-out;
+            }
+            .branch_top {
+              transform: translateY(0px);
+              transition: all 0.3s ease-out;
+            }
+            .branch_bottom {
+              transform: translateY(0px);
+              transition: all 0.3s ease-out;
+            }
+          }
+        }
+      }
+    }
+  }
+  #characters-card-area {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    .break {
+      flex-basis: 100%;
+      height: 0;
+    }
+
+    .chara-card {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      margin: 1rem;
+      filter: drop-shadow(0 0 5px #9d8cb355);
+      transition: all 0.3s ease-out;
+      h5,
+      h6 {
+        font-weight: bold;
+      }
+      h6 {
+        font-size: 1rem;
+      }
+      span {
+        letter-spacing: -1px;
+        font-size: 12px;
+        font-family: "Shippori Mincho B1", serif;
+      }
+      .default {
+        display: flex;
+      }
+      .hover {
+        display: none;
+      }
+      &:hover {
+        transform: translateY(-5px);
+        transition: all 0.3s ease-out;
+        .default {
+          display: none;
+        }
+        .hover {
+          display: flex;
+        }
+      }
+      .top {
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        background-color: var(--chara-card);
+        padding: 0.5rem 1rem;
+      }
+      .photo {
+        width: 300px;
+        height: 120px;
+        padding: 0;
+        background-size: cover;
+        background-position: center;
+      }
+      .info {
+        background-color: var(--chara-card);
+        padding: 0.5rem 1rem;
+      }
+      .bottom {
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        height: fit-content;
+        padding: 0.5rem 1rem 1rem;
+        background-color: var(--chara-card);
+      }
+      .rip {
+        height: 32px;
+        margin: 0 15px;
+        background-color: var(--chara-card);
+        background-image: url("../../image/project/dot.png");
+        background-size: 9px 3px;
+        background-repeat: repeat-x;
+        background-position: center;
+        position: relative;
+        z-index: -1;
+        box-shadow:
+          0 1px 0 0 var(--chara-card),
+          0 -1px 0 0 var(--chara-card);
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          top: 50%;
+          transform: translate(-50%, -50%) rotate(45deg);
+          border: 10px solid transparent;
+          border-top-color: var(--chara-card);
+          border-right-color: var(--chara-card);
+          border-radius: 100%;
+          pointer-events: none;
+          z-index: -1;
+        }
+        &:before {
+          left: -15px;
+        }
+        &:after {
+          transform: translate(-50%, -50%) rotate(225deg);
+          right: -65px;
+        }
+      }
+    }
+    .vca-lilin {
+      --chara-card: #e6eedf;
+
+      h5,
+      h6 {
+        color: #081f08;
+      }
+      span {
+        color: #717d71;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/VCA.png");
+      }
+    }
+    .duetta-lilin {
+      --chara-card: #f1ebd3;
+
+      h5,
+      h6 {
+        color: #140e04;
+      }
+      span {
+        color: #413c2b;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/DUETTA-Lilin.png");
+      }
+    }
+    .duetta-naxira {
+      --chara-card: #dbdbdb;
+
+      h5,
+      h6 {
+        color: #070414;
+      }
+      span {
+        color: #302d3d;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/DUETTA-Naxira.png");
+      }
+    }
+    .ag {
+      --chara-card: #f3e7ea;
+
+      h5,
+      h6 {
+        color: #050d31;
+      }
+      span {
+        color: #3f4250;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/AG.png");
+      }
+    }
+    .st {
+      --chara-card: #ded5ca;
+
+      h5,
+      h6 {
+        color: #281709;
+      }
+      span {
+        color: #5b4e43;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/ST.png");
+      }
+    }
+    .dl {
+      --chara-card: #ddcfcf;
+
+      h5,
+      h6 {
+        color: #281709;
+      }
+      span {
+        color: #5b4e43;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/DL.png");
+      }
+    }
+    .ymsh {
+      --chara-card: #dfe4f7;
+
+      h5,
+      h6 {
+        color: #0a0928;
+      }
+      span {
+        color: #7d8598;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/YMSH.png");
+      }
+    }
+    .sappho-audrey {
+      --chara-card: #e7dff7;
+
+      h5,
+      h6 {
+        color: #230731;
+      }
+      span {
+        color: #8f7d98;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/Sappho-Audrey.png");
+      }
+    }
+    .sappho-yana {
+      --chara-card: #e6f1ff;
+
+      h5,
+      h6 {
+        color: #072931;
+      }
+      span {
+        color: #495f64;
+      }
+      .photo {
+        background-color: #96a296;
+        background-image: url("../../image/project/Sappho-Yana.png");
+      }
+    }
+  }
+}
+.project-page {
+  position: relative;
+
+  .box-title {
+    position: absolute;
+    top: -1.5rem;
+    letter-spacing: -1px;
+    text-shadow:
+      0px 0px 4px #fff,
+      0px 0px 8px #fff,
+      0px 0px 12px #fff,
+      0px 0px 16px #fff;
+    font-weight: bold;
+  }
+  #top {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr 0.2fr;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+
+    .name {
+      position: relative;
+      width: 400px;
+      height: 60px;
+      h1 {
+        position: absolute;
+        top: -30px;
+        left: -30px;
+        text-shadow: var(--shadow-chinese);
+      }
+      h2 {
+        position: absolute;
+        bottom: -40px;
+        right: -40px;
+        font-family: "Italianno", cursive;
+        font-size: 60px;
+        font-weight: 500;
+        text-shadow: var(--shadow-chinese);
+      }
+    }
+  }
+  .setting {
+    width: 250px;
+    position: absolute;
+    top: -4rem;
+    left: 7rem;
+    z-index: -2;
+  }
+  #info {
+    position: relative;
+    z-index: -2;
+    margin-top: 2rem;
+    display: grid;
+    margin-left: 400px;
+    grid-template-columns: 1fr 0.4fr;
+
+    .content {
+      padding: 2rem 4rem;
+      h6 {
+        font-family: "Iansui";
+        text-shadow: var(--shadow-chinese);
+      }
+      p {
+        line-height: 2;
+        text-shadow: var(--shadow-chinese);
+      }
+      .chibi {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        a,
+        img {
+          height: auto;
+          max-width: 200px;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+  #bio-pj {
+    display: grid;
+    grid-template-columns: 1fr 0.6fr;
+    gap: 2.5rem;
+    h4 {
+      text-shadow: var(--shadow-chinese);
+    }
+    .npc-btn {
+      border: var(--text-color) 2px solid;
+      border-radius: 5px;
+      padding: 0.4rem 1rem;
+      font-weight: bold;
+      transition: var(--all-02s-easeOut);
+      &:hover {
+        opacity: 0.5;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+    }
+    p {
+      text-shadow: var(--shadow-chinese);
+      line-height: 1.8;
+    }
+  }
+  #creates-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    gap: 2.5rem;
+    .btn {
+      padding: 0.4rem 1rem;
+      width: fit-content;
+      display: inline-block;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+      transition: var(--all-02s-easeOut);
+      &:hover {
+        letter-spacing: 0.05rem;
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+}
+
+#VCANPC .setting {
+  width: 200px;
+}
+#DUET-L,
+#DUET-N {
+  #info .content .chibi {
+    a,
+    img {
+      max-width: 250px;
+    }
+  }
+}
+#DUET-L .setting {
+  width: 450px;
+  left: -5rem;
+}
+#AG {
+  #top {
+    .name {
+      h2 {
+        bottom: -15px;
+        right: -15px;
+        font-family: "Iansui", cursive;
+        font-size: 25px;
+      }
+    }
+  }
+  .setting {
+    width: 350px;
+    left: 2.5rem;
+  }
+  #info .content .chibi {
+    a,
+    img {
+      max-width: 350px;
+    }
+  }
+}
+.dark {
+  .box-title {
+    text-shadow: var(--shadow-chinese);
+  }
+  #info .content .chibi {
+    a,
+    img {
+      max-width: 320px;
+    }
+    .auth {
+      font-size: 0.9rem;
+    }
+  }
+  #top {
+    .name {
+      h1,
+      h2 {
+        text-shadow: none;
+      }
+    }
+  }
+  .setting {
+    width: 400px;
+    top: -4rem;
+    left: 4rem;
+  }
+  #info {
+    .content {
+      h6,
+      p {
+        text-shadow: none;
+      }
+    }
+  }
+  #bio-pj {
+    h4,
+    p {
+      text-shadow: none;
+    }
+    .box.p-8.relative.flex.flex-col {
+      p {
+        line-height: 1.5;
+      }
+    }
+  }
+}
+#ST-N .setting {
+  width: 500px;
+  top: -4rem;
+  left: 0rem;
+}
+#DL {
+  .setting {
+    width: 500px;
+    top: -4rem;
+    left: 0rem;
+  }
+  #info .content .chibi {
+    a,
+    img {
+      max-width: 300px;
+    }
+  }
+}
+#YMSH,
+#YMSH-N {
+  #info .content .chibi {
+    a,
+    img {
+      max-width: 300px;
+    }
+  }
+}
+#YMSH-N .setting {
+  width: 350px;
+  top: -4rem;
+  left: 5rem;
+}
+#Sappho-A,
+#Sappho-Y {
+  .setting {
+    width: 400px;
+    top: -4rem;
+    left: 0rem;
+  }
+  #info .content .chibi {
+    a,
+    img {
+      max-width: 250px;
+    }
+  }
+}
+#Sappho-A {
+  #top {
+    .name {
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+  }
+}
+
+/* ----------------RWD------------------- */
+/* 2xl */
+@media (max-width: 1535px) {
+  .project-page {
+    #info {
+      margin-left: 320px;
+      .content {
+        padding: 2rem;
+      }
+    }
+  }
+  #VCA .setting {
+    width: 250px;
+    top: -4rem;
+    left: 2rem;
+  }
+  #DUET-L,
+  #DUET-N {
+    .setting {
+      left: -8rem;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: 0px;
+    }
+  }
+  #DUET-N .setting {
+    left: 3rem;
+  }
+
+  #AG {
+    .setting {
+      left: 2rem;
+    }
+    #info .content .chibi {
+      top: -50px;
+      right: -50px;
+    }
+  }
+  #ST,
+  #ST-N {
+    #info .content .chibi {
+      right: -50px;
+      .auth {
+        margin-right: 50px;
+      }
+      a,
+      img {
+        max-width: 320px;
+      }
+    }
+    .setting {
+      width: 400px;
+      top: -4rem;
+      left: 2rem;
+    }
+  }
+  #ST-N .setting {
+    width: 500px;
+  }
+  #DL {
+    .setting {
+      width: 450px;
+      top: -4rem;
+      left: 0rem;
+    }
+    #info .content .chibi {
+      flex-direction: column-reverse;
+      top: -10px;
+      right: -30px;
+      .auth {
+        margin-right: 50px;
+      }
+      a,
+      img {
+        max-width: 280px;
+      }
+    }
+  }
+  #YMSH,
+  #YMSH-N {
+    .setting {
+      left: 3.5rem;
+    }
+    #info .content .chibi {
+      top: 0;
+      a,
+      img {
+        max-width: 250px;
+      }
+    }
+  }
+  #YMSH-N .setting {
+    width: 350px;
+    top: -4rem;
+    left: 2rem;
+  }
+  #Sappho-A,
+  #Sappho-Y {
+    .setting {
+      width: 380px;
+      top: -4rem;
+      left: -2rem;
+    }
+    #info .content .chibi {
+      a,
+      img {
+        max-width: 250px;
+      }
+    }
+  }
+  #Sappho-Y .setting {
+    width: 380px;
+    top: -4rem;
+    left: 0rem;
+  }
+}
+
+/* xl */
+@media (max-width: 1279px) {
+  .project-page {
+    #top {
+      grid-template-columns: 0.05fr 1fr;
+    }
+    #info {
+      margin-left: 200px;
+      grid-template-columns: 1fr 0.2fr;
+    }
+    #bio-pj {
+      grid-template-columns: 1fr 1fr;
+      .npc-btn {
+        padding: 0.2rem 0.5rem;
+      }
+    }
+  }
+  #VCA {
+    .setting {
+      width: 250px;
+      top: -4rem;
+      left: 2rem;
+    }
+    #info .content .chibi {
+      top: -50px;
+      right: 0px;
+      a,
+      img {
+        height: auto;
+        max-width: 180px;
+      }
+    }
+  }
+  #DUET-L,
+  #DUET-N {
+    .setting {
+      width: 400px;
+      top: -4rem;
+      left: -7rem;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: -30px;
+      a,
+      img {
+        max-width: 190px;
+      }
+    }
+  }
+  #DUET-N .setting {
+    width: 250px;
+    top: -4rem;
+    left: 2em;
+  }
+  #AG {
+    .setting {
+      left: 0rem;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: -60px;
+      a,
+      img {
+        max-width: 270px;
+      }
+    }
+  }
+  #ST,
+  #ST-N {
+    #info .content .chibi {
+      flex-direction: column-reverse;
+      top: 0;
+      right: -100px;
+      a,
+      img {
+        max-width: 280px;
+      }
+    }
+    .setting {
+      width: 400px;
+      top: -4rem;
+      left: 2rem;
+    }
+  }
+  #ST-N .setting {
+    left: -4rem;
+  }
+  #DL {
+    .setting {
+      width: 400px;
+      top: -4rem;
+      left: 0rem;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: -100px;
+      a,
+      img {
+        max-width: 250px;
+      }
+    }
+  }
+  #YMSH,
+  #YMSH-N {
+    .setting {
+      left: 1.5rem;
+    }
+    #info .content .chibi {
+      right: -80px;
+      a,
+      img {
+        max-width: 250px;
+      }
+    }
+  }
+  #YMSH-N .setting {
+    width: 300px;
+    top: -4rem;
+    left: 0rem;
+  }
+  #Sappho-A,
+  #Sappho-Y {
+    .setting {
+      width: 380px;
+      top: -4rem;
+      left: -5rem;
+    }
+    #info .content .chibi {
+      flex-direction: column-reverse;
+      top: 0;
+      right: -50px;
+      .auth {
+        margin-right: 50px;
+      }
+      a,
+      img {
+        max-width: 200px;
+      }
+    }
+  }
+  #Sappho-Y .setting {
+    width: 350px;
+    top: -4rem;
+    left: -1rem;
+  }
+}
+
+/* lg */
+@media (max-width: 1023px) {
+  #project {
+    #banner {
+      grid-template-columns: inherit;
+      .left {
+        padding: 0.5rem 0 1.5rem;
+      }
+    }
+  }
+  .project-page {
+    #top {
+      grid-template-columns: 1fr 1fr;
+    }
+    #info {
+      margin-left: 0px;
+      grid-template-columns: 1fr 0.05fr;
+      z-index: 1;
+      .content {
+        padding: 2rem;
+      }
+    }
+    #bio-pj {
+      grid-template-columns: auto;
+      grid-template-rows: 1fr 1fr;
+      .npc-btn {
+        padding: 0.2rem 0.5rem;
+      }
+    }
+
+    #creates-area {
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+  }
+  #VCA {
+    .setting {
+      width: 250px;
+      top: -4rem;
+      left: 2rem;
+    }
+    #info .content .chibi {
+      top: 0px;
+      right: -30px;
+      a,
+      img {
+        height: auto;
+        max-width: 180px;
+      }
+    }
+  }
+  #DUET-L,
+  #DUET-N {
+    #info .content .chibi {
+      top: -10px;
+      right: -45px;
+      a,
+      img {
+        max-width: 200px;
+      }
+    }
+  }
+  #DUET-N .setting {
+    width: 200px;
+    top: -3rem;
+    left: 3em;
+  }
+  #AG {
+    .setting {
+      left: 0rem;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: -80px;
+      a,
+      img {
+        max-width: 270px;
+      }
+    }
+  }
+  .dark {
+    #info .content .chibi {
+      justify-content: flex-end;
+      a,
+      img {
+        max-width: 250px;
+      }
+      .auth {
+        font-size: 0.8rem;
+      }
+    }
+    .setting {
+      width: 400px;
+      top: -4rem;
+      left: 0rem;
+    }
+  }
+  #ST-N .setting {
+    left: 0rem;
+  }
+  #YMSH,
+  #YMSH-N {
+    .setting {
+      top: -6.5rem;
+      left: 2rem;
+    }
+    #info .content .chibi {
+      right: -85px;
+      a,
+      img {
+        max-width: 230px;
+      }
+    }
+  }
+  #YMSH-N .setting {
+    width: 300px;
+    top: -4rem;
+    left: 0rem;
+  }
+  #Sappho-A,
+  #Sappho-Y {
+    .setting {
+      width: 380px;
+      top: -4rem;
+      left: -5rem;
+    }
+    #info .content .chibi {
+      top: 0;
+      right: -70px;
+      .auth {
+        margin-right: 20px;
+      }
+      a,
+      img {
+        max-width: 200px;
+      }
+    }
+  }
+  #Sappho-Y .setting {
+    width: 350px;
+    top: -4rem;
+    left: -1rem;
+  }
+}
+
+/* md */
+@media (max-width: 767px) {
+  #project {
+    #banner {
+      .right {
+        .hover-box {
+          cursor: pointer;
+        }
+        .hover-box:focus-visible {
+          outline: 1px dashed var(--text-color);
+          outline-offset: 0.75rem;
+        }
+      }
+    }
+    #characters-card-area {
+      .chara-card {
+        width: 250px;
+        .photo {
+          width: 250px;
+          height: 100px;
+          padding: 0;
+          background-size: cover;
+          background-position: center;
+        }
+      }
+    }
+  }
+  .project-page {
+    #top {
+      .name {
+        position: relative;
+        width: 300px;
+        height: 45px;
+        h1 {
+          top: -20px;
+          left: -10px;
+        }
+        h2 {
+          font-size: 50px;
+          right: -10px;
+          bottom: -35px;
+        }
+      }
+    }
+  }
+  #VCA {
+    #info .content .chibi {
+      top: -5px;
+      right: -20px;
+      a,
+      img {
+        height: auto;
+        max-width: 150px;
+      }
+    }
+  }
+  #DUET-L,
+  #DUET-N {
+    #info .content .chibi {
+      top: -10px;
+      right: -45px;
+      a,
+      img {
+        max-width: 180px;
+      }
+    }
+  }
+  #AG {
+    .setting {
+      width: 300px;
+    }
+    #top {
+      .name {
+        h2 {
+          font-size: 20px;
+          bottom: -10px;
+        }
+      }
+    }
+  }
+  .dark {
+    #info .content .chibi {
+      right: -60px;
+      a,
+      img {
+        max-width: 200px;
+      }
+      .auth {
+        font-size: 0.8rem;
+      }
+    }
+    .setting {
+      width: 300px;
+
+      left: 2rem;
+    }
+  }
+  #ST-N .setting {
+    top: -2rem;
+  }
+  #YMSH,
+  #YMSH-N {
+    .setting {
+      top: -3.5rem;
+      left: 4rem;
+      width: 200px;
+    }
+    #info .content .chibi {
+      top: -20px;
+      right: -40px;
+      a,
+      img {
+        max-width: 180px;
+      }
+    }
+  }
+  #YMSH-N .setting {
+    top: -3.5rem;
+    left: 4rem;
+    width: 250px;
+  }
+  #Sappho-A,
+  #Sappho-Y {
+    #info .content.box {
+      .flex.flex-row.justify-between {
+        flex-direction: column;
+      }
+    }
+    .setting {
+      width: 300px;
+      top: -4rem;
+      left: -1rem;
+    }
+    #info .content .chibi {
+      top: 0;
+      right: -25px;
+      .auth {
+        margin-right: 25px;
+      }
+      a,
+      img {
+        max-width: 180px;
+      }
+    }
+  }
+  #Sappho-Y .setting {
+    width: 280px;
+    top: -4rem;
+    left: 1rem;
+  }
+  #Sappho-A {
+    #top {
+      .name {
+        h1 {
+          font-size: 1.9rem;
+        }
+        h2 {
+          font-size: 40px;
+          bottom: -25px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 639px) and (orientation: portrait) {
+  #project {
+    #banner {
+      .right {
+        .hover-box {
+          cursor: pointer;
+        }
+        .hover-box:focus-visible {
+          outline: 1px dashed var(--text-color);
+          outline-offset: 0.75rem;
+        }
+      }
+    }
+    #characters-card-area {
+      .chara-card {
+        width: 230px;
+        .photo {
+          width: 230px;
+          height: 92px;
+          padding: 0;
+          background-size: cover;
+          background-position: center;
+        }
+      }
+    }
+  }
+  .project-page {
+    #top {
+      grid-template-columns: 1fr 2fr;
+      .name {
+        width: 250px;
+      }
+    }
+    .content.box {
+      .flex.flex-row.justify-between {
+        flex-direction: column;
+      }
+    }
+  }
+  #VCA {
+    .setting {
+      width: 150px;
+      top: -4rem;
+      left: 2rem;
+    }
+    #info .content .chibi {
+      top: -5px;
+      right: -20px;
+      a,
+      img {
+        height: auto;
+        max-width: 150px;
+      }
+    }
+  }
+  #DUET-L,
+  #DUET-N {
+    .setting {
+      width: 300px;
+      top: -3.8rem;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: -30px;
+      a,
+      img {
+        max-width: 170px;
+      }
+    }
+  }
+  #DUET-N {
+    .setting {
+      width: 200px;
+      top: -3.8rem;
+      left: -0.5rem;
+    }
+  }
+  #AG {
+    .setting {
+      left: 0rem;
+      width: 300px;
+    }
+    #info .content .chibi {
+      top: -10px;
+      right: -80px;
+      a,
+      img {
+        max-width: 270px;
+      }
+    }
+  }
+  #ST,
+  #ST-N,
+  #DL {
+    #info .content .chibi {
+      right: -45px;
+      a,
+      img {
+        max-width: 200px;
+      }
+      .auth {
+        font-size: 0.8rem;
+      }
+    }
+    .setting {
+      width: 280px;
+      top: -3rem;
+      left: 1rem;
+    }
+  }
+  #ST-N {
+    .setting {
+      top: -2rem;
+      left: 0rem;
+    }
+  }
+  #Sappho-A,
+  #Sappho-Y {
+    .setting {
+      width: 300px;
+      top: -4rem;
+      left: -3rem;
+    }
+    #info .content .chibi {
+      top: 0;
+      right: -25px;
+      .auth {
+        margin-right: 25px;
+      }
+      a,
+      img {
+        max-width: 180px;
+      }
+    }
+  }
+  #Sappho-Y .setting {
+    width: 280px;
+    top: -4rem;
+    left: 1rem;
+  }
+  #Sappho-A {
+    #top {
+      .name {
+        h1 {
+          font-size: 1.6rem;
+          top: -10px;
+        }
+        h2 {
+          font-size: 35px;
+          bottom: -25px;
+        }
+      }
+    }
+  }
+}
+
+/* 多寫的斷點 */
+@media (max-width: 566px) and (orientation: portrait) {
+  #VCA {
+    #info .content .chibi {
+      top: 0px;
+      right: -10px;
+      a,
+      img {
+        max-width: 120px;
+      }
+    }
+  }
+  #DUET-L,
+  #DUET-N {
+    #info .content .chibi {
+      top: -10px;
+      right: 0px;
+      a,
+      img {
+        max-width: 180px;
+      }
+    }
+  }
+  #AG .setting {
+    left: -2rem;
+  }
+  #ST,
+  #ST-N {
+    #info .content .chibi {
+      right: -45px;
+      a,
+      img {
+        max-width: 200px;
+      }
+      .auth {
+        font-size: 0.8rem;
+      }
+    }
+    .setting {
+      width: 280px;
+      top: -3rem;
+      left: -1rem;
+    }
+  }
+  #ST-N .setting {
+    top: -2rem;
+    left: -2rem;
+  }
+  #YMSH,
+  #YMSH-N {
+    .setting {
+      top: -3.5rem;
+      left: 1rem;
+      width: 180px;
+    }
+    #info .content .chibi {
+      top: -20px;
+      right: -25px;
+      a,
+      img {
+        max-width: 180px;
+      }
+    }
+  }
+  #YMSH-N .setting {
+    left: 0rem;
+    width: 250px;
+  }
+  #Sappho-A,
+  #Sappho-Y {
+    .setting {
+      width: 300px;
+      top: -4rem;
+      left: -5rem;
+    }
+    #info .content .chibi {
+      top: 0;
+      right: -25px;
+      .auth {
+        margin-right: 25px;
+      }
+      a,
+      img {
+        max-width: 180px;
+      }
+    }
+  }
+  #Sappho-Y .setting {
+    width: 280px;
+    top: -4rem;
+    left: -2rem;
+  }
+}

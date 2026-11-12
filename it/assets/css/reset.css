@@ -1,0 +1,288 @@
+/* ===== Root ===== */
+
+:root {
+  font-size: 17px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@font-face {
+  font-family: "CYLY";
+  src: url("../../ChenYuluoyan-2.0-Thin.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "poem";
+  src: url("../../TekitouPoem.ttf");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== Typography ===== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Shippori Mincho B1", serif;
+}
+
+/* Headings */
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-color);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text-color);
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-color);
+}
+
+h4 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text-color);
+}
+
+h5 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+h6 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  h3 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  h5 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  h6 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+}
+
+/* Paragraph */
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+/* ===== Link ===== */
+
+a {
+  color: var(--text-color);
+}
+
+/* ===== Button ===== */
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: all 0.2s;
+  &:hover {
+    opacity: 0.8;
+    background-color: var(--bgColor);
+    background-blend-mode: var(--bgBlend);
+    letter-spacing: 1px;
+    transition: all 0.2s;
+  }
+}
+
+button.hasborder {
+  border: 1px solid var(--text-color);
+  padding: 0 0.8rem;
+  border-radius: 2px;
+}
+
+/* ===== Select ===== */
+select,
+select::picker(select) {
+  appearance: base-select;
+}
+
+select::picker(select) {
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  border: none;
+  padding: 0.3rem;
+  background-color: #ffffff;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+option {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+
+  border-bottom: 2px solid #dddddd;
+  background: #eeeeee;
+  padding: 10px;
+  transition: 0.4s;
+}
+
+option::checkmark {
+  order: 1;
+  margin-left: auto;
+  content: "☑️";
+}
+
+option .icon {
+  font-size: 1.6rem;
+  text-box: trim-both cap alphabetic;
+}
+
+option:hover,
+option:focus {
+  background: rgb(212, 212, 212);
+}
+
+/* ===== Container ===== */
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+  min-width: 430px;
+}
+
+/* sm */
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+/* md */
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+/* lg */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+/* ===== Scrollbar ===== */
+
+/* 捲軸整體 */
+::-webkit-scrollbar {
+  width: 5px;
+}
+/* 捲軸軌道 */
+::-webkit-scrollbar-track {
+  background: #000;
+}
+/* 捲軸滑塊 */
+::-webkit-scrollbar-thumb {
+  background: #a1a1a187;
+  border-radius: 10px;
+}
+/* 懸停時的滑塊 */
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* ===== Modal ===== */
+.modal {
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+}
+
+.modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal__container {
+  background: white;
+  padding: 1rem;
+  max-width: 600px;
+  width: 90%;
+}

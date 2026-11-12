@@ -1,0 +1,604 @@
+#original,
+#jatorri,
+#IB,
+#FO,
+#SAR,
+#EV,
+#miscellanies {
+  #banner {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 0.333fr 0.667fr;
+    .left {
+      background-image: url("../../image/original/original-banner.avif");
+      background-color: rgba(100, 109, 125, 1);
+      background-blend-mode: multiply;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        text-wrap: nowrap;
+        font-size: 100px;
+        font-family: "Italianno", cursive;
+        font-weight: normal;
+        text-shadow: var(--shadow-chinese);
+      }
+      h2 {
+        text-wrap: nowrap;
+        margin-top: -40px;
+        margin-left: 55px;
+        font-size: 20px;
+        text-shadow: var(--shadow-chinese);
+        z-index: 0;
+        font-weight: bold;
+      }
+    }
+    .right {
+      padding: 2rem 0;
+      span {
+        text-shadow: var(--shadow-chinese);
+      }
+      .hover-box {
+        .context {
+          grid-area: 1 / 1;
+        }
+        .context.default {
+          opacity: 1;
+          transition: opacity 0.3s ease-out;
+        }
+        .context.hover {
+          opacity: 0;
+          transition: opacity 0.3s ease-out;
+        }
+        .branch_top {
+          transform: translateY(15px);
+          transition: all 0.3s ease-out;
+        }
+        .branch_bottom {
+          transform: translateY(-15px);
+          transition: all 0.3s ease-out;
+        }
+        &.is-active {
+          .context.default {
+            opacity: 0;
+          }
+          .context.hover {
+            opacity: 1;
+          }
+          .branch_top {
+            transform: translateY(0px);
+          }
+          .branch_bottom {
+            transform: translateY(0px);
+          }
+        }
+        @media (min-width: 768px) {
+          &:hover {
+            .context.default {
+              opacity: 0;
+            }
+            .context.hover {
+              opacity: 1;
+            }
+            .branch_top {
+              transform: translateY(0px);
+            }
+            .branch_bottom {
+              transform: translateY(0px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#original {
+  #link-area {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+    h4 {
+      width: 80%;
+      font-weight: bold;
+    }
+    .others {
+      border-right: 1px dashed transparent;
+    }
+    .pageBtn {
+      width: fit-content;
+      display: inline-block;
+      opacity: 0.7;
+      transition: var(--all-02s-easeOut);
+
+      &:hover {
+        letter-spacing: 0.05rem;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#jatorri,
+#IB,
+#FO,
+#SAR,
+#EV,
+#miscellanies {
+  #characters-area {
+    display: grid;
+    grid-template-columns: minmax(0, max-content) 1fr;
+    gap: 2.5rem;
+    & > .box:nth-child(1) {
+      align-self: start;
+    }
+    .noun-list {
+      height: 0;
+      min-height: 90%;
+      overflow-y: auto;
+      min-width: 0;
+      padding: 0.5rem 1rem 0.5rem 0.5rem;
+    }
+    h2 {
+      text-shadow: var(--shadow-chinese);
+      font-weight: bold;
+      letter-spacing: 0;
+    }
+    .name-list {
+      .character-card {
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+        margin-bottom: 1.5rem;
+        width: fit-content;
+      }
+      .avatar {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        min-height: 50px;
+        min-width: 50px;
+        object-fit: cover;
+        overflow: hidden;
+        border: 1px solid var(--text-color);
+        margin-right: 1rem;
+      }
+    }
+  }
+  #creates-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    gap: 2.5rem;
+    h2 {
+      text-shadow: var(--shadow-chinese);
+      font-weight: bold;
+      letter-spacing: 0;
+    }
+  }
+  .btn {
+    padding: 0.4rem 1rem;
+    width: fit-content;
+    height: fit-content;
+    display: inline-block;
+    border: 1px solid var(--text-color);
+    border-radius: 4px;
+    transition: var(--all-02s-easeOut);
+    &:hover {
+      opacity: 0.8;
+      letter-spacing: 0.05rem;
+    }
+  }
+}
+
+#jatorri {
+  #banner {
+    .left {
+      background-image: url("../../image/original/jatorri-banner2.avif");
+      background-color: rgb(44, 62, 93);
+    }
+    .right {
+      .hover-box {
+        &.is-active {
+          .branch_top {
+            transform: translateY(40px);
+          }
+          .branch_bottom {
+            transform: translateY(-40px);
+          }
+        }
+        @media (min-width: 768px) {
+          &:hover {
+            .branch_top {
+              transform: translateY(40px);
+            }
+            .branch_bottom {
+              transform: translateY(-40px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#IB {
+  #banner {
+    .left {
+      background-image: url("../../image/original/IB-banner.avif");
+      background-color: rgb(121, 130, 121);
+      background-blend-mode: multiply;
+      h1 {
+        font-size: 60px;
+        font-family: "Italianno", "Shippori Mincho B1", cursive;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 0 6px rgba(255, 255, 255, 1);
+      }
+      h2 {
+        margin-top: -25px;
+        margin-left: 190px;
+        font-size: 40px;
+        font-family: "Italianno", "Shippori Mincho B1", cursive;
+        color: #fff;
+        text-shadow:
+          0 0 5px rgba(255, 255, 255, 0.8),
+          0 0 5px rgba(255, 255, 255, 0.8);
+        z-index: 0;
+        font-weight: normal;
+      }
+    }
+    .right {
+      h6 {
+        text-shadow: var(--shadow-chinese);
+      }
+      .hover-box {
+        &.is-active {
+          .branch_top {
+            transform: translateY(10px);
+          }
+          .branch_bottom {
+            transform: translateY(-10px);
+          }
+        }
+        @media (min-width: 768px) {
+          &:hover {
+            .branch_top {
+              transform: translateY(10px);
+            }
+            .branch_bottom {
+              transform: translateY(-10px);
+            }
+          }
+        }
+      }
+    }
+  }
+  #characters-area {
+    .name-list {
+      .character-card {
+        p {
+          text-shadow: var(--shadow-chinese);
+        }
+      }
+    }
+    .noun-list {
+      text-shadow: var(--shadow-chinese);
+    }
+  }
+}
+
+#FO {
+  #banner {
+    .left {
+      background-image: url("../../image/original/FO-banner.avif");
+      background-color: rgb(190, 171, 171);
+      background-blend-mode: multiply;
+      h2 {
+        margin-left: 150px;
+        font-size: 25px;
+      }
+    }
+    .right {
+      .hover-box {
+        &.is-active {
+          .branch_top {
+            transform: translateY(40px);
+            transition: all 0.3s ease-out;
+          }
+          .branch_bottom {
+            transform: translateY(-40px);
+            transition: all 0.3s ease-out;
+          }
+        }
+        @media (min-width: 768px) {
+          &:hover {
+            .branch_top {
+              transform: translateY(40px);
+              transition: all 0.3s ease-out;
+            }
+            .branch_bottom {
+              transform: translateY(-40px);
+              transition: all 0.3s ease-out;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#SAR {
+  #banner {
+    .left {
+      background-image: url("../../image/original/SAR-banner.avif");
+      background-color: rgb(183, 183, 183);
+      background-blend-mode: multiply;
+
+      h1 {
+        font-size: 60px;
+        font-family: "Italianno", "Shippori Mincho B1", cursive;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 0 6px rgba(255, 255, 255, 1);
+      }
+      h2 {
+        margin-top: -25px;
+        margin-left: 190px;
+        font-size: 40px;
+        font-family: "Italianno", "Shippori Mincho B1", cursive;
+        color: #fff;
+        text-shadow:
+          0 0 5px rgba(255, 255, 255, 0.8),
+          0 0 5px rgba(255, 255, 255, 0.8);
+        z-index: 0;
+        font-weight: normal;
+      }
+    }
+    .right {
+      h6 {
+        text-shadow: var(--shadow-chinese);
+      }
+
+      .hover-box {
+        &.is-active {
+          .branch_top {
+            transform: translateY(40px);
+          }
+          .branch_bottom {
+            transform: translateY(-40px);
+          }
+        }
+        @media (min-width: 768px) {
+          &:hover {
+            .branch_top {
+              transform: translateY(40px);
+            }
+            .branch_bottom {
+              transform: translateY(-40px);
+            }
+          }
+        }
+      }
+    }
+  }
+  #characters-area {
+    .name-list {
+      .character-card {
+        p {
+          text-shadow: var(--shadow-chinese);
+        }
+      }
+    }
+    .noun-list {
+      padding: 0.5rem 1.5rem 1.5rem 0.5rem;
+      text-shadow: var(--shadow-chinese);
+    }
+  }
+}
+
+#EV {
+  #banner {
+    .left {
+      background-image: url("../../image/original/EV-banner.avif");
+      background-color: rgb(223, 227, 235);
+      background-blend-mode: multiply;
+      h1 {
+        font-size: 60px;
+        font-family: "Italianno", "Shippori Mincho B1", cursive;
+        font-weight: bold;
+        color: #1d304f;
+        text-shadow: 0 0 6px rgba(255, 255, 255, 1);
+      }
+      h2 {
+        margin-top: -25px;
+        margin-left: 190px;
+        font-size: 40px;
+        font-family: "Italianno", "Shippori Mincho B1", cursive;
+        color: #1d304f;
+        text-shadow:
+          0 0 5px rgba(255, 255, 255, 0.8),
+          0 0 5px rgba(255, 255, 255, 0.8);
+        z-index: 0;
+        font-weight: 600;
+      }
+    }
+    .right {
+      h6 {
+        text-shadow: var(--shadow-chinese);
+      }
+
+      .hover-box {
+        &.is-active {
+          .branch_top {
+            transform: translateY(40px);
+          }
+          .branch_bottom {
+            transform: translateY(-40px);
+          }
+        }
+        @media (min-width: 768px) {
+          &:hover {
+            .branch_top {
+              transform: translateY(40px);
+            }
+            .branch_bottom {
+              transform: translateY(-40px);
+            }
+          }
+        }
+      }
+    }
+  }
+  #characters-area {
+    .name-list {
+      .character-card {
+        p {
+          text-shadow: var(--shadow-chinese);
+        }
+      }
+    }
+    .noun-list {
+      padding: 0.5rem 1.5rem 1.5rem 0.5rem;
+      text-shadow: var(--shadow-chinese);
+    }
+  }
+}
+
+#miscellanies {
+  #banner {
+    .left {
+      background-image: url("../../image/original/original-banner.avif");
+      background-color: rgba(100, 109, 125, 1);
+      background-blend-mode: multiply;
+    }
+    .right {
+      .hover-box {
+        &.is-active {
+          .branch_top {
+            transform: translateY(5px);
+          }
+          .branch_bottom {
+            transform: translateY(-5px);
+          }
+        }
+        @media (min-width: 768px) {
+          &:hover {
+            .branch_top {
+              transform: translateY(5px);
+            }
+            .branch_bottom {
+              transform: translateY(-5px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ----------------RWD------------------- */
+/* 2xl */
+@media (max-width: 1535px) {
+  #jatorri {
+    #characters-area {
+      grid-template-columns: 2fr 1.4fr;
+    }
+  }
+}
+
+/* xl */
+@media (max-width: 1279px) {
+  #jatorri,
+  #IB,
+  #FO,
+  #SAR,
+  #EV,
+  #miscellanies {
+    #banner {
+      grid-template-columns: 0.333fr 1fr;
+      .left {
+        padding: 0.5rem ;
+      }
+    }
+    #characters-area {
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+
+      .noun-list {
+        height: inherit;
+      }
+    }
+  }
+}
+
+/* lg */
+@media (max-width: 1023px) {
+  #original,
+  #jatorri,
+  #IB,
+  #FO,
+  #SAR,
+  #EV,
+  #miscellanies {
+    #banner {
+      grid-template-columns: inherit;
+    }
+    #creates-area {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
+  }
+  #original {
+    #link-area {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  #original,#miscellanies {
+    #banner {
+      .left {
+        padding: 0.5rem 0 1.5rem;
+      }
+    }
+  }
+  #IB,#SAR,#EV {
+    #banner {
+      .left {
+        padding: 1.5rem 0 0;
+      }
+    }
+  }
+}
+
+/* md */
+@media (max-width: 767px) {
+  #original,
+  #jatorri,
+  #IB,
+  #FO,
+  #SAR,
+  #EV,
+  #miscellanies {
+    #banner {
+      .right {
+        .hover-box {
+          cursor: pointer;
+        }
+        .hover-box:focus-visible {
+          outline: 1px dashed var(--text-color);
+          outline-offset: 0.75rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 639px) and (orientation: portrait) {
+}

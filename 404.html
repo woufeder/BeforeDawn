@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    (function () {
+      var REDIRECT_GUARD_KEY = 'bd_redirect_guard';
+      var now = Date.now();
+      var last = Number(sessionStorage.getItem(REDIRECT_GUARD_KEY) || 0);
+
+      if (last && now - last < 1200) {
+        return;
+      }
+
+      function detectBase(pathname) {
+        return /^\/BeforeDawn(?:\/|$)/i.test(pathname) ? '/BeforeDawn' : '';
+      }
+
+      function normalizePath(pathname) {
+        return String(pathname || '').replace(/\/+$/, '') || '/';
+      }
+
+      function safeReplace(target) {
+        if (!target) return;
+        if (normalizePath(window.location.pathname) === normalizePath(target)) return;
+        sessionStorage.setItem(REDIRECT_GUARD_KEY, String(Date.now()));
+        window.location.replace(target);
+      }
+
+      var base = detectBase(window.location.pathname || '');
+      var langs = ['zh-tw', 'en', 'it'];
+      var path = window.location.pathname || '';
+      var pathLower = path.toLowerCase();
+
+      if (base && /\/beforedawn\/?$/i.test(path)) {
+        safeReplace(base + '/zh-tw/');
+        return;
+      }
+
+      if (base && pathLower.indexOf(base.toLowerCase()) === 0) {
+        path = path.slice(base.length);
+      }
+
+      path = path.replace(/^\/+/, '');
+
+      var segments = path ? path.split('/') : [];
+      var first = (segments[0] || '').toLowerCase();
+      var hasLang = langs.indexOf(first) !== -1;
+      var lang = hasLang ? first : 'zh-tw';
+      var rest = hasLang ? segments.slice(1).join('/') : segments.join('/');
+      var restLower = rest.toLowerCase();
+      var isBlogPath = restLower === 'blog' || restLower.indexOf('blog/') === 0;
+
+      if (!isBlogPath) {
+        safeReplace(base + '/' + lang + '/');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
