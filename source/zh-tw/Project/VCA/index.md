@@ -1,7 +1,7 @@
 ---
 layout: page/project-detail
 title: 夜明曉更前｜VCA
-bg: https://images.unsplash.com/photo-1755525044163-da47cf9a6bbe?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+bg: image/project/vca/bg.jpg
 bgColor: rgba(77, 84, 67, 0.9)
 bgBlend: screen
 textColor: '#18240a'

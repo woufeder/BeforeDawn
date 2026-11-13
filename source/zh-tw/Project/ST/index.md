@@ -1,7 +1,7 @@
 ---
 layout: page/project-detail
 title: 夜明曉更前｜ST 林惜淵
-bg: https://images.unsplash.com/photo-1463143217634-f1089c4b3cc4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+bg: image/project/st/bg.jpg
 bgColor: rgba(37, 41, 52, 0.8)
 bgBlend: multiply
 textColorHover: '#f0f0f099;'
@@ -14,8 +14,8 @@ enName: ''
 settingImage: image/project/st/Ling.png
 settingFullImage: ''
 quote: 「相約共赴黃泉，妳走了，我沒有。」
-quoteColor: '#c9d2a5'
-brushColor: '#657554'
+quoteColor: '#c2aa2a'
+brushColor: 'rgba(66, 60, 60, 0.95)'
 backBtn: 返回企劃列表
 cPlurkLinkText: 角噗
 projectLinkText: 企劃官網

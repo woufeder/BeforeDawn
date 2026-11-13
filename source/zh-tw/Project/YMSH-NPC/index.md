@@ -1,7 +1,7 @@
 ---
 layout: page/project-detail
 title: 夜明曉更前｜YMSH 時予曦
-bg: https://images.unsplash.com/photo-1745874864678-f464940bb513?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+bg: image/project/ymsh/bg-s.jpg
 bgColor: rgba(63, 115, 157, 0.5)
 bgBlend: screen
 textColor: '#002438'
@@ -17,8 +17,8 @@ enName: ''
 settingImage: image/project/ymsh/S.png
 settingFullImage: ''
 quote: 「老師！有記得吃早餐嗎！」
-quoteColor: '#394b2d'
-brushColor: '#b7c7a5'
+quoteColor: ''
+brushColor: 'rgba(212, 225, 243, 0.95)'
 backBtn: 返回企劃列表
 cPlurkLinkText: 角噗
 projectLinkText: 企劃官網
@@ -64,9 +64,9 @@ previousText: 上一頁
 nextText: 下一頁
 galleryTag: YMSH
 galleryCaptions:
-  角色卡-里林_etvmi1: 角色卡-里林
-  角色卡-娜希拉_ypp3f2: 角色卡-娜希拉
-  染_fnkizj: 鹿島　染（月月）
+  時予曦於又綾_雨傘_Ink_01_vocimz: 委託　繪師：小耳
+  時予曦於又綾_雨傘_Ink_02_cpxycb: 委託　繪師：小耳
+  時予曦於又綾_雨傘_Ink_03_wzw4y6: 委託　繪師：小耳
 label1Text: 本家
 label1Url: /Original/Endless_Voice/
 label2Text: ''

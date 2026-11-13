@@ -1,7 +1,7 @@
 ---
 layout: page/project-detail
 title: 夜明曉更前｜Sappho 奧黛麗‧拉格朗日
-bg: https://images.unsplash.com/photo-1677246791501-85875b1ab187?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+bg: image/project/sappho/bg-a.jpg
 bgColor: rgba(78, 53, 82, 0.8)
 bgBlend: multiply
 textColorHover: '#f0f0f099;'
@@ -14,8 +14,8 @@ enName: Audrey Cianna Lagrange
 settingImage: image/project/sappho/A.png
 settingFullImage: ''
 quote: 「Se son rose, fioriranno.」
-quoteColor: '#c9d2a5'
-brushColor: '#657554'
+quoteColor: '#ddd9f9'
+brushColor: 'rgba(77,61,80, 0.9)'
 backBtn: 返回企劃列表
 cPlurkLinkText: 角噗
 projectLinkText: 企劃官網

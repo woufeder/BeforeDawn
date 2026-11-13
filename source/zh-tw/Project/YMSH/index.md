@@ -1,8 +1,8 @@
 ---
 layout: page/project-detail
 title: 夜明曉更前｜YMSH 於又綾
-bg: https://images.unsplash.com/photo-1679936340166-5b9d490a29db?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-bgColor: rgba(181, 222, 255, 0.5)
+bg: image/project/ymsh/bg-y.jpg
+bgColor: rgba(181, 222, 255, 0.3)
 bgBlend: screen
 textColor: '#002438'
 shadowChinese: 0 0 1px rgba(0, 36, 56, 0.5)
@@ -17,8 +17,8 @@ enName: ''
 settingImage: image/project/ymsh/Y.png
 settingFullImage: ''
 quote: 「對不起，我又彈琴彈到忘記時間了！」
-quoteColor: '#394b2d'
-brushColor: '#b7c7a5'
+quoteColor: ''
+brushColor: 'rgba(100, 164, 231 ,0.95)'
 backBtn: 返回企劃列表
 cPlurkLinkText: 角噗
 projectLinkText: 企劃官網
@@ -65,10 +65,10 @@ storyPerPage: 5
 previousText: 上一頁
 nextText: 下一頁
 galleryTag: YMSH
-galleryCaptions:
-  角色卡-里林_etvmi1: 角色卡-里林
-  角色卡-娜希拉_ypp3f2: 角色卡-娜希拉
-  染_fnkizj: 鹿島　染（月月）
+galleryCaptions: 
+  時予曦於又綾_雨傘_Ink_01_vocimz: 委託　繪師：小耳
+  時予曦於又綾_雨傘_Ink_02_cpxycb: 委託　繪師：小耳
+  時予曦於又綾_雨傘_Ink_03_wzw4y6: 委託　繪師：小耳
 label1Text: 本家
 label1Url: /Original/Endless_Voice/
 label2Text: ''

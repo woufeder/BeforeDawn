@@ -1,7 +1,7 @@
 ---
 layout: page/project-detail
 title: 夜明曉更前｜DL 衛宇天
-bg: https://images.unsplash.com/photo-1708958481776-2a85c5429ead?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+bg: image/project/dl/bg.jpg
 bgColor: rgba(82, 55, 56, 0.8)
 bgBlend: multiply
 textColorHover: '#f0f0f099;'
@@ -14,8 +14,8 @@ enName: ''
 settingImage: image/project/dl/dl.png
 settingFullImage: ''
 quote: 「曲幻，妳一定要好好活下去。」
-quoteColor: '#c9d2a5'
-brushColor: '#657554'
+quoteColor: '#ff4b4b'
+brushColor: 'rgba(87, 55, 55, 0.95)'
 backBtn: 返回企劃列表
 cPlurkLinkText: 角噗
 projectLinkText: 企劃官網

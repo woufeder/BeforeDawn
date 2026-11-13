@@ -1,5 +1,5 @@
 ---
-layout: page/project-detail
+layout: page/project-paper-test
 title: 夜明曉更前｜ST 梁慕榕
 bg: /image/project/st/bg.jpg
 bgColor: rgba(37,52, 41, 0.7)

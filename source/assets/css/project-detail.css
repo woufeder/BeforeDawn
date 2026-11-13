@@ -8,13 +8,13 @@
 
 .project-detail {
   --section-line: color-mix(in srgb, currentColor 24%, transparent);
-  --quote-color: #394b2d;
+  --quote-color: var(--text-color);
   --brush-color: #b7c7a5;
   width: 100%;
   margin: 0 auto;
 }
 .project-detail.dark {
-  --quote-color: #c9d2a5;
+  --quote-color: var(--text-color);
   --brush-color: #657554;
 }
 .project-detail a {
@@ -60,7 +60,7 @@
   max-height: 36rem;
   object-fit: contain;
   object-position: center top;
-  transform: scale(1.5);
+  transform: scale(1.56);
   transform-origin: center top;
 }
 .project-detail .project-intro {
@@ -85,16 +85,21 @@
   text-align: right;
   overflow-wrap: anywhere;
   margin-right: 2rem;;
+  
 }
 .project-detail .character-quote {
   color: var(--quote-color);
   font-style: italic;
   margin: 0.8rem 0 1.8rem;
+  font-size: 1.1rem;
+}
+.project-detail.dark .character-quote {
+  text-shadow: var(--shadow-chinese);
 }
 .project-detail .profile-columns {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
   align-items: stretch;
   gap: 1.5rem;
   padding: 1.3rem 0 1rem;
@@ -146,14 +151,13 @@
   padding: 0.3rem 1.6rem 0.3rem 0.9rem;
   text-align: center;
   overflow-wrap: anywhere;
-  color: #303c35;
-  background: #f0f0f0;
+  color: var(--text);
+  background: var(--brush-color);
   clip-path: polygon(0 0, 100% 0, calc(100% - 0.7rem) 50%, 100% 100%, 0 100%);
 }
 .project-detail .project-labels a:hover,
 .project-detail .project-labels a:focus-visible {
-  color: #1d2a22;
-  background-color: #c9d2a5;
+opacity: 0.8;
 }
 .project-detail .project-related {
   border-bottom: 1px solid currentColor;
@@ -239,10 +243,10 @@
   isolation: isolate;
   width: fit-content;
   max-width: 100%;
-  font-size: clamp(1.5rem, 2.3vw, 60px);
-  margin: 0 0 1.25rem;
+  /* font-size: clamp(1.5rem, 2.3vw, 60px); */
   text-shadow: var(--shadow-chinese);
 }
+
 .project-detail .name-heading {
   position: relative;
   isolation: isolate;
@@ -262,14 +266,15 @@
 }
 .project-detail .section-heading {
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  margin-bottom: 1.25rem;
 }
 .project-detail .section-heading svg,
 .project-detail .character-icon {
-  width: 32px;
-  height: 32px;
+  width: clamp(1.5rem, 2.3vw, 60px);
+  height: clamp(1.5rem, 2.3vw, 60px);
 }
 .project-detail .character-icon {
   display: inline-block;
@@ -309,11 +314,25 @@
 .project-detail #gallery {
   width: 100%;
   max-width: 600px;
+  margin-top: 1rem;
 }
 .project-detail .gallery-sizer,
 .project-detail .gallery-item {
   width: 25%;
 }
+
+/* 特規 */
+
+#AG{
+  .character-english{
+    font-family:"Iansui", cursive ;
+    font-size: 25px;
+  }
+}
+
+
+
+
 @media (max-width: 767px) {
   .project-detail {
     padding-inline: 1rem;

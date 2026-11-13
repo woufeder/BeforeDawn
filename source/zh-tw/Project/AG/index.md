@@ -1,9 +1,9 @@
 ---
 layout: page/project-detail
 title: 夜明曉更前｜AG 十七星　望
-bg: https://images.unsplash.com/photo-1551322120-c697cf88fbdc?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+bg: image/project/ag/bg.jpg
 bgColor: rgba(29, 39, 61, 0.37)
-bgBlend: overlay
+bgBlend: screen
 textColor: '#17294f'
 shadowChinese: 0 0 1px rgba(23, 41, 79, 0.5)
 shadowLatin: 0 0 1px rgba(23, 41, 79, 0.8), 0 0 1px rgba(23, 41, 79, 0.8)
@@ -17,8 +17,8 @@ enName: じゅうななぼし のぞみ
 settingImage: image/project/ag/ag.png
 settingFullImage: https://res.cloudinary.com/dhtsewjf1/image/upload/v1778951981/%E4%BA%BA%E8%A8%AD_pumem3.jpg
 quote: 「看吧！這世上永遠都會有美好的事物！」
-quoteColor: '#394b2d'
-brushColor: '#b7c7a5'
+quoteColor: '17294f'
+brushColor: '#eedada'
 backBtn: 返回企劃列表
 cPlurkLinkText: 角噗
 projectLinkText: 企劃官網

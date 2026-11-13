@@ -1,7 +1,7 @@
 ---
 layout: page/project-detail
 title: 夜明曉更前｜Sappho 夜那‧奈希里第
-bg: https://images.unsplash.com/photo-1639162147397-113d8dadb5ea?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+bg: image/project/sappho/bg-y.jpg
 bgColor: rgba(113 ,129 ,142 , 0.9)
 bgBlend: multiply
 textColorHover: '#f0f0f099;'
@@ -14,8 +14,8 @@ enName: Yana Nihility
 settingImage: image/project/sappho/Y.png
 settingFullImage: ''
 quote: 「Non è bello ciò che è bello ma è bello ciò che piace」
-quoteColor: '#c9d2a5'
-brushColor: '#657554'
+quoteColor: ''
+brushColor: 'rgba(106,128,156, 0.95)'
 backBtn: 返回企劃列表
 cPlurkLinkText: 角噗
 projectLinkText: 企劃官網

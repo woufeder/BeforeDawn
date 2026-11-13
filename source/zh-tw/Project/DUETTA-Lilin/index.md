@@ -1,15 +1,15 @@
 ---
 layout: page/project-detail
 title: 夜明曉更前｜DUETTA 里林
-bg: https://images.unsplash.com/photo-1680109123352-eec4b0961cd7?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-bgColor: rgba(121, 105, 75, 0.9)
+bg: image/project/duet/bg-l.jpg
+bgColor: rgba(121, 105, 75, 0.1)
 bgBlend: screen
-textColor: '#212121'
+textColor: '#1a1616'
 shadowChinese: 0 0 1px rgba(33, 33, 33, 0.5)
 shadowLatin: 0 0 1px rgba(33, 33, 33, 0.8), 0 0 1px rgba(33, 33, 33, 0.8)
 textColorHover: '#f0f0f099;'
 blockBgColor: rgba(220, 218, 218, 0.95);
-menuActiveColor: rgba(220, 218, 218, 0.95)
+menuActiveColor: rgba(255, 255, 255, 0.95)
 pId: DUET-L
 theme: ''
 Name: ​里林‧涅爾佩特
@@ -17,8 +17,8 @@ enName: Lilin Neilpet
 settingImage: image/project/duet/L.png
 settingFullImage: https://res.cloudinary.com/dhtsewjf1/image/upload/v1778951841/%E4%BA%BA%E8%A8%AD-%E9%87%8C%E6%9E%97_sxjqxm.jpg
 quote: 「遇見妳，是這輩子最美好的禮物」
-quoteColor: '#394b2d'
-brushColor: '#b7c7a5'
+quoteColor: 
+brushColor: rgba(255, 255, 255, 0.95)
 backBtn: 返回企劃列表
 cPlurkLinkText: 角噗
 projectLinkText: 企劃官網

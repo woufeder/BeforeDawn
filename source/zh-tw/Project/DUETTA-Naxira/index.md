@@ -1,15 +1,15 @@
 ---
 layout: page/project-detail
 title: 夜明曉更前｜DUETTA 娜希拉
-bg: https://images.unsplash.com/photo-1680109123352-eec4b0961cd7?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+bg: image/project/duet/bg-n.jpg
 bgColor: rgba(220, 218, 218, 0.5)
 bgBlend: screen
 textColor: '#241706'
 shadowChinese: 0 0 1px rgba(36, 23, 6, 0.5)
 shadowLatin: 0 0 1px rgba(36, 23, 6, 0.8), 0 0 1px rgba(36, 23, 6, 0.8)
-textColorHover: '#f0f0f099;'
-blockBgColor: rgba(218, 209, 178, 0.95);
-menuActiveColor: rgba(218, 209, 178, 0.95)
+textColorHover: 'rgba(228, 229, 198, 0.95);'
+blockBgColor: rgba(218, 209, 178, 0.95)
+menuActiveColor: rgba(228, 229, 198, 0.95)
 pId: DUET-N
 theme: ''
 Name: ​娜希拉‧海波恩
@@ -17,8 +17,8 @@ enName: Naxira Heborn
 settingImage: image/project/duet/N.png
 settingFullImage: https://res.cloudinary.com/dhtsewjf1/image/upload/v1778951844/%E4%BA%BA%E8%A8%AD-%E5%A8%9C%E5%B8%8C%E6%8B%89_fnhs8u.jpg
 quote: 「你有只有你能做到的事情。」
-quoteColor: '#394b2d'
-brushColor: '#b7c7a5'
+quoteColor: ''
+brushColor: 'rgba(218, 209, 178, 0.95)'
 backBtn: 返回企劃列表
 cPlurkLinkText: 角噗
 projectLinkText: 企劃官網

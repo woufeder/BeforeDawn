@@ -1,0 +1,63 @@
+---
+layout: page/layout
+---
+<% function paperUrl(path) { return !path ? '' : /^(?:https?:|mailto:|#)/i.test(path) ? path : url_for('/' + page.lang + (path.charAt(0) === '/' ? path : '/' + path)); } %>
+<div class="paper-test" data-paper-test>
+  <a class="paper-back" href="<%= url_for('/' + page.lang + '/Project/') %>" aria-label="<%= page.backBtn %>">←</a>
+  <div class="paper-stage">
+    <div class="paper-sheet">
+      <div class="paper-panel-area">
+        <section id="paper-intro" class="paper-panel" role="tabpanel" aria-labelledby="paper-tab-intro" tabindex="0">
+          <% if (page.enName && page.enName.trim()) { %><p class="paper-name-en"><%= page.enName %></p><% } %>
+          <h1><%= page.Name %></h1>
+          <ul class="paper-facts"><% (page.intro || []).forEach(function(fact) { %><li><% if (fact.url) { %><%= fact.label || '' %><a href="<%= fact.url %>"><%= fact.text %></a><% } else { %><%= fact.text %><% } %></li><% }) %></ul>
+          <ul class="paper-appearance"><% (page.appearance || []).forEach(function(item) { %><li><%= item %></li><% }) %></ul>
+          <div class="paper-links"><% if (page.label1Text && page.label1Text.trim()) { %><a href="<%= paperUrl(page.label1Url) %>"><%= page.label1Text %></a><% } %><% if (page.label2Text && page.label2Text.trim()) { %><a href="<%= paperUrl(page.label2Url) %>"><%= page.label2Text %></a><% } %></div>
+        </section>
+        <section id="paper-bio" class="paper-panel" role="tabpanel" aria-labelledby="paper-tab-bio" tabindex="0" hidden><h2>BIOGRAPHY</h2><p><%- page.biography %></p><% const related = page.relatedCharacters || (page.anotherCLinkk && page.anotherCLabel ? [{url: page.anotherCLinkk, label: page.anotherCLabel}] : []); %><% related.forEach(function(item) { %><a class="paper-related" href="<%= paperUrl(item.url) %>"><%= item.label %></a><% }) %><% if (page.cPlurk) { %><a class="paper-related" href="<%= page.cPlurk %>"><%= page.cPlurkLinkText %></a><% } %></section>
+        <section id="paper-about" class="paper-panel" role="tabpanel" aria-labelledby="paper-tab-about" tabindex="0" hidden><h2>ABOUT PROJECT</h2><div class="paper-meta"><h3><%= page.projectName %></h3><span><%= page.projectPeriod %></span></div><p><%- page.projectDescription %></p><p class="paper-tags"><%= page.projectTags %></p><% if (page.projectUrl) { %><a href="<%= page.projectUrl %>"><%= page.projectLinkText || page.projectLinkLabel %></a><% } %></section>
+        <section id="paper-illustration" class="paper-panel" role="tabpanel" aria-labelledby="paper-tab-illustration" tabindex="0" hidden><h2>ILLUSTRATION</h2><div id="gallery"><div class="gallery-sizer"></div></div><% if (page.chibiImage) { %><div class="paper-chibi"><a href="<%= url_for(page.chibiImage) %>" data-fancybox="gallery" data-no-swup data-caption="<%= page.chibiArtist || '' %>"><img src="<%= url_for(page.chibiImage) %>" alt=""></a><% if (page.chibiArtist) { %><% if (page.chibiArtistUrl) { %><a href="<%= page.chibiArtistUrl %>"><%= page.chibiArtist %></a><% } else { %><span><%= page.chibiArtist %></span><% } %><% } %></div><% } %></section>
+        <section id="paper-story" class="paper-panel" role="tabpanel" aria-labelledby="paper-tab-story" tabindex="0" hidden><h2>STORY</h2><%- partial('_partial/post-category-pager', { id: 'story', category: page.storyCategories, perPage: page.storyPerPage, listClass: '', prevText: page.previousText, nextText: page.nextText }) %></section>
+      </div>
+      <div class="paper-portrait"><% if (page.settingFullImage) { %><a href="<%= url_for(page.settingFullImage) %>" data-fancybox="setting" data-no-swup><% } %><img src="<%= url_for(page.settingImage) %>" alt=""><% if (page.settingFullImage) { %></a><% } %><% if (page.quote) { %><p class="paper-quote"><%= page.quote %></p><% } %></div>
+    </div>
+    <nav class="paper-menu" aria-label="角色頁面區塊" role="tablist" aria-orientation="vertical">
+      <% [['intro', 'Intro'], ['bio', 'Bio'], ['about', 'About Project'], ['illustration', 'Illustration'], ['story', 'Story']].forEach(function(tab, index) { %><button type="button" role="tab" id="paper-tab-<%= tab[0] %>" aria-controls="paper-<%= tab[0] %>" aria-selected="<%= index === 0 ? 'true' : 'false' %>" tabindex="<%= index === 0 ? '0' : '-1' %>"><%= tab[1] %></button><% }) %>
+    </nav>
+  </div>
+</div>
+<%- partial('_partial/cloudinary-gallery', { tag: page.galleryTag, captions: page.galleryCaptions }) %>
+<script>
+(function () {
+  var root = document.querySelector('[data-paper-test]');
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = 'true';
+  var tabs = Array.from(root.querySelectorAll('[role="tab"]'));
+  function select(tab, focus) {
+    tabs.forEach(function (item) {
+      var active = item === tab;
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+      var panel = root.querySelector('#' + item.getAttribute('aria-controls'));
+      panel.hidden = !active;
+      if (active) panel.scrollTop = 0;
+    });
+    if (focus) tab.focus();
+    if (tab.getAttribute('aria-controls') === 'paper-illustration') {
+      requestAnimationFrame(function () {
+        var gallery = root.querySelector('#gallery');
+        var masonry = window.Masonry && window.Masonry.data(gallery);
+        if (masonry) masonry.layout();
+        if (window.imagesLoaded && masonry) window.imagesLoaded(gallery, function () { masonry.layout(); });
+      });
+    }
+  }
+  tabs.forEach(function (tab, index) {
+    tab.addEventListener('click', function () { select(tab, false); });
+    tab.addEventListener('keydown', function (event) {
+      var next = event.key === 'ArrowDown' || event.key === 'ArrowRight' ? (index + 1) % tabs.length : event.key === 'ArrowUp' || event.key === 'ArrowLeft' ? (index + tabs.length - 1) % tabs.length : event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : -1;
+      if (next !== -1) { event.preventDefault(); select(tabs[next], true); }
+    });
+  });
+})();
+</script>
