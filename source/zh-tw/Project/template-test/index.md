@@ -1,42 +1,40 @@
 ---
-layout: page/project-detail-test
+layout: page/project-detail
 title: 夜明曉更前｜ST 梁慕榕
 bg: /image/project/st/bg.jpg
-bgColor: rgba(37, 41, 52, 0.8)
+bgColor: rgba(37,52, 41, 0.7)
 bgBlend: multiply
 textColorHover: '#f0f0f099;'
 blockBgColor: rgba(77, 84, 67, 0.95);
 menuActiveColor: rgba(77, 84, 67, 0.95)
-projectId: ST-N
-pageClass: dark
-characterName: 梁慕榕
-characterEnglishName: ""
+pId: ST-N
+theme: dark
+Name: 梁慕榕
+enName: ""
 settingImage: image/project/st/Liang.png
 quote: 「我在等你，我會等你。」
 quoteColor: "#c9d2a5"
-profileFactsTitle: 基本資料
-profileAppearanceTitle: 外觀特徵
-backLabel: 返回企劃列表
-characterLinkLabel: 角噗
+brushColor: "#657554"
+backBtn: 返回企劃列表
+cPlurkLinkText: 角噗
 projectLinkLabel: 企劃官網
-profileFacts:
+intro:
   - text: 女性
   - text: 09.22 20歲
   - text: 161 cm
   - label: "聲線："
     text: HITA
     url: https://www.youtube.com/watch?v=OrweKzLLLeI
-profileAppearance:
+appearance:
   - 長至肩胛骨下的褐色長髮，髮尾稍捲
   - 藏青色的虹膜犀利，給人生人勿近的印象
   - 喜好大地色系的衣服，多半為裙裝
   - 左眉尾下有一顆痣，左側別有月桂枝造型的髮夾
 chibiImage: image/project/st/chibi.gif
-chibiCaption: 小動圖繪師：賊喵
-artistUrl: https://www.plurk.com/zokunya
-artistLabel: "小動圖繪師：賊喵"
+chibiArtist: "小動圖繪師：賊喵"
+chibiArtistUrl: https://www.plurk.com/zokunya
 label1Url: ""
-label1Text: "重生"
+label1Text: ""
 label2Url: ""
 label2Text: 重生
 biography: |-
@@ -47,10 +45,10 @@ biography: |-
   小時候經歷了一場綁架撕票案，正是林惜淵救下自己。在那之後被當作拖油瓶般在眾親戚間輾轉，過著被當作累贅的生活。因為受不了親戚間的流言蜚語，決定逃家並死纏爛打著要求林惜淵收養自己。長大後也靠著同樣的執傲成功讓林惜淵坦承對自己的渴望，因而在一起。<br><br>
   得知末日迫近時，因為不希望自己連死去的方式都無法決定。所以和林惜淵約好完成所有想做的事之後就自殺。但只有梁慕榕自殺成功，留下林惜淵獨自活著。<br><br>
   林惜淵死後一同轉生到了原創世界觀《Jatorri》，仍保有上一世的記憶，年齡與身體素質也相同。
-projectRelatedPath: /Project/ST
-relatedLabel: 參企角 ➤
-characterUrl: https://www.plurk.com/bdal_01
-characterIcon: image/project/icons/ST-N.svg
+anotherCLinkk: /Project/ST
+anotherCLabel: 參企角 ➤
+cPlurk: https://www.plurk.com/bdal_01
+cPlurkIcon: image/project/icons/ST-N.svg
 projectName: 終焉的選擇題
 projectPeriod: 2018.06-2018.12
 projectUrl: https://syuuennosentakumon.wixsite.com/home
