@@ -1,0 +1,59 @@
+#swup:has(.paper-test),
+#swup:has(.paper-test) .container { min-width: 0; }
+
+.paper-test { max-width: 1500px; margin: 0 auto; padding: 0 0 3rem; }
+.paper-back { display: inline-block; margin-bottom: 1rem; font-size: 2rem; line-height: 1; }
+.paper-stage { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1rem; }
+.paper-sheet {
+  --text-color: #242c30;
+  --shadow-chinese: none;
+  color: var(--text-color);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  height: clamp(36rem, 72vh, 50rem);
+  min-width: 0;
+  background: linear-gradient(rgba(247, 243, 232, 0.83), rgba(247, 243, 232, 0.83)), url("../../image/paper.png") center / 100% 100% no-repeat;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+}
+.paper-panel-area { min-width: 0; min-height: 0; padding: clamp(1.5rem, 4vw, 4rem); }
+.paper-panel { height: 100%; overflow-y: auto; overscroll-behavior: contain; padding: 0 0.5rem 1rem 0; scrollbar-width: thin; }
+.paper-panel[hidden] { display: none !important; }
+.paper-panel h1, .paper-panel h2, .paper-panel h3 { color: inherit; }
+.paper-panel h1 { font-family: "Shippori Mincho B1", serif; font-size: clamp(2.2rem, 3.5vw, 3.5rem); line-height: 1.25; overflow-wrap: anywhere; margin: 0 0 1.5rem; }
+.paper-panel h2 { font-family: "Shippori Mincho B1", serif; font-size: clamp(1.8rem, 2.4vw, 2.5rem); margin: 0 0 1.5rem; }
+.paper-panel p { line-height: 1.9; overflow-wrap: anywhere; }
+.paper-name-en { font: 3rem/1 "Italianno", cursive; margin-bottom: 0.4rem; }
+.paper-facts, .paper-appearance { list-style: none; padding: 0; margin: 0 0 1.5rem; line-height: 1.9; }
+.paper-facts li::before, .paper-appearance li::before { content: "▍"; margin-right: 0.35rem; }
+.paper-panel a { color: inherit; text-decoration: underline; transition: opacity 0.2s ease; }
+.paper-panel a:hover, .paper-panel a:focus-visible { opacity: 0.6; }
+.paper-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+.paper-related { display: inline-block; margin: 1.5rem 1rem 0 0; }
+.paper-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.8rem; margin-bottom: 1rem; }
+.paper-meta h3 { font-size: 1.3rem; }
+.paper-tags { margin: 1.5rem 0; }
+.paper-panel #gallery { width: 100%; max-width: 600px; }
+.paper-panel .gallery-item, .paper-panel .gallery-sizer { width: 25%; }
+.paper-chibi { display: flex; align-items: end; gap: 0.5rem; margin-top: 1.5rem; font-size: 0.85rem; }
+.paper-chibi img { width: min(12rem, 100%); height: auto; }
+.paper-portrait { min-width: 0; min-height: 0; position: relative; overflow: hidden; }
+.paper-portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+.paper-portrait > a { position: absolute; inset: 0; }
+.paper-quote { position: absolute; z-index: 1; right: 1rem; bottom: 12%; max-width: 85%; margin: 0; padding: 0.4rem 0.7rem; color: #fff; background: rgba(36, 44, 48, 0.86); font-style: italic; line-height: 1.5; }
+.paper-menu { display: flex; flex-direction: column; align-items: stretch; gap: 0.45rem; }
+.paper-menu button { color: #f2efe5; background: rgba(21, 27, 31, 0.75); border: 1px solid rgba(255, 255, 255, 0.35); padding: 0.7rem 0.9rem; text-align: left; white-space: nowrap; cursor: pointer; transition: color 0.2s, background-color 0.2s; }
+.paper-menu button[aria-selected="true"] { color: #242c30; background: #f0eadb; }
+.paper-menu button:hover, .paper-menu button:focus-visible { color: #242c30; background: #e0d9c7; }
+
+@media (max-width: 767px) {
+  .paper-test { padding: 0 1rem 2rem; }
+  .paper-stage { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+  .paper-menu { grid-row: 1; flex-direction: row; overflow-x: auto; }
+  .paper-menu button { flex: 0 0 auto; }
+  .paper-sheet { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(14rem, 42vh) minmax(20rem, 48vh); height: auto; }
+  .paper-portrait { grid-row: 1; }
+  .paper-panel-area { grid-row: 2; padding: 1.5rem; }
+  .paper-facts { display: flex; flex-wrap: wrap; gap: 0 1rem; }
+  .paper-quote { bottom: 0.75rem; }
+}
