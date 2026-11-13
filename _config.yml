@@ -35,6 +35,9 @@ pretty_urls:
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
+server:
+  port: 3000
+
 source_dir: source
 public_dir: public
 tag_dir: blog/tags

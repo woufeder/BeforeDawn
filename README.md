@@ -14,15 +14,15 @@ npm install
 npm run server
 ```
 
-啟動後開啟終端機顯示的網址（預設為 http://localhost:4000/）。按 `Ctrl+C` 停止伺服器。
+啟動後開啟 http://localhost:3000/BeforeDawn/。按 `Ctrl+C` 停止伺服器。啟動伺服器時，Tailwind 也會自動監聽檔案變更並更新 `source/assets/css/app.css`；Tailwind 的來源檔為 `source/assets/css/tailwind.css`，請勿直接編輯產生的 `app.css`。
 
-若 4000 埠無法使用，可以改用其他埠，例如：
+若 3000 埠無法使用，可以改用其他埠，例如：
 
 ```bash
-npm run server -- -p 3000
+npm run server -- -p 3001
 ```
 
-然後開啟 http://localhost:3000/BeforeDawn/。
+然後開啟 http://localhost:3001/BeforeDawn/。
 
 ## 建置
 
@@ -30,7 +30,7 @@ npm run server -- -p 3000
 npm run build
 ```
 
-產生的靜態網站位於 `public/` 目錄。
+建置時會先更新 Tailwind CSS，產生的靜態網站位於 `public/` 目錄。
 
 若需要將預設頁面複製到 `/zh-tw/` 路徑，可使用：
 

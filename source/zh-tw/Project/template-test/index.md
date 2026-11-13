@@ -1,7 +1,7 @@
 ---
 layout: page/project-detail-test
 title: 夜明曉更前｜ST 梁慕榕
-bg: https://images.unsplash.com/photo-1463143217634-f1089c4b3cc4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+bg: /image/project/st/bg.jpg
 bgColor: rgba(37, 41, 52, 0.8)
 bgBlend: multiply
 textColorHover: '#f0f0f099;'
@@ -10,24 +10,33 @@ menuActiveColor: rgba(77, 84, 67, 0.95)
 projectId: ST-N
 pageClass: dark
 characterName: 梁慕榕
+characterEnglishName: ""
 settingImage: image/project/st/Liang.png
 quote: 「我在等你，我會等你。」
-profileLeft: |-
-  ▍女性<br>
-  ▍09.22 20歲<br>
-  ▍161 cm<br>
-  ▍聲線：<a href="https://www.youtube.com/watch?v=OrweKzLLLeI" class="underline">HITA</a>
-profileRight: |-
-  ▍長至肩胛骨下的褐色長髮，髮尾稍捲<br>
-  ▍藏青色的虹膜犀利，給人生人勿近的印象<br>
-  ▍喜好大地色系的衣服，多半為裙裝<br>
-  ▍左眉尾下有一顆痣，左側別有月桂枝造型的髮夾<br>
+quoteColor: "#c9d2a5"
+profileFactsTitle: 基本資料
+profileAppearanceTitle: 外觀特徵
+backLabel: 返回企劃列表
+characterLinkLabel: 角噗
+projectLinkLabel: 企劃官網
+profileFacts:
+  - text: 女性
+  - text: 09.22 20歲
+  - text: 161 cm
+  - label: "聲線："
+    text: HITA
+    url: https://www.youtube.com/watch?v=OrweKzLLLeI
+profileAppearance:
+  - 長至肩胛骨下的褐色長髮，髮尾稍捲
+  - 藏青色的虹膜犀利，給人生人勿近的印象
+  - 喜好大地色系的衣服，多半為裙裝
+  - 左眉尾下有一顆痣，左側別有月桂枝造型的髮夾
 chibiImage: image/project/st/chibi.gif
 chibiCaption: 小動圖繪師：賊喵
 artistUrl: https://www.plurk.com/zokunya
-artistLabel: 小動圖繪師：賊喵
+artistLabel: "小動圖繪師：賊喵"
 label1Url: ""
-label1Text: 本家
+label1Text: "重生"
 label2Url: ""
 label2Text: 重生
 biography: |-

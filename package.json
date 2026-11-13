@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "prebuild": "tailwindcss -i ./source/assets/css/tailwind.css -o ./source/assets/css/app.css",
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "node tools/reset-deploy-git.js && hexo deploy",
