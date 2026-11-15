@@ -1,4 +1,132 @@
 site_title: 夜明曉更前
+oc_character:
+  back: 返回 Jatorri
+  close: 關閉
+  navigation: 角色資料導覽
+  colors: 角色印象色
+  previous_image: 上一張
+  next_image: 下一張
+  profile: 基本資料
+  story: 故事背景
+  appearance: 外貌特徵
+  personality: 性格
+  personality_preferences: 性格、喜好習慣
+  preferences: 喜好習慣
+  relationships: 人際關係
+  abilities: 經歷與能力
+  empty: '—'
+  preference_labels:
+    likes: 喜歡
+    dislikes: 討厭
+    food: 食物
+    color: 顏色
+    music: 音樂
+    things: 事物
+  
+  fields:
+    title: 稱謂
+    aliases: 暱稱
+    gender: 性別
+    blood_type: 血型
+    birthday: 生日
+    actual_age: 實際年齡
+    apparent_age: 外表年齡
+    species: 種族
+    nationality: 國籍
+    residence: 居住地
+    language: 語言
+    symbol: 象徵
+    representative_animal: 代表動物
+    representative_plant: 代表植物
+    pairing: CP／組合
+    cp: CP
+    group_name: 組合名
+    height: 身高
+    weight: 體重
+    build: 體型
+    skin: 膚色
+    hair_color: 髮色
+    hairstyle: 髮型
+    eye_color: 瞳色
+    eyes: 眼型
+    health: 健康狀態
+    vision: 視力
+    ears: 耳
+    nose: 鼻
+    mouth: 口
+    voice: 聲音
+    clothing: 服裝
+    other_features: 其他特徵
+    strengths: 優點
+    weaknesses: 缺點
+    interests: 興趣
+    talents: 特技
+    taste: 口味
+    likes_food: 喜歡的食物
+    dislikes_food: 討厭的食物
+    likes_color: 喜歡的顏色
+    dislikes_color: 討厭的顏色
+    likes_music: 喜歡的音樂
+    dislikes_music: 討厭的音樂
+    likes_things: 喜歡的事物
+    dislikes_things: 討厭的事物
+    lying: 說謊
+    father: 父親
+    mother: 母親
+    partner: 伴侶
+    relatives: 親戚
+    siblings: 手足
+    children: 子女
+    respects: 尊敬
+    rivals: 對手
+    friends: 朋友
+    pets: 寵物
+    current_role: 現職
+    former_role: 舊職
+    education: 學歷
+    school: 校名
+    class_year: 學系級
+    position: 幹部
+    club: 社團
+    strong_subject: 擅長
+    weak_subject: 拙於
+    faith: 信仰
+    main_weapon: 主武器
+    secondary_weapon: 副武器
+  scales:
+    sociability: { left: 內向, right: 外向 }
+    outlook: { left: 悲觀, right: 樂觀 }
+    thinking: { left: 感性, right: 理性 }
+    altruism: { left: 利他, right: 利己 }
+    humility: { left: 謙虛, right: 驕傲 }
+    tradition: { left: 保守, right: 前衛 }
+    courage: { left: 怯弱, right: 勇敢 }
+    perception: { left: 遲鈍, right: 敏銳 }
+    caution: { left: 輕率, right: 慎重 }
+    contentment: { left: 知足, right: 貪婪 }
+    appetite: { label: 食量, left: 小, right: 大 }
+    picky_eating: { label: 挑食, left: 挑食, right: 雜食 }
+    possessiveness: { label: 佔有慾, left: 低, right: 高 }
+    drinking: { label: 嗜酒, left: 惡, right: 喜 }
+    tolerance: { label: 酒量, left: 差, right: 好 }
+    cooking: { label: 烹飪, left: 難吃, right: 好吃 }
+    tidiness: { label: 房間, left: 髒亂, right: 整潔 }
+    expression: { label: 情緒, left: 內斂, right: 外顯 }
+    lying: { label: 說謊, left: 不擅長, right: 擅長 }
+    libido: { label: 性慾, left: 冷感, right: 強烈 }
+    grades: { label: 成績, left: 劣, right: 優 }
+    intellect: { label: 知性, left: 低, right: 高 }
+    handwriting: { label: 字跡, left: 凌亂, right: 漂亮 }
+    knowledge: { label: 知識量, left: 小, right: 大 }
+    rules: { label: 規則, left: 無視, right: 遵守 }
+    melee_physical: { label: 近距物攻, left: 低, right: 高 }
+    ranged_physical: { label: 遠距物攻, left: 低, right: 高 }
+    melee_magic: { label: 近距魔攻, left: 低, right: 高 }
+    ranged_magic: { label: 遠距魔攻, left: 低, right: 高 }
+    physical_defense: { label: 物防, left: 低, right: 高 }
+    magic_defense: { label: 魔防, left: 低, right: 高 }
+    stamina: { label: 體力, left: 低, right: 高 }
+    speed: { label: 速度, left: 慢, right: 快 }
 # 分頁
 home: Home
 about: About Me

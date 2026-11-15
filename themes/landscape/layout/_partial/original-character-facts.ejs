@@ -1,0 +1,8 @@
+<dl class="oc-facts">
+  <% items.filter(function(item) { return item && item.disable !== true && item.disabled !== true; }).forEach(function(item) { const value = item.value == null || (typeof item.value === 'string' && !item.value.trim()) ? tr('empty') : item.value; %>
+  <div>
+    <dt><%= item.key ? tr('fields.' + item.key, item.label || item.key) : item.label %></dt>
+    <dd<%- item.key === 'current_role' ? ' class="oc-current-role"' : '' %>><%= value %><% if (item.color) { %> <span class="oc-color oc-color-small" style="--swatch: <%= item.color %>" aria-label="<%= item.color %>"></span> <span class="oc-color-code"><%= item.color %></span><% } %></dd>
+  </div>
+  <% }) %>
+</dl>

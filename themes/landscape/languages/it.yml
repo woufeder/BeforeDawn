@@ -1,4 +1,131 @@
 site_title: Anywhere Before Dawn
+oc_character:
+  back: Torna a Jatorri
+  close: Chiudi
+  navigation: Sezioni del personaggio
+  colors: Colori del personaggio
+  previous_image: Immagine precedente
+  next_image: Immagine successiva
+  profile: Profilo
+  story: Storia
+  appearance: Aspetto
+  personality: Personalità
+  personality_preferences: Personalità e abitudini
+  preferences: Preferenze e abitudini
+  relationships: Relazioni
+  abilities: Esperienze e abilità
+  empty: '—'
+  preference_labels:
+    likes: Preferiti
+    dislikes: Sgraditi
+    food: Cibo
+    color: Colore
+    music: Musica
+    things: Cose
+  fields:
+    title: Appellativo
+    aliases: Soprannomi
+    gender: Genere
+    blood_type: Gruppo sanguigno
+    birthday: Compleanno
+    actual_age: Età effettiva
+    apparent_age: Età apparente
+    species: Specie
+    nationality: Nazionalità
+    residence: Residenza
+    language: Lingua
+    symbol: Simbolo
+    representative_animal: Animale rappresentativo
+    representative_plant: Pianta rappresentativa
+    pairing: Coppia / gruppo
+    cp: CP
+    group_name: Nome del gruppo
+    height: Altezza
+    weight: Peso
+    build: Corporatura
+    skin: Carnagione
+    hair_color: Colore dei capelli
+    hairstyle: Acconciatura
+    eye_color: Colore degli occhi
+    eyes: Occhi
+    health: Salute
+    vision: Vista
+    ears: Orecchie
+    nose: Naso
+    mouth: Bocca
+    voice: Voce
+    clothing: Abbigliamento
+    other_features: Altri tratti
+    strengths: Punti di forza
+    weaknesses: Debolezze
+    interests: Interessi
+    talents: Talenti
+    taste: Gusti
+    likes_food: Cibo preferito
+    dislikes_food: Cibo sgradito
+    likes_color: Colori preferiti
+    dislikes_color: Colori sgraditi
+    likes_music: Musica preferita
+    dislikes_music: Musica sgradita
+    likes_things: Cose amate
+    dislikes_things: Cose sgradite
+    lying: Menzogne
+    father: Padre
+    mother: Madre
+    partner: Partner
+    relatives: Parenti
+    siblings: Fratelli e sorelle
+    children: Figli
+    respects: Persone rispettate
+    rivals: Rivali
+    friends: Amici
+    pets: Animali domestici
+    current_role: Ruolo attuale
+    former_role: Ruolo precedente
+    education: Istruzione
+    school: Scuola
+    class_year: Classe
+    position: Incarico
+    club: Club
+    strong_subject: Punti forti
+    weak_subject: Punti deboli
+    faith: Fede
+    main_weapon: Arma principale
+    secondary_weapon: Arma secondaria
+  scales:
+    sociability: { left: Introverso, right: Estroverso }
+    outlook: { left: Pessimista, right: Ottimista }
+    thinking: { left: Emotivo, right: Razionale }
+    altruism: { left: Altruista, right: Egoista }
+    humility: { left: Umile, right: Orgoglioso }
+    tradition: { left: Conservatore, right: Progressista }
+    courage: { left: Timido, right: Coraggioso }
+    perception: { left: Disattento, right: Perspicace }
+    caution: { left: Impulsivo, right: Prudente }
+    contentment: { left: Soddisfatto, right: Avido }
+    appetite: { label: Appetito, left: Poco, right: Molto }
+    picky_eating: { label: Selettività alimentare, left: Selettivo, right: Onnivoro }
+    possessiveness: { label: Possessività, left: Bassa, right: Alta }
+    drinking: { label: Alcol, left: Non ama, right: Ama }
+    tolerance: { label: Tolleranza, left: Bassa, right: Alta }
+    cooking: { label: Cucina, left: Male, right: Bene }
+    tidiness: { label: Stanza, left: Disordinata, right: Ordinata }
+    expression: { label: Emozioni, left: Riservato, right: Espressivo }
+    lying: { label: Mentire, left: Incapace, right: Abile }
+    libido: { label: Libido, left: Bassa, right: Alta }
+    grades: { label: Voti, left: Bassi, right: Alti }
+    intellect: { label: Intelletto, left: Basso, right: Alto }
+    handwriting: { label: Scrittura, left: Disordinata, right: Ordinata }
+    knowledge: { label: Conoscenza, left: Limitata, right: Ampia }
+    rules: { label: Regole, left: Ignora, right: Rispetta }
+    melee_physical: { label: Attacco fisico ravvicinato, left: Basso, right: Alto }
+    ranged_physical: { label: Attacco fisico a distanza, left: Basso, right: Alto }
+    melee_magic: { label: Attacco magico ravvicinato, left: Basso, right: Alto }
+    ranged_magic: { label: Attacco magico a distanza, left: Basso, right: Alto }
+    physical_defense: { label: Difesa fisica, left: Bassa, right: Alta }
+    magic_defense: { label: Difesa magica, left: Bassa, right: Alta }
+    stamina: { label: Resistenza, left: Bassa, right: Alta }
+    speed: { label: Velocità, left: Lenta, right: Veloce }
 # 分頁
 home: Home
 about: Chi sono

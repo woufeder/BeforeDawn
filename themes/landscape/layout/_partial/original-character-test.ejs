@@ -1,0 +1,273 @@
+<% const character = characterPage.character || {}; const tr = function(key, fallback) { const full = 'oc_character.' + key; const result = bd_i18n(full); return result && result !== full ? result : (fallback || key); }; const sections = {}; ['navigation', 'colors', 'profile', 'story', 'appearance', 'personality', 'preferences', 'personality_preferences', 'relationships', 'abilities'].forEach(function(key) { sections[key] = tr(key); }); const portraits = (Array.isArray(character.portraits) && character.portraits.length ? character.portraits : character.portrait ? [character.portrait] : []).map(function(item) { return typeof item === 'string' ? { src: item, alt: character.name } : item; }).filter(function(item) { return item && item.src; }); %>
+<%
+  // Keep the shared schema in the template so Hexo's live server can reload it.
+  const fieldSchema = {
+    facts: ['title', 'aliases', 'gender', 'blood_type', 'birthday', 'actual_age', 'apparent_age', 'species', 'nationality', 'residence', 'language', 'symbol', 'representative_animal', 'representative_plant', 'cp', 'group_name'],
+    appearance: ['height', 'weight', 'build', 'skin', 'hair_color', 'hairstyle', 'eye_color', 'eyes', 'health', 'vision', 'ears', 'nose', 'mouth', 'voice', 'clothing', 'other_features'],
+    personalityFacts: ['strengths', 'weaknesses', 'interests', 'talents'],
+    preferences: ['taste', 'likes_food', 'dislikes_food', 'likes_color', 'dislikes_color', 'likes_music', 'dislikes_music', 'likes_things', 'dislikes_things', 'lying'],
+    relationships: ['father', 'mother', 'partner', 'relatives', 'siblings', 'children', 'respects', 'rivals', 'friends', 'pets'],
+    abilities: ['current_role', 'former_role', 'education', 'faith'],
+    schools: ['school', 'class_year', 'position', 'club', 'strong_subject', 'weak_subject'],
+    weapons: ['main_weapon', 'secondary_weapon']
+  };
+  const scaleSchema = {
+    personality: ['sociability', 'tradition', 'outlook', 'courage', 'thinking', 'perception', 'altruism', 'caution', 'humility', 'contentment'],
+    habits: ['appetite', 'drinking', 'tolerance', 'cooking', 'picky_eating', 'tidiness', 'expression', 'lying', 'libido', 'possessiveness'],
+    schools: ['grades'],
+    knowledge: ['intellect', 'knowledge', 'handwriting', 'rules'],
+    stats: ['melee_physical', 'ranged_physical', 'melee_magic', 'ranged_magic', 'physical_defense', 'magic_defense', 'stamina', 'speed']
+  };
+  function mergeCharacterFields(list, keys) {
+    const input = Array.isArray(list) ? list : [];
+    const byKey = new Map(input.filter(function(item) { return item && item.key; }).map(function(item) { return [item.key, item]; }));
+    const known = new Set(keys);
+    return keys.map(function(key) { return Object.assign({ key: key, value: null }, byKey.get(key) || {}); })
+      .concat(input.filter(function(item) { return item && (!item.key || !known.has(item.key)); }));
+  }
+  function oc_character_fields(group, list) { return mergeCharacterFields(list, fieldSchema[group] || []); }
+  function oc_character_scales(group, list) { return mergeCharacterFields(list, scaleSchema[group] || []); }
+  function tableEntry(type, key, group, list) {
+    const schema = type === 'scale' ? scaleSchema : fieldSchema;
+    const item = mergeCharacterFields(list, schema[group]).find(function(entry) { return entry.key === key; });
+    return { type: type, item: item || { key: key, value: null } };
+  }
+  function extraTableEntries(type, group, list, otherKnownKeys) {
+    const schema = type === 'scale' ? scaleSchema[group] : fieldSchema[group];
+    const known = schema.concat(otherKnownKeys || []);
+    return (Array.isArray(list) ? list : []).filter(function(item) { return item && (!item.key || !known.includes(item.key)); }).map(function(item) { return { type: type, item: item }; });
+  }
+  function oc_profile_entries() {
+    const f = function(key) { return tableEntry('field', key, 'facts', profileFacts); };
+    const full = function(key) { return Object.assign(f(key), { full: true }); };
+    return [full('aliases'), null, f('gender'), f('blood_type'), f('birthday'), f('species'), f('actual_age'), f('apparent_age'), f('nationality'), f('language'), full('residence'), null, [full('symbol'), full('representative_animal'), full('representative_plant')], null, f('cp'), f('group_name')].concat(extraTableEntries('field', 'facts', profileFacts));
+  }
+  function oc_appearance_entries() {
+    const f = function(key) { return tableEntry('field', key, 'appearance', character.appearance); };
+    const full = function(key) { return Object.assign(f(key), { full: true }); };
+    return [[f('height'), f('weight')], [f('build'), f('skin')], f('hair_color'), f('hairstyle'), f('eye_color'), f('eyes'), f('health'), [f('vision'), f('ears')], f('voice'), [f('nose'), f('mouth')], full('clothing'), null, full('other_features'), null].concat(extraTableEntries('field', 'appearance', character.appearance));
+  }
+  function oc_preference_entries() {
+    const f = function(key) { return tableEntry('field', key, 'preferences', character.preferences); };
+    const h = function(key) { return tableEntry('scale', key, 'habits', character.habits); };
+    const k = function(key) { return tableEntry('scale', key, 'knowledge', character.knowledge); };
+    const lyingText = f('lying');
+    const lyingValue = lyingText.item.value;
+    const lying = lyingText.item.disable === true || lyingText.item.disabled === true || (lyingValue != null && String(lyingValue).trim() !== '') ? lyingText : h('lying');
+    const categories = ['food', 'color', 'music', 'things'];
+    const pairs = categories.map(function(category) {
+      const likes = f('likes_' + category).item;
+      const dislikes = f('dislikes_' + category).item;
+      const isDisabled = function(item) { return item.disable === true || item.disabled === true; };
+      return { type: 'preference', category: category, likes: likes, dislikes: dislikes, full: true, item: { disable: isDisabled(likes) && isDisabled(dislikes) } };
+    });
+    const header = { type: 'preference_header', full: true, item: { disable: pairs.every(function(pair) { return pair.item.disable; }) } };
+    return [f('taste'), h('drinking'), h('appetite'), h('tolerance'), h('cooking'), h('picky_eating'), h('tidiness'), k('handwriting'), k('intellect'), k('knowledge'), h('expression'), lying, h('libido'), h('possessiveness'), k('rules'), null, header, null, pairs[0], null, pairs[1], null, pairs[2], null, pairs[3], null].concat(extraTableEntries('field', 'preferences', character.preferences), extraTableEntries('scale', 'habits', character.habits), extraTableEntries('scale', 'knowledge', character.knowledge));
+  }
+  function oc_experience_entries() {
+    const f = function(key) { return tableEntry('field', key, 'abilities', character.abilities); };
+    const school = function(key) { return tableEntry('field', key, 'schools', character.schools); };
+    const grades = tableEntry('scale', 'grades', 'schools', character.schools);
+    return [f('current_role'), f('former_role'), f('education'), f('faith'), [school('school'), school('class_year')], grades, [school('position'), school('club')], [school('strong_subject'), school('weak_subject')]].concat(extraTableEntries('field', 'abilities', character.abilities), extraTableEntries('field', 'schools', character.schools, scaleSchema.schools));
+  }
+  function oc_combat_entries() {
+    const f = function(key) { return tableEntry('field', key, 'weapons', character.stats); };
+    const s = function(key) { return tableEntry('scale', key, 'stats', character.stats); };
+    return [f('main_weapon'), f('secondary_weapon'), s('melee_physical'), s('ranged_physical'), s('melee_magic'), s('ranged_magic'), s('physical_defense'), s('magic_defense'), s('stamina'), s('speed')].concat(extraTableEntries('scale', 'stats', character.stats, fieldSchema.weapons));
+  }
+  const profileFacts = Array.isArray(character.facts) ? character.facts.slice() : [];
+  const legacyPairing = profileFacts.find(function(item) { return item && item.key === 'pairing'; });
+  if (legacyPairing) {
+    const values = typeof legacyPairing.value === 'string' ? legacyPairing.value.split(/[｜|]/) : [];
+    ['cp', 'group_name'].forEach(function(key, index) {
+      if (!profileFacts.some(function(item) { return item && item.key === key; })) profileFacts.push(Object.assign({}, legacyPairing, { key: key, value: (values[index] || '').trim() || null }));
+    });
+    profileFacts.splice(profileFacts.indexOf(legacyPairing), 1);
+  }
+  if (!profileFacts.some(function(item) { return item && item.key === 'aliases'; })) {
+    profileFacts.push({ key: 'aliases', value: Array.isArray(character.aliases) ? character.aliases.join(' ／ ') : null });
+  }
+%>
+<article class="oc-profile <%= ocModal ? 'oc-profile-modal' : 'oc-profile-page' %>" style="--oc-accent: <%= character.accent || '#c0a66b' %>">
+  <% if (!ocModal) { %><a class="oc-back" href="<%= url_for('/' + page.lang + '/Original/Jatorri/') %>"><span aria-hidden="true">←</span> <%= tr('back') %></a><% } %>
+  <div class="oc-stage" data-oc-stage>
+    <header class="oc-hero">
+      <div class="oc-hero-copy">
+        <div class="oc-topline">
+          <% if (character.world) { %><p class="oc-world"><%= character.world %></p><% } %>
+          <div class="oc-identity-meta">
+            <div class="oc-tags"><% (character.tags || []).forEach(function(tag) { %><span><%= tag %></span><% }) %></div>
+            <% if (character.colors && character.colors.length) { %><div class="oc-colors" aria-label="<%= sections.colors %>"><% character.colors.forEach(function(color) { %><span class="oc-color" style="--swatch: <%= color.value %>" title="<%= color.name %> <%= color.value %>" aria-label="<%= color.name %> <%= color.value %>"></span><% }) %></div><% } %>
+          </div>
+        </div>
+        <h1><%= character.name %></h1>
+        <% if (character.englishName) { %><p class="oc-english"><%= character.englishName %></p><% } %>
+      </div>
+      <% const titleField = tableEntry('field', 'title', 'facts', profileFacts).item; %>
+      <div class="oc-portrait-panel">
+      <% if (portraits.length) { %>
+      <figure class="oc-portrait">
+        <% if (portraits.length === 1) { %><img src="<%= url_for(portraits[0].src) %>" alt="<%= portraits[0].alt || character.name %>"><% } else { %>
+        <div class="f-carousel oc-portrait-carousel" data-portrait-carousel>
+          <% portraits.forEach(function(portrait, index) { %><div class="f-carousel__slide" <%= index ? 'hidden' : '' %>><img src="<%= url_for(portrait.src) %>" alt="<%= portrait.alt || character.name %>"></div><% }) %>
+        </div>
+        <div class="oc-portrait-fallback" data-portrait-fallback><button type="button" data-portrait-prev aria-label="上一張">‹</button><span data-portrait-count aria-live="polite">1 / <%= portraits.length %></span><button type="button" data-portrait-next aria-label="下一張">›</button></div>
+        <% } %>
+      </figure>
+      <% } %>
+      <% if (titleField.disable !== true && titleField.disabled !== true) { %>
+        <div class="oc-character-title" aria-label="<%= tr('fields.title') %>"><%= titleField.value == null || String(titleField.value).trim() === '' ? tr('empty') : titleField.value %></div>
+      <% } %>
+      </div>
+    </header>
+
+    <nav class="oc-nav" aria-label="<%= sections.navigation %>" role="tablist">
+      <% [['profile', sections.profile], ['story', sections.story], ['appearance', sections.appearance], ['personality', sections.personality], ['preferences', sections.preferences], ['relationships', sections.relationships]].forEach(function(item, index) { %><button type="button" role="tab" id="oc-tab-<%= item[0] %>" aria-controls="oc-<%= item[0] %>" aria-selected="<%= index === 0 ? 'true' : 'false' %>" tabindex="<%= index === 0 ? '0' : '-1' %>"><%= item[1] %></button><% }) %>
+    </nav>
+
+    <div class="oc-content">
+      <section class="oc-section" id="oc-profile" role="tabpanel" aria-labelledby="oc-tab-profile" tabindex="0">
+        <%- partial('_partial/original-character-table', { entries: oc_profile_entries(), tr: tr }) %>
+        <%- partial('_partial/original-character-table', { entries: oc_experience_entries(), tr: tr }) %>
+      </section>
+      <section class="oc-section oc-story" id="oc-story" role="tabpanel" aria-labelledby="oc-tab-story" tabindex="0" hidden>
+        <div><% (character.description || []).forEach(function(paragraph) { %><p><%= paragraph %></p><% }) %></div>
+      </section>
+      <section class="oc-section" id="oc-appearance" role="tabpanel" aria-labelledby="oc-tab-appearance" tabindex="0" hidden>
+        <%- partial('_partial/original-character-table', { entries: oc_appearance_entries(), tr: tr }) %>
+        <%- partial('_partial/original-character-table', { entries: oc_combat_entries(), tr: tr }) %>
+      </section>
+      <section class="oc-section" id="oc-personality" role="tabpanel" aria-labelledby="oc-tab-personality" tabindex="0" hidden>
+
+        <%- partial('_partial/original-character-facts', { items: oc_character_fields('personalityFacts', character.personalityFacts), tr: tr }) %>
+        <%- partial('_partial/original-character-scales', { items: oc_character_scales('personality', character.personality), tr: tr }) %>
+      </section>
+      <section class="oc-section" id="oc-preferences" role="tabpanel" aria-labelledby="oc-tab-preferences" tabindex="0" hidden>
+        <%- partial('_partial/original-character-table', { entries: oc_preference_entries(), tr: tr }) %>
+      </section>
+      <section class="oc-section" id="oc-relationships" role="tabpanel" aria-labelledby="oc-tab-relationships" tabindex="0" hidden>
+        <%- partial('_partial/original-character-facts', { items: oc_character_fields('relationships', character.relationships), tr: tr }) %>
+      </section>
+    </div>
+  </div>
+</article>
+<% if (portraits.length > 1) { %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/carousel/carousel.css">
+<script async src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/carousel/carousel.umd.js" onload="document.dispatchEvent(new Event('oc:carousel-library'))"></script>
+<% } %>
+<script>
+  (function() {
+    var stage = document.querySelector('[data-oc-stage]');
+    if (!stage || stage.dataset.ready) return;
+    stage.dataset.ready = 'true';
+    var tabs = Array.from(stage.querySelectorAll('[role="tab"]'));
+    var carouselEl = stage.querySelector('[data-portrait-carousel]');
+    var fallback = stage.querySelector('[data-portrait-fallback]');
+    var slides = carouselEl ? Array.from(carouselEl.querySelectorAll('.f-carousel__slide')) : [];
+    var index = 0;
+    var carousel = null;
+
+    function fallbackSlide(next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach(function(slide, i) {
+        slide.hidden = i !== index;
+      });
+      fallback.querySelector('[data-portrait-count]').textContent = (index + 1) + ' / ' + slides.length;
+    }
+
+    function initPortrait() {
+      if (!carouselEl || carousel || !window.Carousel || !stage.isConnected || !stage.getClientRects().length) return;
+      slides.forEach(function(slide) {
+        slide.hidden = false;
+      });
+      try {
+        carousel = new window.Carousel(carouselEl, {
+          initialPage: index,
+          infinite: false
+        });
+        fallback.hidden = true;
+      } catch (error) {
+        carousel = null;
+        fallbackSlide(index);
+        console.warn('Portrait carousel unavailable:', error);
+      }
+    }
+    if (fallback) {
+      fallback.querySelector('[data-portrait-prev]').addEventListener('click', function() {
+        fallbackSlide(index - 1);
+      });
+      fallback.querySelector('[data-portrait-next]').addEventListener('click', function() {
+        fallbackSlide(index + 1);
+      });
+      stage.addEventListener('oc:show', initPortrait);
+      document.addEventListener('oc:carousel-library', initPortrait, {
+        once: true
+      });
+      requestAnimationFrame(initPortrait);
+    }
+
+    var content = stage.querySelector('.oc-content');
+    var transitionId = 0;
+    var contentAnimation = null;
+
+    async function select(tab, focus) {
+      if (tab.getAttribute('aria-selected') === 'true') {
+        if (focus) tab.focus();
+        return;
+      }
+      var currentTransition = ++transitionId;
+      if (contentAnimation) contentAnimation.cancel();
+      tabs.forEach(function(item) {
+        var active = item === tab;
+        item.setAttribute('aria-selected', String(active));
+        item.tabIndex = active ? 0 : -1;
+      });
+      if (focus) tab.focus();
+      var animate = typeof content.animate === 'function' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (animate) {
+        contentAnimation = content.animate([{
+          opacity: 1
+        }, {
+          opacity: 0
+        }], {
+          duration: 140,
+          easing: 'ease-out',
+          fill: 'forwards'
+        });
+        try {
+          await contentAnimation.finished;
+        } catch (error) {
+          return;
+        }
+      }
+      if (currentTransition !== transitionId) return;
+      tabs.forEach(function(item) {
+        stage.querySelector('#' + item.getAttribute('aria-controls')).hidden = item !== tab;
+      });
+      content.scrollTop = 0;
+      if (animate) {
+        contentAnimation.cancel();
+        contentAnimation = content.animate([{
+          opacity: 0
+        }, {
+          opacity: 1
+        }], {
+          duration: 180,
+          easing: 'ease-in'
+        });
+      }
+    }
+    tabs.forEach(function(tab, index) {
+      tab.addEventListener('click', function() {
+        select(tab, false);
+      });
+      tab.addEventListener('keydown', function(event) {
+        var next = event.key === 'ArrowDown' || event.key === 'ArrowRight' ? (index + 1) % tabs.length : event.key === 'ArrowUp' || event.key === 'ArrowLeft' ? (index + tabs.length - 1) % tabs.length : event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : -1;
+        if (next !== -1) {
+          event.preventDefault();
+          select(tabs[next], true);
+        }
+      });
+    });
+  })();
+</script>

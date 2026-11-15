@@ -1,4 +1,131 @@
 site_title: Anywhere Before Dawn
+oc_character:
+  back: Back to Jatorri
+  close: Close
+  navigation: Character sections
+  colors: Character colors
+  previous_image: Previous image
+  next_image: Next image
+  profile: Profile
+  story: Background
+  appearance: Appearance
+  personality: Personality
+  personality_preferences: Personality and habits
+  preferences: Preferences and habits
+  relationships: Relationships
+  abilities: Experience and abilities
+  empty: '—'
+  preference_labels:
+    likes: Likes
+    dislikes: Dislikes
+    food: Food
+    color: Color
+    music: Music
+    things: Things
+  fields:
+    title: Title
+    aliases: Aliases
+    gender: Gender
+    blood_type: Blood type
+    birthday: Birthday
+    actual_age: Age
+    apparent_age: Apparent age
+    species: Species
+    nationality: Nationality
+    residence: Residence
+    language: Language
+    symbol: Symbol
+    representative_animal: Representative animal
+    representative_plant: Representative plant
+    pairing: Pairing / group
+    cp: CP
+    group_name: Group name
+    height: Height
+    weight: Weight
+    build: Build
+    skin: Skin
+    hair_color: Hair color
+    hairstyle: Hairstyle
+    eye_color: Eye color
+    eyes: Eyes
+    health: Health
+    vision: Vision
+    ears: Ears
+    nose: Nose
+    mouth: Mouth
+    voice: Voice
+    clothing: Clothing
+    other_features: Other features
+    strengths: Strengths
+    weaknesses: Weaknesses
+    interests: Interests
+    talents: Talents
+    taste: Taste
+    likes_food: Favorite food
+    dislikes_food: Disliked food
+    likes_color: Favorite colors
+    dislikes_color: Disliked colors
+    likes_music: Favorite music
+    dislikes_music: Disliked music
+    likes_things: Likes
+    dislikes_things: Dislikes
+    lying: Lying
+    father: Father
+    mother: Mother
+    partner: Partner
+    relatives: Relatives
+    siblings: Siblings
+    children: Children
+    respects: Respects
+    rivals: Rivals
+    friends: Friends
+    pets: Pets
+    current_role: Current role
+    former_role: Former role
+    education: Education
+    school: School
+    class_year: Class
+    position: Student role
+    club: Club
+    strong_subject: Strengths
+    weak_subject: Weaknesses
+    faith: Faith
+    main_weapon: Main weapon
+    secondary_weapon: Secondary weapon
+  scales:
+    sociability: { left: Introverted, right: Extroverted }
+    outlook: { left: Pessimistic, right: Optimistic }
+    thinking: { left: Emotional, right: Rational }
+    altruism: { left: Altruistic, right: Self-interested }
+    humility: { left: Humble, right: Proud }
+    tradition: { left: Conservative, right: Progressive }
+    courage: { left: Timid, right: Brave }
+    perception: { left: Unobservant, right: Perceptive }
+    caution: { left: Impulsive, right: Cautious }
+    contentment: { left: Content, right: Greedy }
+    appetite: { label: Appetite, left: Small, right: Large }
+    picky_eating: { label: Food selectivity, left: Picky, right: Omnivorous }
+    possessiveness: { label: Possessiveness, left: Low, right: High }
+    drinking: { label: Alcohol, left: Dislikes, right: Likes }
+    tolerance: { label: Tolerance, left: Low, right: High }
+    cooking: { label: Cooking, left: Poor, right: Good }
+    tidiness: { label: Room, left: Messy, right: Tidy }
+    expression: { label: Expression, left: Reserved, right: Expressive }
+    lying: { label: Lying, left: Unskilled, right: Skilled }
+    libido: { label: Libido, left: Low, right: High }
+    grades: { label: Grades, left: Poor, right: Good }
+    intellect: { label: Intellect, left: Low, right: High }
+    handwriting: { label: Handwriting, left: Messy, right: Neat }
+    knowledge: { label: Knowledge, left: Limited, right: Broad }
+    rules: { label: Rules, left: Disregards, right: Follows }
+    melee_physical: { label: Melee physical, left: Low, right: High }
+    ranged_physical: { label: Ranged physical, left: Low, right: High }
+    melee_magic: { label: Melee magic, left: Low, right: High }
+    ranged_magic: { label: Ranged magic, left: Low, right: High }
+    physical_defense: { label: Physical defense, left: Low, right: High }
+    magic_defense: { label: Magic defense, left: Low, right: High }
+    stamina: { label: Stamina, left: Low, right: High }
+    speed: { label: Speed, left: Slow, right: Fast }
 # 分頁
 home: Home
 about: About Me

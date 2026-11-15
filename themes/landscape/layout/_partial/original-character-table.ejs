@@ -1,0 +1,34 @@
+<%
+  function visibleParts(entry) {
+    return (Array.isArray(entry) ? entry : [entry]).filter(function(part) {
+      return part && part.item && part.item.disable !== true && part.item.disabled !== true;
+    });
+  }
+  const rows = [];
+  for (let i = 0; i < entries.length; i += 2) {
+    const pair = [visibleParts(entries[i]), visibleParts(entries[i + 1])];
+    if (pair[0].length || pair[1].length) rows.push(pair[0].some(function(part) { return part.full; }) ? [pair[0]] : pair);
+  }
+%>
+<div class="oc-table">
+  <% rows.forEach(function(row) { row.forEach(function(parts, index) { %>
+    <div class="oc-table-cell<%= row.length > 1 && index === 0 ? ' oc-table-cell-left' : '' %><%= parts.length > 1 ? ' oc-table-cell-pair' : '' %><%= parts.some(function(part) { return part.full; }) ? ' oc-table-cell-full' : '' %>"<%- parts.length ? '' : ' aria-hidden="true"' %>>
+      <% parts.forEach(function(part) { %>
+        <% if (part && part.type === 'field') { %>
+          <%- partial('_partial/original-character-facts', { items: [part.item], tr: tr }) %>
+        <% } else if (part && part.type === 'scale') { %>
+          <%- partial('_partial/original-character-scales', { items: [part.item], tr: tr }) %>
+        <% } else if (part && part.type === 'preference_header') { %>
+          <div class="oc-preference-header"><span><%= tr('preference_labels.likes') %></span><span><%= tr('preference_labels.dislikes') %></span></div>
+        <% } else if (part && part.type === 'preference') { %>
+          <% const showLikes = part.likes.disable !== true && part.likes.disabled !== true; const showDislikes = part.dislikes.disable !== true && part.dislikes.disabled !== true; const displayValue = function(item) { return item.value == null || (typeof item.value === 'string' && !item.value.trim()) ? tr('empty') : item.value; }; %>
+          <div class="oc-preference-row">
+            <span class="oc-preference-value"<%- showLikes ? '' : ' aria-hidden="true"' %>><% if (showLikes) { %><span class="oc-visually-hidden"><%= tr('preference_labels.likes') %>：</span><%= displayValue(part.likes) %><% } %></span>
+            <span class="oc-preference-category"><%= tr('preference_labels.' + part.category) %></span>
+            <span class="oc-preference-value"<%- showDislikes ? '' : ' aria-hidden="true"' %>><% if (showDislikes) { %><span class="oc-visually-hidden"><%= tr('preference_labels.dislikes') %>：</span><%= displayValue(part.dislikes) %><% } %></span>
+          </div>
+        <% } %>
+      <% }) %>
+    </div>
+  <% }); }); %>
+</div>
