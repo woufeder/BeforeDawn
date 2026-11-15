@@ -156,6 +156,10 @@
         text-align: left;
         margin-bottom: 1.5rem;
         width: fit-content;
+        &:hover {
+          letter-spacing: inherit;
+          opacity: 0.5;
+        }
       }
       .avatar {
         position: relative;
@@ -523,7 +527,7 @@
     #banner {
       grid-template-columns: 0.333fr 1fr;
       .left {
-        padding: 0.5rem ;
+        padding: 0.5rem;
       }
     }
     #characters-area {
@@ -561,14 +565,17 @@
       flex-direction: column;
     }
   }
-  #original,#miscellanies {
+  #original,
+  #miscellanies {
     #banner {
       .left {
         padding: 0.5rem 0 1.5rem;
       }
     }
   }
-  #IB,#SAR,#EV {
+  #IB,
+  #SAR,
+  #EV {
     #banner {
       .left {
         padding: 1.5rem 0 0;
@@ -579,6 +586,35 @@
 
 /* md */
 @media (max-width: 767px) {
+  #swup:has(#jatorri),
+  #swup:has(#jatorri) .container {
+    min-width: 0;
+  }
+  #jatorri #characters-area {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+  }
+  #jatorri #characters-area > .box {
+    min-width: 0;
+  }
+  #jatorri #characters-area > .box > .flex {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  #jatorri #characters-area .character-card {
+    max-width: 100%;
+  }
+  #jatorri #characters-area .character-card > div:last-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  #jatorri #characters-area .noun-list {
+    height: auto;
+    min-height: 0;
+  }
+  #characters-area .name-list {
+    column-count: 1;
+  }
   #original,
   #jatorri,
   #IB,
