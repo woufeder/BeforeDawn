@@ -1,6 +1,6 @@
 <div class="oc-scales">
   <% items.filter(function(item) { return item && item.disable !== true && item.disabled !== true; }).forEach(function(item) { const titleKey = 'scales.' + item.key + '.label'; const title = item.key ? tr(titleKey, item.label) : (item.label || ''); const hasTitle = !!title && title !== titleKey; const originalLeft = item.key ? tr('scales.' + item.key + '.left', item.left || item.label || item.key) : (item.left || item.label || ''); const originalRight = item.key ? tr('scales.' + item.key + '.right', item.right || '') : (item.right || ''); const left = originalLeft; const right = originalRight; const value = item.value == null || item.value === '' ? null : Number(item.value); const valid = Number.isInteger(value) && value >= 1 && value <= 5; const score = value; %>
-  <div class="oc-scale <%= hasTitle ? 'oc-scale-titled' : '' %>">
+  <div class="oc-scale <%= hasTitle ? 'oc-scale-labeled' : '' %>">
     <% if (hasTitle) { %><span class="oc-scale-title"><%= title %></span><% } %>
     <span><%= left %></span>
     <span class="oc-scale-track" role="img" aria-label="<%= hasTitle ? title + ': ' : '' %><%= left %> — <%= right %>: <%= valid ? score + ' / 5' : tr('empty') %>" style="--oc-scale-progress: <%= valid ? (score - 1) * 25 : 0 %>%">
