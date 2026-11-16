@@ -142,6 +142,21 @@ prev: Precedente
 next: Successivo
 page: Pagina %d
 #原創
+Short_Stories: Racconti brevi
+short_stories:
+  page_title: Anyway Before Dawn | Racconti brevi
+  navigation: Navigazione dei racconti
+  characters: PERSONAGGI
+  terminology: TERMINOLOGIA
+  illustration: ILLUSTRAZIONI
+  story: STORIE
+  no_characters: Nessun profilo disponibile
+  no_terminology: Nessuna terminologia disponibile
+  no_illustrations: Nessuna illustrazione disponibile
+  no_stories: Nessun racconto disponibile
+  previous: Precedente
+  next: Successivo
+  related_terminology: Vai alla terminologia dell'opera collegata
 Jatorri: Jatorri
 Incessant_Breeze: Brezza Incessante
 Final_Oath: Giuramento Finale

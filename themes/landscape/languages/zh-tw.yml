@@ -143,6 +143,21 @@ prev: 上一頁
 next: 下一頁
 page: 第 %d 頁
 #原創
+Short_Stories: 短篇
+short_stories:
+  page_title: 夜明曉更前｜短篇
+  navigation: 短篇導覽
+  characters: CHARACTERS
+  terminology: TERMINOLOGY
+  illustration: ILLUSTRATION
+  story: STORY
+  no_characters: 尚無角色資料
+  no_terminology: 尚無專有名詞資料
+  no_illustrations: 尚無插圖
+  no_stories: 尚無文章
+  previous: 上一頁
+  next: 下一頁
+  related_terminology: 查看相關作品的專有名詞
 Jatorri: Jatorri
 Incessant_Breeze: 千年流傳之風
 Final_Oath: 最終誓言

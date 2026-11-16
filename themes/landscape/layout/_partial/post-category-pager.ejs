@@ -1,5 +1,5 @@
 <%
-  const currentLang = bd_current_lang();
+  const currentLang = typeof postLang !== 'undefined' && postLang ? postLang : bd_current_lang();
 
   const pagerId = id || 'post-pager';
   const targetCategories =
@@ -14,6 +14,8 @@
   const pageInfoId = pagerId + '-page-info';
 
     const safePerPage = typeof perPage !== 'undefined' ? perPage : 5;
+  const safeHideSinglePage = typeof hideSinglePage !== 'undefined' && hideSinglePage;
+  const safeArticleIdPrefix = typeof articleIdPrefix !== 'undefined' ? articleIdPrefix : '';
   const safeListClass = typeof listClass !== 'undefined' ? listClass : '';
   const safePaginationClass = typeof paginationClass !== 'undefined'
     ? paginationClass
@@ -49,7 +51,7 @@
 <div id="<%= listId %>" class="<%= safeListClass %>">
   <% matchedPosts.forEach(function(post, i) { %>
   <div class="<%= itemClass %>" data-index="<%= i %>">
-    <article id="<%= post.layout %>-<%= post.slug %>">
+    <article id="<%= safeArticleIdPrefix %><%= post.layout %>-<%= post.slug %>">
       <% if (post.link || post.title) { %>
       <div class="article-header flex flex-row items-end mb-2">
         <%- partial('post/title', {
@@ -86,11 +88,11 @@
   <% }) %>
 </div>
 
-<div id="<%= pagerId %>-pagination" class="<%= safePaginationClass %>">
+<% if (!safeHideSinglePage || matchedPosts.length > safePerPage) { %><div id="<%= pagerId %>-pagination" class="<%= safePaginationClass %>">
   <button id="<%= prevId %>"><%= safePrevText %></button>
   <span id="<%= pageInfoId %>"></span>
   <button id="<%= nextId %>"><%= safeNextText %></button>
-</div>
+</div><% } %>
 
 <%- partial('_partial/pagination-script', {
   perPage: safePerPage,

@@ -11,7 +11,7 @@ layout: false
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
-    <%= page.title %>
+    <%= page.titleKey ? bd_i18n(page.titleKey) : page.title %>
   </title>
   <%- partial('_partial/assets') %>
   <link rel="stylesheet" href="<%- url_for('assets/css/main.css') %>" />

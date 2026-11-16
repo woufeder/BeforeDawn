@@ -142,6 +142,21 @@ prev: Prev
 next: Next
 page: Page %d
 #原創
+Short_Stories: Short Stories
+short_stories:
+  page_title: Anyway Before Dawn | Short Stories
+  navigation: Short story navigation
+  characters: CHARACTERS
+  terminology: TERMINOLOGY
+  illustration: ILLUSTRATION
+  story: STORY
+  no_characters: No character profiles yet
+  no_terminology: No terminology yet
+  no_illustrations: No illustrations yet
+  no_stories: No stories yet
+  previous: Previous
+  next: Next
+  related_terminology: View terminology in the related work
 Jatorri: Jatorri
 Incessant_Breeze: Incessant Breeze
 Final_Oath: Final Oath

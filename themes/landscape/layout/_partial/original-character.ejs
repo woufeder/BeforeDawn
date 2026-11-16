@@ -102,7 +102,7 @@
 
 
 
-  <% if (!ocModal) { const sourcePath = String(characterPage.source || '').replace(/\\/g, '/'); const worldMatch = sourcePath.match(/^[^/]+\/Original\/([^/]+)\//i); const worldDirectory = worldMatch ? worldMatch[1] : 'Jatorri'; %><a class="oc-back" href="<%= url_for('/' + page.lang + '/Original/' + worldDirectory + '/') %>"><span aria-hidden="true">←</span> <%= tr('back') %></a><% } %>
+  <% if (!ocModal) { const sourcePath = String(characterPage.source || '').replace(/\\/g, '/'); const worldMatch = sourcePath.match(/^[^/]+\/Original\/([^/]+)\//i); const worldDirectory = worldMatch ? worldMatch[1] : 'Jatorri'; const shortStoryMatch = sourcePath.match(/^[^/]+\/Original\/Short_Stories\/([^/]+)\//i); const backUrl = url_for('/' + page.lang + '/Original/' + worldDirectory + '/') + (shortStoryMatch ? '#' + encodeURIComponent(shortStoryMatch[1]) : ''); %><a class="oc-back" href="<%= backUrl %>"><span aria-hidden="true">←</span> <%= tr('back') %></a><% } %>
   <div class="oc-stage" data-oc-stage>
     <!-- 切頁固定資訊 -->
     <header class="oc-head">
