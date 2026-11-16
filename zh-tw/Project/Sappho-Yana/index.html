@@ -157,6 +157,12 @@
             
             
 
+            <a class="main-nav-submenu-link  " href="/BeforeDawn/zh-tw/Original/Short_Stories/" >
+              短篇
+            </a>
+            
+            
+
             <a class="main-nav-submenu-link  " href="/BeforeDawn/zh-tw/Miscellanies/" >
               雜篇｜塗鴉
             </a>
@@ -365,6 +371,12 @@
             
             
 
+            <a class=" " href="/BeforeDawn/zh-tw/Original/Short_Stories/" >
+              短篇
+            </a>
+            
+            
+
             <a class=" " href="/BeforeDawn/zh-tw/Miscellanies/" >
               雜篇｜塗鴉
             </a>
@@ -485,6 +497,7 @@
 
   </div>
 </header>
+
 
     <main class="container .fade-in-once-nodely pt-20 pb-10 lg:pt-10">
 <section id="Sappho-Y" class="project-detail dark" style=" --brush-color: rgba(106,128,156, 0.95);">
@@ -885,22 +898,29 @@
     render();
   })();
 </script>
+
     </section>
   </div>
 </section>
 <script>
   (function() {
     const cloudName = 'dhtsewjf1';
-    const tag = 'Sappho';
+    const tag = "Sappho";
+    const galleryId = "gallery";
+    const galleryGroup = "gallery";
+    const useMasonry = true;
 
     const captions = {"NaNa_HBD_losoni":"生日賀圖｜小茵塚本 里菜（小茵） ","謝謝好朋友生日好爽鐘望百年好合_vh3qxu":"繪師：方糖AKA最好ㄉ親家","FvdtPY1aQAUVj0Z_qtnswl":"繪師：方糖AKA最好ㄉ親家"};
 
     async function loadGallery() {
-      const gallery = document.getElementById('gallery');
+      const gallery = document.getElementById(galleryId);
 
-      if (!gallery) return;
+      if (!gallery || gallery.dataset.cloudinaryReady) return;
+      gallery.dataset.cloudinaryReady = 'true';
 
-      gallery.innerHTML = '<div class="gallery-sizer"></div>';
+      if (!gallery.querySelector('.gallery-sizer')) {
+        gallery.insertAdjacentHTML('afterbegin', '<div class="gallery-sizer"></div>');
+      }
 
       try {
         const res = await fetch(
@@ -937,7 +957,7 @@
 
           a.setAttribute(
             'data-fancybox',
-            'gallery'
+            galleryGroup
           );
 
           if (caption) {
@@ -960,15 +980,17 @@
           gallery.appendChild(itemDiv);
         });
 
-        imagesLoaded(gallery, function() {
-          new Masonry(gallery, {
-            itemSelector: '.gallery-item',
-            columnWidth: '.gallery-sizer'
+        if (useMasonry && window.imagesLoaded && window.Masonry) {
+          imagesLoaded(gallery, function() {
+            new Masonry(gallery, {
+              itemSelector: '.gallery-item',
+              columnWidth: '.gallery-sizer'
+            });
           });
-        });
+        }
 
         if (window.Fancybox) {
-          Fancybox.bind('[data-fancybox="gallery"]');
+          Fancybox.bind(gallery, '[data-fancybox]');
         }
 
       } catch (err) {
@@ -982,6 +1004,7 @@
     loadGallery();
   })();
 </script>
+
 </main>
 
     <footer id="footer">

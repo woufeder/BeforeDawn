@@ -157,6 +157,12 @@
             
             
 
+            <a class="main-nav-submenu-link  " href="/BeforeDawn/zh-tw/Original/Short_Stories/" >
+              短篇
+            </a>
+            
+            
+
             <a class="main-nav-submenu-link is-active " href="/BeforeDawn/zh-tw/Miscellanies/" >
               雜篇｜塗鴉
             </a>
@@ -365,6 +371,12 @@
             
             
 
+            <a class=" " href="/BeforeDawn/zh-tw/Original/Short_Stories/" >
+              短篇
+            </a>
+            
+            
+
             <a class="is-active " href="/BeforeDawn/zh-tw/Miscellanies/" >
               雜篇｜塗鴉
             </a>
@@ -485,6 +497,7 @@
 
   </div>
 </header>
+
 
     <main class="container .fade-in-once-nodely pt-20 pb-10 lg:pt-10">
 <section id="miscellanies" style="--box-bg-color: rgba(0, 45, 92, 0.38);;" class="fade-in-once">
@@ -1913,6 +1926,7 @@
     render();
   })();
 </script>
+
     </div>
   </section>
 </section>
@@ -1921,16 +1935,22 @@
 <script>
   (function() {
     const cloudName = 'dhtsewjf1';
-    const tag = 'others';
+    const tag = "others";
+    const galleryId = "gallery";
+    const galleryGroup = "gallery";
+    const useMasonry = true;
 
     const captions = {};
 
     async function loadGallery() {
-      const gallery = document.getElementById('gallery');
+      const gallery = document.getElementById(galleryId);
 
-      if (!gallery) return;
+      if (!gallery || gallery.dataset.cloudinaryReady) return;
+      gallery.dataset.cloudinaryReady = 'true';
 
-      gallery.innerHTML = '<div class="gallery-sizer"></div>';
+      if (!gallery.querySelector('.gallery-sizer')) {
+        gallery.insertAdjacentHTML('afterbegin', '<div class="gallery-sizer"></div>');
+      }
 
       try {
         const res = await fetch(
@@ -1967,7 +1987,7 @@
 
           a.setAttribute(
             'data-fancybox',
-            'gallery'
+            galleryGroup
           );
 
           if (caption) {
@@ -1990,15 +2010,17 @@
           gallery.appendChild(itemDiv);
         });
 
-        imagesLoaded(gallery, function() {
-          new Masonry(gallery, {
-            itemSelector: '.gallery-item',
-            columnWidth: '.gallery-sizer'
+        if (useMasonry && window.imagesLoaded && window.Masonry) {
+          imagesLoaded(gallery, function() {
+            new Masonry(gallery, {
+              itemSelector: '.gallery-item',
+              columnWidth: '.gallery-sizer'
+            });
           });
-        });
+        }
 
         if (window.Fancybox) {
-          Fancybox.bind('[data-fancybox="gallery"]');
+          Fancybox.bind(gallery, '[data-fancybox]');
         }
 
       } catch (err) {
@@ -2011,7 +2033,8 @@
 
     loadGallery();
   })();
-</script></main>
+</script>
+</main>
 
     <footer id="footer">
   <div class="container">

@@ -4,6 +4,7 @@
 #FO,
 #SAR,
 #EV,
+#short-stories,
 #miscellanies {
   #banner {
     width: 100%;
@@ -523,6 +524,7 @@
   #FO,
   #SAR,
   #EV,
+  #short-stories,
   #miscellanies {
     #banner {
       grid-template-columns: 0.333fr 1fr;
@@ -549,6 +551,7 @@
   #FO,
   #SAR,
   #EV,
+  #short-stories,
   #miscellanies {
     #banner {
       grid-template-columns: inherit;
@@ -621,6 +624,7 @@
   #FO,
   #SAR,
   #EV,
+  #short-stories,
   #miscellanies {
     #banner {
       .right {

@@ -157,6 +157,12 @@
             
             
 
+            <a class="main-nav-submenu-link  " href="/BeforeDawn/zh-tw/Original/Short_Stories/" >
+              短篇
+            </a>
+            
+            
+
             <a class="main-nav-submenu-link  " href="/BeforeDawn/zh-tw/Miscellanies/" >
               雜篇｜塗鴉
             </a>
@@ -365,6 +371,12 @@
             
             
 
+            <a class=" " href="/BeforeDawn/zh-tw/Original/Short_Stories/" >
+              短篇
+            </a>
+            
+            
+
             <a class=" " href="/BeforeDawn/zh-tw/Miscellanies/" >
               雜篇｜塗鴉
             </a>
@@ -485,6 +497,7 @@
 
   </div>
 </header>
+
 
     <main class="container .fade-in-once-nodely pt-20 pb-10 lg:pt-10">
 <section id="YMSH-N" class="project-detail " style=" --brush-color: rgba(212, 225, 243, 0.95);">
@@ -1065,22 +1078,29 @@
     render();
   })();
 </script>
+
     </section>
   </div>
 </section>
 <script>
   (function() {
     const cloudName = 'dhtsewjf1';
-    const tag = 'YMSH';
+    const tag = "YMSH";
+    const galleryId = "gallery";
+    const galleryGroup = "gallery";
+    const useMasonry = true;
 
     const captions = {"時予曦於又綾_雨傘_Ink_01_vocimz":"委託　繪師：小耳","時予曦於又綾_雨傘_Ink_02_cpxycb":"委託　繪師：小耳","時予曦於又綾_雨傘_Ink_03_wzw4y6":"委託　繪師：小耳"};
 
     async function loadGallery() {
-      const gallery = document.getElementById('gallery');
+      const gallery = document.getElementById(galleryId);
 
-      if (!gallery) return;
+      if (!gallery || gallery.dataset.cloudinaryReady) return;
+      gallery.dataset.cloudinaryReady = 'true';
 
-      gallery.innerHTML = '<div class="gallery-sizer"></div>';
+      if (!gallery.querySelector('.gallery-sizer')) {
+        gallery.insertAdjacentHTML('afterbegin', '<div class="gallery-sizer"></div>');
+      }
 
       try {
         const res = await fetch(
@@ -1117,7 +1137,7 @@
 
           a.setAttribute(
             'data-fancybox',
-            'gallery'
+            galleryGroup
           );
 
           if (caption) {
@@ -1140,15 +1160,17 @@
           gallery.appendChild(itemDiv);
         });
 
-        imagesLoaded(gallery, function() {
-          new Masonry(gallery, {
-            itemSelector: '.gallery-item',
-            columnWidth: '.gallery-sizer'
+        if (useMasonry && window.imagesLoaded && window.Masonry) {
+          imagesLoaded(gallery, function() {
+            new Masonry(gallery, {
+              itemSelector: '.gallery-item',
+              columnWidth: '.gallery-sizer'
+            });
           });
-        });
+        }
 
         if (window.Fancybox) {
-          Fancybox.bind('[data-fancybox="gallery"]');
+          Fancybox.bind(gallery, '[data-fancybox]');
         }
 
       } catch (err) {
@@ -1162,6 +1184,7 @@
     loadGallery();
   })();
 </script>
+
 </main>
 
     <footer id="footer">

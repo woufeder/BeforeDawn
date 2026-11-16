@@ -1,0 +1,234 @@
+#swup:has(#short-stories),
+#swup:has(#short-stories) .container {
+  min-width: 0;
+}
+html:has(#short-stories) {
+  scroll-behavior: smooth;
+}
+.noun-list#terminology {
+  scroll-margin-top: calc(var(--header-height) + 1rem);
+}
+#short-stories {
+  min-width: 0;
+}
+#short-stories .short-stories-overview {
+  margin-bottom: 2.5rem;
+}
+#short-stories #banner .left {
+  min-width: 0;
+  min-height: 12rem;
+  padding: 1.25rem;
+}
+#short-stories #banner .left h1 {
+  font-size: clamp(2.5rem, 7vw, 6.25rem);
+  line-height: 1.15;
+  text-align: center;
+  text-wrap: balance;
+}
+#short-stories #banner .left h2 {
+  margin: -0.3rem 0 0;
+  text-align: center;
+}
+#short-stories #banner .right {
+  min-width: 0;
+  padding-inline: 1.25rem;
+}
+.short-overview-text {
+  color: var(--text-color);
+  font-family: 'Shippori Mincho B1', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+.short-stories-nav {
+  position: fixed;
+  z-index: 5;
+  top: 50%;
+  right: clamp(1rem, 3vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.45rem;
+  width: 12rem;
+  transform: translateY(-50%);
+}
+.short-stories-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  color: var(--text-color);
+  text-align: right;
+  text-shadow: var(--shadow-chinese);
+  transition: opacity 0.2s ease;
+}
+.short-stories-nav a::after {
+  content: '';
+  flex: 0 0 0.7rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+.short-stories-nav a[aria-current="location"]::after {
+  background: currentColor;
+}
+.short-stories-nav a:hover,
+.short-stories-nav a:focus-visible {
+  opacity: 0.7;
+}
+.short-stories-content,
+.short-story {
+  display: grid;
+  min-width: 0;
+}
+.short-stories-content {
+  gap: 5rem;
+}
+.short-story {
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  scroll-margin-top: calc(var(--header-height) + 1rem);
+}
+.short-story-intro,
+.short-story-characters,
+.short-story-terminology,
+.short-story-works {
+  min-width: 0;
+}
+.short-story-intro h2 {
+  text-shadow: var(--shadow-chinese);
+  overflow-wrap: anywhere;
+}
+.short-story-intro p {
+  margin-top: 0.8rem;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+.short-story-info {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+.short-story-info.has-terminology {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.short-story h3 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-shadow: var(--shadow-chinese);
+}
+.short-story .name-list .character-card {
+  display: flex;
+  align-items: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  overflow-wrap: anywhere;
+  transition: opacity 0.2s ease;
+}
+.short-story .name-list .character-card:hover {
+  opacity: 0.5;
+}
+.short-story .name-list .avatar {
+  position: relative;
+  flex: 0 0 50px;
+  width: 50px;
+  height: 50px;
+  margin-right: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--text-color);
+}
+.short-story .name-list .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.short-story-terminology table {
+  width: 100%;
+}
+.short-story-terminology th,
+.short-story-terminology td {
+  padding: 0.5rem;
+  border: 1px dashed currentColor;
+  text-align: left;
+  vertical-align: top;
+}
+.short-story-terms-link {
+  display: inline-block;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.short-story-works > section + section {
+  margin-top: 2rem;
+}
+.short-story-empty {
+  opacity: 0.7;
+}
+.short-story-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 120px), 1fr));
+  gap: 0.5rem;
+}
+.short-story-gallery .gallery-sizer {
+  display: none;
+}
+.short-story-gallery .gallery-item {
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+.short-story-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  #short-stories #banner .left h1 {
+    font-size: clamp(2.5rem, 6vw, 6.25rem);
+  }
+}
+@media (max-width: 1023px) {
+  #short-stories {
+    padding-right: 0;
+  }
+  .short-stories-nav {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: auto;
+    margin-bottom: 1.5rem;
+    transform: none;
+  }
+  .short-stories-nav a {
+    padding: 0.3rem 0.5rem;
+    text-align: left;
+  }
+  .short-story-info.has-terminology {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .short-overview-text {
+    font-size: 1.05rem;
+  }
+  .short-stories-content {
+    gap: 3rem;
+  }
+  .short-story {
+    gap: 1rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html:has(#short-stories) {
+    scroll-behavior: auto;
+  }
+  .short-stories-nav a,
+  .short-story .name-list .character-card {
+    transition: none;
+  }
+}
