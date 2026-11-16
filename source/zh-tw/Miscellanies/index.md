@@ -1,6 +1,6 @@
 ---
 layout: page/zh-tw/miscellanies
-title: "夜明曉更前 |短篇、塗鴉"
+title: "夜明曉更前 |雜篇、塗鴉"
 
 bg: ""
 bgColor: "rgba(35,36,61,0.9)"

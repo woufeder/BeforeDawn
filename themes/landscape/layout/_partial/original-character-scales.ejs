@@ -3,8 +3,8 @@
   <div class="oc-scale <%= hasTitle ? 'oc-scale-labeled' : '' %>">
     <% if (hasTitle) { %><span class="oc-scale-title"><%= title %></span><% } %>
     <span><%= left %></span>
-    <span class="oc-scale-track" role="img" aria-label="<%= hasTitle ? title + ': ' : '' %><%= left %> — <%= right %>: <%= valid ? score + ' / 5' : tr('empty') %>" style="--oc-scale-progress: <%= valid ? (score - 1) * 25 : 0 %>%">
-      <% for (let point = 1; point <= 5; point++) { %><span class="oc-scale-node <%= valid && point === score ? 'is-active' : '' %>" aria-hidden="true"></span><% } %>
+    <span class="oc-scale-track" role="img" aria-label="<%= hasTitle ? title + ': ' : '' %><%= left %> — <%= right %>: <%= valid ? score + ' / 5' : tr('empty') %>">
+      <% for (let point = 1; point <= 5; point++) { %><span class="oc-scale-node<%= valid && point <= score ? ' is-filled' : '' %>" aria-hidden="true"></span><% } %>
     </span>
     <span><%= right %></span>
   </div>

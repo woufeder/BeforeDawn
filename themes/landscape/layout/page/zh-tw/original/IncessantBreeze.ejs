@@ -54,73 +54,52 @@ layout: page/layout
         <!-- <a href="https://docs.google.com/spreadsheets/d/1Cxz4chKcb1_rkF7xz_W2xEI7c2XZCl3L5kT-26hfEJY/edit?gid=905747692#gid=905747692" class="btn ms-auto">詳細設定</a> -->
       </div>
 
-      <div class="name-list columns-2 sm:columns-3 xl:columns-2 h-full text-left gap-8">
-
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>久世　雪葉</p>
-            <p>クセ　ユキバ</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>風見　晴音</p>
-            <p>カザミ　ハルネ</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>時雨　日乃里</p>
-            <p>シグレ　ヒノリ</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>榊　秋光</p>
-            <p>サカキ　アキミツ</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>葛城　翔</p>
-            <p>カツラギ　カケル</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>久世　夏花</p>
-            <p>クセ　ナツカ</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>辻原　浅名</p>
-            <p>ツジハラ　アサナ</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>大空　海</p>
-            <p>オオゾラ　カイ</p>
-          </div>
-        </div>
-      </div>
+      <%- partial('_partial/original-character-collection', {
+        characterDirectory: 'Incessant_Breeze',
+        collectionId: 'ib',
+        cards: [
+          {
+            "id": "ib-01",
+            "name": "久世　雪葉",
+            "secondName": "クセ　ユキバ"
+          },
+          {
+            "id": "ib-02",
+            "name": "風見　晴音",
+            "secondName": "カザミ　ハルネ"
+          },
+          {
+            "id": "ib-03",
+            "name": "時雨　日乃里",
+            "secondName": "シグレ　ヒノリ"
+          },
+          {
+            "id": "ib-04",
+            "name": "榊　秋光",
+            "secondName": "サカキ　アキミツ"
+          },
+          {
+            "id": "ib-05",
+            "name": "葛城　翔",
+            "secondName": "カツラギ　カケル"
+          },
+          {
+            "id": "ib-06",
+            "name": "久世　夏花",
+            "secondName": "クセ　ナツカ"
+          },
+          {
+            "id": "ib-07",
+            "name": "辻原　浅名",
+            "secondName": "ツジハラ　アサナ"
+          },
+          {
+            "id": "ib-08",
+            "name": "大空　海",
+            "secondName": "オオゾラ　カイ"
+          }
+        ]
+      }) %>
     </div>
     <div class="p-8 box w-full h-fit xl:h-auto">
       <div class="flex flex-row items-center mb-6 ">

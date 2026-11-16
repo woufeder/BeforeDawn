@@ -1,6 +1,6 @@
 site_title: 夜明曉更前
 oc_character:
-  back: 返回 Jatorri
+  back: 返回作品
   close: 關閉
   navigation: 角色資料導覽
   colors: 角色印象色
@@ -9,6 +9,7 @@ oc_character:
   profile: 基本資料
   story: 故事背景
   appearance: 外貌特徵
+  voice_reference: 參考聲線
   personality: 性格
   personality_preferences: 性格、喜好習慣
   preferences: 喜好習慣
@@ -56,7 +57,7 @@ oc_character:
     mouth: 口
     voice: 聲音
     clothing: 服裝
-    other_features: 其他特徵
+    other_features: 附註
     strengths: 優點
     weaknesses: 缺點
     interests: 興趣
@@ -148,7 +149,7 @@ Final_Oath: 最終誓言
 TTOP: 流轉大地
 Sunrise_After_Rain: 雨後朝陽
 Endless_Voice: 未竟之聲
-Miscellanies: 短篇｜塗鴉
+Miscellanies: 雜篇｜塗鴉
 Where_the_Bamboo_Boat_Drifts: 竹船漂流的彼岸鄉
 Before_you_go: Before you go
 After_the_Candles_Burn_Low: 燭火搖曳之夜

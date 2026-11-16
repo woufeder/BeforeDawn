@@ -1,7 +1,101 @@
 ---
 layout: page/layout
 ---
-<% const ocTestPage = site.pages.toArray().find(function(item) { return item.source === 'zh-tw/Original/character-template-test/index.md'; }); %>
+<%
+  // 角色 MD 可用 character.cardId 指定入口；未指定時以中文名字比對。
+  const ocCards = [
+  {
+    "id": "woufeder",
+    "name": "沃霏德‧影‧腓雷得里卡‧伊特娜帝",
+    "secondName": "Woufeder Shadow Frederica Eternity",
+    "avatar": "https://res.cloudinary.com/dhtsewjf1/image/upload/0409_xi43mw.jpg"
+  },
+  {
+    "id": "dyert",
+    "name": "代爾特‧梵拉‧瑞‧珊耐司特",
+    "secondName": "Dyert Vanra Ré Sinister",
+    "avatar": "https://res.cloudinary.com/dhtsewjf1/image/upload/v1794843356/%E6%AD%BB%E7%A5%9E_itzbgf.png"
+  },
+  {
+    "id": "icarus",
+    "name": "伊卡洛斯‧萊繆爾‧冬雷亞",
+    "secondName": "Icarus Lemuel Donleya"
+  },
+  {
+    "id": "sincere",
+    "name": "聖晰‧修",
+    "secondName": "Sincere Huge"
+  },
+  {
+    "id": "dawn",
+    "name": "潼恩‧薇辛娜‧奧瑟勒",
+    "secondName": "Dawn Välsigna Åsele"
+  },
+  {
+    "id": "gill",
+    "name": "姫兒‧瑞托納‧依狄絲",
+    "secondName": "Gill Ritona Edith"
+  },
+  {
+    "id": "renata",
+    "name": "蕾娜塔‧卡佩拉‧珊耐司特",
+    "secondName": "Renata Capella Sinester"
+  },
+  {
+    "id": "sobo",
+    "name": "蘇波"
+  },
+  {
+    "id": "morisawa-hiroshi",
+    "name": "森澤　洋",
+    "secondName": "モリザワ　ヒロシ"
+  },
+  {
+    "id": "ozora-kai",
+    "name": "大空　海",
+    "secondName": "オオゾラ　カイ"
+  },
+  {
+    "id": "cheya",
+    "name": "奇亞‧瑞秋森",
+    "secondName": "Cheya Rachelson"
+  },
+  {
+    "id": "andrew",
+    "name": "安德魯‧墨内杜拉‧艾洛",
+    "secondName": "Andrew Monedula Aiello"
+  },
+  {
+    "id": "yana",
+    "name": "夜那",
+    "secondName": "Yana"
+  },
+  {
+    "id": "cherrill",
+    "name": "綺莉 瑞秋森",
+    "secondName": "Cherrill Rachelson"
+  },
+  {
+    "id": "hyven",
+    "name": "海雯‧安媞奎思‧哈拿",
+    "secondName": "Hyven Antiquus Hannah"
+  },
+  {
+    "id": "anna",
+    "name": "安娜‧芙蘿塔‧奧瑟勒",
+    "secondName": "Anna Förlåta Åsele"
+  }
+];
+  const ocPages = site.pages.toArray().filter(function(item) {
+    return item.source && item.source.startsWith('zh-tw/Original/Jatorri/') && item.character;
+  });
+  const ocEntries = ocCards.map(function(card, index) {
+    const characterPage = ocPages.find(function(item) {
+      return item.character.cardId ? String(item.character.cardId).toLowerCase() === card.id : item.character.name === card.name;
+    });
+    return { card: card, page: characterPage, dialogId: 'oc-character-dialog-' + (index + 1), idPrefix: 'oc-character-' + (index + 1) };
+  });
+%>
 
 <section id="jatorri" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
   <section id="banner" class="box">
@@ -48,139 +142,16 @@ layout: page/layout
       </div>
 
       <div class="name-list columns-2 h-full text-left gap-8">
-
-        <% if (ocTestPage) { %><button type="button" class="character-card oc-modal-trigger" aria-haspopup="dialog" aria-controls="oc-character-dialog"><% } else { %><div class="character-card"><% } %>
-          <div class="avatar">
-            <img src="https://res.cloudinary.com/dhtsewjf1/image/upload/0409_xi43mw.jpg" alt="" class="absolute -top-1.5">
-          </div>
-          <div>
-            <p>沃霏德‧影‧腓雷得里卡‧伊特娜帝</p>
-            <p>Woufeder Shadow Frederica Eternity</p>
-          </div>
-        <% if (ocTestPage) { %></button><% } else { %></div><% } %>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>代爾特‧梵拉‧瑞‧珊耐司特</p>
-            <p>Dyert Vanra Ré Sinister</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>伊卡洛斯‧萊繆爾‧冬雷亞</p>
-            <p>Icarus Lemuel Donleya</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>聖晰‧修</p>
-            <p>Sincere Huge</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>潼恩‧薇辛娜‧奧瑟勒</p>
-            <p>Dawn Välsigna Åsele</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>姫兒‧瑞托納‧依狄絲</p>
-            <p>Gill Ritona Edith</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>蕾娜塔‧卡佩拉‧珊耐司特</p>
-            <p>Renata Capella Sinester</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>蘇波</p>
-          </div>
-        </div>
-
-
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>森澤　洋</p>
-            <p>モリザワ　ヒロシ</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>大空　海</p>
-            <p>オオゾラ　カイ</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>奇亞‧瑞秋森</p>
-            <p>Cheya Rachelson</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>安德魯‧墨内杜拉‧艾洛</p>
-            <p>Andrew Monedula Aiello</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>夜那</p>
-            <p>Yana</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>綺莉 瑞秋森</p>
-            <p>Cherrill Rachelson</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>海雯‧安媞奎思‧哈拿</p>
-            <p>Hyven Antiquus Hannah</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>安娜‧芙蘿塔‧奧瑟勒</p>
-            <p>Anna Förlåta Åsele</p>
-          </div>
-        </div>
-
-      </div>
+        <% ocEntries.forEach(function(entry) { const card = entry.card; %>
+        <% if (entry.page) { %><button type="button" class="character-card oc-modal-trigger" aria-haspopup="dialog" aria-controls="<%= entry.dialogId %>"><% } else { %><div class="character-card"><% } %>
+            <div class="avatar"><% if (card.avatar) { %><img src="<%= card.avatar %>" alt="" class="absolute"><% } %></div>
+            <div>
+              <p><%= card.name %></p>
+              <% if (card.secondName) { %><p><%= card.secondName %></p><% } %>
+            </div>
+            <% if (entry.page) { %></button><% } else { %></div><% } %>
+      <% }); %>
+    </div>
     </div>
     <div class="p-8 box w-full h-fit xl:h-auto">
       <div class="flex flex-row items-center mb-6 ">
@@ -251,55 +222,7 @@ layout: page/layout
   </section>
 </section>
 
-<% if (ocTestPage) { %>
-<dialog id="oc-character-dialog" class="oc-modal" aria-label="<%= ocTestPage.character.name %>">
-  <button type="button" class="oc-modal-close" aria-label="<%= bd_i18n('oc_character.close') %>">×</button>
-  <%- partial('_partial/original-character-test', { characterPage: ocTestPage, ocModal: true }) %>
-</dialog>
-<script>
-(function () {
-  var dialog = document.getElementById('oc-character-dialog');
-  var trigger = document.querySelector('.oc-modal-trigger');
-  if (!dialog || !trigger || dialog.dataset.modalReady) return;
-  dialog.dataset.modalReady = 'true';
-  var frame = 0;
-  var closeTimer = 0;
-  var closing = false;
-  function closeAnimated() {
-    if (!dialog.open || closing) return;
-    closing = true;
-    cancelAnimationFrame(frame);
-    dialog.classList.remove('is-visible');
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      dialog.close();
-    } else {
-      closeTimer = window.setTimeout(function () { if (dialog.open) dialog.close(); }, 240);
-    }
-  }
-  trigger.addEventListener('click', function () {
-    if (dialog.open) return;
-    closing = false;
-    dialog.showModal();
-    dialog.querySelector('[data-oc-stage]').dispatchEvent(new Event('oc:show'));
-    frame = requestAnimationFrame(function () {
-      frame = requestAnimationFrame(function () {
-        if (dialog.open && !closing) dialog.classList.add('is-visible');
-      });
-    });
-  });
-  dialog.querySelector('.oc-modal-close').addEventListener('click', closeAnimated);
-  dialog.addEventListener('cancel', function (event) { event.preventDefault(); closeAnimated(); });
-  dialog.addEventListener('click', function (event) { if (event.target === dialog) closeAnimated(); });
-  dialog.addEventListener('close', function () {
-    clearTimeout(closeTimer);
-    cancelAnimationFrame(frame);
-    dialog.classList.remove('is-visible');
-    closing = false;
-    if (trigger.isConnected) trigger.focus({ preventScroll: true });
-  });
-})();
-</script>
-<% } %>
+<%- partial('_partial/original-character-dialogs', { entries: ocEntries }) %>
 
 <%- partial('_partial/cloudinary-gallery', {
   tag: 'jatorri',

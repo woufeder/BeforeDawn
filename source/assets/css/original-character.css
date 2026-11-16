@@ -1,16 +1,18 @@
 .oc-modal,
-.oc-profile-page {
+.oc-profile-page,
+.oc-profile-modal {
   /* 可由角色資料覆蓋 */
   --oc-theme-color: #443125;
   --oc-theme-text: #251c19;
   --oc-theme-nav: #80291e;
+  --oc-theme-nav-text: #fff7e9;
+  --oc-theme-stage: #f3ede3;
   --oc-detail-900: var(--oc-theme-color);
-  --oc-detail-700: color-mix(in srgb, var(--oc-detail-900) 85%, white);
-  --oc-detail-600: color-mix(in srgb, var(--oc-detail-900) 75%, white);
-  --oc-detail-400: color-mix(in srgb, var(--oc-detail-900) 45%, white);
-  --oc-detail-300: color-mix(in srgb, var(--oc-detail-900) 15%, white);
-  --oc-detail-100: #f3ede3;
-  --oc-detail-50: #fff7e9;
+  --oc-detail-800: color-mix(in srgb, var(--oc-detail-900) 80%, white);
+  --oc-detail-600: color-mix(in srgb, var(--oc-detail-900) 60%, white);
+  --oc-detail-500: color-mix(in srgb, var(--oc-detail-900) 50%, white);
+  --oc-detail-400: color-mix(in srgb, var(--oc-detail-900) 40%, white);
+  --oc-detail-300: color-mix(in srgb, var(--oc-detail-900) 30%, white);
   --oc-detail-900-op8: color-mix(
     in srgb,
     var(--oc-detail-900) 80%,
@@ -34,7 +36,9 @@
   --oc-black-op5: rgb(0 0 0 / 50%);
   --oc-black-op3: rgb(0 0 0 / 30%);
   --oc-text: var(--oc-theme-text);
-  --oc-stage-color: var(--oc-detail-100);
+  --oc-table-title: var(--oc-detail-900);
+  --oc-table-line: var(--oc-detail-500);
+  --oc-stage-color: var(--oc-theme-stage);
   --oc-nav-selected: var(--oc-theme-nav);
   --oc-nav-selected-hover: color-mix(
     in srgb,
@@ -103,7 +107,7 @@ html:has(.oc-modal[open]) {
   top: 0;
   width: 2.6rem;
   height: 2.6rem;
-  color: var(--oc-detail-50);
+  color: var(--oc-theme-nav-text);
   background: var(--oc-detail-900);
   font-size: 1.8rem;
   line-height: 1;
@@ -117,6 +121,7 @@ html:has(.oc-modal[open]) {
   padding: 0 1rem;
 }
 .oc-detail {
+  --oc-table-label-width: calc(4em + 1.3rem);
   max-width: 1400px;
   margin: 0 auto;
   padding-bottom: 3rem;
@@ -166,7 +171,7 @@ html:has(.oc-modal[open]) {
 
 @media (min-width: 768px) {
   .oc-modal .oc-stage {
-    height: min(88vh, 60rem, calc(100dvh - 4.6rem));
+    height: min(90vh, 60rem, calc(100dvh - 4.6rem));
   }
 }
 .oc-head {
@@ -178,18 +183,19 @@ html:has(.oc-modal[open]) {
   padding: 1rem clamp(1.2rem, 2vw, 2rem) 0;
 }
 .oc-head h1,
-.oc-section h2 {
-  color: var(--oc-detail-900);
-  font-family: "Shippori Mincho B1", serif;
+.oc-head h2 {
+  color: var(--oc-text);
 }
 .oc-head h1 {
+  font-family: "Shippori Mincho B1", serif;
   font-size: clamp(1.27rem, 2.19vw, 2.1rem);
   line-height: 1.35;
   overflow-wrap: anywhere;
 }
 .oc-world {
   display: inline-block;
-  color: var(--oc-detail-600);
+  color: var(--oc-detail-500);
+  font-weight: bold;
   margin: 0;
   font-family: "Shippori Mincho B1", serif;
 }
@@ -199,7 +205,7 @@ html:has(.oc-modal[open]) {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 1rem;
 }
 .oc-identity-meta {
   display: flex;
@@ -209,12 +215,13 @@ html:has(.oc-modal[open]) {
   gap: 0.5rem;
   margin-left: auto;
 }
-.oc-english {
+.oc-second-name {
   font-family: "Italianno", "Shippori Mincho B1", cursive;
   font-size: clamp(1.58rem, 2.45vw, 2.63rem);
   line-height: 1.1;
   margin: 0.25rem 0 0.4rem;
   overflow-wrap: anywhere;
+  color: var(--oc-text);
 }
 .oc-tags,
 .oc-colors {
@@ -229,6 +236,7 @@ html:has(.oc-modal[open]) {
   /* border: 1px solid var(--oc-detail-900-op3); */
   padding: 0.08rem 0.4rem;
   font-size: 0.8rem;
+  color: var(--oc-detail-500);
   &::before {
     content: "#";
   }
@@ -246,7 +254,7 @@ html:has(.oc-modal[open]) {
   height: 0.8rem;
 }
 .oc-color-code {
-  color: var(--oc-detail-600);
+  color: var(--oc-text);
   font-size: 0.8rem;
 }
 .oc-portrait-panel {
@@ -274,7 +282,7 @@ html:has(.oc-modal[open]) {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    object-position: center bottom;
+    object-position: center center;
   }
 }
 .oc-portrait .oc-portrait-carousel {
@@ -308,7 +316,7 @@ html:has(.oc-modal[open]) {
   align-items: center;
   gap: 0.75rem;
   padding: 0.2rem 0.5rem;
-  color: var(--oc-detail-50);
+  color: var(--oc-theme-nav-text);
   background: var(--oc-detail-900-op8);
   & button {
     color: inherit;
@@ -330,14 +338,14 @@ html:has(.oc-modal[open]) {
   gap: 0.5rem;
   padding: 1.5rem 0.7rem;
   background: var(--oc-detail-900-op1);
-  border-right: 1px solid var(--oc-detail-900-op3);
+  /* border-right: 1px solid var(--oc-detail-900-op8); */
 
   & button {
     appearance: none;
     position: relative;
     isolation: isolate;
     border: 0;
-    color: var(--oc-detail-900);
+    color: var(--oc-text);
     background: transparent;
     padding: 0.65rem 0.5rem;
     text-align: left;
@@ -383,7 +391,7 @@ html:has(.oc-modal[open]) {
 
     &:hover,
     &:focus-visible {
-      color: var(--oc-detail-50);
+      color: var(--oc-theme-nav-text);
 
       &::before,
       &::after {
@@ -397,7 +405,7 @@ html:has(.oc-modal[open]) {
     }
 
     &[aria-selected="true"] {
-      color: var(--oc-detail-50);
+      color: var(--oc-theme-nav-text);
       background: transparent;
       border-bottom-color: transparent;
       margin-bottom: 0.35rem;
@@ -437,7 +445,7 @@ html:has(.oc-modal[open]) {
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 2rem clamp(1.2rem, 2vw, 2rem) 2rem;
+  padding: 1rem clamp(1.2rem, 2vw, 2rem) 0rem;
   scrollbar-width: thin;
 }
 
@@ -445,6 +453,9 @@ html:has(.oc-modal[open]) {
 .oc-modal,
 .oc-content,
 .oc-nav {
+  scrollbar-width: thin;
+  scrollbar-color: var(--oc-detail-500) var(--oc-detail-300);
+
   &::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.5rem;
@@ -455,7 +466,7 @@ html:has(.oc-modal[open]) {
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--oc-detail-400);
+    background: var(--oc-detail-500);
     border: 2px solid var(--oc-detail-300);
     border-radius: 1rem;
 
@@ -473,11 +484,14 @@ html:has(.oc-modal[open]) {
     /* border-bottom: 1px solid var(--oc-detail-900-op3); */
   }
 }
+.oc-section-heading {
+  display: none;
+}
 .oc-section[hidden] {
   display: none !important;
 }
 
-#oc-profile:not([hidden]) {
+.oc-profile-section:not([hidden]) {
   display: flex;
   flex-direction: column;
   min-height: 100%;
@@ -487,9 +501,9 @@ html:has(.oc-modal[open]) {
   margin-top: 0.75rem;
   padding: 0.55rem 0.75rem;
   /* border: 3px double var(--oc-detail-900); */
-  color: var(--oc-detail-900);
+  color: var(--oc-text);
   font-family: "Fredericka the Great", "Shippori Mincho B1", serif;
-  font-size: clamp(1.2rem, 4.5dvh, 2rem);
+  font-size: clamp(1rem, 2.5dvh, 2rem);
   text-align: center;
   overflow-wrap: anywhere;
 }
@@ -504,7 +518,7 @@ html:has(.oc-modal[open]) {
     min-width: 0;
     display: grid;
     grid-template-columns: minmax(4.5rem, auto) minmax(0, 1fr);
-    border-bottom: 1px dashed var(--oc-detail-900-op3);
+    border-bottom: 1px dashed var(--oc-table-line);
     align-items: stretch;
 
     &:nth-child(odd) {
@@ -513,10 +527,11 @@ html:has(.oc-modal[open]) {
   }
 
   & dt {
-    color: var(--oc-detail-600);
-    background: var(--oc-detail-900-op1);
+    color: var(--oc-table-title);
+    background: var(--oc-detail-500);
     padding: 0.4rem 0.6rem;
-    width: fit-content;
+    width: var(--oc-table-label-width);
+    /* width: fit-content; */
     /* border-right: 1px solid var(--oc-detail-900-op3); */
   }
 
@@ -530,6 +545,47 @@ html:has(.oc-modal[open]) {
   & .oc-current-role {
     white-space: pre-line;
   }
+}
+.oc-weapon-name {
+  display: inline-flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  line-height: 1.3;
+}
+.oc-weapon-field dd {
+  display: flex;
+  align-items: center;
+}
+.oc-weapon-name rt {
+  display: block;
+  font-size: 0.65em;
+  line-height: 1.2;
+}
+.oc-voice-reference {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.2rem;
+  margin-top: 0.2rem;
+  color: var(--oc-text);
+  font-size: 0.88em;
+}
+.oc-voice-reference-label {
+  color: inherit;
+}
+.oc-voice-reference-content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.oc-voice-reference-content a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: opacity 0.2s ease;
+}
+.oc-voice-reference-content a:hover,
+.oc-voice-reference-content a:focus-visible {
+  opacity: 0.7;
 }
 
 /* 量表容器（預設雙欄） */
@@ -547,10 +603,10 @@ html:has(.oc-modal[open]) {
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.65rem;
-  /* border-bottom: 1px solid var(--oc-detail-900-op3); */
-  font-size: 0.9rem;
+  border-bottom: 1px dashed var(--oc-table-line);
+  font-size: 1rem;
   &:nth-child(odd) {
-    border-right: 1px dashed var(--oc-detail-900-op3);
+    border-right: 1px dashed var(--oc-table-line);
   }
   & span:last-child {
     text-align: right;
@@ -559,7 +615,7 @@ html:has(.oc-modal[open]) {
 
 /* 量表標題（例如：食量、酒量、成績） */
 .oc-scale-title {
-  color: var(--oc-detail-600);
+  color: var(--oc-table-title);
   overflow-wrap: anywhere;
 }
 
@@ -573,12 +629,12 @@ html:has(.oc-modal[open]) {
   display: flex;
   align-items: center;
   padding: 0.4rem 0.6rem;
-  background: var(--oc-detail-900-op1);
-  border-right: 1px dashed var(--oc-detail-900-op3);
+  background: var(--oc-detail-500);
+  /* border-right: 1px dashed var(--oc-table-line); */
 }
 
 .oc-table .oc-scale-labeled {
-  grid-template-columns: var(--oc-table-label-width) auto minmax(0, 1fr) auto;
+  grid-template-columns: var(--oc-table-label-width) 60px minmax(0, 1fr) 60px;
   gap: 0;
   padding: 0;
 }
@@ -588,44 +644,26 @@ html:has(.oc-modal[open]) {
 }
 
 .oc-scale-track {
-  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  gap: 1px;
   min-width: 0;
-  height: 1rem;
-}
-.oc-scale-track::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 2px;
-  transform: translateY(-50%);
-  background: linear-gradient(
-    to right,
-    var(--oc-detail-600) var(--oc-scale-progress),
-    var(--oc-detail-900-op3) var(--oc-scale-progress)
-  );
+  height: 1.1rem;
+  padding: 2px;
+  border: 1px solid var(--oc-text);
+  border-radius: 0.25rem;
+  overflow: hidden;
 }
 .oc-scale-node {
-  visibility: hidden;
-  position: relative;
-  flex: 0 0 0.55rem;
-  width: 0.55rem;
-  height: 0.55rem;
-  border: 1px solid var(--oc-detail-600);
-  /* border-radius: 50%; */
-  transform: rotate(45deg);
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
 }
-.oc-scale-node.is-active {
-  visibility: visible;
+.oc-scale-node.is-filled {
+  background: var(--oc-detail-600);
 }
 
 /* Table的最外層兩欄配置 */
 .oc-table {
-  --oc-table-label-width: auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   /* margin-top: 0.7rem; */
@@ -634,7 +672,7 @@ html:has(.oc-modal[open]) {
 /* 每一小格*/
 .oc-table-cell {
   min-width: 0;
-  border-bottom: 1px dashed var(--oc-detail-900-op3);
+  border-bottom: 1px dashed var(--oc-table-line);
 }
 /* 同一格內可顯示多個 facts/scales，並依空間自動換欄 */
 .oc-table-cell-group {
@@ -677,7 +715,8 @@ html:has(.oc-modal[open]) {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   text-align: center;
-  background: var(--oc-detail-900-op1);
+  color: var(--oc-table-title);
+  background: var(--oc-detail-500);
   & > span {
     padding: 0.4rem 0.5rem;
   }
@@ -696,8 +735,8 @@ html:has(.oc-modal[open]) {
 }
 .oc-preference-category {
   padding: 0.4rem 0.6rem;
-  color: var(--oc-detail-600);
-  background: var(--oc-detail-900-op1);
+  color: var(--oc-table-title);
+  background: var(--oc-detail-500);
   border-inline: 1px solid var(--oc-detail-900-op3);
 }
 
@@ -712,8 +751,42 @@ html:has(.oc-modal[open]) {
 }
 
 .oc-story p {
-  line-height: 1.9;
+  color: var(--oc-text);
+  line-height: 1.5;
   margin: 0 0 1rem;
+}
+
+.oc-preferences-section {
+  --oc-table-label-width: calc(3em + 1.3rem);
+  .oc-table .oc-scale-labeled {
+    grid-template-columns: var(--oc-table-label-width) 60px minmax(0, 1fr) 60px;
+  }
+  .oc-facts {
+    & dt {
+      width: var(--oc-table-label-width);
+    }
+  }
+  .oc-table-cell > .oc-facts > div {
+    grid-template-columns: var(--oc-table-label-width) minmax(0, 1fr);
+  }
+}
+.oc-appearance-section {
+  .oc-facts {
+    & dt {
+      width: 60px;
+      /* width: fit-content; */
+      /* border-right: 1px solid var(--oc-detail-900-op3); */
+    }
+  }
+  .oc-table-cell > .oc-facts > div {
+    grid-template-columns: 60px minmax(0, 1fr);
+  }
+  .oc-table-cell > .oc-facts > .oc-weapon-field {
+    grid-template-columns: var(--oc-table-label-width) minmax(0, 1fr);
+  }
+  .oc-facts .oc-weapon-field dt {
+    width: var(--oc-table-label-width);
+  }
 }
 
 @media (max-width: 1023px) {
@@ -742,31 +815,21 @@ html:has(.oc-modal[open]) {
   }
   .oc-stage {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto auto auto minmax(18rem, 45vh);
-    grid-template-areas: "menu" "portrait" "heading" "content";
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "portrait" "heading" "content";
     height: auto;
   }
   .oc-nav {
-    flex-direction: row;
-    justify-content: flex-start;
-    margin-block: 0;
-    gap: 0;
-    padding: 0.4rem;
-    border-right: 0;
-    border-bottom: 1px solid var(--oc-detail-900-op3);
-    overflow-x: auto;
+    display: none;
   }
-  .oc-nav button {
-    flex: 0 0 auto;
-    white-space: nowrap;
-    padding: 0.55rem 0.7rem;
-    border-bottom: 0;
+  .oc-section-heading {
+    display: block;
   }
-  .oc-nav button[aria-selected="true"]::before {
-    left: 0;
+  .oc-section + .oc-section {
+    margin-top: 2rem;
   }
-  .oc-nav button[aria-selected="true"]::after {
-    left: 0;
+  .oc-profile-section:not([hidden]) {
+    min-height: 0;
   }
   .oc-portrait-panel {
     grid-template-rows: auto auto;
@@ -776,15 +839,33 @@ html:has(.oc-modal[open]) {
     max-height: none;
   }
   .oc-head-info {
-    padding: 1rem 1.25rem 0;
+    padding: 0rem 1.25rem 0;
   }
   .oc-head h1 {
     font-size: clamp(1.3rem, 5vw, 1.8rem);
   }
-  .oc-english {
+  .oc-second-name {
     font-size: clamp(1.6rem, 6vw, 2.2rem);
   }
   .oc-content {
+    overflow: visible;
+    overscroll-behavior: auto;
     padding: 1rem 1.25rem 1.5rem;
+  }
+  .oc-tags span {
+    font-size: 0.7rem;
+  }
+  .oc-world {
+    display: none;
+  }
+  .oc-character-title {
+    padding: 0;
+    margin: 0.5rem 0;
+  }
+  .oc-identity-meta {
+    margin-left: 0;
+  }
+  .oc-topline {
+    justify-content: center;
   }
 }

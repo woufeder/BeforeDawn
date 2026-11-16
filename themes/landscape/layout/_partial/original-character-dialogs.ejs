@@ -1,0 +1,67 @@
+<% entries.filter(function(entry) { return entry.page; }).forEach(function(entry) { const character = entry.page.character; %>
+<dialog id="<%= entry.dialogId %>" class="oc-modal" data-oc-dialog aria-label="<%= character.name %>" style="
+  --oc-theme-color: <%= character.themeColor || '#443125' %>;
+  --oc-theme-text: <%= character.textColor || '#251c19' %>;
+  --oc-theme-nav: <%= character.navColor || '#80291e' %>;
+  --oc-theme-nav-text: <%= character.navTextColor || '#fff7e9' %>;
+  --oc-theme-stage: <%= character.stageColor || '#f3ede3' %>;
+">
+  <button type="button" class="oc-modal-close" aria-label="<%= bd_i18n('oc_character.close') %>">×</button>
+  <%- partial('_partial/original-character', { characterPage: entry.page, ocModal: true, ocIdPrefix: entry.idPrefix }) %>
+</dialog>
+<% }); %>
+<script>
+  (function() {
+    document.querySelectorAll('.oc-modal-trigger').forEach(function(trigger) {
+      var dialog = document.getElementById(trigger.getAttribute('aria-controls'));
+      if (!dialog || dialog.dataset.modalReady) return;
+      dialog.dataset.modalReady = 'true';
+      var frame = 0;
+      var closeTimer = 0;
+      var closing = false;
+
+      function closeAnimated() {
+        if (!dialog.open || closing) return;
+        closing = true;
+        cancelAnimationFrame(frame);
+        dialog.classList.remove('is-visible');
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          dialog.close();
+        } else {
+          closeTimer = window.setTimeout(function() {
+            if (dialog.open) dialog.close();
+          }, 240);
+        }
+      }
+      trigger.addEventListener('click', function() {
+        if (dialog.open) return;
+        closing = false;
+        dialog.showModal();
+        dialog.querySelector('[data-oc-stage]').dispatchEvent(new Event('oc:show'));
+        frame = requestAnimationFrame(function() {
+          frame = requestAnimationFrame(function() {
+            if (dialog.open && !closing) dialog.classList.add('is-visible');
+          });
+        });
+      });
+      dialog.querySelector('.oc-modal-close').addEventListener('click', closeAnimated);
+      dialog.addEventListener('cancel', function(event) {
+        event.preventDefault();
+        closeAnimated();
+      });
+      dialog.addEventListener('click', function(event) {
+        if (event.target === dialog) closeAnimated();
+      });
+      dialog.addEventListener('close', function() {
+        clearTimeout(closeTimer);
+        cancelAnimationFrame(frame);
+        dialog.classList.remove('is-visible');
+        closing = false;
+        if (trigger.isConnected) trigger.focus({
+          preventScroll: true
+        });
+      });
+    });
+  })();
+</script>
+

@@ -1,6 +1,6 @@
 site_title: Anywhere Before Dawn
 oc_character:
-  back: Back to Jatorri
+  back: Back to the work
   close: Close
   navigation: Character sections
   colors: Character colors
@@ -9,6 +9,7 @@ oc_character:
   profile: Profile
   story: Background
   appearance: Appearance
+  voice_reference: Voice reference
   personality: Personality
   personality_preferences: Personality and habits
   preferences: Preferences and habits

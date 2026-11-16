@@ -1,8 +1,15 @@
 <dl class="oc-facts">
-  <% items.filter(function(item) { return item && item.disable !== true && item.disabled !== true; }).forEach(function(item) { const value = item.value == null || (typeof item.value === 'string' && !item.value.trim()) ? tr('empty') : item.value; %>
-  <div>
+  <% items.filter(function(item) { return item && item.disable !== true && item.disabled !== true; }).forEach(function(item) { const hasValue = item.value != null && (typeof item.value !== 'string' || !!item.value.trim()); const value = hasValue ? item.value : tr('empty'); const isWeapon = item.key === 'main_weapon' || item.key === 'secondary_weapon'; const reading = isWeapon && typeof item.reading === 'string' ? item.reading.trim() : ''; %>
+  <div<%- isWeapon ? ' class="oc-weapon-field"' : '' %>>
     <dt><%= item.key ? tr('fields.' + item.key, item.label || item.key) : item.label %></dt>
-    <dd<%- item.key === 'current_role' ? ' class="oc-current-role"' : '' %>><%= value %><% if (item.color) { %> <span class="oc-color oc-color-small" style="--swatch: <%= item.color %>" aria-label="<%= item.color %>"></span> <span class="oc-color-code"><%= item.color %></span><% } %></dd>
+    <dd<%- item.key === 'current_role' ? ' class="oc-current-role"' : '' %>><% if (hasValue && reading) { %><ruby class="oc-weapon-name"><%= value %><rp>（</rp><rt><%= reading %></rt><rp>）</rp></ruby><% } else { %><%= value %><% } %><% if (item.color) { %> <span class="oc-color oc-color-small" style="--swatch: <%= item.color %>" aria-label="<%= item.color %>"></span> <span class="oc-color-code"><%= item.color %></span><% } -%>
+      <% const reference = item.key === 'voice' && item.voiceReference; if (reference && reference.disable !== true && reference.disabled !== true && (reference.name || reference.source)) { %>
+        <span class="oc-voice-reference">
+          <span class="oc-voice-reference-label"><%= tr('voice_reference') %>：</span>
+          <span class="oc-voice-reference-content"><% if (reference.url) { %><a href="<%= url_for(reference.url) %>" target="_blank" rel="noopener noreferrer"><% } %><%= reference.name || reference.source %><% if (reference.name && reference.source) { %> · <%= reference.source %><% } %><% if (reference.url) { %> <span aria-hidden="true">↗</span></a><% } %></span>
+        </span>
+      <% } -%>
+    </dd>
   </div>
   <% }) %>
 </dl>

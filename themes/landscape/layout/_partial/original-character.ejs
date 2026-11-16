@@ -1,4 +1,4 @@
-<% const character = characterPage.character || {}; const tr = function(key, fallback) { const full = 'oc_character.' + key; const result = bd_i18n(full); return result && result !== full ? result : (fallback || key); }; const sections = {}; ['navigation', 'colors', 'profile', 'story', 'appearance', 'personality', 'preferences', 'personality_preferences', 'relationships', 'abilities'].forEach(function(key) { sections[key] = tr(key); }); const portraits = (Array.isArray(character.portraits) && character.portraits.length ? character.portraits : character.portrait ? [character.portrait] : []).map(function(item) { return typeof item === 'string' ? { src: item, alt: character.name } : item; }).filter(function(item) { return item && item.src; }); %>
+<% const character = characterPage.character || {}; const ocIdBase = typeof ocIdPrefix === 'string' && ocIdPrefix ? ocIdPrefix : 'oc'; const tr = function(key, fallback) { const full = 'oc_character.' + key; const result = bd_i18n(full); return result && result !== full ? result : (fallback || key); }; const sections = {}; ['navigation', 'colors', 'profile', 'story', 'appearance', 'personality', 'preferences', 'personality_preferences', 'relationships', 'abilities'].forEach(function(key) { sections[key] = tr(key); }); const portraits = (Array.isArray(character.portraits) && character.portraits.length ? character.portraits : character.portrait ? [character.portrait] : []).map(function(item) { return typeof item === 'string' ? { src: item, alt: character.name } : item; }).filter(function(item) { return item && item.src; }); %>
 <%
   // Keep the shared schema in the template so Hexo's live server can reload it.
   const fieldSchema = {
@@ -45,7 +45,9 @@
   function oc_appearance_entries() {
     const f = function(key) { return tableEntry('field', key, 'appearance', character.appearance); };
     const full = function(key) { return Object.assign(f(key), { full: true }); };
-    return [[f('height'), f('weight')], [f('build'), f('skin')], f('hair_color'), f('hairstyle'), f('eye_color'), f('eyes'), f('health'), [f('vision'), f('ears')], f('voice'), [f('nose'), f('mouth')], full('clothing'), null, full('other_features'), null].concat(extraTableEntries('field', 'appearance', character.appearance));
+    const voice = f('voice');
+    voice.item = Object.assign({}, voice.item, { voiceReference: character.voiceReference });
+    return [[f('height'), f('weight')], [f('build'), f('skin')], f('hair_color'), f('hairstyle'), f('eye_color'), f('eyes'), [f('vision'), f('ears')], [f('nose'), f('mouth')], f('health'), voice, full('clothing'), null, full('other_features'), null].concat(extraTableEntries('field', 'appearance', character.appearance));
   }
   function oc_preference_entries() {
     const f = function(key) { return tableEntry('field', key, 'preferences', character.preferences); };
@@ -91,16 +93,16 @@
 <article class="oc-detail <%= ocModal ? 'oc-profile-modal' : 'oc-profile-page' %>" style="
     --oc-theme-color: <%= character.themeColor || '#443125' %>;
     --oc-theme-text: <%= character.textColor || '#251c19' %>;
+    --oc-table-title: <%= character.titleColor || '#443125' %>;
     --oc-theme-nav: <%= character.navColor || '#80291e' %>;
+    --oc-theme-nav-text: <%= character.navTextColor || '#fff7e9' %>;
     --oc-theme-stage: <%= character.stageColor || '#f3ede3' %>;
   ">
 
-  <!-- themeColor: "#314b79"
-textColor: "#1b2640"
-navColor: "#5776b0" -->
 
 
-  <% if (!ocModal) { %><a class="oc-back" href="<%= url_for('/' + page.lang + '/Original/Jatorri/') %>"><span aria-hidden="true">←</span> <%= tr('back') %></a><% } %>
+
+  <% if (!ocModal) { const sourcePath = String(characterPage.source || '').replace(/\\/g, '/'); const worldMatch = sourcePath.match(/^[^/]+\/Original\/([^/]+)\//i); const worldDirectory = worldMatch ? worldMatch[1] : 'Jatorri'; %><a class="oc-back" href="<%= url_for('/' + page.lang + '/Original/' + worldDirectory + '/') %>"><span aria-hidden="true">←</span> <%= tr('back') %></a><% } %>
   <div class="oc-stage" data-oc-stage>
     <!-- 切頁固定資訊 -->
     <header class="oc-head">
@@ -120,7 +122,7 @@ navColor: "#5776b0" -->
           </div>
         </div>
         <h1><%= character.name %></h1>
-        <% if (character.englishName) { %><p class="oc-english"><%= character.englishName %></p><% } %>
+        <% if (character.englishName) { %><h2 class="oc-second-name"><%= character.englishName %></h2><% } %>
       </div>
       <% const titleField = tableEntry('field', 'title', 'facts', profileFacts).item; %>
       <!-- 立繪輪播 -->
@@ -143,32 +145,38 @@ navColor: "#5776b0" -->
 
     <nav class="oc-nav" aria-label="<%= sections.navigation %>" role="tablist">
       <% [['profile', sections.profile], ['story', sections.story], ['appearance', sections.appearance], ['personality', sections.personality], ['preferences', sections.preferences], ['relationships', sections.relationships]].forEach(function(item, index) { %>
-      <button type="button" role="tab" id="oc-tab-<%= item[0] %>" aria-controls="oc-<%= item[0] %>" aria-selected="<%= index === 0 ? 'true' : 'false' %>" tabindex="<%= index === 0 ? '0' : '-1' %>">
+      <button type="button" role="tab" id="<%= ocIdBase %>-tab-<%= item[0] %>" aria-controls="<%= ocIdBase %>-<%= item[0] %>" aria-selected="<%= index === 0 ? 'true' : 'false' %>" tabindex="<%= index === 0 ? '0' : '-1' %>">
         <%= item[1] %>
       </button><% }) %>
     </nav>
 
     <div class="oc-content">
-      <section class="oc-section" id="oc-profile" role="tabpanel" aria-labelledby="oc-tab-profile" tabindex="0">
+      <section class="oc-section oc-profile-section" id="<%= ocIdBase %>-profile" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-profile" tabindex="0">
+        <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-profile"><%= sections.profile %></h2>
         <%- partial('_partial/original-character-table', { entries: oc_profile_entries(), tr: tr }) %>
         <%- partial('_partial/original-character-table', { entries: oc_experience_entries(), tr: tr }) %>
       </section>
-      <section class="oc-section oc-story" id="oc-story" role="tabpanel" aria-labelledby="oc-tab-story" tabindex="0" hidden>
+      <section class="oc-section oc-story" id="<%= ocIdBase %>-story" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-story" tabindex="0" hidden>
+        <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-story"><%= sections.story %></h2>
         <div><% (character.description || []).forEach(function(paragraph) { %><p><%= paragraph %></p><% }) %></div>
       </section>
-      <section class="oc-section" id="oc-appearance" role="tabpanel" aria-labelledby="oc-tab-appearance" tabindex="0" hidden>
+      <section class="oc-section oc-appearance-section" id="<%= ocIdBase %>-appearance" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-appearance" tabindex="0" hidden>
+        <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-appearance"><%= sections.appearance %></h2>
         <%- partial('_partial/original-character-table', { entries: oc_appearance_entries(), tr: tr }) %>
         <%- partial('_partial/original-character-table', { entries: oc_combat_entries(), tr: tr }) %>
       </section>
-      <section class="oc-section" id="oc-personality" role="tabpanel" aria-labelledby="oc-tab-personality" tabindex="0" hidden>
+      <section class="oc-section" id="<%= ocIdBase %>-personality" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-personality" tabindex="0" hidden>
+        <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-personality"><%= sections.personality %></h2>
 
         <%- partial('_partial/original-character-facts', { items: oc_character_fields('personalityFacts', character.personalityFacts), tr: tr }) %>
         <%- partial('_partial/original-character-scales', { items: oc_character_scales('personality', character.personality), tr: tr }) %>
       </section>
-      <section class="oc-section" id="oc-preferences" role="tabpanel" aria-labelledby="oc-tab-preferences" tabindex="0" hidden>
+      <section class="oc-section oc-preferences-section" id="<%= ocIdBase %>-preferences" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-preferences" tabindex="0" hidden>
+        <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-preferences"><%= sections.preferences %></h2>
         <%- partial('_partial/original-character-table', { entries: oc_preference_entries(), tr: tr }) %>
       </section>
-      <section class="oc-section" id="oc-relationships" role="tabpanel" aria-labelledby="oc-tab-relationships" tabindex="0" hidden>
+      <section class="oc-section" id="<%= ocIdBase %>-relationships" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-relationships" tabindex="0" hidden>
+        <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-relationships"><%= sections.relationships %></h2>
         <%- partial('_partial/original-character-facts', { items: oc_character_fields('relationships', character.relationships), tr: tr }) %>
       </section>
     </div>
@@ -180,7 +188,8 @@ navColor: "#5776b0" -->
 <% } %>
 <script>
   (function() {
-    var stage = document.querySelector('[data-oc-stage]');
+    var host = document.currentScript.closest('dialog') || document.currentScript.parentElement;
+    var stage = host.querySelector('[data-oc-stage]');
     if (!stage || stage.dataset.ready) return;
     stage.dataset.ready = 'true';
     var tabs = Array.from(stage.querySelectorAll('[role="tab"]'));
@@ -232,6 +241,32 @@ navColor: "#5776b0" -->
     var content = stage.querySelector('.oc-content');
     var transitionId = 0;
     var contentAnimation = null;
+    var mobileLayout = window.matchMedia('(max-width: 767px)');
+
+    function syncLayout() {
+      transitionId++;
+      if (contentAnimation) {
+        contentAnimation.cancel();
+        contentAnimation = null;
+      }
+      tabs.forEach(function(tab) {
+        var panel = stage.querySelector('#' + tab.getAttribute('aria-controls'));
+        if (mobileLayout.matches) {
+          panel.hidden = false;
+          panel.removeAttribute('role');
+          panel.removeAttribute('tabindex');
+          panel.setAttribute('aria-labelledby', panel.querySelector('.oc-section-heading').id);
+        } else {
+          panel.hidden = tab.getAttribute('aria-selected') !== 'true';
+          panel.setAttribute('role', 'tabpanel');
+          panel.setAttribute('tabindex', '0');
+          panel.setAttribute('aria-labelledby', tab.id);
+        }
+      });
+    }
+    syncLayout();
+    if (mobileLayout.addEventListener) mobileLayout.addEventListener('change', syncLayout);
+    else if (mobileLayout.addListener) mobileLayout.addListener(syncLayout);
 
     async function select(tab, focus) {
       if (tab.getAttribute('aria-selected') === 'true') {

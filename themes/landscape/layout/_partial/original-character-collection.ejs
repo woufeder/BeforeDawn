@@ -1,0 +1,28 @@
+<%
+  const characterPages = site.pages.toArray().filter(function(item) {
+    return item.source && item.source.startsWith('zh-tw/Original/' + characterDirectory + '/') && item.character;
+  });
+  const entries = cards.map(function(card, index) {
+    const characterPage = characterPages.find(function(item) {
+      return item.character.cardId ? String(item.character.cardId).toLowerCase() === card.id : item.character.name === card.name;
+    });
+    return {
+      card: card,
+      page: characterPage,
+      dialogId: 'oc-' + collectionId + '-dialog-' + (index + 1),
+      idPrefix: 'oc-' + collectionId + '-character-' + (index + 1)
+    };
+  });
+%>
+<div class="name-list columns-2 sm:columns-3 xl:columns-2 h-full text-left gap-8">
+  <% entries.forEach(function(entry) { const card = entry.card; %>
+    <% if (entry.page) { %><button type="button" class="character-card oc-modal-trigger" aria-haspopup="dialog" aria-controls="<%= entry.dialogId %>"><% } else { %><div class="character-card"><% } %>
+      <div class="avatar"><% if (card.avatar) { %><img src="<%= card.avatar %>" alt="" class="absolute"><% } %></div>
+      <div>
+        <p><%= card.name %></p>
+        <% if (card.secondName) { %><p><%= card.secondName %></p><% } %>
+      </div>
+    <% if (entry.page) { %></button><% } else { %></div><% } %>
+  <% }); %>
+</div>
+<%- partial('_partial/original-character-dialogs', { entries: entries }) %>
