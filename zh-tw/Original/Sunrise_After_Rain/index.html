@@ -158,7 +158,7 @@
             
 
             <a class="main-nav-submenu-link  " href="/BeforeDawn/zh-tw/Miscellanies/" >
-              短篇｜塗鴉
+              雜篇｜塗鴉
             </a>
             
             
@@ -366,7 +366,7 @@
             
 
             <a class=" " href="/BeforeDawn/zh-tw/Miscellanies/" >
-              短篇｜塗鴉
+              雜篇｜塗鴉
             </a>
             
             
@@ -648,58 +648,124 @@
         <!-- <a target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1Cxz4chKcb1_rkF7xz_W2xEI7c2XZCl3L5kT-26hfEJY/edit?gid=905747692#gid=905747692" class="btn ms-auto">詳細設定</a> -->
       </div>
 
-      <div class="name-list columns-2 sm:columns-3 xl:columns-2 h-full text-left gap-8">
-
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>天雨甯</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>文以朝</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>言少罌</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>封曄楠</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>紀梓璇</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>黎書琴</p>
-          </div>
-        </div>
-        <div class="character-card">
-          <div class="avatar">
-          </div>
-          <div>
-            <p>遲夏</p>
-          </div>
-        </div>
+      
+<div class="name-list columns-2 sm:columns-3 xl:columns-2 h-full text-left gap-8">
+  
+    <div class="character-card">
+      <div class="avatar"></div>
+      <div>
+        <p>天雨甯</p>
+        
       </div>
+    </div>
+  
+    <div class="character-card">
+      <div class="avatar"></div>
+      <div>
+        <p>文以朝</p>
+        
+      </div>
+    </div>
+  
+    <div class="character-card">
+      <div class="avatar"></div>
+      <div>
+        <p>言少罌</p>
+        
+      </div>
+    </div>
+  
+    <div class="character-card">
+      <div class="avatar"></div>
+      <div>
+        <p>封曄楠</p>
+        
+      </div>
+    </div>
+  
+    <div class="character-card">
+      <div class="avatar"></div>
+      <div>
+        <p>紀梓璇</p>
+        
+      </div>
+    </div>
+  
+    <div class="character-card">
+      <div class="avatar"></div>
+      <div>
+        <p>黎書琴</p>
+        
+      </div>
+    </div>
+  
+    <div class="character-card">
+      <div class="avatar"></div>
+      <div>
+        <p>遲夏</p>
+        
+      </div>
+    </div>
+  
+</div>
+
+<script>
+  (function() {
+    document.querySelectorAll('.oc-modal-trigger').forEach(function(trigger) {
+      var dialog = document.getElementById(trigger.getAttribute('aria-controls'));
+      if (!dialog || dialog.dataset.modalReady) return;
+      dialog.dataset.modalReady = 'true';
+      var frame = 0;
+      var closeTimer = 0;
+      var closing = false;
+
+      function closeAnimated() {
+        if (!dialog.open || closing) return;
+        closing = true;
+        cancelAnimationFrame(frame);
+        dialog.classList.remove('is-visible');
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          dialog.close();
+        } else {
+          closeTimer = window.setTimeout(function() {
+            if (dialog.open) dialog.close();
+          }, 240);
+        }
+      }
+      trigger.addEventListener('click', function() {
+        if (dialog.open) return;
+        closing = false;
+        dialog.showModal();
+        dialog.querySelector('[data-oc-stage]').dispatchEvent(new Event('oc:show'));
+        frame = requestAnimationFrame(function() {
+          frame = requestAnimationFrame(function() {
+            if (dialog.open && !closing) dialog.classList.add('is-visible');
+          });
+        });
+      });
+      dialog.querySelector('.oc-modal-close').addEventListener('click', closeAnimated);
+      dialog.addEventListener('cancel', function(event) {
+        event.preventDefault();
+        closeAnimated();
+      });
+      dialog.addEventListener('click', function(event) {
+        if (event.target === dialog) closeAnimated();
+      });
+      dialog.addEventListener('close', function() {
+        clearTimeout(closeTimer);
+        cancelAnimationFrame(frame);
+        dialog.classList.remove('is-visible');
+        closing = false;
+        if (trigger.isConnected) trigger.focus({
+          preventScroll: true
+        });
+      });
+    });
+  })();
+</script>
+
+
+
     </div>
     <div class="p-8 box w-full h-fit xl:h-auto">
       <div class="flex flex-row items-center mb-6 ">

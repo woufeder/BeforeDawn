@@ -197,9 +197,6 @@
   .end {
     inset-inline-end: var(--spacing);
   }
-  .-top-1\.5 {
-    top: calc(var(--spacing) * -1.5);
-  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
