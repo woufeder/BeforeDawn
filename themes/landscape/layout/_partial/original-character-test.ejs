@@ -88,41 +88,64 @@
     profileFacts.push({ key: 'aliases', value: Array.isArray(character.aliases) ? character.aliases.join(' ／ ') : null });
   }
 %>
-<article class="oc-profile <%= ocModal ? 'oc-profile-modal' : 'oc-profile-page' %>" style="--oc-accent: <%= character.accent || '#c0a66b' %>">
+<article class="oc-detail <%= ocModal ? 'oc-profile-modal' : 'oc-profile-page' %>" style="
+    --oc-theme-color: <%= character.themeColor || '#443125' %>;
+    --oc-theme-text: <%= character.textColor || '#251c19' %>;
+    --oc-theme-nav: <%= character.navColor || '#80291e' %>;
+    --oc-theme-stage: <%= character.stageColor || '#f3ede3' %>;
+  ">
+
+  <!-- themeColor: "#314b79"
+textColor: "#1b2640"
+navColor: "#5776b0" -->
+
+
   <% if (!ocModal) { %><a class="oc-back" href="<%= url_for('/' + page.lang + '/Original/Jatorri/') %>"><span aria-hidden="true">←</span> <%= tr('back') %></a><% } %>
   <div class="oc-stage" data-oc-stage>
-    <header class="oc-hero">
-      <div class="oc-hero-copy">
+    <!-- 切頁固定資訊 -->
+    <header class="oc-head">
+      <div class="oc-head-info">
         <div class="oc-topline">
+          <!-- 作品名稱 -->
           <% if (character.world) { %><p class="oc-world"><%= character.world %></p><% } %>
           <div class="oc-identity-meta">
+            <!-- 3tag -->
             <div class="oc-tags"><% (character.tags || []).forEach(function(tag) { %><span><%= tag %></span><% }) %></div>
-            <% if (character.colors && character.colors.length) { %><div class="oc-colors" aria-label="<%= sections.colors %>"><% character.colors.forEach(function(color) { %><span class="oc-color" style="--swatch: <%= color.value %>" title="<%= color.name %> <%= color.value %>" aria-label="<%= color.name %> <%= color.value %>"></span><% }) %></div><% } %>
+            <!-- 印象色 -->
+            <% if (character.colors && character.colors.length) { %>
+            <div class="oc-colors" aria-label="<%= sections.colors %>">
+              <% character.colors.forEach(function(color) { %>
+              <span class="oc-color" style="--swatch: <%= color.value %>" title="<%= color.name %> <%= color.value %>" aria-label="<%= color.name %> <%= color.value %>"></span><% }) %>
+            </div><% } %>
           </div>
         </div>
         <h1><%= character.name %></h1>
         <% if (character.englishName) { %><p class="oc-english"><%= character.englishName %></p><% } %>
       </div>
       <% const titleField = tableEntry('field', 'title', 'facts', profileFacts).item; %>
+      <!-- 立繪輪播 -->
       <div class="oc-portrait-panel">
-      <% if (portraits.length) { %>
-      <figure class="oc-portrait">
-        <% if (portraits.length === 1) { %><img src="<%= url_for(portraits[0].src) %>" alt="<%= portraits[0].alt || character.name %>"><% } else { %>
-        <div class="f-carousel oc-portrait-carousel" data-portrait-carousel>
-          <% portraits.forEach(function(portrait, index) { %><div class="f-carousel__slide" <%= index ? 'hidden' : '' %>><img src="<%= url_for(portrait.src) %>" alt="<%= portrait.alt || character.name %>"></div><% }) %>
-        </div>
-        <div class="oc-portrait-fallback" data-portrait-fallback><button type="button" data-portrait-prev aria-label="上一張">‹</button><span data-portrait-count aria-live="polite">1 / <%= portraits.length %></span><button type="button" data-portrait-next aria-label="下一張">›</button></div>
+        <% if (portraits.length) { %>
+        <figure class="oc-portrait">
+          <% if (portraits.length === 1) { %><img src="<%= url_for(portraits[0].src) %>" alt="<%= portraits[0].alt || character.name %>"><% } else { %>
+          <div class="f-carousel oc-portrait-carousel" data-portrait-carousel>
+            <% portraits.forEach(function(portrait, index) { %><div class="f-carousel__slide" <%= index ? 'hidden' : '' %>><img src="<%= url_for(portrait.src) %>" alt="<%= portrait.alt || character.name %>"></div><% }) %>
+          </div>
+          <div class="oc-portrait-fallback" data-portrait-fallback><button type="button" data-portrait-prev aria-label="上一張">‹</button><span data-portrait-count aria-live="polite">1 / <%= portraits.length %></span><button type="button" data-portrait-next aria-label="下一張">›</button></div>
+          <% } %>
+        </figure>
         <% } %>
-      </figure>
-      <% } %>
-      <% if (titleField.disable !== true && titleField.disabled !== true) { %>
+        <% if (titleField.disable !== true && titleField.disabled !== true) { %>
         <div class="oc-character-title" aria-label="<%= tr('fields.title') %>"><%= titleField.value == null || String(titleField.value).trim() === '' ? tr('empty') : titleField.value %></div>
-      <% } %>
+        <% } %>
       </div>
     </header>
 
     <nav class="oc-nav" aria-label="<%= sections.navigation %>" role="tablist">
-      <% [['profile', sections.profile], ['story', sections.story], ['appearance', sections.appearance], ['personality', sections.personality], ['preferences', sections.preferences], ['relationships', sections.relationships]].forEach(function(item, index) { %><button type="button" role="tab" id="oc-tab-<%= item[0] %>" aria-controls="oc-<%= item[0] %>" aria-selected="<%= index === 0 ? 'true' : 'false' %>" tabindex="<%= index === 0 ? '0' : '-1' %>"><%= item[1] %></button><% }) %>
+      <% [['profile', sections.profile], ['story', sections.story], ['appearance', sections.appearance], ['personality', sections.personality], ['preferences', sections.preferences], ['relationships', sections.relationships]].forEach(function(item, index) { %>
+      <button type="button" role="tab" id="oc-tab-<%= item[0] %>" aria-controls="oc-<%= item[0] %>" aria-selected="<%= index === 0 ? 'true' : 'false' %>" tabindex="<%= index === 0 ? '0' : '-1' %>">
+        <%= item[1] %>
+      </button><% }) %>
     </nav>
 
     <div class="oc-content">
