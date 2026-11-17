@@ -15,9 +15,9 @@
   <div class="oc-table-cell<%= row.length > 1 && index === 0 ? ' oc-table-cell-left' : '' %><%= parts.length > 1 ? ' oc-table-cell-group' : '' %><%= parts.some(function(part) { return part.full; }) ? ' oc-table-cell-full' : '' %>" <%- parts.length ? '' : ' aria-hidden="true"' %>>
     <% parts.forEach(function(part) { %>
     <% if (part && part.type === 'field') { %>
-    <%- partial('_partial/original-character-facts', { items: [part.item], tr: tr }) %>
+    <%- partial('_partial/oc/facts', { items: [part.item], tr: tr }) %>
     <% } else if (part && part.type === 'scale') { %>
-    <%- partial('_partial/original-character-scales', { items: [part.item], tr: tr }) %>
+    <%- partial('_partial/oc/scales', { items: [part.item], tr: tr }) %>
     <% } else if (part && part.type === 'preference_header') { %>
     <div class="oc-preference-header"><span><%= tr('preference_labels.likes') %></span><span><%= tr('preference_labels.dislikes') %></span></div>
     <% } else if (part && part.type === 'preference') { %>
