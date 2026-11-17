@@ -1,56 +1,126 @@
-# 中文內容為各語系共用；標題與介面文字由 themes/landscape/languages 提供。
-# characters 使用 id、name、secondName；角色 MD 放在 Short_Stories/<id>/ 之下。
-# terminology 可用 show 顯示空區塊、填 url 連到其他作品，或在 items 填入 name、description。
-# illustrations 可填 url、thumbnail、caption；galleryTag 可選擇連接 Cloudinary。
 overview:
-  intro: |-
-    它也許很小，淺薄得可以。但這都不礙，繁星在夜裡閃閃發光，相約墜地的鋒芒。
-    那可以是一場單純的夢，一份無處安放的念想，或是頻頻躁動卻不知從說起的渴望。
-    我想，偶爾也不用那麼嚴謹，對嗎？					
-  details: |-
-    此區為偶爾作夢夢到的故事，或臨時腦洞的坑，題材種類繁雜時空範圍不定。
-    部分故事與其它中長篇原創有共用世界觀，但可視為為獨立篇章，互不影響。
-    由於部分故事為夢境改寫，情節與史實恐有諸多不符，若有出入請視同架空，切勿深入考據。
+  intro:
+    zh-tw: |-
+      它也許很小，淺薄得可以。但這都不礙，繁星在夜裡閃閃發光，相約墜地的鋒芒。
+      那可以是一場單純的夢，一份無處安放的念想，或是頻頻躁動卻不知從說起的渴望。
+      我想，偶爾也不用那麼嚴謹，對嗎？
+
+    en: |-
+
+    it: |-
+
+  details:
+    zh-tw: |-
+      此區為偶爾作夢夢到的故事，或臨時腦洞的坑，題材種類繁雜時空範圍不定。
+      部分故事與其它中長篇原創有共用世界觀，但可視為為獨立篇章，互不影響。
+      由於部分故事為夢境改寫，情節與史實恐有諸多不符，若有出入請視同架空，切勿深入考據。
+
+    en: |-
+
+    it: |-
+
 stories:
   - id: bamboo
     titleKey: Where_the_Bamboo_Boat_Drifts
-    intro: ''
+
+    intro:
+      zh-tw: '願這一葉竹舟，源遠流長'
+
+      en: |-
+      
+      it: |-
+
     category: Bamboo
     galleryTag: null
+
     characters: []
+
     terminology:
       show: true
+
+      linkText:
+        zh-tw: ''
+
+        en: |-
+
+        it: |-
+
       items: []
+
     illustrations: []
+
   - id: before-you-go
     titleKey: Before_you_go
-    intro: ''
+
+    intro:
+      zh-tw: ''
+
+      en: |-
+      
+      it: |-
+
     category: BeforeYouGo
     galleryTag: null
+
     characters: []
+
     terminology: null
+
     illustrations: []
+
   - id: candle
     titleKey: After_the_Candles_Burn_Low
-    intro: ''
+
+    intro:
+      zh-tw: ''
+
+      en: |-
+      
+      it: |-
+
     category: Candle
     galleryTag: null
+
     characters: []
+
     terminology: null
+
     illustrations: []
+
   - id: place-i-belong
     titleKey: A_Place_I_Belong
-    intro: ''
+
+    intro:
+      zh-tw: ''
+
+      en: |-
+      
+      it: |-
+
     category: APIB
     galleryTag: null
+
     characters: []
+
     terminology: null
+
     illustrations: []
+
   - id: on-my-way
     titleKey: On_My_Way_to_You
-    intro: ''
+
+    intro:
+      zh-tw: ''
+
+      en: |-
+      
+      it: |-
+
     category: WTY
     galleryTag: null
+
     characters: []
+
     terminology: null
+
     illustrations: []
