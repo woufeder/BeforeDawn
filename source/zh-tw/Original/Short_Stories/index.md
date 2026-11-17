@@ -2,11 +2,11 @@
 layout: page/zh-tw/original/ShortStories
 title: 夜明曉更前｜短篇
 titleKey: short_stories.page_title
-bg: /image/original/FO-bg.avif
-bgColor: 'rgba(45, 45, 45, 0.9)'
-bgBlend: luminosity
-textColor: '#fff'
-textColorHover: '#f0f0f099'
-blockBgColor: 'rgba(80, 30, 30, 0.9)'
-menuActiveColor: 'rgba(115, 47, 47, 0.5)'
+bg: ""
+bgColor: "rgba(35,36,61,0.9)"
+bgBlend: "multiply"
+textColor: "#fff"
+textColorHover: "#f0f0f099;"
+blockBgColor: "rgba(0, 45, 92, 0.38);"
+menuActiveColor: "rgba(105, 120, 170, 0.5)"
 ---
