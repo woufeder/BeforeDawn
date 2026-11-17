@@ -5,6 +5,12 @@ layout: page/layout
   const shortStoryData = site.data.short_stories || {};
   const shortStories = shortStoryData.stories || [];
   const overview = shortStoryData.overview || {};
+  const currentLang = page.lang || 'zh-tw';
+  function i18nContent(value) {
+    if (value == null) return '';
+    if (typeof value === 'string') {return value;}
+    return value[currentLang] || value['zh-tw'] || Object.values(value)[0] || '';
+  }
   function terminologyUrl(target) {
     const work = String(target).match(/^\/?Original\/([^/#?]+)\/?(?:[?#]|$)/i);
     if (!work) return bd_url_for_lang(target);
@@ -25,8 +31,12 @@ layout: page/layout
       <div class="hover-box flex flex-col items-center gap-8 text-center w-fit px-4 xl:px-0" data-mobile-toggle="hover-box">
         <%- partial('_partial/svg/branch_top') %>
         <div class="grid">
-          <div class="context default flex items-center justify-center"><p class="short-overview-text"><%= overview.intro || '' %></p></div>
-          <div class="context hover flex items-center justify-center"><p class="short-overview-text"><%= overview.details || '' %></p></div>
+          <div class="context default flex items-center justify-center">
+            <p class="short-overview-text"><%= i18nContent(overview.intro) || '' %></p>
+          </div>
+          <div class="context hover flex items-center justify-center">
+            <p class="short-overview-text"><%= i18nContent(overview.details) || '' %></p>
+          </div>
         </div>
         <%- partial('_partial/svg/branch_bottom') %>
       </div>
@@ -35,7 +45,7 @@ layout: page/layout
 
   <nav class="short-stories-nav" aria-label="<%= bd_i18n('short_stories.navigation') %>">
     <% shortStories.forEach(function(story) { %>
-      <a href="#<%= story.id %>" data-no-swup><span><%= bd_i18n(story.titleKey) %></span></a>
+    <a href="#<%= story.id %>" data-no-swup><span><%= bd_i18n(story.titleKey) %></span></a>
     <% }); %>
   </nav>
 
@@ -59,14 +69,17 @@ layout: page/layout
     <section class="short-story box" id="<%= story.id %>" aria-labelledby="<%= story.id %>-title">
       <header class="short-story-intro">
         <h2 id="<%= story.id %>-title"><%= bd_i18n(story.titleKey) %></h2>
-        <% if (story.intro) { %><p><%= story.intro %></p><% } %>
+        <%const storyIntro = i18nContent(story.intro);%>
+        <% if (storyIntro) { %>
+        <p><%= storyIntro %></p>
+        <% } %>
       </header>
 
       <div class="short-story-info<%= hasTerms ? ' has-terminology' : '' %>">
         <div class="short-story-characters">
           <h3><%= bd_i18n('short_stories.characters') %></h3>
           <% if (characters.length) { %>
-            <%- partial('_partial/original-character-collection', {
+          <%- partial('_partial/oc/collection', {
               characterDirectory: 'Short_Stories/' + story.id,
               collectionId: 'short-' + story.id,
               cards: characters
@@ -76,10 +89,17 @@ layout: page/layout
         <% if (hasTerms) { %>
         <div class="short-story-terminology">
           <h3><%= bd_i18n('short_stories.terminology') %></h3>
-          <% if (terms.url) { %><a class="short-story-terms-link" href="<%= terminologyUrl(terms.url) %>" data-no-swup><%= terms.linkText || bd_i18n('short_stories.related_terminology') %> ↗</a><% } %>
-          <% if (termItems.length) { %><div class="noun-list"><table><tbody>
-            <% termItems.forEach(function(term) { %><tr><th scope="row"><%= term.name %></th><td><%= term.description %></td></tr><% }); %>
-          </tbody></table></div><% } %>
+          <% if (terms.url) { %><a class="short-story-terms-link" href="<%= terminologyUrl(terms.url) %>" data-no-swup><%= i18nContent(terms.linkText) || bd_i18n('short_stories.related_terminology') %> ↗</a><% } %>
+          <% if (termItems.length) { %><div class="noun-list">
+            <table>
+              <tbody>
+                <% termItems.forEach(function(term) { %><tr>
+                  <th scope="row"><%= i18nContent(term.name) %></th>
+                  <td><%= i18nContent(term.description) %></td>
+                </tr><% }); %>
+              </tbody>
+            </table>
+          </div><% } %>
           <% if (!terms.url && !termItems.length) { %><p class="short-story-empty"><%= bd_i18n('short_stories.no_terminology') %></p><% } %>
         </div>
         <% } %>
@@ -89,18 +109,18 @@ layout: page/layout
         <section aria-labelledby="<%= story.id %>-illustration-title">
           <h3 id="<%= story.id %>-illustration-title"><%= bd_i18n('short_stories.illustration') %></h3>
           <% if (illustrations.length || story.galleryTag) { %>
-            <div id="<%= galleryId %>" class="short-story-gallery"<%- story.galleryTag ? '' : ' data-static-gallery' %>>
-              <% illustrations.forEach(function(item) { %>
-                <div class="gallery-item"><a href="<%= url_for(item.url) %>" data-fancybox="<%= galleryGroup %>" data-no-swup<% if (item.caption) { %> data-caption="<%= item.caption %>"<% } %>><img src="<%= url_for(item.thumbnail || item.url) %>" alt="<%= item.caption || '' %>" loading="lazy" decoding="async"></a></div>
-              <% }); %>
-            </div>
-            <% if (story.galleryTag) { %><%- partial('_partial/cloudinary-gallery', { tag: story.galleryTag, captions: story.captions || {}, galleryId: galleryId, galleryGroup: galleryGroup, useMasonry: false }) %><% } %>
+          <div id="<%= galleryId %>" class="short-story-gallery" <%- story.galleryTag ? '' : ' data-static-gallery' %>>
+            <% illustrations.forEach(function(item) { %>
+            <div class="gallery-item"><a href="<%= url_for(item.url) %>" data-fancybox="<%= galleryGroup %>" data-no-swup<% if (item.caption) { %> data-caption="<%= i18nContent(item.caption) %>" <% } %>><img src="<%= url_for(item.thumbnail || item.url) %>" alt="<%= i18nContent(item.caption) || '' %>" loading="lazy" decoding="async"></a></div>
+            <% }); %>
+          </div>
+          <% if (story.galleryTag) { %><%- partial('_partial/cloudinary-gallery', { tag: story.galleryTag, captions: story.captions || {}, galleryId: galleryId, galleryGroup: galleryGroup, useMasonry: false }) %><% } %>
           <% } else { %><p class="short-story-empty"><%= bd_i18n('short_stories.no_illustrations') %></p><% } %>
         </section>
         <section aria-labelledby="<%= story.id %>-story-title">
           <h3 id="<%= story.id %>-story-title"><%= bd_i18n('short_stories.story') %></h3>
           <% if (hasPosts) { %>
-            <%- partial('_partial/post-category-pager', {
+          <%- partial('_partial/post-category-pager', {
               id: 'short-posts-' + story.id,
               articleIdPrefix: 'short-' + story.id + '-',
               category: [story.category],
@@ -133,8 +153,12 @@ layout: page/layout
               else link.removeAttribute('aria-current');
             });
           });
-        }, { rootMargin: '-20% 0px -70% 0px' });
-        sections.forEach(function(section) { observer.observe(section); });
+        }, {
+          rootMargin: '-20% 0px -70% 0px'
+        });
+        sections.forEach(function(section) {
+          observer.observe(section);
+        });
       }
       if (window.Fancybox) {
         root.querySelectorAll('[data-static-gallery]').forEach(function(gallery) {
