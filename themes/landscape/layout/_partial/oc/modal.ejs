@@ -153,8 +153,8 @@
     <div class="oc-content">
       <section class="oc-section oc-profile-section" id="<%= ocIdBase %>-profile" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-profile" tabindex="0">
         <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-profile"><%= sections.profile %></h2>
-        <%- partial('_partial/original-character-table', { entries: oc_profile_entries(), tr: tr }) %>
-        <%- partial('_partial/original-character-table', { entries: oc_experience_entries(), tr: tr }) %>
+        <%- partial('_partial/oc/table', { entries: oc_profile_entries(), tr: tr }) %>
+        <%- partial('_partial/oc/table', { entries: oc_experience_entries(), tr: tr }) %>
       </section>
       <section class="oc-section oc-story" id="<%= ocIdBase %>-story" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-story" tabindex="0" hidden>
         <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-story"><%= sections.story %></h2>
@@ -162,22 +162,22 @@
       </section>
       <section class="oc-section oc-appearance-section" id="<%= ocIdBase %>-appearance" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-appearance" tabindex="0" hidden>
         <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-appearance"><%= sections.appearance %></h2>
-        <%- partial('_partial/original-character-table', { entries: oc_appearance_entries(), tr: tr }) %>
-        <%- partial('_partial/original-character-table', { entries: oc_combat_entries(), tr: tr }) %>
+        <%- partial('_partial/oc/table', { entries: oc_appearance_entries(), tr: tr }) %>
+        <%- partial('_partial/oc/table', { entries: oc_combat_entries(), tr: tr }) %>
       </section>
       <section class="oc-section" id="<%= ocIdBase %>-personality" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-personality" tabindex="0" hidden>
         <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-personality"><%= sections.personality %></h2>
 
-        <%- partial('_partial/original-character-facts', { items: oc_character_fields('personalityFacts', character.personalityFacts), tr: tr }) %>
-        <%- partial('_partial/original-character-scales', { items: oc_character_scales('personality', character.personality), tr: tr }) %>
+        <%- partial('_partial/oc/facts', { items: oc_character_fields('personalityFacts', character.personalityFacts), tr: tr }) %>
+        <%- partial('_partial/oc/scales', { items: oc_character_scales('personality', character.personality), tr: tr }) %>
       </section>
       <section class="oc-section oc-preferences-section" id="<%= ocIdBase %>-preferences" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-preferences" tabindex="0" hidden>
         <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-preferences"><%= sections.preferences %></h2>
-        <%- partial('_partial/original-character-table', { entries: oc_preference_entries(), tr: tr }) %>
+        <%- partial('_partial/oc/table', { entries: oc_preference_entries(), tr: tr }) %>
       </section>
       <section class="oc-section" id="<%= ocIdBase %>-relationships" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-relationships" tabindex="0" hidden>
         <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-relationships"><%= sections.relationships %></h2>
-        <%- partial('_partial/original-character-facts', { items: oc_character_fields('relationships', character.relationships), tr: tr }) %>
+        <%- partial('_partial/oc/facts', { items: oc_character_fields('relationships', character.relationships), tr: tr }) %>
       </section>
     </div>
   </div>
