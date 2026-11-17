@@ -12,14 +12,14 @@ character:
   themeColor: "#501e1e"
   textColor: "#f3f0eb"
   titleColor: "#2b0909"
-  navColor: "#5776b0"
-  stageColor: '#111C34'
+  navColor: "#590808"
+  stageColor: 'rgba(13, 10, 10, 0.85)'
   world: 最終誓言
   name: 曲幻
   englishName: ""
   aliases: []
   portraits:
-    - src: https://res.cloudinary.com/dhtsewjf1/image/upload/0409_xi43mw.jpg
+    - src: 
       alt: 沃霏德
   tags: [倖存者, 基因改造, 禁慾系]
   colors:
