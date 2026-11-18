@@ -108,11 +108,12 @@ oc_character:
     appetite: { label: 食量, left: 小, right: 大 }
     picky_eating: { label: 挑食, left: 挑食, right: 雜食 }
     possessiveness: { label: 佔有慾, left: 低, right: 高 }
+    money_attitude: { left: 節儉, right: 奢靡 }
+    loyalty_cunning: { left: 忠誠, right: 狡黠 }
     drinking: { label: 嗜酒, left: 惡, right: 喜 }
     tolerance: { label: 酒量, left: 差, right: 好 }
     cooking: { label: 烹飪, left: 難吃, right: 好吃 }
     tidiness: { label: 房間, left: 髒亂, right: 整潔 }
-    expression: { label: 情緒, left: 內斂, right: 外顯 }
     lying: { label: 說謊, left: 不擅長, right: 擅長 }
     libido: { label: 性慾, left: 冷感, right: 強烈 }
     grades: { label: 成績, left: 劣, right: 優 }

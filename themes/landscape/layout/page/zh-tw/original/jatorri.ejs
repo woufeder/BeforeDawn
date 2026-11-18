@@ -86,15 +86,6 @@ layout: page/layout
     "secondName": "Anna Förlåta Åsele"
   }
 ];
-  const ocPages = site.pages.toArray().filter(function(item) {
-    return item.source && item.source.startsWith('zh-tw/Original/Jatorri/') && item.character;
-  });
-  const ocEntries = ocCards.map(function(card, index) {
-    const characterPage = ocPages.find(function(item) {
-      return item.character.cardId ? String(item.character.cardId).toLowerCase() === card.id : item.character.name === card.name;
-    });
-    return { card: card, page: characterPage, dialogId: 'oc-character-dialog-' + (index + 1), idPrefix: 'oc-character-' + (index + 1) };
-  });
 %>
 
 <section id="jatorri" style="--box-bg-color: <%= page.blockBgColor %>;" class="fade-in-once">
@@ -141,17 +132,12 @@ layout: page/layout
         <a href="https://docs.google.com/spreadsheets/d/1Cxz4chKcb1_rkF7xz_W2xEI7c2XZCl3L5kT-26hfEJY/edit?gid=2043747974#gid=2043747974" class="btn ms-auto">其餘角色請參照此表</a>
       </div>
 
-      <div class="name-list columns-2 h-full text-left gap-8">
-        <% ocEntries.forEach(function(entry) { const card = entry.card; %>
-        <% if (entry.page) { %><button type="button" class="character-card oc-modal-trigger" aria-haspopup="dialog" aria-controls="<%= entry.dialogId %>"><% } else { %><div class="character-card"><% } %>
-            <div class="avatar"><% if (card.avatar) { %><img src="<%= card.avatar %>" alt="" class="absolute"><% } %></div>
-            <div>
-              <p><%= card.name %></p>
-              <% if (card.secondName) { %><p><%= card.secondName %></p><% } %>
-            </div>
-            <% if (entry.page) { %></button><% } else { %></div><% } %>
-      <% }); %>
-    </div>
+      <%- partial('_partial/oc/collection', {
+        characterDirectory: 'Jatorri',
+        collectionId: 'jatorri',
+        columnsClass: 'columns-2',
+        cards: ocCards
+      }) %>
     </div>
     <div class="p-8 box w-full h-fit xl:h-auto">
       <div class="flex flex-row items-center mb-6 ">
@@ -221,8 +207,6 @@ layout: page/layout
     </div>
   </section>
 </section>
-
-<%- partial('_partial/oc/dialogs', { entries: ocEntries }) %>
 
 <%- partial('_partial/cloudinary-gallery', {
   tag: 'jatorri',

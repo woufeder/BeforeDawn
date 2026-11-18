@@ -107,11 +107,12 @@ oc_character:
     appetite: { label: Appetite, left: Small, right: Large }
     picky_eating: { label: Food selectivity, left: Picky, right: Omnivorous }
     possessiveness: { label: Possessiveness, left: Low, right: High }
+    money_attitude: { left: Frugal, right: Extravagant }
+    loyalty_cunning: { left: Loyal, right: Cunning }
     drinking: { label: Alcohol, left: Dislikes, right: Likes }
     tolerance: { label: Tolerance, left: Low, right: High }
     cooking: { label: Cooking, left: Poor, right: Good }
     tidiness: { label: Room, left: Messy, right: Tidy }
-    expression: { label: Expression, left: Reserved, right: Expressive }
     lying: { label: Lying, left: Unskilled, right: Skilled }
     libido: { label: Libido, left: Low, right: High }
     grades: { label: Grades, left: Poor, right: Good }

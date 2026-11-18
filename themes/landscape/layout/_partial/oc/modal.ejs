@@ -2,18 +2,17 @@
 <%
   // Keep the shared schema in the template so Hexo's live server can reload it.
   const fieldSchema = {
-    facts: ['title', 'aliases', 'gender', 'blood_type', 'birthday', 'actual_age', 'apparent_age', 'species', 'nationality', 'residence', 'language', 'symbol', 'representative_animal', 'representative_plant', 'cp', 'group_name'],
+    facts: ['title', 'aliases', 'gender', 'blood_type', 'birthday', 'actual_age', 'apparent_age', 'species', 'nationality', 'residence', 'language', 'current_role', 'former_role', 'education', 'faith', 'symbol', 'representative_animal', 'representative_plant', 'cp', 'group_name'],
     appearance: ['height', 'weight', 'build', 'skin', 'hair_color', 'hairstyle', 'eye_color', 'eyes', 'health', 'vision', 'ears', 'nose', 'mouth', 'voice', 'clothing', 'other_features'],
     personalityFacts: ['strengths', 'weaknesses', 'interests', 'talents'],
     preferences: ['taste', 'likes_food', 'dislikes_food', 'likes_color', 'dislikes_color', 'likes_music', 'dislikes_music', 'likes_things', 'dislikes_things', 'lying'],
     relationships: ['father', 'mother', 'partner', 'relatives', 'siblings', 'children', 'respects', 'rivals', 'friends', 'pets'],
-    abilities: ['current_role', 'former_role', 'education', 'faith'],
     schools: ['school', 'class_year', 'position', 'club', 'strong_subject', 'weak_subject'],
     weapons: ['main_weapon', 'secondary_weapon']
   };
   const scaleSchema = {
-    personality: ['sociability', 'tradition', 'outlook', 'courage', 'thinking', 'perception', 'altruism', 'caution', 'humility', 'contentment'],
-    habits: ['appetite', 'drinking', 'tolerance', 'cooking', 'picky_eating', 'tidiness', 'expression', 'lying', 'libido', 'possessiveness'],
+    personality: ['sociability', 'tradition', 'outlook', 'courage', 'thinking', 'perception', 'altruism', 'caution', 'humility', 'money_attitude', 'loyalty_cunning', 'contentment'],
+    habits: ['appetite', 'drinking', 'tolerance', 'cooking', 'picky_eating', 'tidiness', 'lying', 'possessiveness', 'libido'],
     schools: ['grades'],
     knowledge: ['intellect', 'knowledge', 'handwriting', 'rules'],
     stats: ['melee_physical', 'ranged_physical', 'melee_magic', 'ranged_magic', 'physical_defense', 'magic_defense', 'stamina', 'speed']
@@ -40,7 +39,7 @@
   function oc_profile_entries() {
     const f = function(key) { return tableEntry('field', key, 'facts', profileFacts); };
     const full = function(key) { return Object.assign(f(key), { full: true }); };
-    return [full('aliases'), null, f('gender'), f('blood_type'), f('birthday'), f('species'), f('actual_age'), f('apparent_age'), f('nationality'), f('language'), full('residence'), null, [full('symbol'), full('representative_animal'), full('representative_plant')], null, f('cp'), f('group_name')].concat(extraTableEntries('field', 'facts', profileFacts));
+    return [full('aliases'), null, f('gender'), f('blood_type'), f('birthday'), f('species'), f('actual_age'), f('apparent_age'), f('nationality'), f('language'), full('residence'), null, f('current_role'), f('former_role'), f('education'), f('faith'), [full('symbol'), full('representative_animal'), full('representative_plant')], null, f('cp'), f('group_name')].concat(extraTableEntries('field', 'facts', profileFacts));
   }
   function oc_appearance_entries() {
     const f = function(key) { return tableEntry('field', key, 'appearance', character.appearance); };
@@ -64,13 +63,12 @@
       return { type: 'preference', category: category, likes: likes, dislikes: dislikes, full: true, item: { disable: isDisabled(likes) && isDisabled(dislikes) } };
     });
     const header = { type: 'preference_header', full: true, item: { disable: pairs.every(function(pair) { return pair.item.disable; }) } };
-    return [f('taste'), h('drinking'), h('appetite'), h('tolerance'), h('cooking'), h('picky_eating'), h('tidiness'), k('handwriting'), k('intellect'), k('knowledge'), h('expression'), lying, h('libido'), h('possessiveness'), k('rules'), null, header, null, pairs[0], null, pairs[1], null, pairs[2], null, pairs[3], null].concat(extraTableEntries('field', 'preferences', character.preferences), extraTableEntries('scale', 'habits', character.habits), extraTableEntries('scale', 'knowledge', character.knowledge));
+    return [f('taste'), h('drinking'), h('appetite'), h('tolerance'), h('picky_eating'), h('cooking'), h('tidiness'), k('handwriting'), k('intellect'), k('knowledge'), k('rules'), lying, h('possessiveness'), h('libido'), header, null, pairs[0], null, pairs[1], null, pairs[2], null, pairs[3], null].concat(extraTableEntries('field', 'preferences', character.preferences), extraTableEntries('scale', 'habits', character.habits, ['expression', 'money_attitude']), extraTableEntries('scale', 'knowledge', character.knowledge));
   }
-  function oc_experience_entries() {
-    const f = function(key) { return tableEntry('field', key, 'abilities', character.abilities); };
+  function oc_school_entries() {
     const school = function(key) { return tableEntry('field', key, 'schools', character.schools); };
     const grades = tableEntry('scale', 'grades', 'schools', character.schools);
-    return [f('current_role'), f('former_role'), f('education'), f('faith'), [school('school'), school('class_year')], grades, [school('position'), school('club')], [school('strong_subject'), school('weak_subject')]].concat(extraTableEntries('field', 'abilities', character.abilities), extraTableEntries('field', 'schools', character.schools, scaleSchema.schools));
+    return [[school('school'), school('class_year')], grades, [school('position'), school('club')], [school('strong_subject'), school('weak_subject')]].concat(extraTableEntries('field', 'schools', character.schools, scaleSchema.schools));
   }
   function oc_combat_entries() {
     const f = function(key) { return tableEntry('field', key, 'weapons', character.stats); };
@@ -154,7 +152,7 @@
       <section class="oc-section oc-profile-section" id="<%= ocIdBase %>-profile" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-profile" tabindex="0">
         <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-profile"><%= sections.profile %></h2>
         <%- partial('_partial/oc/table', { entries: oc_profile_entries(), tr: tr }) %>
-        <%- partial('_partial/oc/table', { entries: oc_experience_entries(), tr: tr }) %>
+        <%- partial('_partial/oc/table', { entries: oc_school_entries(), tr: tr }) %>
       </section>
       <section class="oc-section oc-story" id="<%= ocIdBase %>-story" role="tabpanel" aria-labelledby="<%= ocIdBase %>-tab-story" tabindex="0" hidden>
         <h2 class="oc-section-heading" id="<%= ocIdBase %>-heading-story"><%= sections.story %></h2>

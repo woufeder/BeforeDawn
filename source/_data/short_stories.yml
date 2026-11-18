@@ -1,12 +1,13 @@
 overview:
   intro:
     zh-tw: |-
-      它也許很小，淺薄得可以。但這都不礙，繁星在夜裡閃閃發光，相約墜地的鋒芒。
+      它也許很小，淺薄得可以。但這都不礙繁星在夜裡閃閃發光，相約墜地的鋒芒。
       那可以是一場單純的夢，一份無處安放的念想，或是頻頻躁動卻不知從說起的渴望。
+
       我想，偶爾也不用那麼嚴謹，對嗎？
 
     en: |-
-      try it out
+      
 
     it: |-
 
@@ -14,6 +15,7 @@ overview:
     zh-tw: |-
       此區為偶爾作夢夢到的故事，或臨時腦洞的坑，題材種類繁雜時空範圍不定。
       部分故事與其它中長篇原創有共用世界觀，但可視為為獨立篇章，互不影響。
+
       由於部分故事為夢境改寫，情節與史實恐有諸多不符，若有出入請視同架空，切勿深入考據。
 
     en: |-
@@ -34,10 +36,50 @@ stories:
     category: Bamboo
     galleryTag: null
 
-    characters: []
+    characters: 
+      - id: sasa
+        name: 笹
+      - id: funafumi
+        name: 舟史
+      - id: kotori
+        name: 子鳥
 
     terminology:
       show: true
+
+      items:
+        - name:
+            zh-tw: 雲居(くもゐ)
+            en: ''
+            it: ''
+          description:
+            zh-tw: 又稱靈峰，被當地人稱為聖山。傳說彼岸鄉的所在地，以變幻莫測的天氣聞名。傳說有能治癒一切病痛的泉水，有許多人慕名上山，卻再也沒有回來。
+            en: ''
+            it: ''
+        - name:
+            zh-tw: 彼岸鄉（彼方の里）
+            en: ''
+            it: ''
+          description:
+            zh-tw: 雲居山上的小村落。沒有人知道實際地點在哪，山下的人便稱這座村落為彼岸鄉。
+            en: ''
+            it: ''
+        - name:
+            zh-tw: 泉守(いづみもり)
+            en: ''
+            it: ''
+          description:
+            zh-tw: 彼岸鄉內的神社，供奉著當地的泉水之靈。歷代的宮司皆為女性。
+            en: ''
+            it: ''
+        - name:
+            zh-tw: 竹船祭（笹舟祭）
+            en: ''
+            it: ''
+          description:
+            zh-tw: 彼岸鄉一年一度的祭典。將竹葉折成小船放入河中，希望水能帶走災厄與病痛，淨化來年的運勢。
+            en: ''
+            it: ''
 
       linkText:
         zh-tw: ''
@@ -45,8 +87,6 @@ stories:
         en: |-
 
         it: |-
-
-      items: []
 
     illustrations: []
 
@@ -63,9 +103,19 @@ stories:
     category: BeforeYouGo
     galleryTag: null
 
-    characters: []
+    characters: 
+      - id: rendell
+        name: 蘭德爾‧蓋文‧伯恩斯
+        secondName: Rendell Gavin Burns
+      - id: anastasia
+        name: 安娜塔西亞‧門德海爾
+        secondName: Anastasia Mendenhall
 
-    terminology: null
+    terminology: 
+      show: true
+      url: /Original/Jatorri/#terminology
+      linkText:
+        zh-tw: 名詞解釋同Jatorri
 
     illustrations: []
 
@@ -73,7 +123,7 @@ stories:
     titleKey: After_the_Candles_Burn_Low
 
     intro:
-      zh-tw: ''
+      zh-tw: '來到她這裡的人，無非是寂寞的。'
 
       en: |-
       
@@ -82,7 +132,15 @@ stories:
     category: Candle
     galleryTag: null
 
-    characters: []
+    characters:
+      - id: lan
+        name: 姜瀾
+      - id: hsien
+        name: 林意嫻
+      - id: bingwu
+        name: 姜秉悟
+      - id: owen
+        name: 歐文
 
     terminology: null
 
@@ -101,7 +159,11 @@ stories:
     category: APIB
     galleryTag: null
 
-    characters: []
+    characters:
+      - id: swift
+        name: 天雨燕
+      - id: firefly
+        name: 安耀夜
 
     terminology: null
 
@@ -120,7 +182,17 @@ stories:
     category: WTY
     galleryTag: null
 
-    characters: []
+    characters:
+      - id: Shirley
+        name: 程雪怡
+      - id: Thea
+        name: 穆亞媞
+        secondName: Thea Murillo
+      - id: inori
+        name: 莊詩祈
+      - id: Thea
+        name: 穆以諾
+        secondName: Noyce Murillo
 
     terminology: null
 

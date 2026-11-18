@@ -21,7 +21,7 @@ layout: page/layout
     return bd_url_for_lang(target, exists ? page.lang : 'zh-tw');
   }
 %>
-<div id="short-stories" style="--box-bg-color: <%= page.blockBgColor %>;">
+<div id="short-stories" class='fade-in-once' style="--box-bg-color: <%= page.blockBgColor %>;">
   <section id="banner" class="box short-stories-overview" aria-label="<%= bd_i18n('Short_Stories') %>">
     <div class="left">
       <h1>Short Stories</h1>

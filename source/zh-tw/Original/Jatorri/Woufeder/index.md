@@ -31,17 +31,25 @@ character:
     - { key: gender, value: 女 }
     - { key: blood_type, value: O型 }
     - { key: birthday, value: 2月15日 }
+    - { key: species, value: 人類｜神明 }
     - { key: actual_age, value: 30歲 }
     - { key: apparent_age, value: 30歲上下 }
-    - { key: species, value: 人類｜神明 }
     - { key: nationality, value: 安麥舒斯王國｜英國 }
-    - { key: residence, value: 某個不屬於任何國家的邊境地區 }
     - { key: language, value: 多數為英語 }
+    - { key: residence, value: 某個不屬於任何國家的邊境地區 }
+    - key: current_role
+      value: |-
+        亞托利軍事組織董事主席
+        安麥舒斯王國第152代君王
+        伊特娜帝第197代家主
+    - { key: former_role, value: 亞托利軍事組織執行長 }
+    - { key: education, value: 未受過正式教育 }
+    - { key: faith, value: null }
     - { key: symbol, value: 永恆 }
-    - { key: cp, value: 代爾特 }
-    - { key: group_name, value: 神明組 }
     - { key: representative_animal, value: null,disable: true }
     - { key: representative_plant, value: null,disable: true }
+    - { key: cp, value: 代爾特 }
+    - { key: group_name, value: 神明組 }
   description:
     - 　　古代黃金的鮑伯頭，海與天空同色時的蔚藍雙眼，左腹有直徑約10公分的印紋，雖無耳洞但有戴耳飾的習慣，且通常只戴左耳。	
     - 　　伊特娜帝第197代家主，死神代爾特的妻子。手足方面有一兄一弟，生父仍在母親已亡。與潼恩、姬兒、海雯、綺莉為摯友，時常聚在一起。	
@@ -66,11 +74,11 @@ character:
     - { key: hairstyle, value: 有些捲度的鮑勃頭 }
     - { key: eye_color, value: 海天一色藍, color: '#4a74d1' }
     - { key: eyes, value: 眼瞼輕垂，有些疲倦的樣子 }
-    - { key: health, value: 不太健康 }
     - { key: vision, value: 輕度近視 }
     - { key: ears, value: 人耳 }
     - { key: nose, value: 中 }
     - { key: mouth, value: 中 }
+    - { key: health, value: 不太健康 }
     - { key: voice, value: 低沉柔和，令人沉迷的聲音 }
     - { key: clothing, value: 外出時多著露出鎖骨的白襯衫、深色長褲及大衣，偏好馬丁鞋或帆船鞋，不喜歡笨重的服裝。	私下多穿著背心或簡便的服裝，非必要場合不穿膝上裙及高跟鞋。}
     - { key: other_features, value: 左腹有直徑約15公分的印紋，無耳洞但左耳有帶耳飾的習慣。 }
@@ -81,37 +89,38 @@ character:
     - { key: talents, value: 近乎全能 }
   personality:
     - { key: sociability, value: 2 }
-    - { key: outlook, value: 1 }
-    - { key: thinking, value: 3 }
-    - { key: altruism, value: 1 }
-    - { key: humility, value: 1 }
     - { key: tradition, value: 5 }
+    - { key: outlook, value: 1 }
     - { key: courage, value: 4 }
+    - { key: thinking, value: 3 }
     - { key: perception, value: 5 }
+    - { key: altruism, value: 1 }
     - { key: caution, value: 4 }
+    - { key: humility, value: 1 }
+    - { key: money_attitude, value: 4 }
+    - { key: loyalty_cunning, value: 2 }
     - { key: contentment, value: 1 }
   preferences:
     - { key: taste, value: 嚴重挑食，清淡派 }
+    - { key: lying, value: 不能說謊 }
     - { key: likes_food, value: 牛肉、飯料理、紅茶 }
     - { key: dislikes_food, value: 辣味的食物 }
     - { key: likes_color, value: 黑白、深藍 }
     - { key: dislikes_color, value: 亮紅色 }
-    - { key: likes_things, value: 夜晚、歌聲、愛人的擁抱 }
-    - { key: lying, value: 不能說謊 }
     - { key: likes_music, value: null }
     - { key: dislikes_music, value: null }
+    - { key: likes_things, value: 夜晚、歌聲、愛人的擁抱 }
     - { key: dislikes_things, value: null }
   habits:
     # 若 preferences.lying 有文字，優先顯示文字；否則顯示此量表。
-    - { key: lying, value: null }
-    - { key: picky_eating, value: 5 }
-    - { key: possessiveness, value: 1 }
-    - { key: appetite, value: 4 }
     - { key: drinking, value: 5 }
+    - { key: appetite, value: 4 }
     - { key: tolerance, value: 5 }
+    - { key: picky_eating, value: 5 }
     - { key: cooking, value: 5 }
     - { key: tidiness, value: 3 }
-    - { key: expression, value: 2 }
+    - { key: lying, value: null }
+    - { key: possessiveness, value: 1 }
     - { key: libido, value: 1 }
   relationships:
     - { key: father, value: 阿爾祈(名義上)|納司卡(生父) }
@@ -124,38 +133,29 @@ character:
     - { key: rivals, value: 歐得、黛雅 }
     - { key: friends, value: 海雯、安娜、伊卡洛斯、姬兒、綺莉、潼恩 }
     - { key: pets, value: 哈士奇「尤亞」、北雀鷹「圖雅」 }
-  abilities:
-    - key: current_role
-      value: |-
-        亞托利軍事組織董事主席
-        安麥舒斯王國第152代君王
-        伊特娜帝第197代家主
-    - { key: former_role, value: 亞托利軍事組織執行長 }
-    - { key: education, value: 未受過正式教育 }
-    - { key: faith, value: null }
   schools:
     - { key: school, value: null, disable: true }
     - { key: class_year, value: null, disable: true }
+    - { key: grades, value: null , disable: true }
     - { key: position, value: null , disable: true}
     - { key: club, value: null, disable: true }
     - { key: strong_subject, value: null, disable: true }
     - { key: weak_subject, value: null, disable: true }
-    - { key: grades, value: null , disable: true }
   knowledge:
     # 能力量表由左至右遞增：1 為較低，5 為較高。
-    - { key: intellect, value: 5 }
     - { key: handwriting, value: 4 }
+    - { key: intellect, value: 5 }
     - { key: knowledge, value: 5 }
     - { key: rules, value: 4 }
   stats:
     - { key: main_weapon, value: 天穹熾火, reading: Dóiteáin sa speir }
     - { key: secondary_weapon, value: '—', reading: null }
     - { key: melee_physical, value: 4 }
-    - { key: ranged_magic, value: 5 }
-    - { key: physical_defense, value: 2 }
-    - { key: stamina, value: 3 }
     - { key: ranged_physical, value: 3 }
     - { key: melee_magic, value: 4 }
+    - { key: ranged_magic, value: 5 }
+    - { key: physical_defense, value: 2 }
     - { key: magic_defense, value: 5 }
+    - { key: stamina, value: 3 }
     - { key: speed, value: 4 }
 ---

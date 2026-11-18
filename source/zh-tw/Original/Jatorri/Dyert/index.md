@@ -31,17 +31,25 @@ character:
     - { key: gender, value: 男 }
     - { key: blood_type, value: B型 }
     - { key: birthday, value: 4月4日 }
+    - { key: species, value: 神明│埃爾勒得 }
     - { key: actual_age, value: 32歲 }
     - { key: apparent_age, value: 30歲上下 }
-    - { key: species, value: 神明│埃爾勒得 }
     - { key: nationality, value: 科蒙多爾王國│英國 }
-    - { key: residence, value: 某個不屬於任何國家的邊境地區 }
     - { key: language, value: 多數為英語 }
+    - { key: residence, value: 某個不屬於任何國家的邊境地區 }
+    - key: current_role
+      value: |-
+        死神管理總部總長
+        科蒙多爾第149代君王
+        珊耐司特第181代家主
+    - { key: former_role, value: null }
+    - { key: education, value: 未受過正式教育 }
+    - { key: faith, value: null }
     - { key: symbol, value: 死亡 }
-    - { key: cp, value: 沃霏德 }
-    - { key: group_name, value: 神明組 }
     - { key: representative_animal, value: null,disable: true }
     - { key: representative_plant, value: null,disable: true }
+    - { key: cp, value: 沃霏德 }
+    - { key: group_name, value: 神明組 }
   description:
     - 　　側分稻金碎髮，後腦杓髮長到頸部的一半，瞳色為淺天藍。不完全獸化時會出現獸耳和尾巴，瞳孔會變化，獸化時眼睛下方會出現藍色的圖騰。	
     - 　　珊耐司特第181代家主，沃霏德的丈夫，家人方有一姐一弟。雙親仍在但關係疏遠。與伊卡洛斯、安娜的關係不錯；與大空海、歐得為敵。	
@@ -62,11 +70,11 @@ character:
     - { key: hairstyle, value: 短髮，後腦杓髮長到頸部的一半 }
     - { key: eye_color, value: 淺天藍, color: ' #99CCFF' }
     - { key: eyes, value: 雙眼皮 }
-    - { key: health, value: 非常健康 }
     - { key: vision, value: 很好 }
     - { key: ears, value: 人耳/狼耳 }
     - { key: nose, value: 中 }
     - { key: mouth, value: 中 }
+    - { key: health, value: 非常健康 }
     - { key: voice, value: 沈穩卻無情，令人感到畏懼的聲音 }
     - { key: clothing, value: 白或深灰色的襯衫，有時會加黑色馬甲，深色長褲，正裝或工作時會配戴波洛領帶或領結。工作時著黑色斗篷和皮製面具}
     - { key: other_features, value: 型態變化不完全時會出現狼耳，瞳孔前會多出白色豎型，完全變化時眼睛下方會出現藍色圖騰。 }
@@ -77,37 +85,38 @@ character:
     - { key: talents, value: 壽命轉換、將他者的靈魂實體化 }
   personality:
     - { key: sociability, value: 2 }
-    - { key: outlook, value: 3 }
-    - { key: thinking, value: 4}
-    - { key: altruism, value: 1 }
-    - { key: humility, value: 3 }
     - { key: tradition, value: 5 }
+    - { key: outlook, value: 3 }
     - { key: courage, value: 3 }
+    - { key: thinking, value: 4}
     - { key: perception, value: 5 }
+    - { key: altruism, value: 1 }
     - { key: caution, value: 3 }
+    - { key: humility, value: 3 }
+    - { key: money_attitude, value: 3 }
+    - { key: loyalty_cunning, value: 1 }
     - { key: contentment, value: 1 }
   preferences:
     - { key: taste, value: 味痴 }
+    - { key: lying, value: null }
     - { key: likes_food, value: 古巴三明治 }
     - { key: dislikes_food, value: 米粉 }
     - { key: likes_color, value: 白色、金色 }
     - { key: dislikes_color, value: 青綠色 }
-    - { key: likes_things, value: 老婆、熱水澡 }
-    - { key: lying, value: null }
     - { key: likes_music, value: null }
     - { key: dislikes_music, value: null }
+    - { key: likes_things, value: 老婆、熱水澡 }
     - { key: dislikes_things, value: 傷害老婆孩子的人事物、糾纏不清的女人 }
   habits:
     # 若 preferences.lying 有文字，優先顯示文字；否則顯示此量表。
-    - { key: lying, value: 3 }
-    - { key: picky_eating, value: 1 }
-    - { key: possessiveness, value: 5 }
-    - { key: appetite, value: 4 }
     - { key: drinking, value: 1 }
+    - { key: appetite, value: 4 }
     - { key: tolerance, value: 1 }
+    - { key: picky_eating, value: 1 }
     - { key: cooking, value: 5 }
     - { key: tidiness, value: 4 }
-    - { key: expression, value: 3 }
+    - { key: lying, value: 3 }
+    - { key: possessiveness, value: 5 }
     - { key: libido, value: 3 }
   relationships:
     - { key: father, value: 羿基路克斯 }
@@ -120,27 +129,18 @@ character:
     - { key: rivals, value: 歐得、黛雅、潼恩、大空海 }
     - { key: friends, value: 安娜、伊卡洛斯 }
     - { key: pets, value: null }
-  abilities:
-    - key: current_role
-      value: |-
-        死神管理總部總長
-        科蒙多爾第149代君王
-        珊耐司特第181代家主
-    - { key: former_role, value: null }
-    - { key: education, value: 未受過正式教育 }
-    - { key: faith, value: null }
   schools:
     - { key: school, value: null, disable: true }
     - { key: class_year, value: null, disable: true }
+    - { key: grades, value: null , disable: true }
     - { key: position, value: null , disable: true}
     - { key: club, value: null, disable: true }
     - { key: strong_subject, value: null, disable: true }
     - { key: weak_subject, value: null, disable: true }
-    - { key: grades, value: null , disable: true }
   knowledge:
     # 能力量表由左至右遞增：1 為較低，5 為較高。
-    - { key: intellect, value: 5 }
     - { key: handwriting, value: 4 }
+    - { key: intellect, value: 5 }
     - { key: knowledge, value: 5 }
     - { key: rules, value: 4 }
   stats:
