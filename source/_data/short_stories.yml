@@ -183,17 +183,40 @@ stories:
     galleryTag: null
 
     characters:
-      - id: Shirley
+      - id: shirley
         name: 程雪怡
-      - id: Thea
+      - id: thea
         name: 穆亞媞
         secondName: Thea Murillo
       - id: inori
         name: 莊詩祈
-      - id: Thea
+      - id: noyce
         name: 穆以諾
         secondName: Noyce Murillo
+      - id: colton
+        name: 科爾頓‧穆里略
+        secondName: Colton Murillo
+      - id: qiuru
+        name: 洪秋如
 
     terminology: null
 
+    illustrations: []
+
+  - id: not-just-a-coincidence
+    titleKey: Not_Just_a_Coincidence
+    intro:
+      zh-tw: ''
+      en: ''
+      it: ''
+    category: NJAC
+    galleryTag: null
+    characters:
+      - id: lucio
+        name: 路希歐‧隆‧芬尼根
+        secondName: Lucio Lon Finnegan
+      - id: syn
+        name: 席恩
+        secondName: Syn
+    terminology: null
     illustrations: []

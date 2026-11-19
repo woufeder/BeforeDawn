@@ -569,6 +569,7 @@ html:has(.oc-modal[open]) {
 .oc-facts .oc-voice {
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
 }
 .oc-voice-reference {
   display: flex;

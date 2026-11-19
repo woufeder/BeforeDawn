@@ -114,7 +114,7 @@ oc_character:
     tolerance: { label: 酒量, left: 差, right: 好 }
     cooking: { label: 烹飪, left: 難吃, right: 好吃 }
     tidiness: { label: 房間, left: 髒亂, right: 整潔 }
-    lying: { label: 說謊, left: 不擅長, right: 擅長 }
+    lying: { label: 說謊, left: 拙於, right: 擅長 }
     libido: { label: 性慾, left: 冷感, right: 強烈 }
     grades: { label: 成績, left: 劣, right: 優 }
     intellect: { label: 知性, left: 低, right: 高 }
@@ -171,6 +171,7 @@ Before_you_go: Before you go
 After_the_Candles_Burn_Low: 燭火搖曳之夜
 A_Place_I_Belong: 餘生所歸終是妳
 On_My_Way_to_You: 向妳而行
+Not_Just_a_Coincidence: Not Just a Coincidence
 #企劃
 VCA: VCA｜里林
 VCA-NPC: VCA｜NPC-娜希拉
